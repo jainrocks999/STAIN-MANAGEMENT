@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
 
-import { View ,Text,} from 'react-native';
+import RootApp from './src/Navigation/index'
+import { Platform ,StatusBar,SafeAreaView} from 'react-native';
+import { Provider } from 'react-redux';
+import Store from './src/Redux/Store';
 
+//let Colordata='';
 export default class App extends React.Component {
+  constructor(props){
+    super(props)
+    //this.fetchDevice()
+  }
 
 
 
   render(){
     return (
-      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Text>Stain</Text>
-      </View>
+      <SafeAreaView style={{flex:1}}>
+      <Provider store={Store}>
+        <RootApp/>
+      </Provider>
+      </SafeAreaView>
     );
   }
 
