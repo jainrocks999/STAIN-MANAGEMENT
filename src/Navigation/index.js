@@ -12,6 +12,7 @@ import AccManagement_1 from '../screens/Auth/AccManagement_1';
 import About from '../screens/Auth/About';
 import Buy from '../screens/Auth/Buy';
 import AboutStain from '../screens/Auth/AboutStain';
+import CaseStudy from '../screens/Auth/CaseStudy';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="AboutStains" component={AboutStain}/>
+        <Stack.Screen name="CaseStudy" component={CaseStudy}/>
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
         <Stack.Screen name="About" component={About} />

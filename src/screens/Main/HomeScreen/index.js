@@ -46,7 +46,11 @@ const HomeScreen=()=> {
               <Text style={styles.buttonText}
               >About Stains</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+             onPress={()=>{
+              navigation.navigate('CaseStudy')
+            }}
+            style={styles.button}>
               <Text style={styles.buttonText}>Case Studies</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
