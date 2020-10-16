@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity} from 'react-native';
+import {Image, ImageBackground, View,Text, TouchableOpacity, Dimensions} from 'react-native';
 //import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import CustomHeader from '../../../component/header';
@@ -38,11 +38,12 @@ const HomeScreen=()=> {
            <Text style={styles.subHeading}>For stone, tile, concrete and{'\n'} other hard porous surfaces</Text>
             
             </View>
+            <View style={{flex:1,}}>
             <TouchableOpacity 
             onPress={()=>{
               navigation.navigate('AboutStains')
             }}
-            style={[styles.button,{marginTop:'10%'}]}>
+            style={[styles.button,{marginTop:'5%'}]}>
               <Text style={styles.buttonText}
               >About Stains</Text>
             </TouchableOpacity>
@@ -69,6 +70,7 @@ const HomeScreen=()=> {
               source={require('../../../assets/Icons/Important.png')} />
               <Text style={styles.buttonText}>Important!</Text>
             </TouchableOpacity>
+            </View>
           </ImageBackground>
        {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
       </View>

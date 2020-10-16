@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
+  Dimensions,
   Image,
   ImageBackground,
   Text,
@@ -32,7 +33,7 @@ const Buy = () => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-          <ScrollView style={{flex:1,}}
+          <ScrollView style={{flex:1,height:Dimensions.get('screen').height}}
           contentContainerStyle={{alignItems:'center'}}
           >
         <View style={styles.headingView}>

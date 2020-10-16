@@ -7,12 +7,13 @@ import SplashScreen from '../screens/Auth/splash'
 import HomeScreen from '../screens/Main/HomeScreen';
 import colors from '../component/colors';
 import LoginScreen from '../screens/Auth/LoginScreen';
-import AccManagement from '../screens/Auth/AccManagement';
-import AccManagement_1 from '../screens/Auth/AccManagement_1';
-import About from '../screens/Auth/About';
-import Buy from '../screens/Auth/Buy';
-import AboutStain from '../screens/Auth/AboutStain';
-import CaseStudy from '../screens/Auth/CaseStudy';
+import AccManagement from '../screens/Main/AccManagement';
+import AccManagement_1 from '../screens/Main/AccManagement_1';
+import About from '../screens/Main/About';
+import Buy from '../screens/Main/Buy';
+import AboutStain from '../screens/Main/AboutStain';
+import CaseStudy from '../screens/Main/CaseStudy';
+import Support from '../screens/Main/Support';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ function App() {
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
         <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="Buy" component={Buy} />
       </Stack.Navigator>
     </NavigationContainer>
