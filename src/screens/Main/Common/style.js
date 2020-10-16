@@ -4,12 +4,9 @@ import colors from '../../../component/colors';
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
-    flex:1,
     width: '100%',
     height: Dimensions.get('window').height,
     alignItems: 'center',
-    alignSelf:'center',
-    alignContent:'center'
   },
   headingView: {   
     marginTop: '10%',
@@ -18,20 +15,11 @@ export default StyleSheet.create({
     borderBottomWidth:2,
     borderBottomColor:colors.darkOrange
   },
-  title: {
+  heading: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
     fontSize: 17,
     color: colors.darkOrange,
-  },
-  heading: {
-    marginTop:'20%',
-    fontFamily: 'Arial',
-    fontWeight:'bold',
-    lineHeight:18,
-    fontSize: 14,
-    color: '#000000',
-    textAlign:'left'
   },
   subHeadingView: {
    

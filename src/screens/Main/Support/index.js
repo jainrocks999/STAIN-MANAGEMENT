@@ -7,6 +7,7 @@ import styles from './style';
 import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
+import BottomTab from '../../../component/BottomTab';
 
 
 
@@ -17,14 +18,15 @@ const Support =()=> {
   
   return (
     <View style={{flex:1}}>
-<CustomHeader onPress ={()=>{Alert.alert('hey')}}/>
+<CustomHeader/>
           <ImageBackground
 
             style={styles.imageBackground}
             source={require('../../../assets/Images/AppBackground.jpg')}
             
             >
-              <View style={styles.headingView}>
+            <View style={{flex:1,alignItems:'center'}}>
+            <View style={styles.headingView}>
            <Text style={styles.title}>SUPPORT</Text>
             </View>
 <View style={{width:'80%'}}>
@@ -37,10 +39,11 @@ const Support =()=> {
              </Text>
    
 </View>
-             
+           </View>  
             
 
          
+<BottomTab />
           </ImageBackground>
        {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
       </View>

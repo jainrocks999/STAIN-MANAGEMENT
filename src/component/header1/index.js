@@ -41,7 +41,7 @@ const CustomHeader= (props)=> {
   return (
         <View style={styles.header}>
 
-<TouchableOpacity onPress={props.onPress}>
+<TouchableOpacity onPress={()=>{Alert.alert('notification')}}>
 <Image source={require('../../assets/Icons/bell.png')}
 style={{tintColor:'#fff'}}
 resizeMode='center' />
@@ -78,3 +78,96 @@ style={{paddingHorizontal:20,width:'40%',}}
 }
 
 export default connect()(CustomHeader);
+
+
+// import  React,{useState,} from 'react';
+// import { Alert, View } from 'react-native';
+// import { Button, Menu, Divider, Provider } from 'react-native-paper';
+// import colors from '../colors/index';
+// import { useNavigation } from '@react-navigation/native';
+
+// export default function  CustomHeader(onPress){
+//   const navigation = useNavigation();
+//   const [visible, setVisible] = React.useState(true);
+
+//    openMenu = () => {setVisible(true)
+//   console.log('sfhsdfkjsdfksdjfhs');
+//   };
+
+//   const closeMenu = () => setVisible(false);
+
+//   return (
+//     <View style={styles.header}>
+//     <Provider>
+//       <View
+//         style={{
+//           flexDirection: 'row',
+//           justifyContent: 'flex-end',
+//           borderWidth:1,
+//           backgroundColor:colors.orange
+//         }}>
+//         <Menu
+        
+//           visible={visible}
+//           onDismiss={closeMenu}
+//           anchor={
+//             <Button icon={require('../../assets/Icons/menu.png')}  onPress={openMenu}>
+            
+//           </Button>
+          
+//         }>
+//           <Menu.Item onPress={() => {}} title="Item 1" />
+//           <Menu.Item onPress={() => {}} title="Item 2" />
+//           <Divider />
+//           <Menu.Item onPress={() => {}} title="Item 3" />
+//         </Menu>
+//       </View>
+//     </Provider>
+//         </View>
+//   );
+// };
+
+
+
+
+// import * as React from 'react';
+// import { View } from 'react-native';
+// import { Button, Menu, Divider, Provider } from 'react-native-paper';
+// //import colors from '../../../component/colors';
+
+// const CustomHeader = () => {
+//   const [visible, setVisible] = React.useState(false);
+
+//   const openMenu = () => setVisible(true);
+
+//   const closeMenu = () => setVisible(false);
+
+//   return (
+//     <Provider>
+//       <View
+//         style={{
+//           flexDirection: 'row',
+//           justifyContent: 'flex-end',
+//           borderWidth:1,
+//           backgroundColor:'blue'
+//         }}>
+//         <Menu
+//           visible={visible}
+//           onDismiss={closeMenu}
+//           anchor={
+//             <Button icon={require('../../assets/Icons/home.png')} onPress={openMenu}>
+            
+//           </Button>
+          
+//           }>
+//           <Menu.Item onPress={() => {}} title="Item 1" />
+//           <Menu.Item onPress={() => {}} title="Item 2" />
+//           <Divider />
+//           <Menu.Item onPress={() => {}} title="Item 3" />
+//         </Menu>
+//       </View>
+//     </Provider>
+//   );
+// };
+
+// export default CustomHeader;

@@ -14,6 +14,7 @@ import Buy from '../screens/Main/Buy';
 import AboutStain from '../screens/Main/AboutStain';
 import CaseStudy from '../screens/Main/CaseStudy';
 import Support from '../screens/Main/Support';
+import Video from '../screens/Main/Video';
 
 const Stack = createStackNavigator();
 
@@ -26,13 +27,14 @@ function App() {
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="AboutStains" component={AboutStain}/>
-        <Stack.Screen name="CaseStudy" component={CaseStudy}/>
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
-        <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="AboutStains" component={AboutStain}/>
+        <Stack.Screen name="Video" component={Video}/>
         <Stack.Screen name="Support" component={Support} />
-        <Stack.Screen name="Buy" component={Buy} />
+        {/* <Stack.Screen name="CaseStudy" component={CaseStudy}/>
+        <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="Buy" component={Buy} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

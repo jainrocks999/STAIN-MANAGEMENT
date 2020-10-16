@@ -8,6 +8,12 @@ target 'StainManagement' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'StainManagementTests' do
     inherit! :complete
     # Pods for testing
