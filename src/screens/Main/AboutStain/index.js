@@ -17,17 +17,10 @@ import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { Button, Menu, Divider, Provider } from 'react-native-paper';
 
 const AboutStain = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
-// const [visible, setVisible] = React.useState(false);
-
-  // const openMenu = () => setVisible(true);
-
-  // const closeMenu = () => setVisible(false);
 
 
   return (
@@ -176,46 +169,3 @@ The key to success is cleaning up any spills and treating any resulting
 
 export default connect()(AboutStain);
 
-
-
-// import * as React from 'react';
-// import { View } from 'react-native';
-// import { Button, Menu, Divider, Provider } from 'react-native-paper';
-// import colors from '../../../component/colors';
-
-// const AboutStain = () => {
-//   const [visible, setVisible] = React.useState(false);
-
-//   const openMenu = () => setVisible(true);
-
-//   const closeMenu = () => setVisible(false);
-
-//   return (
-//     <Provider>
-//       <View
-//         style={{
-//           flexDirection: 'row',
-//           justifyContent: 'flex-end',
-//           borderWidth:1,
-//           backgroundColor:colors.orange
-//         }}>
-//         <Menu
-//           visible={visible}
-//           onDismiss={closeMenu}
-//           anchor={
-//             <Button icon={require('../../../assets/Icons/home.png')} onPress={openMenu}>
-            
-//           </Button>
-          
-//           }>
-//           <Menu.Item onPress={() => {}} title="Item 1" />
-//           <Menu.Item onPress={() => {}} title="Item 2" />
-//           <Divider />
-//           <Menu.Item onPress={() => {}} title="Item 3" />
-//         </Menu>
-//       </View>
-//     </Provider>
-//   );
-// };
-
-// export default AboutStain;

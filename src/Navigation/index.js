@@ -13,7 +13,7 @@ import About from '../screens/Main/About';
 import Buy from '../screens/Main/Buy';
 import AboutStain from '../screens/Main/AboutStain';
 import CaseStudy from '../screens/Main/CaseStudy';
-import Support from '../screens/Main/Support';
+import SupportScreen from '../screens/Main/Support';
 import Video from '../screens/Main/Video';
 
 const Stack = createStackNavigator();
@@ -31,7 +31,7 @@ function App() {
         <Stack.Screen name="Account_1" component={AccManagement_1} />
         <Stack.Screen name="AboutStains" component={AboutStain}/>
         <Stack.Screen name="Video" component={Video}/>
-        <Stack.Screen name="Support" component={Support} />
+        <Stack.Screen name="Support" component={SupportScreen} />
         {/* <Stack.Screen name="CaseStudy" component={CaseStudy}/>
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Buy" component={Buy} /> */}

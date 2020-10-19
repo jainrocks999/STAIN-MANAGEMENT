@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 
-const HomeScreen=()=> {
+function HomeScreen() {
  
   const navigation = useNavigation();
   
@@ -41,7 +41,10 @@ const HomeScreen=()=> {
             <View style={{flex:1,}}>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support');
+              navigation.navigate('Support', {
+                itemId: 1,
+                otherParam: 'About Stains',
+              });
             }}
             style={[styles.button,{marginTop:'5%'}]}>
               <Text style={styles.buttonText}
@@ -49,7 +52,10 @@ const HomeScreen=()=> {
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support');
+              navigation.navigate('Support' ,{
+                itemId: 2,
+                otherParam: 'Case Studies',
+              });
             }}
 
             style={styles.button}>
@@ -57,28 +63,40 @@ const HomeScreen=()=> {
             </TouchableOpacity>
             <TouchableOpacity 
                          onPress={()=>{
-                          navigation.navigate('Support');
+                          navigation.navigate('Support' ,{
+                            itemId: 3,
+                            otherParam: 'How to Apply a Poultice',
+                          });
                         }}
             style={styles.button}>
               <Text style={styles.buttonText}>How to Apply a Poultice</Text>
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support');
+              navigation.navigate('Support', {
+                itemId: 4,
+                otherParam: 'What is a Poultice?',
+              });
             }}
             style={styles.button}>
               <Text style={styles.buttonText}>What is a Poultice?</Text>
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support');
+              navigation.navigate('Support', {
+                itemId: 5,
+                otherParam: 'Stain Chart',
+              });
             }}
             style={styles.button}>
               <Text style={styles.buttonText}>Stain Chart</Text>
             </TouchableOpacity>
             <TouchableOpacity
              onPress={()=>{
-              navigation.navigate('Support');
+              navigation.navigate('Support', {
+                itemId: 6,
+                otherParam: 'Important!',
+              });
             }}
             style={[styles.button,{flexDirection:'row',}]}>
               <Image 

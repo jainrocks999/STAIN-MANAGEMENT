@@ -37,24 +37,36 @@ resizeMode='center'/>
 
 <TouchableOpacity 
     onPress={()=>{
-      navigation.navigate('Support')
+      navigation.navigate('Support', {
+        itemId: 1,
+        otherParam: 'About Stains',
+      });
     }}>
 <Image source={require('../../assets/Icons/About.png')}
 style={{tintColor:'#fff',height:30,width:30}}
 resizeMode='center' />
 </TouchableOpacity>
 
-<TouchableOpacity    onPress={()=>{
-      navigation.navigate('Support')
-    }}>
+<TouchableOpacity 
+ onPress={()=>{
+              navigation.navigate('Support', {
+                itemId: 4,
+                otherParam: 'What is a Poultice?',
+              });
+            }}
+            >
 <Image source={require('../../assets/Icons/How_To.png')}
 style={{tintColor:'#fff',height:30,width:30}}
 resizeMode='center' />
 </TouchableOpacity>
 
-<TouchableOpacity    onPress={()=>{
-      navigation.navigate('Support')
-    }}>
+<TouchableOpacity  
+   onPress={()=>{
+    navigation.navigate('Support', {
+      itemId: 5,
+      otherParam: 'Stain Chart',
+    });
+  }}>
 <Image source={require('../../assets/Icons/Stain_Chart.png')}
 style={{tintColor:'#fff',height:30,width:30}}
 resizeMode='center' />

@@ -22,15 +22,26 @@ const CustomHeader= (props)=> {
    this._menu.hide();
  };
   About = () => {
-    navigation.navigate('About');
+    navigation.navigate('Support', {
+      itemId: 7,
+      otherParam: 'About App',
+    });
+//    navigation.navigate('About');
    this._menu.hide();
  };
   Buy = () => {
-    navigation.navigate('Buy');
+    navigation.navigate('Support', {
+      itemId: 8,
+      otherParam: 'Resources',
+    });
    this._menu.hide();
  };
   Support = () => {
-    navigation.navigate('Support');
+    
+    navigation.navigate('Support', {
+      itemId: 9,
+      otherParam: 'Support',
+    });
    this._menu.hide();
  };
 
@@ -79,95 +90,3 @@ style={{paddingHorizontal:20,width:'40%',}}
 
 export default connect()(CustomHeader);
 
-
-// import  React,{useState,} from 'react';
-// import { Alert, View } from 'react-native';
-// import { Button, Menu, Divider, Provider } from 'react-native-paper';
-// import colors from '../colors/index';
-// import { useNavigation } from '@react-navigation/native';
-
-// export default function  CustomHeader(onPress){
-//   const navigation = useNavigation();
-//   const [visible, setVisible] = React.useState(true);
-
-//    openMenu = () => {setVisible(true)
-//   console.log('sfhsdfkjsdfksdjfhs');
-//   };
-
-//   const closeMenu = () => setVisible(false);
-
-//   return (
-//     <View style={styles.header}>
-//     <Provider>
-//       <View
-//         style={{
-//           flexDirection: 'row',
-//           justifyContent: 'flex-end',
-//           borderWidth:1,
-//           backgroundColor:colors.orange
-//         }}>
-//         <Menu
-        
-//           visible={visible}
-//           onDismiss={closeMenu}
-//           anchor={
-//             <Button icon={require('../../assets/Icons/menu.png')}  onPress={openMenu}>
-            
-//           </Button>
-          
-//         }>
-//           <Menu.Item onPress={() => {}} title="Item 1" />
-//           <Menu.Item onPress={() => {}} title="Item 2" />
-//           <Divider />
-//           <Menu.Item onPress={() => {}} title="Item 3" />
-//         </Menu>
-//       </View>
-//     </Provider>
-//         </View>
-//   );
-// };
-
-
-
-
-// import * as React from 'react';
-// import { View } from 'react-native';
-// import { Button, Menu, Divider, Provider } from 'react-native-paper';
-// //import colors from '../../../component/colors';
-
-// const CustomHeader = () => {
-//   const [visible, setVisible] = React.useState(false);
-
-//   const openMenu = () => setVisible(true);
-
-//   const closeMenu = () => setVisible(false);
-
-//   return (
-//     <Provider>
-//       <View
-//         style={{
-//           flexDirection: 'row',
-//           justifyContent: 'flex-end',
-//           borderWidth:1,
-//           backgroundColor:'blue'
-//         }}>
-//         <Menu
-//           visible={visible}
-//           onDismiss={closeMenu}
-//           anchor={
-//             <Button icon={require('../../assets/Icons/home.png')} onPress={openMenu}>
-            
-//           </Button>
-          
-//           }>
-//           <Menu.Item onPress={() => {}} title="Item 1" />
-//           <Menu.Item onPress={() => {}} title="Item 2" />
-//           <Divider />
-//           <Menu.Item onPress={() => {}} title="Item 3" />
-//         </Menu>
-//       </View>
-//     </Provider>
-//   );
-// };
-
-// export default CustomHeader;
