@@ -48,7 +48,7 @@ const AboutStain = () => {
 
           <View style={styles.subHeadingView}>
             <Text style={styles.subHeading}>
-The key to success is cleaning up any spills and treating any resulting
+             The key to success is cleaning up any spills and treating any resulting
               stains as soon as you can. Understanding the source of the stain
               will help in determining the best treatment. Many options are
               available for treating stains on natural stone from creating your

@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity, Dimensions} from 'react-native';
-//import Statusbar from '../../../common/Statusbar';
+import React, { useEffect, useState } from 'react';
+import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert} from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
-
-import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import {  useDispatch,useSelector} from 'react-redux';
+import colors from '../../../component/colors';
 
-
-function HomeScreen() {
- 
+function HomeScreen(props) {
+  const dispatch=useDispatch();
   const navigation = useNavigation();
+
+  useEffect(()=>{
+  loadData();
+  },[])
   
-  
+  const loadData=()=>{
+    dispatch({
+      type: 'User_Stain_Request',
+      url:'stain',
+    });
+  }
   return (
     <View style={{flex:1}}>
        <CustomHeader/>
@@ -42,8 +49,7 @@ function HomeScreen() {
             <TouchableOpacity 
              onPress={()=>{
               navigation.navigate('Support', {
-                itemId: 1,
-                otherParam: 'About Stains',
+                btnName:'About Stains',
               });
             }}
             style={[styles.button,{marginTop:'5%'}]}>
@@ -52,20 +58,15 @@ function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support' ,{
-                itemId: 2,
-                otherParam: 'Case Studies',
-              });
+             Alert.alert('Data not found')
             }}
-
             style={styles.button}>
               <Text style={styles.buttonText}>Case Studies</Text>
             </TouchableOpacity>
             <TouchableOpacity 
                          onPress={()=>{
                           navigation.navigate('Support' ,{
-                            itemId: 3,
-                            otherParam: 'How to Apply a Poultice',
+                            btnName:'How to Apply a Poultice',
                           });
                         }}
             style={styles.button}>
@@ -74,8 +75,7 @@ function HomeScreen() {
             <TouchableOpacity 
              onPress={()=>{
               navigation.navigate('Support', {
-                itemId: 4,
-                otherParam: 'What is a Poultice?',
+                btnName:'What is a Poultice?',
               });
             }}
             style={styles.button}>
@@ -84,8 +84,7 @@ function HomeScreen() {
             <TouchableOpacity 
              onPress={()=>{
               navigation.navigate('Support', {
-                itemId: 5,
-                otherParam: 'Stain Chart',
+                btnName:'STAIN CHART',
               });
             }}
             style={styles.button}>
@@ -94,8 +93,7 @@ function HomeScreen() {
             <TouchableOpacity
              onPress={()=>{
               navigation.navigate('Support', {
-                itemId: 6,
-                otherParam: 'Important!',
+                btnName:'IMPORTANT',
               });
             }}
             style={[styles.button,{flexDirection:'row',}]}>
@@ -107,9 +105,9 @@ function HomeScreen() {
             </TouchableOpacity>
             </View>
           </ImageBackground>
-       {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content' />
       </View>
   );
 }
 
-export default connect()(HomeScreen);
+export default HomeScreen;

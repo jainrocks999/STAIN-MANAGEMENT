@@ -2,14 +2,15 @@ import axios from 'axios';
 import Constants from '../Constants';
 
 export default class Api {
-  static fetchDataByPOST = async (url, data, token) => {
+  static fetchDataByPOST = async (url, data) => {
+    
     try {
       const response = await axios({
         method: 'POST',
         headers: {
-          'content-type': 'application/json',
-          Accept: 'application/json',
-          Authorization: 'bearer ' + token,
+          'content-type': 'multipart/form-data',
+          Accept: 'multipart/form-data',
+         
         },
         url: Constants.MainUrl + url,
         data,
@@ -20,15 +21,13 @@ export default class Api {
     }
   };
 
-  static fetchDataByGET = async (url, token) => {
-    console.log('Api roll' + url);
-    console.log('Aoi roll' + token);
-    console.log('Aoi Roll' + Constants.MainUrl + url);
+  static fetchDataByGET = async (url) => {
     try {
       const response = await axios({
         method: 'GET',
         headers: {
-          Authorization: 'bearer ' + token,
+          'content-type': 'multipart/form-data',
+          Accept: 'multipart/form-data',
         },
         url: Constants.MainUrl + url,
       });

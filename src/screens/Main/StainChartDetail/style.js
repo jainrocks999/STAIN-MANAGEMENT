@@ -17,7 +17,9 @@ export default StyleSheet.create({
     color:colors.darkOrange,
     fontSize:22,
     fontFamily:'Arial',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    borderBottomWidth:3,
+    borderBottomColor:colors.darkOrange,
   },
   headingView: {   
     marginTop: '10%',
@@ -129,20 +131,4 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  search:{
-    width:'76%',
-    height:40,
-    borderWidth:1,
-    marginBottom:26,
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'space-between',
-    paddingHorizontal:10,
-    backgroundColor:colors.white
-  },
-  scroll:{
-    flex: 1,
-    paddingHorizontal:30,
-    marginBottom:45
-  }
 });

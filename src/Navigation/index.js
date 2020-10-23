@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React,{useEffect} from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,18 +12,17 @@ import AccManagement_1 from '../screens/Main/AccManagement_1';
 import About from '../screens/Main/About';
 import Buy from '../screens/Main/Buy';
 import AboutStain from '../screens/Main/AboutStain';
-import CaseStudy from '../screens/Main/CaseStudy';
-import SupportScreen from '../screens/Main/Support';
+import Support from '../screens/Main/Support';
 import Video from '../screens/Main/Video';
-
+import StainChartDetail from '../screens/Main/StainChartDetail';
+import Asyncstorage from '@react-native-community/async-storage';
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash"
-        headerMode='none'
-      >
+      
+      <Stack.Navigator initialRouteName="Splash" headerMode='none'>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen}/>
@@ -31,7 +30,8 @@ function App() {
         <Stack.Screen name="Account_1" component={AccManagement_1} />
         <Stack.Screen name="AboutStains" component={AboutStain}/>
         <Stack.Screen name="Video" component={Video}/>
-        <Stack.Screen name="Support" component={SupportScreen} />
+        <Stack.Screen name="Support" component={Support} />
+        <Stack.Screen name="StainChart" component={StainChartDetail} />
         {/* <Stack.Screen name="CaseStudy" component={CaseStudy}/>
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Buy" component={Buy} /> */}

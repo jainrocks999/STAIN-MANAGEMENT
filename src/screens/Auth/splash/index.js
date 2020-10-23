@@ -1,31 +1,38 @@
-import React, { useEffect } from 'react';
-import {Image, ImageBackground, View} from 'react-native';
-//import Statusbar from '../../../common/Statusbar';
+import React, { useEffect, useState } from 'react';
+import {Image, ImageBackground, View,StatusBar} from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
-
-
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../../component/storage';
+import colors from '../../../component/colors';
 
 const SplashScreen =()=> {
   const navigation = useNavigation();
-  
-  
+  const [Username1]=useState('robin')
+  const [Password1]=useState('123456')
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate('Login')
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+    directCall()
+     });
+     const directCall=async()=>{
+      const Username = await AsyncStorage.getItem(storage.Username);
+      const Password = await AsyncStorage.getItem(storage.Password);
+      console.log(Username)
+      console.log(Password)
+        if (Username==Username1 && Password==Password1) {
+          setTimeout(() => navigation.navigate('Home'), 2000);
+        } else {
+          setTimeout(() => navigation.navigate('Login'), 2000);
+        }
+     }
   return (
     <View style={{flex:1}}>
-<CustomHeader/>
+          <CustomHeader/>
           <ImageBackground
 
             style={styles.imageBackground}
             source={require('../../../assets/Images/HomeScreen.png')}
-            
             >
               <View style={styles.logoContainer}>
             <Image
@@ -35,9 +42,9 @@ const SplashScreen =()=> {
             />
             </View>
           </ImageBackground>
-       {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       </View>
   );
 }
 
-export default connect()(SplashScreen);
+export default SplashScreen

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {View,Text, ImageBackground, Image} from 'react-native';
+import {View,Text, ImageBackground, Image,StatusBar} from 'react-native';
 import {connect} from 'react-redux';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
 import YoutubePlayer from "react-native-yt-player";
 import styles from './style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import colors from '../../../component/colors';
 
 const TopBar = ({ play, fullScreen }) =>  (
     <View
@@ -39,12 +40,9 @@ const Video=()=> {
     <View style={{flex:1}}>
 <CustomHeader/>
           <ImageBackground
-
             style={styles.imageBackground}
-            source={require('../../../assets/Images/AppBackground.jpg')}
-            
-            >
-      <View style={{flex:1}}> 
+            source={require('../../../assets/Images/AppBackground.jpg')}>
+     
       <YoutubePlayer
         loop
         topBar={TopBar}
@@ -54,9 +52,9 @@ const Video=()=> {
         onStart={() =>play }
         onEnd={() => alert("on End")}
       />
-      </View>
+     
 
-     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',width:'90%'}}>
+     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',width:'90%',bottom:0,position:'absolute'}}>
 
       <TouchableOpacity onPress={()=>{navigation.goBack()}} >
       <Text>{'<< BACK'}</Text>
@@ -68,7 +66,8 @@ const Video=()=> {
        </TouchableOpacity>
      </View>
           </ImageBackground>
-       {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+          <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
+
       </View>
   );
 }

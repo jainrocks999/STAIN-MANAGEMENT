@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity, Alert} from 'react-native';
-//import Statusbar from '../../../common/Statusbar';
+import {Image, View, TouchableOpacity} from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
+import style from './style';
 
 
 
-const BottomTab= (props)=> {
+function BottomTab(props){
 
   const navigation = useNavigation();
-  
+  useEffect(()=>{
+   
+    },[])
 
   return (
         <View style={styles.header}>
@@ -20,7 +20,7 @@ const BottomTab= (props)=> {
   navigation.navigate('Home')
 }}>
 <Image source={require('../../assets/Icons/home.png')}
-style={{tintColor:'#fff',height:30,width:30}}
+style={style.bottomTab}
 resizeMethod={'resize'}
 resizeMode='center'
 />
@@ -31,44 +31,41 @@ onPress={()=>{
   navigation.navigate('Video')
 }}>
 <Image source={require('../../assets/Icons/Video.png')}
-style={{tintColor:'#fff',height:30,width:30}}
+style={style.bottomTab}
 resizeMode='center'/>
 </TouchableOpacity>
 
 <TouchableOpacity 
     onPress={()=>{
       navigation.navigate('Support', {
-        itemId: 1,
-        otherParam: 'About Stains',
+        btnName:'About Stains',
       });
     }}>
 <Image source={require('../../assets/Icons/About.png')}
-style={{tintColor:'#fff',height:30,width:30}}
+style={style.bottomTab}
 resizeMode='center' />
 </TouchableOpacity>
 
 <TouchableOpacity 
  onPress={()=>{
-              navigation.navigate('Support', {
-                itemId: 4,
-                otherParam: 'What is a Poultice?',
-              });
-            }}
-            >
+      navigation.navigate('Support', {
+      btnName:'What is a Poultice?',
+      });
+     }}
+    >
 <Image source={require('../../assets/Icons/How_To.png')}
-style={{tintColor:'#fff',height:30,width:30}}
+style={style.bottomTab}
 resizeMode='center' />
 </TouchableOpacity>
 
 <TouchableOpacity  
    onPress={()=>{
     navigation.navigate('Support', {
-      itemId: 5,
-      otherParam: 'Stain Chart',
+      btnName:'STAIN CHART',
     });
   }}>
 <Image source={require('../../assets/Icons/Stain_Chart.png')}
-style={{tintColor:'#fff',height:30,width:30}}
+style={style.bottomTab}
 resizeMode='center' />
 </TouchableOpacity>
 
@@ -77,4 +74,4 @@ resizeMode='center' />
   );
 }
 
-export default connect()(BottomTab);
+export default BottomTab
