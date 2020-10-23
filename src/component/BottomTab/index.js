@@ -6,13 +6,9 @@ import style from './style';
 
 
 
-function BottomTab(props){
+function BottomTab({goToAboutStain,goToStainChart,goToWhatIs}){
 
   const navigation = useNavigation();
-  useEffect(()=>{
-   
-    },[])
-
   return (
         <View style={styles.header}>
 
@@ -36,34 +32,21 @@ resizeMode='center'/>
 </TouchableOpacity>
 
 <TouchableOpacity 
-    onPress={()=>{
-      navigation.navigate('Support', {
-        btnName:'About Stains',
-      });
-    }}>
+onPress={goToAboutStain}>
 <Image source={require('../../assets/Icons/About.png')}
 style={style.bottomTab}
 resizeMode='center' />
 </TouchableOpacity>
 
 <TouchableOpacity 
- onPress={()=>{
-      navigation.navigate('Support', {
-      btnName:'What is a Poultice?',
-      });
-     }}
-    >
+ onPress={goToWhatIs}>
 <Image source={require('../../assets/Icons/How_To.png')}
 style={style.bottomTab}
 resizeMode='center' />
 </TouchableOpacity>
 
 <TouchableOpacity  
-   onPress={()=>{
-    navigation.navigate('Support', {
-      btnName:'STAIN CHART',
-    });
-  }}>
+   onPress={goToStainChart}>
 <Image source={require('../../assets/Icons/Stain_Chart.png')}
 style={style.bottomTab}
 resizeMode='center' />

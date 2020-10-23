@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 const CustomHeader= (props)=> {
 
   const navigation = useNavigation();
-  _menu = null;
+ let _menu = null;
  
  const setMenuRef = ref => {
   _menu = ref;
@@ -22,28 +22,12 @@ const CustomHeader= (props)=> {
    _menu.hide();
  };
  const About = () => {
-    // navigation.navigate('Support', {
-    //   itemId: 7,
-    //   otherParam: 'About App',
-    // });
-    // Alert.alert('Data not found')
    _menu.hide();
  };
  const Buy = () => {
-    // navigation.navigate('Support', {
-    //   itemId: 8,
-    //   otherParam: 'Resources',
-    // });
-    // Alert.alert('Data not found')
    _menu.hide();
  };
  const Support = () => {
-    
-    // navigation.navigate('Support', {
-    //   itemId: 9,
-    //   otherParam: 'Support',
-    // });
-    // Alert.alert('Data not found')
    _menu.hide();
  };
 

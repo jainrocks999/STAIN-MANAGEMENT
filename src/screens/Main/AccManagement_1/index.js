@@ -7,42 +7,24 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  StatusBar
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-
-//import Statusbar from '../../../common/Statusbar';
+import colors from '../../../component/colors';
 import styles from './style';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
-
 
 const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
-   _menu = null;
- 
-   setMenuRef = ref => {
-    this._menu = ref;
-  };
- 
-   hideMenu = () => {
-    this._menu.hide();
-  };
- 
-   showMenu = () => {
-    this._menu.show();
-  };
-
- 
- 
+  const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
 
   return (
     <View style={{flex: 1}}>
       <CustomHeader
-        onPress={this.showMenu}
+       
       />
       <ImageBackground
         style={styles.imageBackground}
@@ -98,8 +80,8 @@ const AccManagement_1 = () => {
             <View style={styles.checkboxContainerView1}>
               <CheckBox
                 disabled={false}
-                value={toggleCheckBox}
-                onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                value={toggleCheckBox1}
+                onValueChange={(newValue) => setToggleCheckBox1(newValue)}
                 boxType="square"
                 onFillColor="red"
                 onTintColor="#fffff"
@@ -119,8 +101,8 @@ const AccManagement_1 = () => {
           <Text style={[styles.checkbox,{textAlign:'center',marginTop:'10%'}]}>Change Password</Text>
         </View>
       </ImageBackground>
-      {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
-    </View>
+      <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>  
+  </View>
   );
 };
 

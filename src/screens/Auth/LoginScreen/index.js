@@ -77,9 +77,7 @@ const LoginScreen =(props)=> {
             onValueChange={(newValue) => setToggleCheckBox(newValue)}
             boxType= 'square'
             onFillColor='red'
-
             onTintColor= '#fffff'
-            
           />
           </View>
           <Text style={styles.checkbox}>Keep me logged in</Text>

@@ -28,9 +28,24 @@ const StainChartDetail = ({route}) => {
     setButton(btnName)
   const selectedName=selector.map(element =>{ 
      if(element.name==btnName) {
-        setContent(element.content)
+        setContent(element.content) 
   }});
   },[])
+  const ShowStain=()=>{
+    selector.map(element =>{ 
+      if(element.name=="About Stains") {
+        setButton(element.name)
+         setContent(element.content)
+   }});
+  }
+
+  const ShowWhat=()=>{
+    selector.map(element =>{ 
+      if(element.name=="What is a Poultice?") {
+        setButton(element.name)
+         setContent(element.content)
+   }});
+  }
 
  const loadData = () => {
        return (
@@ -56,10 +71,12 @@ const StainChartDetail = ({route}) => {
         style={{flex: 1,paddingHorizontal:30,}}>
           {loadData()}
         </ScrollView>
-
-        <BottomTab />
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
+      <BottomTab 
+        goToAboutStain={ShowStain}
+        goToWhatIs={ShowWhat}   
+        />
     </View>
   );
 };

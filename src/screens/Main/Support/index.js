@@ -7,7 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  ActivityIndicator
 } from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
@@ -26,11 +27,8 @@ const SupportScreen = ({route}) => {
   const selector=useSelector(state=>state.StainDetails)
   const isFetching=useSelector(state=>state.isFetching)
   const [button,setButton]=useState(null)
-  const [btnLocation,setBtnLocation]=useState()
 
   const {btnName} = route.params;
-  console.log('hihhihihihihihi'+btnName)
- 
   useEffect(()=>{
     setButton(btnName)
   const selectedName=selector.map(element =>{ 
@@ -39,6 +37,23 @@ const SupportScreen = ({route}) => {
   }});
     
   },[])
+
+  const ShowStain=()=>{
+    selector.map(element =>{ 
+      if(element.name=="About Stains") {
+        setButton(element.name)
+         setContent(element.content)
+   }});
+  }
+
+  const ShowWhat=()=>{
+    selector.map(element =>{ 
+      if(element.name=="What is a Poultice?") {
+        setButton(element.name)
+         setContent(element.content)
+   }});
+  }
+
  const loadData = () => {
    if(button=='STAIN CHART')
    {
@@ -73,6 +88,7 @@ const SupportScreen = ({route}) => {
           />
         );
       };
+
 const getSearch=()=>{
   if(button=='STAIN CHART')
   return(
@@ -100,7 +116,7 @@ const getImportant=()=>{
   return (
     <View style={{flex: 1}}>
       <CustomHeader />
-      {isFetching ? <Loader /> : null}
+      {isFetching? <Loader/>:null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
@@ -115,11 +131,12 @@ const getImportant=()=>{
         style={style.scroll}>
           {loadData()}
         </ScrollView>
-
-       
-      </ImageBackground > 
+      </ImageBackground> 
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
-        <BottomTab />
+        <BottomTab 
+        goToAboutStain={ShowStain}
+        goToWhatIs={ShowWhat}   
+        />
        
     </View>
   );
