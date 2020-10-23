@@ -52,48 +52,42 @@ const AccManagement_1 = () => {
         </View>
         
         <View style={styles.settings}>
-          <Text style={styles.SignIn}>Sign-In</Text>
-          <Text style={styles.Subscriber}>Already a Subscriber?</Text>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: '15%',
-            }}>
-            <Image 
-            source={require('../../../assets/Icons/Photo.png')} />
-            <View style={{paddingLeft: 10}}>
-              <Text style={[styles.Subscriber, {fontWeight: 'bold'}]}>
-                Name Here
-              </Text>
-              <Text style={styles.Subscriber}>email@yourplacehere.com</Text>
-            </View>
-          </View>
           <View>
+            <Text style={styles.Subscriber}>Card Number</Text>
             <TextInput
               style={styles.textInput}
-              placeholder=" Password"
+              placeholder=" XXXX XXXX XXXX XXXX"
+              placeholderTextColor="grey"
+            />
+          </View>
+         <View style={{marginTop:'5%',flexDirection:'row',justifyContent:'space-between',width:'100%'}}>
+         <View style={{width:'45%'}}>
+            <Text style={styles.Subscriber}>Expiry</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="XX/XX"
+              placeholderTextColor="grey"
+            />
+          </View>
+          <View style={{width:'45%'}}>
+            <Text style={styles.Subscriber}>Cvv</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="XXX"
+              placeholderTextColor="grey"
+            />
+          </View>
+         </View>
+          <View style={{marginTop:'5%'}}>
+            <Text style={styles.Subscriber}>Name</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=" "
               placeholderTextColor="grey"
             />
           </View>
 
-          <View style={styles.checkboxContainer}>
-            <View style={styles.checkboxContainerView}>
-              <View style={styles.checkboxContainerView1}>
-                <CheckBox
-                  disabled={false}
-                  value={toggleCheckBox}
-                  onValueChange={(newValue) => setToggleCheckBox(newValue)}
-                  boxType="square"
-                  onFillColor="red"
-                  onTintColor="#fffff"
-                />
-              </View>
-              <Text style={styles.checkbox}>Show Password</Text>
-            </View>
-            <Text style={[styles.checkbox,{color:'#0058FF'}]}>Forgot Password?</Text>
-          </View>
+        
           <View style={[styles.checkboxContainerView,{marginTop:'5%'}]}>
             <View style={styles.checkboxContainerView1}>
               <CheckBox
@@ -105,7 +99,7 @@ const AccManagement_1 = () => {
                 onTintColor="#fffff"
               />
             </View>
-            <Text style={styles.checkbox}>Keep me signed in</Text>
+            <Text style={styles.checkbox}>Save Card Details</Text>
           </View>
 
           <TouchableOpacity
@@ -116,8 +110,7 @@ const AccManagement_1 = () => {
             <Text style={styles.buttonText}>LOG IN</Text>
           </TouchableOpacity>
 
-          <Text style={[styles.checkbox,{textAlign:'center',marginTop:'10%'}]}>Change Password</Text>
-        </View>
+          </View>
       </ImageBackground>
       {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
     </View>
