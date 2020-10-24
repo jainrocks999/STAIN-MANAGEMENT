@@ -1,50 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
   Image,
   ImageBackground,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
+  StatusBar
 } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
-
-//import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import colors from '../../../component/colors';
 
 
 const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
-   _menu = null;
- 
-   setMenuRef = ref => {
-    this._menu = ref;
-  };
- 
-   hideMenu = () => {
-    this._menu.hide();
-  };
- 
-   showMenu = () => {
-    this._menu.show();
-  };
-
- 
- 
-
   return (
     <View style={{flex: 1}}>
-      <CustomHeader
-        onPress={this.showMenu}
-      />
+      <CustomHeader/>
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
@@ -125,7 +100,7 @@ const AccManagement_1 = () => {
 
         </View>
       </ImageBackground>
-      {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+     <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
     </View>
   );
 };

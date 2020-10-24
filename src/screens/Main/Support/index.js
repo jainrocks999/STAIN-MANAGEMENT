@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
   Image,
   ImageBackground,
   Text,
@@ -8,7 +7,6 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  ActivityIndicator
 } from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
@@ -27,7 +25,6 @@ const SupportScreen = ({route}) => {
   const selector=useSelector(state=>state.StainDetails)
   const isFetching=useSelector(state=>state.isFetching)
   const [button,setButton]=useState(null)
-
   const {btnName} = route.params;
   useEffect(()=>{
     setButton(btnName)
@@ -58,12 +55,9 @@ const SupportScreen = ({route}) => {
    if(button=='STAIN CHART')
    {
        return(
-         <View>
-           {
         selector.map(element=>{
         return(
         <View>
-        
         <TouchableOpacity 
          onPress={()=>{
           navigation.navigate('StainChart', {
@@ -77,7 +71,7 @@ const SupportScreen = ({route}) => {
         </View>
         )
       }
-    )}</View>
+    )
   )
 }
     else
@@ -88,7 +82,6 @@ const SupportScreen = ({route}) => {
           />
         );
       };
-
 const getSearch=()=>{
   if(button=='STAIN CHART')
   return(
@@ -133,11 +126,10 @@ const getImportant=()=>{
         </ScrollView>
       </ImageBackground> 
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
-        <BottomTab 
+        <BottomTab
         goToAboutStain={ShowStain}
-        goToWhatIs={ShowWhat}   
+        goToWhatIs={ShowWhat}
         />
-       
     </View>
   );
 };

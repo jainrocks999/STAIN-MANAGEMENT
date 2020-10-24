@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,} from 'react';
 import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert} from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
-import {  useDispatch,useSelector} from 'react-redux';
+import {  useDispatch} from 'react-redux';
 import colors from '../../../component/colors';
 
 function HomeScreen(props) {

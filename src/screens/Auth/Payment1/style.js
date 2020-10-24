@@ -103,4 +103,10 @@ checkboxContainerView1:{backgroundColor: '#fff', marginRight: 10,},
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  expiry:{
+    marginTop:'5%',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:'100%'
+  }
 });

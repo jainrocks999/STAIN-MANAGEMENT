@@ -1,49 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
-  Image,
   ImageBackground,
+  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-
-//import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import colors from '../../../component/colors';
 
 
 const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
-   _menu = null;
- 
-   setMenuRef = ref => {
-    this._menu = ref;
-  };
- 
-   hideMenu = () => {
-    this._menu.hide();
-  };
- 
-   showMenu = () => {
-    this._menu.show();
-  };
-
- 
- 
-
   return (
     <View style={{flex: 1}}>
-      <CustomHeader
-        onPress={this.showMenu}
-      />
+      <CustomHeader/>
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
@@ -60,7 +37,7 @@ const AccManagement_1 = () => {
               placeholderTextColor="grey"
             />
           </View>
-         <View style={{marginTop:'5%',flexDirection:'row',justifyContent:'space-between',width:'100%'}}>
+         <View style={styles.expiry}>
          <View style={{width:'45%'}}>
             <Text style={styles.Subscriber}>Expiry</Text>
             <TextInput
@@ -112,7 +89,7 @@ const AccManagement_1 = () => {
 
           </View>
       </ImageBackground>
-      {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+     <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
     </View>
   );
 };
