@@ -5,15 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screens/Auth/splash'
 import HomeScreen from '../screens/Main/HomeScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
-<<<<<<< HEAD
-import AccManagement from '../screens/Main/AccManagement';
-import AccManagement_1 from '../screens/Main/AccManagement_1';
 import AccManagement from '../screens/Auth/AccManagement';
 import AccManagement_1 from '../screens/Auth/AccManagement_1';
 import ForgotPassword from '../screens/Auth/ForgotPassword';
 import Payment from '../screens/Auth/Payment';
-import About from '../screens/Main/About';
-import Buy from '../screens/Main/Buy';
 import AboutStain from '../screens/Main/AboutStain';
 import Support from '../screens/Main/Support';
 import Video from '../screens/Main/Video';
