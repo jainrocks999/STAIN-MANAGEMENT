@@ -74,7 +74,7 @@ const AccManagement_1 = () => {
               </View>
               <Text style={styles.checkbox}>Show Password</Text>
             </View>
-            <Text style={[styles.checkbox,{color:'#0058FF'}]}>Forgot Password?</Text>
+            <Text onPress={()=>{navigation.navigate('ForgotPassword')}} style={[styles.checkbox,{color:'#0058FF'}]}>Forgot Password?</Text>
           </View>
           <View style={[styles.checkboxContainerView,{marginTop:'5%'}]}>
             <View style={styles.checkboxContainerView1}>

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
-//import Statusbar from '../../../common/Statusbar';
+//import Statusbar from '../../../common/Satusbar';
 import styles from './style';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';

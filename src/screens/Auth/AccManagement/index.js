@@ -49,10 +49,12 @@ const AccManagement =()=> {
               <Text style={styles.settingsItemsText}>{'>'}</Text>
               </TouchableOpacity>
               </View>
-              <View style={styles.settingsItems}>
+              <TouchableOpacity 
+              onPress={()=>{navigation.navigate('Payment')}}
+              style={styles.settingsItems}>
               <Text style={styles.settingsItemsText}>{'Your Payments'}</Text>
-              <Text style={styles.v}>{'>'}</Text>
-              </View>
+              <Text style={styles.settingsItemsText}>{'>'}</Text>
+              </TouchableOpacity>
             </View>
           </View>
           </ImageBackground>
