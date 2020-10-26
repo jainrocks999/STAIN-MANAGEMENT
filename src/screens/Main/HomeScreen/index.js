@@ -64,11 +64,11 @@ function HomeScreen(props) {
               <Text style={styles.buttonText}>Case Studies</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-                         onPress={()=>{
-                          navigation.navigate('Support' ,{
-                            btnName:'How to Apply a Poultice',
-                          });
-                        }}
+             onPress={()=>{
+             navigation.navigate('Support' ,{
+             btnName:'How to Apply a Poultice',
+                });
+            }}
             style={styles.button}>
               <Text style={styles.buttonText}>How to Apply a Poultice</Text>
             </TouchableOpacity>

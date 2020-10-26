@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
+  FlatList
 } from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
@@ -51,37 +52,7 @@ const SupportScreen = ({route}) => {
    }});
   }
 
- const loadData = () => {
-   if(button=='STAIN CHART')
-   {
-       return(
-        selector.map(element=>{
-        return(
-        <View>
-        <TouchableOpacity 
-         onPress={()=>{
-          navigation.navigate('StainChart', {
-            btnName:element.name,
-          });
-        }}
-        style={{margin:5}}
-        >
-        <Text style={{fontSize:15}}>{element.name}</Text>
-        </TouchableOpacity>
-        </View>
-        )
-      }
-    )
-  )
-}
-    else
-       return (
-          <HTML
-             html={contents}
-            imagesMaxWidth={Dimensions.get('window').width}
-          />
-        );
-      };
+ 
 const getSearch=()=>{
   if(button=='STAIN CHART')
   return(
@@ -106,6 +77,44 @@ const getImportant=()=>{
           </View>
           )
      }
+const ShowChart=()=>{
+  return(
+    selector.map(element=>{
+        setButton(element.name)
+        setContent(element.name)
+}))}
+const renderItem=()=>{
+    if(button=='STAIN CHART')
+    {
+        return(
+         selector.map(element=>{
+         return(
+         <View>
+         <TouchableOpacity 
+          onPress={()=>{
+           navigation.navigate('StainChart', {
+             btnName:element.name,
+           });
+         }}
+         style={{margin:5}}
+         >
+         <Text style={{fontSize:15}}>{element.name}</Text>
+         </TouchableOpacity>
+         </View>
+         )
+       }
+     )
+   )
+ }
+     else
+        return (
+           <HTML
+              html={contents}
+             imagesMaxWidth={Dimensions.get('window').width}
+           />
+         );
+       };
+
   return (
     <View style={{flex: 1}}>
       <CustomHeader />
@@ -122,13 +131,19 @@ const getImportant=()=>{
         <ScrollView 
         showsVerticalScrollIndicator={false}
         style={style.scroll}>
-          {loadData()}
+          {renderItem()}
         </ScrollView>
       </ImageBackground> 
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
         <BottomTab
         goToAboutStain={ShowStain}
         goToWhatIs={ShowWhat}
+        goToStainChart={ShowChart}
+        // goToStainChart={()=>{
+        //   navigation.navigate('Support', {
+        //     btnName:'STAIN CHART',
+        //   });
+        // }}
         />
     </View>
   );

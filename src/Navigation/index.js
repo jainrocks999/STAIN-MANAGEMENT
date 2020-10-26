@@ -16,6 +16,7 @@ import EditProfile from '../screens/Main/EditProfile';
 import StainChartDetail from '../screens/Main/StainChartDetail';
 import Asyncstorage from '@react-native-community/async-storage';
 import Payment1 from '../screens/Auth/Payment1';
+import StainChart from '../screens/Main/StainChart';
 const Stack = createStackNavigator();
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
         <Stack.Screen name="Video" component={Video}/>
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />
+        <Stack.Screen name="Stain" component={StainChart}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
