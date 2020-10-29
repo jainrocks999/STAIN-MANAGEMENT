@@ -26,19 +26,22 @@ const SupportScreen = ({route}) => {
   const selector=useSelector(state=>state.StainDetails)
   const isFetching=useSelector(state=>state.isFetching)
   const [button,setButton]=useState(null)
+  const [chart,setChart]=useState(false)
   const {btnName} = route.params;
+ console.log(selector)
   useEffect(()=>{
     setButton(btnName)
   const selectedName=selector.map(element =>{ 
      if(element.name==btnName) {
+         setChart(false)
         setContent(element.content)
   }});
     
   },[])
-
   const ShowStain=()=>{
     selector.map(element =>{ 
       if(element.name=="About Stains") {
+        setChart(false)
         setButton(element.name)
          setContent(element.content)
    }});
@@ -47,42 +50,39 @@ const SupportScreen = ({route}) => {
   const ShowWhat=()=>{
     selector.map(element =>{ 
       if(element.name=="What is a Poultice?") {
+        setChart(false)
         setButton(element.name)
          setContent(element.content)
    }});
   }
-
- 
-const getSearch=()=>{
-  if(button=='STAIN CHART')
-  return(
-        <View style={style.search}>
-         <TextInput 
-         placeholder='Search'
-         style={{width:'50%'}}
-         />
-          <Image source={require('../../../assets/Icons/Search.png')}
-           style={{height:20,width:20}}
-          />
-        </View>
-        )
-   }
-const getImportant=()=>{
-  if(button=='IMPORTANT')
-  return(
-          <View>
-            <Image source={require('../../../assets/Icons/Importantt.png')}
-             style={{height:110,width:122,margin:10}}
-            />
-          </View>
-          )
-     }
-const ShowChart=()=>{
-  return(
-    selector.map(element=>{
-        setButton(element.name)
-        setContent(element.name)
-}))}
+const renderItem1=()=>{
+       if(button=='STAIN CHART'){
+        return(
+              <View style={style.search}>
+               <TextInput 
+               placeholder='Search'
+               style={{width:'50%'}}
+               />
+                <Image source={require('../../../assets/Icons/Search.png')}
+                 style={{height:20,width:20}}
+                />
+              </View>
+        )}
+        else if(chart){
+          return(
+            <View style={style.search}>
+             <TextInput 
+             placeholder='Search'
+             style={{width:'50%'}}
+             />
+              <Image source={require('../../../assets/Icons/Search.png')}
+               style={{height:20,width:20}}
+              />
+            </View>
+      )
+        }
+       
+}
 const renderItem=()=>{
     if(button=='STAIN CHART')
     {
@@ -106,7 +106,29 @@ const renderItem=()=>{
      )
    )
  }
-     else
+ else if(chart){
+  return(
+    selector.map(element=>{
+    return(
+    <View>
+    <TouchableOpacity 
+     onPress={()=>{
+      navigation.navigate('StainChart', {
+        btnName:element.name,
+      });
+    }}
+    style={{margin:5}}
+    >
+    <Text style={{fontSize:15}}>{element.name}</Text>
+    </TouchableOpacity>
+    </View>
+    )
+  }
+)
+)
+ }
+     else{
+     
         return (
            <HTML
               html={contents}
@@ -114,6 +136,7 @@ const renderItem=()=>{
            />
          );
        };
+      }
 
   return (
     <View style={{flex: 1}}>
@@ -124,10 +147,9 @@ const renderItem=()=>{
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <Text 
           style={style.headerText}>
-          {button}
+          {chart==true?'STAIN CHART':button}
         </Text>
-        {getImportant()}
-        {getSearch()}
+        {renderItem1()}
         <ScrollView 
         showsVerticalScrollIndicator={false}
         style={style.scroll}>
@@ -138,12 +160,7 @@ const renderItem=()=>{
         <BottomTab
         goToAboutStain={ShowStain}
         goToWhatIs={ShowWhat}
-        goToStainChart={ShowChart}
-        // goToStainChart={()=>{
-        //   navigation.navigate('Support', {
-        //     btnName:'STAIN CHART',
-        //   });
-        // }}
+        goToStainChart={()=>setChart(true)}
         />
     </View>
   );

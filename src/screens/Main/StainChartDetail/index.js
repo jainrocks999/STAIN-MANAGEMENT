@@ -19,7 +19,7 @@ const StainChartDetail = ({route}) => {
   const navigation = useNavigation();
   const [contents,setContent]=useState()
   const selector=useSelector(state=>state.StainDetails)
-  const [name,setName]=useState(null)
+  const [chart,setChart]=useState(false)
   const [button,setButton]=useState(null)
 
   const {btnName} = route.params;
@@ -73,10 +73,11 @@ const StainChartDetail = ({route}) => {
         </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
-      <BottomTab 
+      {/* <BottomTab 
         goToAboutStain={ShowStain}
-        goToWhatIs={ShowWhat}   
-        />
+        goToWhatIs={ShowWhat} 
+        goToStainChart={()=>setChart(false)}  
+        /> */}
     </View>
   );
 };

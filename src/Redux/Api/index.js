@@ -3,17 +3,15 @@ import Constants from '../Constants';
 
 export default class Api {
   static fetchDataByPOST = async (url, data) => {
-    
     try {
       const response = await axios({
         method: 'POST',
         headers: {
           'content-type': 'multipart/form-data',
           Accept: 'multipart/form-data',
-         
         },
         url: Constants.MainUrl + url,
-        data,
+         data,
       });
       return response.data;
     } catch (error) {
@@ -24,7 +22,7 @@ export default class Api {
   static fetchDataByGET = async (url) => {
     try {
       const response = await axios({
-        method: 'GET',
+         method: 'GET',
         headers: {
           'content-type': 'multipart/form-data',
           Accept: 'multipart/form-data',

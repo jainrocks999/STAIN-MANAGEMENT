@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {Image, ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar} from 'react-native';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
 import styles from './style';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -11,35 +11,29 @@ import storage from '../../../component/storage';
 import colors from '../../../component/colors';
 
 
-const LoginScreen =(props)=> {
+const LoginScreen = ({route}) => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [Username, setUsername] = useState('')
   const [Password, setPassword] = useState('')
+  const dispatch=useDispatch()
 
-  
- const doLogin = () => {
-  AsyncStorage.setItem(storage.Username, Username);
-  AsyncStorage.setItem(storage.Password, Password);
+   const doLogin =async() => {
+     await AsyncStorage.setItem(storage.Username,Username);
+      await AsyncStorage.setItem(storage.Password,Password);
     if (Username == '') {
      Alert.alert('Please Enter Username')
     } else if (Password == '') {
       Alert.alert('Please Enter Password')
     } else {   
-    if (Username == 'robin' && Password == '123456'){
-      props.dispatch({
+      dispatch({
         type: 'User_Login_Request',
-        url: 'login',
+        url: 'v1/user/login',
         Username,
         Password,
       });
       navigation.navigate('Home');
     }
-    else{
-      Alert.alert('Please Enter a valid Username and Password')
-    }
-  }
-    
   };
 
   return (
@@ -65,7 +59,6 @@ const LoginScreen =(props)=> {
             style={styles.textInput}
             placeholder=' Password'
             placeholderTextColor='grey'
-            keyboardType={"number-pad"}
             onChangeText={(p)=>setPassword(p)}
             />
             </View>
@@ -87,11 +80,16 @@ const LoginScreen =(props)=> {
           onPress={doLogin}>
               <Text style={styles.buttonText}>LOG IN</Text>
             </TouchableOpacity>
-
+            <View>
+             
+          <TouchableOpacity style={{marginTop:10}} onPress={()=>navigation.navigate('Register')}>
+            <Text style={{fontSize:19,color:colors.darkOrange}}>Register Now</Text>
+          </TouchableOpacity>
+          </View>
           </ImageBackground>
        <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       </View>
   );
 }
 
-export default connect()(LoginScreen);
+export default LoginScreen

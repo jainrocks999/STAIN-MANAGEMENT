@@ -15,22 +15,38 @@ import styles from './style';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import AsyncStorage from '@react-native-community/async-storage';
-import { call } from 'react-native-reanimated';
+import Toast from 'react-native-simple-toast';
+import { useDispatch } from 'react-redux';
 
 const EditProfile = () => {
   const navigation = useNavigation();
-  const [username,setUsername]=useState()
-  const [password,setPassword]=useState()
+  const [name,setName]=useState('')
+  const [lastname,setLastname]=useState('')
+  const [website,setWebsite]=useState('')
+  const dispatch=useDispatch();
   useEffect(()=>{
-     call();
+    
   })
-
-  const call=async()=>{
-    const Username = await AsyncStorage.getItem(storage.Username);
-    setUsername(Username)
-    const Password = await AsyncStorage.getItem(storage.Password);
-    setPassword(Password)
+const loadData=()=>{
+  if(name==''){
+    Toast.show('Please Enter name')
   }
+  else if(lastname==''){
+    Toast.show('Please Enter Lastname')
+  }
+  else if(website==''){
+    Toast.show('Please Enter Website')
+  }
+  else 
+  dispatch({
+   type:'User_Edit_Profile_Request',
+   url:'v1/user/edit_profile',
+   name,
+   lastname, 
+   website
+  })
+}
+  
   return (
     <View style={{flex: 1}}>
       <CustomHeader/>
@@ -42,23 +58,29 @@ const EditProfile = () => {
            <Text style={styles.subHeading}>Edit Your Profile</Text>
             </View>
             <View style={styles.textInputContainer}>
+          
             <TextInput 
             style={styles.textInput}
-            placeholder=' Username'
-            value={username}
+            placeholder=' Name'
             placeholderTextColor='grey'
-            onChangeText={(text)=>setUsername({username:text})}
+            onChangeText={(text)=>setName({name:text})}
             />
             <TextInput 
             style={styles.textInput}
-            placeholder=' Password'
-            value={password}
+            placeholder=' Lastname'
             placeholderTextColor='grey'
-            keyboardType={"number-pad"}
-            onChangeText={(text)=>setPassword({password:text})}
+            onChangeText={(text)=>setLastname({lastname:text})}
+            />
+            <TextInput 
+            style={styles.textInput}
+            placeholder=' Webside'
+            placeholderTextColor='grey'
+            onChangeText={(text)=>setWebsite({website:text})}
             />
             </View>         
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}
+           onPress={loadData}
+          >
               <Text style={styles.buttonText}>Edit</Text>
             </TouchableOpacity>
       </ImageBackground>

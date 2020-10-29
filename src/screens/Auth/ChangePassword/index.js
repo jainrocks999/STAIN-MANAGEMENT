@@ -16,18 +16,22 @@ import colors from '../../../component/colors';
 import Toast from "react-native-simple-toast";
 import { useDispatch } from 'react-redux'
 
-const ForgotPassword = () => {
+const ChangePassword = () => {
   const navigation = useNavigation();
   const [email,setEmail] = useState('');
+  const [password,setPassword]=useState('')
   const dispatch=useDispatch();
 const loadData=()=>{
   if(email==''){
      Toast.show('Please enter Email')
   }
+  else if(email==''){
+      Toast.show('Please enter Password')
+  }
   else{
    dispatch({
-     type:'User_Forgot_Password_Request',
-     url:'v1/user/forgot_password',
+     type:'User_Change_Password_Request',
+     url:'v1/user/change_password',
      email
    })
   }
@@ -42,13 +46,24 @@ const loadData=()=>{
           <Text style={styles.subHeading}>Account Management</Text>
         </View> 
         <View style={styles.settings}>
-          <Text style={styles.SignIn}>Forgot Password ?</Text>
+          <Text style={styles.SignIn}>Change Password ?</Text>
+          
           <View>
             <TextInput
               style={styles.textInput}
+              value={email}
               placeholder=" Enter email"
               placeholderTextColor="grey"
               onChangeText={(text)=>setEmail({email:text})}
+            />
+          </View>
+          <View>
+            <TextInput
+              style={styles.textInput}
+              value={password}
+              placeholder=" Enter Password"
+              placeholderTextColor="grey"
+              onChangeText={(text)=>setPassword({password:text})}
             />
           </View>
           <TouchableOpacity
@@ -64,4 +79,4 @@ const loadData=()=>{
   );
 };
 
-export default ForgotPassword
+export default ChangePassword

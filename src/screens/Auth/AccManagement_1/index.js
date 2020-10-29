@@ -19,7 +19,7 @@ const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
-
+ 
   return (
     <View style={{flex: 1}}>
       <CustomHeader
@@ -96,8 +96,12 @@ const AccManagement_1 = () => {
             }}>
             <Text style={styles.buttonText}>LOG IN</Text>
           </TouchableOpacity>
-
-          <Text style={[styles.checkbox,{textAlign:'center',marginTop:'10%'}]}>Change Password</Text>
+          <TouchableOpacity onPress={()=>navigation.navigate('Change')}>
+          <Text 
+          style={[styles.checkbox,{textAlign:'center',marginTop:'10%'}]}>
+            Change Password
+            </Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>  

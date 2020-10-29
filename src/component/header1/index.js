@@ -5,8 +5,8 @@ import styles from './style';
 import {connect} from 'react-redux';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
-
-
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../storage';
 
 const CustomHeader= (props)=> {
 
@@ -22,6 +22,7 @@ const CustomHeader= (props)=> {
    _menu.hide();
  };
  const About = () => {
+   navigation.navigate('About')
    _menu.hide();
  };
  const Buy = () => {
@@ -30,6 +31,32 @@ const CustomHeader= (props)=> {
  const Support = () => {
    _menu.hide();
  };
+const Logout = () => {
+  Alert.alert(
+    'Are you want to logout ?',
+    '',
+    [
+      {
+        text: 'Cancel',
+        onPress: () => {
+          cancelable: false;
+        },
+        style: 'cancel',
+      },
+      { text: 'ok', onPress: () => setlog() },
+    ],
+    { cancelable: false },
+  );
+  _menu.hide()
+};
+const setlog = () => {
+  try {
+    AsyncStorage.setItem(storage.Username,'');
+    navigation.navigate('Login');
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const showMenu = () => {
    _menu.show();
@@ -65,6 +92,9 @@ style={{paddingHorizontal:20,width:'40%',}}
           <MenuItem 
           style={styles.itemSeperator}
           onPress={Support}>Support</MenuItem>
+          <MenuItem 
+          style={styles.itemSeperator}
+          onPress={Logout}>Logout</MenuItem>
         </Menu>
 
 </TouchableOpacity>

@@ -1,23 +1,25 @@
-import React, { useEffect,} from 'react';
+import React, { useEffect, useState,} from 'react';
 import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert} from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
-import {  useDispatch} from 'react-redux';
+import {  useDispatch,useSelector} from 'react-redux';
 import colors from '../../../component/colors';
 
 function HomeScreen(props) {
   const dispatch=useDispatch();
+  const [data,setData]=useState([])
   const navigation = useNavigation();
-
+  const selector=useSelector(state=>state.StainDetails)
+  console.log(selector)
   useEffect(()=>{
   loadData();
   },[])
   
-  const loadData=()=>{
+  const loadData=async()=>{
     dispatch({
       type: 'User_Stain_Request',
-      url:'stain',
+      url:'v1/stain/all',
     });
   }
   return (
@@ -58,7 +60,9 @@ function HomeScreen(props) {
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-             Alert.alert('Data not found')
+              navigation.navigate('Support', {
+                btnName:'Case Studies',
+              });
             }}
             style={styles.button}>
               <Text style={styles.buttonText}>Case Studies</Text>

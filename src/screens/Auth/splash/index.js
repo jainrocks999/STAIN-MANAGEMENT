@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import {Image, ImageBackground, View,StatusBar} from 'react-native';
+import {Image, ImageBackground, View,StatusBar, Alert} from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import colors from '../../../component/colors';
-
+import pac from '../../../../package.json';
 const SplashScreen =()=> {
   const navigation = useNavigation();
-  const [Username1]=useState('robin')
-  const [Password1]=useState('123456')
-
+  const [version,setVersion]=useState('')
   useEffect(() => {
     directCall()
-     });
-     const directCall=async()=>{
+    apiCall()
+     },[]);
+  const directCall=async()=>{
       const Username = await AsyncStorage.getItem(storage.Username);
       const Password = await AsyncStorage.getItem(storage.Password);
-      console.log(Username)
-      console.log(Password)
-        if (Username==Username1 && Password==Password1) {
+        if (Username && Password) {
           setTimeout(() => navigation.navigate('Home'), 2000);
         } else {
           setTimeout(() => navigation.navigate('Login'), 2000);
         }
      }
+  const apiCall=async()=>{
+ await fetch('https://backstage.surphaces.com/wp-json/wp/v1/app/vesion').
+ then(res=>res.json()).
+ then(response=>setVersion(response))
+  }
   return (
     <View style={{flex:1}}>
           <CustomHeader/>

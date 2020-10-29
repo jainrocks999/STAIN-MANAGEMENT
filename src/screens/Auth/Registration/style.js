@@ -1,17 +1,11 @@
 import {StyleSheet} from 'react-native';
-import colors from '../../../component/colors';
+import colors from '../../../component/colors'
 export default StyleSheet.create({
   imageBackground: {
-    width: '100%',
-    height: '100%',
+   
+    width:'100%',
+    height:'100%',
     alignItems: 'center',
-  },
-  subHeading: {
-    fontFamily: 'Arial',
-    fontWeight: 'bold',
-    fontSize: 17,
-    color: colors.darkOrange,
-    marginTop:10
   },
   logoContainer: {
     marginTop:'40%',
@@ -71,5 +65,4 @@ export default StyleSheet.create({
     fontWeight:'bold',
     textAlign:'center'
   },
- 
 });

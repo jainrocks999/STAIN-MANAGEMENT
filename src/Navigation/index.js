@@ -12,11 +12,14 @@ import Payment from '../screens/Auth/Payment';
 import AboutStain from '../screens/Main/AboutStain';
 import Support from '../screens/Main/Support';
 import Video from '../screens/Main/Video';
-import EditProfile from '../screens/Main/EditProfile';
+import EditProfile from '../screens/Auth/EditProfile';
 import StainChartDetail from '../screens/Main/StainChartDetail';
 import Asyncstorage from '@react-native-community/async-storage';
 import Payment1 from '../screens/Auth/Payment1';
 import StainChart from '../screens/Main/StainChart';
+import Registration from '../screens/Auth/Registration';
+import ChangePassword from '../screens/Auth/ChangePassword';
+import About from '../screens/Main/About';
 const Stack = createStackNavigator();
 
 function App() {
@@ -27,6 +30,8 @@ function App() {
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Edit" component={EditProfile} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={Registration}/>
+        <Stack.Screen name="Change" component={ChangePassword}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
@@ -38,7 +43,7 @@ function App() {
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />
         <Stack.Screen name="Stain" component={StainChart}/>
-        
+        <Stack.Screen name="About" component={About}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
