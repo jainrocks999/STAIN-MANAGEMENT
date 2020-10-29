@@ -34,16 +34,12 @@ const loadData=()=>{
   else if(lastname==''){
     Toast.show('Please Enter Lastname')
   }
-  else if(website==''){
-    Toast.show('Please Enter Website')
-  }
   else 
   dispatch({
    type:'User_Edit_Profile_Request',
    url:'v1/user/edit_profile',
    name,
-   lastname, 
-   website
+   lastname,
   })
 }
   
@@ -70,12 +66,6 @@ const loadData=()=>{
             placeholder=' Lastname'
             placeholderTextColor='grey'
             onChangeText={(text)=>setLastname({lastname:text})}
-            />
-            <TextInput 
-            style={styles.textInput}
-            placeholder=' Webside'
-            placeholderTextColor='grey'
-            onChangeText={(text)=>setWebsite({website:text})}
             />
             </View>         
           <TouchableOpacity style={styles.button}

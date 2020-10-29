@@ -78,6 +78,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  checkboxContainer1: {
+    marginTop: '5%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   checkboxContainerView:{
     flexDirection: 'row',
    alignItems: 'center'},

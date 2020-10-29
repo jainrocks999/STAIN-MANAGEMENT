@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
@@ -81,7 +81,8 @@ const LoginScreen = ({route}) => {
             </TouchableOpacity>
             <View>
              
-          <TouchableOpacity style={{marginTop:10}} onPress={()=>navigation.navigate('Register')}>
+          <TouchableOpacity style={{marginTop:10}} 
+          onPress={()=>navigation.navigate('Register')}>
             <Text style={{fontSize:19,color:colors.darkOrange}}>Register Now</Text>
           </TouchableOpacity>
           </View>

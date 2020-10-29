@@ -9,19 +9,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
-
-//import Statusbar from '../../../common/Satusbar';
 import styles from './style';
-import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const Buy = () => {
+const Resource = () => {
   const navigation = useNavigation();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
   return (
     <View style={{flex: 1}}>
       <CustomHeader
@@ -33,13 +27,13 @@ const Buy = () => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-          <ScrollView style={{flex:1,height:Dimensions.get('screen').height}}
+          <ScrollView style={{height:Dimensions.get('screen').height}}
           contentContainerStyle={{alignItems:'center'}}
           >
         <View style={styles.headingView}>
           <Text style={styles.title}>RESOURCES</Text>
         </View>
-        <View style={styles.iconView}></View>
+       
         <View style={styles.subHeadingView}>
           <Text style={styles.heading}>
             Dr. Fred’s Innovative Solutions Professional Stain Removal Reagents
@@ -70,7 +64,7 @@ const Buy = () => {
           <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • Reagent #3</Text> for metal stains A blend of metal reducing reagents, formulated
             to treat metal stains.
             </Text>
-            <Text style={[styles.subHeading,{marginTop:'5%'}]}>
+            <Text style={[styles.subHeading,{marginTop:'5%',marginBottom:'9%'}]}>
           <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • To order: </Text> ESP Sales Reynolds Circle Business
             Park 434 Roberson Ln. San Jose, CA 95112 (408) 441-1407
             www.espsales.net PROFESSIONAL TRAINING Interactive eLearning Course
@@ -82,9 +76,9 @@ const Buy = () => {
         </View>
         </ScrollView>
       </ImageBackground>
-      {/* <Statusbar backgroundColor={Color.white} barStyle="dark-content" /> */}
+     
     </View>
   );
 };
 
-export default connect()(Buy);
+export default Resource;

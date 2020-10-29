@@ -1,7 +1,6 @@
 import {Alert} from 'react-native';
 import {takeEvery, put, call} from 'redux-saga/effects';
 import Api from '../Api';
-import { useNavigation } from '@react-navigation/native';
 
 //Login
 function* doLogin(action) {
@@ -33,19 +32,20 @@ function* doRegister(action) {
   data.append("username", action.Username)
   data.append("email", action.Email)
   data.append("password", action.Password)
-  data.append("name", action.Namw)
+  data.append("name", action.Name)
   data.append("lastname", action.LastName)
-  data.append("website", action.Website)
+  
   
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   console.log('complete url',res)
   const formatRes=JSON.parse(res)
   console.log('data success from saga',formatRes)
   if (formatRes.status == 200) {
+    action.props.navigate('Login')
     console.log('success');
     yield put({
       type: 'User_Register_Success',
-      payload: formatRes.data,
+      payload: formatRes
     });
   } else {
    console.log('User_Register_Error')
@@ -58,11 +58,8 @@ function* doRegister(action) {
 //EditProfile
 function* doEditProfile(action) {
   const data=new FormData()
-  data.append("user_id",action.user_id)
   data.append("name",action.name)
   data.append("lastname",action.lastname)
-  data.append("website",action.website)
-  
   const response = yield call(Api.fetchDataByPOST, action.url);
   console.log('Edit user detail'+response)
    const formatedResponse=JSON.parse(response)

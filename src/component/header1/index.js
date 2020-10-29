@@ -25,7 +25,8 @@ const CustomHeader= (props)=> {
    navigation.navigate('About')
    _menu.hide();
  };
- const Buy = () => {
+ const Resource = () => {
+   navigation.navigate('resource')
    _menu.hide();
  };
  const Support = () => {
@@ -88,7 +89,7 @@ style={{paddingHorizontal:20,width:'40%',}}
         
           <MenuItem 
           style={styles.itemSeperator}
-          onPress={Buy}>Resources</MenuItem>
+          onPress={Resource}>Resources</MenuItem>
 
           <MenuItem 
           style={styles.itemSeperator}

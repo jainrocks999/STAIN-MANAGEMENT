@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import {Image, ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar} from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import React, { useState } from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar} from 'react-native';
+
 
 import styles from './style';
-import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
-import AsyncStorage from '@react-native-community/async-storage';
-import storage from '../../../component/storage';
 import colors from '../../../component/colors';
 import { useDispatch } from 'react-redux';
 import Toast from 'react-native-simple-toast';
@@ -15,13 +12,11 @@ import Toast from 'react-native-simple-toast';
 
 const Registration =()=> {
   const navigation = useNavigation();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [Username, setUsername] = useState('')
   const [Email, setEmail] = useState('')
   const [Password, setPassword] = useState('')
   const [Name, setName] = useState('')
   const [LastName, setLastName] = useState('')
-  const [Website, seWebsite] = useState('')
   const dispatch=useDispatch()
 
  
@@ -41,9 +36,6 @@ const Registration =()=> {
     else if(LastName==''){
       Toast.show('Please Enter LastName')
     }
-    else if(Website==''){
-      Toast.show('Please Enter Website')
-    }
     else{
     dispatch({
       type: 'User_Register_Request',
@@ -53,9 +45,8 @@ const Registration =()=> {
       Password,
       Name,
       LastName,
-      Website
+      props:navigation
     })
-    navigation.navigate('Login')
     }
   };
 
@@ -101,12 +92,6 @@ const Registration =()=> {
             onChangeText={(p)=>setLastName(p)}
             />
             </View>
-             <TextInput 
-            style={styles.textInput}
-            placeholder=' Website'
-            placeholderTextColor='grey'
-            onChangeText={(p)=>seWebsite(p)}
-            />
             </View>
           
 

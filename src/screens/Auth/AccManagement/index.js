@@ -47,8 +47,7 @@ const AccManagement =()=> {
               </TouchableOpacity>
               </View>
               <View>
-              <TouchableOpacity  style={styles.settingsItems}
-               onPress={()=>navigation.navigate('Edit')}>
+              <TouchableOpacity  style={styles.settingsItems}>
               <Text style={styles.settingsItemsText}>{'Your Address'}</Text>
               <Text style={styles.settingsItemsText}>{'>'}</Text>
               </TouchableOpacity>

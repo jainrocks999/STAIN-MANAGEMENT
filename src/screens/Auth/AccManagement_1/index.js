@@ -73,8 +73,10 @@ const AccManagement_1 = () => {
               </View>
               <Text style={styles.checkbox}>Show Password</Text>
             </View>
-            <Text onPress={()=>{navigation.navigate('ForgotPassword')}} style={[styles.checkbox,{color:'#0058FF'}]}>Forgot Password?</Text>
+            <Text onPress={()=>{navigation.navigate('ForgotPassword')}} 
+            style={[styles.checkbox,{color:'#0058FF'}]}>Forgot Password?</Text>
           </View>
+          <View style={styles.checkboxContainer1}>
           <View style={[styles.checkboxContainerView,{marginTop:'5%'}]}>
             <View style={styles.checkboxContainerView1}>
               <CheckBox
@@ -88,7 +90,9 @@ const AccManagement_1 = () => {
             </View>
             <Text style={styles.checkbox}>Keep me signed in</Text>
           </View>
-
+          <Text  onPress={()=>navigation.navigate('Edit')} 
+          style={[styles.checkbox,{color:'#0058FF'}]}>Edit Profile?</Text>
+          </View>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
@@ -102,6 +106,7 @@ const AccManagement_1 = () => {
             Change Password
             </Text>
           </TouchableOpacity>
+         
         </View>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>  

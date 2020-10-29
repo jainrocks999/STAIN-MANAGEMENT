@@ -9,7 +9,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   headingView: {   
-    marginTop: '10%',
+    marginTop: '5%',
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth:2,
@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   subHeadingView: {
    
-    width:'80%',
+    width:'90%',
     marginTop:'10%',
   },
   
@@ -43,7 +43,7 @@ export default StyleSheet.create({
   },
   subHeading: {
     fontFamily: 'Arial',
-    lineHeight:18,
+    lineHeight:19,
     fontSize: 14,
     color: '#000000',
     textAlign:'left'
