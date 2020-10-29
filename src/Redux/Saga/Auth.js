@@ -6,19 +6,18 @@ import { useNavigation } from '@react-navigation/native';
 //Login
 function* doLogin(action) {
   const data=new FormData();
-  const navigation=useNavigation()
   data.append("username", action.Username)
   data.append("password", action.Password)
  
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   const formatRes=JSON.parse(res) 
   if (formatRes.status == 'true') {
+    action.props.navigate('Home')
      console.log('success');
     yield put({
       type: 'User_Login_Success',
       payload: formatRes,
     });
-    navigation.navigate('Home')
   } else {
     Alert.alert('narendra',res.message)
    console.log('User_Login_Error')

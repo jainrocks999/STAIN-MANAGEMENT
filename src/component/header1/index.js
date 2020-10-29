@@ -29,6 +29,7 @@ const CustomHeader= (props)=> {
    _menu.hide();
  };
  const Support = () => {
+   navigation.navigate('supportTwo')
    _menu.hide();
  };
 const Logout = () => {

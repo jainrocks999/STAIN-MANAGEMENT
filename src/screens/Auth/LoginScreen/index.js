@@ -35,7 +35,6 @@ const LoginScreen = ({route}) => {
       });
     }
   };
-
   return (
     <View style={{flex:1}}>
 <CustomHeader/>

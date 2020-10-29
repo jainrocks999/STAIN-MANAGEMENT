@@ -20,6 +20,7 @@ import StainChart from '../screens/Main/StainChart';
 import Registration from '../screens/Auth/Registration';
 import ChangePassword from '../screens/Auth/ChangePassword';
 import About from '../screens/Main/About';
+import SupportTwo from '../screens/Main/SupportTwo';
 const Stack = createStackNavigator();
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Stack.Screen name="StainChart" component={StainChartDetail} />
         <Stack.Screen name="Stain" component={StainChart}/>
         <Stack.Screen name="About" component={About}/>
+        <Stack.Screen name="supportTwo" component={SupportTwo}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
