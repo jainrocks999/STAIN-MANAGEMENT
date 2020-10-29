@@ -18,6 +18,7 @@ function* doLogin(action) {
       type: 'User_Login_Success',
       payload: formatRes,
     });
+    navigation.navigate('Home')
   } else {
     Alert.alert('narendra',res.message)
    console.log('User_Login_Error')

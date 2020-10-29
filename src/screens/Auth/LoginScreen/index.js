@@ -31,8 +31,8 @@ const LoginScreen = ({route}) => {
         url: 'v1/user/login',
         Username,
         Password,
+        props:navigation
       });
-      navigation.navigate('Home');
     }
   };
 
