@@ -53,13 +53,13 @@ const LoginScreen = ({route}) => {
             <View style={styles.textInputContainer}>
             <TextInput 
             style={styles.textInput}
-            placeholder=' Username'
+            placeholder='Username'
             placeholderTextColor='grey'
             onChangeText={(text)=>setUsername(text)}
             />
             <TextInput 
             style={styles.textInput}
-            placeholder=' Password'
+            placeholder='Password'
             placeholderTextColor='grey'
             secureTextEntry={true}
             onChangeText={(p)=>setPassword(p)}

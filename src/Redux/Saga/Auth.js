@@ -12,6 +12,7 @@ function* doLogin(action) {
  
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   const formatRes=JSON.parse(res) 
+  const id=JSON.stringify(formatRes.user_id)
   if (formatRes.status == 'true') {
     action.props.navigate('Home')
      console.log('success');
@@ -20,15 +21,13 @@ function* doLogin(action) {
       payload: formatRes,
     });
    Toast.show('Login Sucessful')
-    // AsyncStorage.setItem(storage.Email,formatRes.email);
-    // AsyncStorage.setItem(storage.Name,formatRes.name);
-    // AsyncStorage.setItem(storage.Username,formatRes.username);
-    // AsyncStorage.setItem(storage.UserId,formatRes.user_id);
-    // AsyncStorage.setItem(storage.Lastname,formatRes.lastname);
+    AsyncStorage.setItem(storage.Email,formatRes.email);
+    AsyncStorage.setItem(storage.Name,formatRes.name);
+    AsyncStorage.setItem(storage.UserId,id);
+    AsyncStorage.setItem(storage.Lastname,formatRes.lastname);
    AsyncStorage.setItem(storage.Username,formatRes.username);
   } else {
    Toast.show('Please Enter Valid Username and Password')
-   console.log('User_Login_Error')
     yield put({
       type: 'User_Login_Error',
     });
@@ -67,8 +66,12 @@ function* doRegister(action) {
 //EditProfile
 function* doEditProfile(action) {
   const data=new FormData()
+  data.append("userId",action.userId)
+  data.append("username",action.username)
   data.append("name",action.name)
   data.append("lastname",action.lastname)
+  data.append("name",action.email)
+ 
   const response = yield call(Api.fetchDataByPOST, action.url,data);
   console.log('Edit user detail'+response)
    const formatedResponse=JSON.parse(response)
@@ -86,14 +89,12 @@ function* doEditProfile(action) {
     });
   }
 }
-
-
 function* doForgot(action) {
   const data=new FormData();
   data.append("email", action.Email)
   const res = yield call(Api.fetchDataByPOST, action.url, data);
-  console.log('complete url',res)
-  const formatRes=JSON.parse(res)
+   console.log('complete url',res)
+   const formatRes=JSON.parse(res)
   console.log('data success from saga',formatRes)
   if (formatRes.status == 200) {
     console.log('success');
@@ -101,7 +102,9 @@ function* doForgot(action) {
       type: 'User_Forgot_Password_Success',
       payload: formatRes
     });
+    Toast.show('new password setted')
   } else {
+    Toast.show(formatRes.message)
     yield put({
       type: 'User_Forgot_Password_Error',
     });
@@ -155,17 +158,24 @@ function* doVersion(action) {
 }
 //Cha
 function* doChangePassword(action) {
+const data=new FormData();
+data.append("userId",action.Id)
+data.append("Old pass",action.Old)
+data.append("New pass",action.New)
+data.append("Confirm pass",action.Confirm)
 
-  const response = yield call(Api.fetchDataByPOST, action.url);
+  const response = yield call(Api.fetchDataByPOST, action.url,data);
+console.log('data success from saga',response)
    const formatedResponse=JSON.parse(response)
    console.log(action.url)
-  if (formatedResponse.status=='true') {
+  if (formatedResponse.status==200) {
     yield put({
       type: 'User_Change_Password_Success',
-      payload:formatedResponse.data,
+      payload:formatedResponse
     });
+    Toast.show(formatedResponse.message)
   } else {
-    Alert.alert('narendra',response.message);
+    Toast.show(formatedResponse.message);
     yield put({
       type: 'User_Change_Password_Error',
     });

@@ -13,12 +13,15 @@ import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import colors from '../../../component/colors';
 import Toast from "react-native-simple-toast";
-import { useDispatch } from 'react-redux'
+import Loader from '../../../component/loader';
+import { useDispatch,useSelector } from 'react-redux'
 
 const ForgotPassword = () => {
   const navigation = useNavigation();
   const [email,setEmail] = useState('');
   const dispatch=useDispatch();
+  const isFetching=useSelector(state=>state.isFetching)
+
 const loadData=()=>{
   if(email==''){
      Toast.show('Please enter Email')
@@ -27,13 +30,27 @@ const loadData=()=>{
    dispatch({
      type:'User_Forgot_Password_Request',
      url:'v1/user/forgot_password',
-     email
+     Email:email
    })
   }
 }
+// const validate = (text) => {
+//   console.log(text);
+//   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   if (reg.test(text) === false) {
+//     Toast.show("Email is Not Correct");
+//    setEmail(text)
+//     return false;
+//   }
+//   else {
+//     setEmail(text)
+//     console.log("Email is Correct");
+//   }
+// }
   return (
     <View style={{flex: 1}}>
       <CustomHeader/>
+      {isFetching?<Loader/>:null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
@@ -46,9 +63,9 @@ const loadData=()=>{
             <TextInput
               style={styles.textInput}
               value={email}
-              placeholder=" Enter email"
+              placeholder="Enter email"
               placeholderTextColor="grey"
-              onChangeText={(text)=>setEmail({email:text})}
+              onChangeText={(text) =>setEmail(text)}
             />
           </View>
           <TouchableOpacity

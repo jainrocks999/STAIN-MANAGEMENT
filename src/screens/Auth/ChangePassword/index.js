@@ -9,36 +9,51 @@ import {
   Alert
 } from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import colors from '../../../component/colors';
 import Toast from "react-native-simple-toast";
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
+import Loader from '../../../component/loader';
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../../component/storage';
 
 const ChangePassword = () => {
   const navigation = useNavigation();
-  const [email,setEmail] = useState('');
-  const [password,setPassword]=useState('')
+  const [oldPassword,setOldPassword] = useState('');
+  const [userId,setUserId] = useState('');
+  const [newPassword,setNewPassword]=useState('')
+  const [confirmPassword,setConfirmPassword]=useState('')
   const dispatch=useDispatch();
-const loadData=()=>{
-  if(email==''){
+  const isFetching=useSelector(state=>state.isFetching)
+
+const loadData=async()=>{
+  const userId1=await AsyncStorage.getItem(storage.UserId)
+  setUserId(userId1)
+  if(oldPassword==''){
      Toast.show('Please enter Email')
   }
-  else if(email==''){
+  else if(newPassword==''){
       Toast.show('Please enter Password')
   }
+  else if(confirmPassword==''){
+    Toast.show('Please enter Confirm Password')
+   }
   else{
    dispatch({
      type:'User_Change_Password_Request',
      url:'v1/user/change_password',
-     email
+     Old: oldPassword,
+     New:newPassword,
+     Confirm:confirmPassword,
+     Id:userId
    })
   }
 }
   return (
     <View style={{flex: 1}}>
       <CustomHeader/>
+      {isFetching?<Loader/>:null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
@@ -46,24 +61,31 @@ const loadData=()=>{
           <Text style={styles.subHeading}>Account Management</Text>
         </View> 
         <View style={styles.settings}>
-          <Text style={styles.SignIn}>Change Password ?</Text>
-          
+          <Text style={styles.SignIn}>Change Password ?</Text> 
           <View>
-            <TextInput
+           
+             <TextInput
               style={styles.textInput}
-              value={email}
-              placeholder=" Enter email"
+              placeholder="Old Password"
               placeholderTextColor="grey"
-              onChangeText={(text)=>setEmail({email:text})}
+              secureTextEntry={true}
+              onChangeText={(text)=>setOldPassword(text)}
             />
           </View>
           <View>
             <TextInput
               style={styles.textInput}
-              value={password}
-              placeholder=" Enter Password"
+              placeholder="New Password"
               placeholderTextColor="grey"
-              onChangeText={(text)=>setPassword({password:text})}
+              secureTextEntry={true}
+              onChangeText={(text)=>setNewPassword(text)}
+            />
+             <TextInput
+              style={styles.textInput}
+              placeholder="Confirm Password"
+              placeholderTextColor="grey"
+              secureTextEntry={true}
+              onChangeText={(text)=>setConfirmPassword(text)}
             />
           </View>
           <TouchableOpacity

@@ -17,7 +17,7 @@ const SplashScreen =()=> {
   const directCall=async()=>{
       const Username = await AsyncStorage.getItem(storage.Username);
       const Password = await AsyncStorage.getItem(storage.Password);
-        if (Username && Password) {
+        if (Password&&Username) {
           setTimeout(() => navigation.navigate('Home'), 2000);
         } else {
           setTimeout(() => navigation.navigate('Login'), 2000);

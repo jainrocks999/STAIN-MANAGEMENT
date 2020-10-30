@@ -11,15 +11,29 @@ import {
 import CheckBox from '@react-native-community/checkbox';
 import colors from '../../../component/colors';
 import styles from './style';
-import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
+import storage from '../../../component/storage';
+import { useSelector } from 'react-redux';
 
 const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
- 
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
+  console.log(email);
+  useEffect(()=>{
+     EditData()
+  })
+  console.log(name);
+const EditData=async()=>{
+  const name = await AsyncStorage.getItem(storage.Username);
+  setName(name)
+  const email1=await AsyncStorage.getItem(storage.Email)
+  setEmail(email1)
+}
   return (
     <View style={{flex: 1}}>
       <CustomHeader
@@ -46,9 +60,9 @@ const AccManagement_1 = () => {
             source={require('../../../assets/Icons/Photo.png')} />
             <View style={{paddingLeft: 10}}>
               <Text style={[styles.Subscriber, {fontWeight: 'bold'}]}>
-                Name Here
+               {name}
               </Text>
-              <Text style={styles.Subscriber}>email@yourplacehere.com</Text>
+              <Text style={styles.Subscriber}>{email}</Text>
             </View>
           </View>
           <View>
@@ -114,4 +128,4 @@ const AccManagement_1 = () => {
   );
 };
 
-export default connect()(AccManagement_1);
+export default AccManagement_1

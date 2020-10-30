@@ -76,6 +76,7 @@ const Registration =()=> {
             style={styles.textInput}
             placeholder=' Password'
             placeholderTextColor='grey'
+            secureTextEntry={true}
             onChangeText={(text)=>setPassword(text)}
             />
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
