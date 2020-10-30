@@ -49,10 +49,11 @@ const Logout = () => {
     ],
     { cancelable: false },
   );
-  _menu.hide()
+  //_menu.hide()
 };
 const setlog = () => {
   try {
+    _menu.hide()
     AsyncStorage.setItem(storage.Username,'');
     navigation.navigate('Login');
   } catch (error) {
