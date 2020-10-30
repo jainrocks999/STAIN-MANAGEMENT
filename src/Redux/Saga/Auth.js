@@ -1,7 +1,9 @@
 import {Alert} from 'react-native';
 import {takeEvery, put, call} from 'redux-saga/effects';
 import Api from '../Api';
-
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../component/storage';
+import Toast from 'react-native-simple-toast';
 //Login
 function* doLogin(action) {
   const data=new FormData();
@@ -17,8 +19,15 @@ function* doLogin(action) {
       type: 'User_Login_Success',
       payload: formatRes,
     });
+   Toast.show('Login Sucessful')
+    // AsyncStorage.setItem(storage.Email,formatRes.email);
+    // AsyncStorage.setItem(storage.Name,formatRes.name);
+    // AsyncStorage.setItem(storage.Username,formatRes.username);
+    // AsyncStorage.setItem(storage.UserId,formatRes.user_id);
+    // AsyncStorage.setItem(storage.Lastname,formatRes.lastname);
+   AsyncStorage.setItem(storage.Username,formatRes.username);
   } else {
-    Alert.alert('narendra',res.message)
+   Toast.show('Please Enter Valid Username and Password')
    console.log('User_Login_Error')
     yield put({
       type: 'User_Login_Error',
@@ -42,13 +51,13 @@ function* doRegister(action) {
   console.log('data success from saga',formatRes)
   if (formatRes.status == 200) {
     action.props.navigate('Login')
-    console.log('success');
+    Toast.show(formatRes.message)
     yield put({
       type: 'User_Register_Success',
       payload: formatRes
     });
   } else {
-   console.log('User_Register_Error')
+    Toast.show(formatRes.message)
     yield put({
       type: 'User_Register_Error',
     });
@@ -60,7 +69,7 @@ function* doEditProfile(action) {
   const data=new FormData()
   data.append("name",action.name)
   data.append("lastname",action.lastname)
-  const response = yield call(Api.fetchDataByPOST, action.url);
+  const response = yield call(Api.fetchDataByPOST, action.url,data);
   console.log('Edit user detail'+response)
    const formatedResponse=JSON.parse(response)
    console.log('respostex',formatedResponse);
@@ -79,21 +88,20 @@ function* doEditProfile(action) {
 }
 
 
-function* doForgotPassword(action) {
-  const data=new FormData()
-  data.append("email",action.email)
-
-  const response = yield call(Api.fetchDataByPOST, action.url);
-   const formatedResponse=JSON.parse(response)
-   console.log('respostex',formatedResponse);
-   console.log(action.url)
-  if (formatedResponse.status==200) {
+function* doForgot(action) {
+  const data=new FormData();
+  data.append("email", action.Email)
+  const res = yield call(Api.fetchDataByPOST, action.url, data);
+  console.log('complete url',res)
+  const formatRes=JSON.parse(res)
+  console.log('data success from saga',formatRes)
+  if (formatRes.status == 200) {
+    console.log('success');
     yield put({
       type: 'User_Forgot_Password_Success',
-      payload:formatedResponse.data,
+      payload: formatRes
     });
   } else {
-    Alert.alert('narendra',response.message);
     yield put({
       type: 'User_Forgot_Password_Error',
     });
@@ -170,6 +178,6 @@ export default function* authSaga() {
   yield takeEvery('User_Logout_Request', doLogout);
   yield takeEvery('User_Version_Request', doVersion);
   yield takeEvery('User_Edit_Profile_Request', doEditProfile);
-  yield takeEvery('User_Forgot_Password_Request', doForgotPassword);
+  yield takeEvery('User_Forgot_Password_Request', doForgot);
   yield takeEvery('User_Change_Password_Request', doChangePassword);
 }

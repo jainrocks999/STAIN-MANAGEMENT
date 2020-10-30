@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar} from 'react-native';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View,Alert,StatusBar,ActivityIndicator} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-
+import Loader from '../../../component/loader';
 import styles from './style';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import colors from '../../../component/colors';
-
+import Toast from 'react-native-simple-toast';
 
 const LoginScreen = ({route}) => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   const [Username, setUsername] = useState('')
   const [Password, setPassword] = useState('')
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
+  const isFetching=useSelector(state=>state.isFetching)
+
 
    const doLogin =async() => {
-     await AsyncStorage.setItem(storage.Username,Username);
-      await AsyncStorage.setItem(storage.Password,Password);
+    //  await AsyncStorage.setItem(storage.Username,Username);
+      await AsyncStorage.setItem(storage.Password,Password);   
     if (Username == '') {
-     Alert.alert('Please Enter Username')
+     Toast.show('Please Enter Username')
     } else if (Password == '') {
-      Alert.alert('Please Enter Password')
+      Toast.show('Please Enter Password')
     } else {   
       dispatch({
         type: 'User_Login_Request',
@@ -37,7 +39,8 @@ const LoginScreen = ({route}) => {
   };
   return (
     <View style={{flex:1}}>
-<CustomHeader/>
+        <CustomHeader/>
+        {isFetching?<Loader/>:null}
           <ImageBackground
 
             style={styles.imageBackground}
@@ -58,6 +61,7 @@ const LoginScreen = ({route}) => {
             style={styles.textInput}
             placeholder=' Password'
             placeholderTextColor='grey'
+            secureTextEntry={true}
             onChangeText={(p)=>setPassword(p)}
             />
             </View>

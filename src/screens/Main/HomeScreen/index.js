@@ -1,5 +1,5 @@
 import React, { useEffect, useState,} from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert} from 'react-native';
+import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert,BackHandler} from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
@@ -13,9 +13,15 @@ function HomeScreen(props) {
   const selector=useSelector(state=>state.StainDetails)
   console.log(selector)
   useEffect(()=>{
+    // BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
   loadData();
   },[])
   
+//  const handleBackButtonClick=()=> {
+//     BackHandler.exitApp();
+//     return true;
+// }
+
   const loadData=async()=>{
     dispatch({
       type: 'User_Stain_Request',

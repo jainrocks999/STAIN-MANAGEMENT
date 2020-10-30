@@ -6,7 +6,7 @@ import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
 import colors from '../../../component/colors';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 
 
@@ -18,6 +18,7 @@ const Registration =()=> {
   const [Name, setName] = useState('')
   const [LastName, setLastName] = useState('')
   const dispatch=useDispatch()
+  const isFetching=useSelector(state=>state.isFetching)
 
  
  const doRegister = async() => {

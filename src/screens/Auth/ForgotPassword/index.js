@@ -9,7 +9,6 @@ import {
   Alert
 } from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import colors from '../../../component/colors';
@@ -46,6 +45,7 @@ const loadData=()=>{
           <View>
             <TextInput
               style={styles.textInput}
+              value={email}
               placeholder=" Enter email"
               placeholderTextColor="grey"
               onChangeText={(text)=>setEmail({email:text})}
