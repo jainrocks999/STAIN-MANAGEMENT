@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import {Image, View, TouchableOpacity} from 'react-native';
+import {Image, View, TouchableOpacity,Text} from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
-import style from './style';
-
-
 
 function BottomTab({goToAboutStain,goToStainChart,goToWhatIs}){
 
@@ -12,44 +9,56 @@ function BottomTab({goToAboutStain,goToStainChart,goToWhatIs}){
   return (
         <View style={styles.header}>
 
-<TouchableOpacity onPress={()=>{
+<TouchableOpacity 
+style={{width:40,height:40,alignItems:'center'}}
+onPress={()=>{
+  
   navigation.navigate('Home')
 }}>
 <Image source={require('../../assets/Icons/home.png')}
-style={style.bottomTab}
-resizeMethod={'resize'}
+style={styles.bottomTab}
+//resizeMethod={'resize'}
 resizeMode='center'
 />
+<Text style={styles.buttonText}>HOME</Text>
 </TouchableOpacity>
 
 <TouchableOpacity 
+style={{width:40,height:40,alignItems:'center'}}
 onPress={()=>{
   navigation.navigate('Video')
 }}>
 <Image source={require('../../assets/Icons/Video.png')}
-style={style.bottomTab}
+style={styles.bottomTab}
 resizeMode='center'/>
+        <Text style={styles.buttonText}>VIDEO</Text>
 </TouchableOpacity>
 
 <TouchableOpacity 
+style={{width:40,height:40,alignItems:'center',}}
 onPress={goToAboutStain}>
 <Image source={require('../../assets/Icons/About.png')}
-style={style.bottomTab}
+style={styles.bottomTab}
 resizeMode='center' />
+        <Text style={styles.buttonText}>ABOUT STAINS</Text>
 </TouchableOpacity>
 
 <TouchableOpacity 
+style={{width:40,height:40,alignItems:'center'}}
  onPress={goToWhatIs}>
 <Image source={require('../../assets/Icons/How_To.png')}
-style={style.bottomTab}
+style={styles.bottomTab}
 resizeMode='center' />
+        <Text style={styles.buttonText}>HOW TO</Text>
 </TouchableOpacity>
 
 <TouchableOpacity  
+style={{width:38,height:38,alignItems:'center'}}
    onPress={goToStainChart}>
 <Image source={require('../../assets/Icons/Stain_Chart.png')}
-style={style.bottomTab}
+style={styles.bottomTab}
 resizeMode='center' />
+        <Text style={styles.buttonText}>STAIN CHART</Text>
 </TouchableOpacity>
 
         </View>

@@ -1,33 +1,44 @@
-import {Alert} from 'react-native';
-import {takeEvery, put, call} from 'redux-saga/effects';
+import { Alert } from 'react-native';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import Api from '../Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../component/storage';
 import Toast from 'react-native-simple-toast';
 //Login
 function* doLogin(action) {
-  const data=new FormData();
+  const data = new FormData();
   data.append("username", action.Username)
   data.append("password", action.Password)
- 
+
   const res = yield call(Api.fetchDataByPOST, action.url, data);
-  const formatRes=JSON.parse(res) 
-  const id=JSON.stringify(formatRes.user_id)
+  const formatRes = JSON.parse(res)
+  const id = JSON.stringify(formatRes.user_id)
+  console.log('success' + JSON.stringify(formatRes));
   if (formatRes.status == 'true') {
-    action.props.navigate('Home')
-     console.log('success');
+
+    console.log('success' + JSON.stringify(formatRes));
     yield put({
       type: 'User_Login_Success',
       payload: formatRes,
     });
-   Toast.show('Login Sucessful')
-    AsyncStorage.setItem(storage.Email,formatRes.email);
-    AsyncStorage.setItem(storage.Name,formatRes.name);
-    AsyncStorage.setItem(storage.UserId,id);
-    AsyncStorage.setItem(storage.Lastname,formatRes.lastname);
-   AsyncStorage.setItem(storage.Username,formatRes.username);
+    AsyncStorage.setItem(storage.Email, formatRes.email);
+    AsyncStorage.setItem(storage.Name, formatRes.name);
+    AsyncStorage.setItem(storage.UserId, id);
+    AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
+    AsyncStorage.setItem(storage.Username, formatRes.username);
+    AsyncStorage.setItem(storage.Url, formatRes.url);
+    AsyncStorage.setItem(storage.textvalue, formatRes.msg_text);
+    AsyncStorage.setItem(storage.button_text, formatRes.button_text);
+   
+    if (formatRes.url == '') {
+      Toast.show('Login Sucessful');
+      action.props.navigate('Home')
+    } else {
+      
+
+    }
   } else {
-   Toast.show('Please Enter Valid Username and Password')
+    Toast.show('Please Enter Valid Username and Password')
     yield put({
       type: 'User_Login_Error',
     });
@@ -36,18 +47,18 @@ function* doLogin(action) {
 
 //Register
 function* doRegister(action) {
-  const data=new FormData();
+  const data = new FormData();
   data.append("username", action.Username)
   data.append("email", action.Email)
   data.append("password", action.Password)
   data.append("name", action.Name)
   data.append("lastname", action.LastName)
-  
-  
+
+
   const res = yield call(Api.fetchDataByPOST, action.url, data);
-  console.log('complete url',res)
-  const formatRes=JSON.parse(res)
-  console.log('data success from saga',formatRes)
+  console.log('complete url', res)
+  const formatRes = JSON.parse(res)
+  console.log('data success from saga', formatRes)
   if (formatRes.status == 200) {
     action.props.navigate('Login')
     Toast.show(formatRes.message)
@@ -65,37 +76,37 @@ function* doRegister(action) {
 
 //EditProfile
 function* doEditProfile(action) {
-  const data=new FormData()
-  data.append("userId",action.userId)
-  data.append("username",action.username)
-  data.append("name",action.name)
-  data.append("lastname",action.lastname)
-  data.append("name",action.email)
- 
-  const response = yield call(Api.fetchDataByPOST, action.url,data);
-  console.log('Edit user detail'+response)
-   const formatedResponse=JSON.parse(response)
-   console.log('respostex',formatedResponse);
-   console.log(action.url)
-  if (formatedResponse.status==200) {
+  const data = new FormData()
+  data.append("userId", action.userId)
+  data.append("username", action.username)
+  data.append("name", action.name)
+  data.append("lastname", action.lastname)
+  data.append("name", action.email)
+
+  const response = yield call(Api.fetchDataByPOST, action.url, data);
+  console.log('Edit user detail' + response)
+  const formatedResponse = JSON.parse(response)
+  console.log('respostex', formatedResponse);
+  console.log(action.url)
+  if (formatedResponse.status == 200) {
     yield put({
       type: 'User_Edit_Profile_Success',
-      payload:formatedResponse.data,
+      payload: formatedResponse.data,
     });
   } else {
-    Alert.alert('narendra',response.message);
+    Alert.alert('narendra', response.message);
     yield put({
       type: 'User_Edit_Profile_Error',
     });
   }
 }
 function* doForgot(action) {
-  const data=new FormData();
+  const data = new FormData();
   data.append("email", action.Email)
   const res = yield call(Api.fetchDataByPOST, action.url, data);
-   console.log('complete url',res)
-   const formatRes=JSON.parse(res)
-  console.log('data success from saga',formatRes)
+  console.log('complete url', res)
+  const formatRes = JSON.parse(res)
+  console.log('data success from saga', formatRes)
   if (formatRes.status == 200) {
     console.log('success');
     yield put({
@@ -115,15 +126,15 @@ function* doForgot(action) {
 function* doStain(action) {
 
   const response = yield call(Api.fetchDataByGET, action.url);
-   const formatedResponse=JSON.parse(response)
-   console.log(action.url)
-  if (formatedResponse.status=='true') {
+  const formatedResponse = JSON.parse(response)
+  console.log(action.url)
+  if (formatedResponse.status == 'true') {
     yield put({
       type: 'User_Stain_Success',
-      payload:formatedResponse.data,
+      payload: formatedResponse.data,
     });
   } else {
-    Alert.alert('narendra',response.message);
+    Alert.alert('narendra', response.message);
     yield put({
       type: 'User_Stain_Error',
     });
@@ -134,14 +145,14 @@ function* doStain(action) {
 function* doLogout(action) {
 
   const response = yield call(Api.fetchDataByGET, action.url);
-   const formatedResponse=JSON.parse(response)
-  if (formatedResponse.status=='true') {
+  const formatedResponse = JSON.parse(response)
+  if (formatedResponse.status == 'true') {
     yield put({
       type: 'User_Logout_Success',
-      payload:formatedResponse.data,
+      payload: formatedResponse.data,
     });
   } else {
-    Alert.alert('narendra',response.message);
+    Alert.alert('narendra', response.message);
     yield put({
       type: 'User_Logout_Error',
     });
@@ -151,27 +162,27 @@ function* doLogout(action) {
 //Version
 function* doVersion(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
-    yield put({
-      type: 'User_Version_Success',
-      payload:response,
-    });  
+  yield put({
+    type: 'User_Version_Success',
+    payload: response,
+  });
 }
 //Cha
 function* doChangePassword(action) {
-const data=new FormData();
-data.append("userId",action.Id)
-data.append("Old pass",action.Old)
-data.append("New pass",action.New)
-data.append("Confirm pass",action.Confirm)
+  const data = new FormData();
+  data.append("userId", action.Id)
+  data.append("Old pass", action.Old)
+  data.append("New pass", action.New)
+  data.append("Confirm pass", action.Confirm)
 
-  const response = yield call(Api.fetchDataByPOST, action.url,data);
-console.log('data success from saga',response)
-   const formatedResponse=JSON.parse(response)
-   console.log(action.url)
-  if (formatedResponse.status==200) {
+  const response = yield call(Api.fetchDataByPOST, action.url, data);
+  console.log('data success from saga', response)
+  const formatedResponse = JSON.parse(response)
+  console.log(action.url)
+  if (formatedResponse.status == 200) {
     yield put({
       type: 'User_Change_Password_Success',
-      payload:formatedResponse
+      payload: formatedResponse
     });
     Toast.show(formatedResponse.message)
   } else {

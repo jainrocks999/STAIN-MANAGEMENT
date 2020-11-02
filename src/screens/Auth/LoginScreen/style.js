@@ -7,6 +7,17 @@ export default StyleSheet.create({
     height:'100%',
     alignItems: 'center',
   },
+  modal: {
+    width: '100%',
+    borderRadius: 10,
+    padding:10,
+    justifyContent:'center',
+    flexDirection:'column',
+    alignSelf:'center',
+    alignItems:'center',
+   // flex:1,
+    backgroundColor: 'white'
+  },
   logoContainer: {
     marginTop:'40%',
     justifyContent: 'center',
@@ -46,7 +57,17 @@ export default StyleSheet.create({
     justifyContent:'space-evenly',
     width:'40%',
   },
-  
+  popup:{
+    height:40,
+   // width:100,
+   // margin:10,
+    marginTop:'10%',
+    backgroundColor:colors.orange,
+   // opacity:79,
+    justifyContent:'center',
+   // alignItems:'center',
+    borderRadius:4,
+  },
   button:{
     height:'7%',
     width:'40%',

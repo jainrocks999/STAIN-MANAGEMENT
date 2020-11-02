@@ -132,7 +132,7 @@ export default StyleSheet.create({
   search:{
     width:'76%',
     height:40,
-    borderWidth:1,
+    borderWidth:.5,
     marginBottom:26,
     flexDirection:'row',
     alignItems:'center',

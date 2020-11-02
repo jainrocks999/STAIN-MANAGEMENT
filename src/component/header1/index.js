@@ -55,6 +55,7 @@ const setlog = () => {
   try {
     _menu.hide()
     AsyncStorage.setItem(storage.Username,'');
+    AsyncStorage.clear();
     navigation.navigate('Login');
   } catch (error) {
     console.error(error);

@@ -6,6 +6,10 @@ export default {
   Email:'Email',
   Username:'Username',
   Lastname: 'Lastname',
-  UserId:'UserId'
+  UserId:'UserId',
+  Url:'',
+  textvalue:'',
+  button_text:'',
+  msg:'',
  
 };

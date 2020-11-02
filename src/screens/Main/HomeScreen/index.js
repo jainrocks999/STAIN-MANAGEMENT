@@ -108,7 +108,7 @@ function HomeScreen(props) {
             }}
             style={[styles.button,{flexDirection:'row',}]}>
               <Image 
-              resizeMode='center'
+              resizeMode='stretch'
               style={styles.icon}
               source={require('../../../assets/Icons/Important.png')} />
               <Text style={styles.buttonText}>Important!</Text>

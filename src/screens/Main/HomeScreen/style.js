@@ -52,8 +52,9 @@ width:200,
     textAlign:'center'
   },
   icon:{
-    height:'100%',
-    width:'25%',
+    height:28,
+    width:38,
+    padding:10,
     tintColor:colors.white
   }
 });
