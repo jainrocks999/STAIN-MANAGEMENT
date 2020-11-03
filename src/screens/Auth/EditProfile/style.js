@@ -35,6 +35,7 @@ export default StyleSheet.create({
     backgroundColor:colors.white,
     padding:15,
     borderWidth:1,
+    width:'99%',
     borderRadius:4,
     borderColor:'#C9C8C7'
 

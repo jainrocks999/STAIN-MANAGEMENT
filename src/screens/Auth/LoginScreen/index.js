@@ -37,11 +37,7 @@ const LoginScreen = ({ route }) => {
     console.log('hello jain' + msg)
 
     setmsg(msg)
-    if (url == null) {
-      // Alert.alert('not allow')
-    } else {
-       setisVisible(true)
-    }
+
 
   }
 
@@ -66,6 +62,11 @@ const LoginScreen = ({ route }) => {
         Password,
         props: navigation
       });
+      if (url == null) {
+        // Alert.alert('not allow')
+      } else {
+       setisVisible(true)
+      }
     }
   };
   return (
@@ -120,7 +121,11 @@ const LoginScreen = ({ route }) => {
           </TouchableOpacity>
         </View>
 
-        <Modal isVisible={isVisible}>
+        <Modal isVisible={isVisible}
+          onSwipeComplete={() => (setisVisible(false))}
+          swipeDirection="right"
+          onBackdropPress={() => (setisVisible(false))}
+        >
           <View
             style={styles.modal}>
             <Text style={{

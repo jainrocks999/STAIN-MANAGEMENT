@@ -9,14 +9,10 @@ function* doLogin(action) {
   const data = new FormData();
   data.append("username", action.Username)
   data.append("password", action.Password)
-
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   const formatRes = JSON.parse(res)
   const id = JSON.stringify(formatRes.user_id)
-  console.log('success' + JSON.stringify(formatRes));
   if (formatRes.status == 'true') {
-
-    console.log('success' + JSON.stringify(formatRes));
     yield put({
       type: 'User_Login_Success',
       payload: formatRes,
@@ -29,12 +25,11 @@ function* doLogin(action) {
     AsyncStorage.setItem(storage.Url, formatRes.url);
     AsyncStorage.setItem(storage.textvalue, formatRes.msg_text);
     AsyncStorage.setItem(storage.button_text, formatRes.button_text);
-   
     if (formatRes.url == '') {
       Toast.show('Login Sucessful');
-      action.props.navigate('Home')
+       action.props.navigate('Home')
     } else {
-      
+     // Alert.alert('jdjh')
 
     }
   } else {
@@ -76,13 +71,14 @@ function* doRegister(action) {
 
 //EditProfile
 function* doEditProfile(action) {
+  
   const data = new FormData()
-  data.append("userId", action.userId)
+  data.append("user_id", action.userId)
   data.append("username", action.username)
   data.append("name", action.name)
   data.append("lastname", action.lastname)
-  data.append("name", action.email)
-
+  data.append("email", action.email)
+console.log('hhjjhj'+JSON.stringify(data))
   const response = yield call(Api.fetchDataByPOST, action.url, data);
   console.log('Edit user detail' + response)
   const formatedResponse = JSON.parse(response)
@@ -93,8 +89,10 @@ function* doEditProfile(action) {
       type: 'User_Edit_Profile_Success',
       payload: formatedResponse.data,
     });
+    Toast.show(formatedResponse.message)
   } else {
-    Alert.alert('narendra', response.message);
+    Toast.show(formatedResponse.message)
+   // Alert.alert('narendra', formatedResponse.message);
     yield put({
       type: 'User_Edit_Profile_Error',
     });

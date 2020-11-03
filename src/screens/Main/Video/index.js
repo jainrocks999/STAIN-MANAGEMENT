@@ -7,6 +7,7 @@ import YoutubePlayer from "react-native-yt-player";
 import styles from './style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../../../component/colors';
+// import Orientation, { lockToLandscape } from 'react-native-orientation';
 
 const TopBar = ({ play, fullScreen }) =>  (
     <View
@@ -21,11 +22,14 @@ const TopBar = ({ play, fullScreen }) =>  (
 const Video=()=> {
 
   const navigation = useNavigation();
-  const [fullScreen,setFullScreen]=useState(true)
+  const [fullScreen,setFullScreen]=useState(false)
   
   const onFullScreen = fullScreen => {
-        setFullScreen({fullScreen})
+    console.log('Hello jain'+fullScreen)
+    //Orientation.lockToLandscape(true);
+        Orientation.lockToPortrait({fullScreen})
   };
+ 
   const play = () => {
     player.playVideo();
   };

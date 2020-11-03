@@ -11,15 +11,15 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		25E3727E41260686A3B5CFD8 /* Pods_StainManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF0B3C6E0B41FB8655E9F9 /* Pods_StainManagement.framework */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* StainManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* StainManagementTests.m */; };
-		3FCAFF06D41B7953A3A64DC4 /* Pods_StainManagement_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F297CDA1607FBC1A0EAE10 /* Pods_StainManagement_tvOSTests.framework */; };
+		763A06A31D14BF88EE42E0CF /* libPods-StainManagement-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 548B91CFAF426C5ED79D5E35 /* libPods-StainManagement-tvOSTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9FB6AAB3C06E6DC9CD304E22 /* Pods_StainManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9ACBA0A4ACA7EAB22B232D /* Pods_StainManagementTests.framework */; };
-		E9AE39C06B060295684B3097 /* Pods_StainManagement_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D44426306E0197A5D139471 /* Pods_StainManagement_tvOS.framework */; };
+		AC89050A9B36162C844D3AC0 /* libPods-StainManagement-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDBF58E39D26E6CBB935ED6 /* libPods-StainManagement-tvOS.a */; };
+		B9ED3E444344102CCA9AE8A9 /* libPods-StainManagement-StainManagementTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBAB831A30684E1260DF11A7 /* libPods-StainManagement-StainManagementTests.a */; };
+		FF1068D214C7CBDD589D6F21 /* libPods-StainManagement.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C25C600D0FA34EDCE43F2E04 /* libPods-StainManagement.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,18 +55,18 @@
 		2D02E47B1E0B4A5D006451C7 /* StainManagement-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StainManagement-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* StainManagement-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StainManagement-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E45FB2EA470FF6D4E8AF07D /* Pods-StainManagement-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-StainManagement-tvOSTests/Pods-StainManagement-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		58F297CDA1607FBC1A0EAE10 /* Pods_StainManagement_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StainManagement_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		548B91CFAF426C5ED79D5E35 /* libPods-StainManagement-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StainManagement-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C38FB1C2AD20AA04DB30125 /* Pods-StainManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement.debug.xcconfig"; path = "Target Support Files/Pods-StainManagement/Pods-StainManagement.debug.xcconfig"; sourceTree = "<group>"; };
 		5CF9276CDD5C666A24E62B24 /* Pods-StainManagementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagementTests.release.xcconfig"; path = "Target Support Files/Pods-StainManagementTests/Pods-StainManagementTests.release.xcconfig"; sourceTree = "<group>"; };
-		6D44426306E0197A5D139471 /* Pods_StainManagement_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StainManagement_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = StainManagement/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D3C520CC053A7C86CE6F16D /* Pods-StainManagement-StainManagementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement-StainManagementTests.release.xcconfig"; path = "Target Support Files/Pods-StainManagement-StainManagementTests/Pods-StainManagement-StainManagementTests.release.xcconfig"; sourceTree = "<group>"; };
-		9AFF0B3C6E0B41FB8655E9F9 /* Pods_StainManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StainManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D9ACBA0A4ACA7EAB22B232D /* Pods_StainManagementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StainManagementTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03BFEDF125F9C1958764941 /* Pods-StainManagement-StainManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement-StainManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-StainManagement-StainManagementTests/Pods-StainManagement-StainManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C25C600D0FA34EDCE43F2E04 /* libPods-StainManagement.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StainManagement.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7AE98925733D7B2B9F2D947 /* Pods-StainManagement-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement-tvOS.release.xcconfig"; path = "Target Support Files/Pods-StainManagement-tvOS/Pods-StainManagement-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D3215EF2040048E6653B07CC /* Pods-StainManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagement.release.xcconfig"; path = "Target Support Files/Pods-StainManagement/Pods-StainManagement.release.xcconfig"; sourceTree = "<group>"; };
+		DCDBF58E39D26E6CBB935ED6 /* libPods-StainManagement-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StainManagement-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5439A10EC5B08522C51DF54 /* Pods-StainManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StainManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-StainManagementTests/Pods-StainManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EBAB831A30684E1260DF11A7 /* libPods-StainManagement-StainManagementTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StainManagement-StainManagementTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FB6AAB3C06E6DC9CD304E22 /* Pods_StainManagementTests.framework in Frameworks */,
+				B9ED3E444344102CCA9AE8A9 /* libPods-StainManagement-StainManagementTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25E3727E41260686A3B5CFD8 /* Pods_StainManagement.framework in Frameworks */,
+				FF1068D214C7CBDD589D6F21 /* libPods-StainManagement.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9AE39C06B060295684B3097 /* Pods_StainManagement_tvOS.framework in Frameworks */,
+				AC89050A9B36162C844D3AC0 /* libPods-StainManagement-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FCAFF06D41B7953A3A64DC4 /* Pods_StainManagement_tvOSTests.framework in Frameworks */,
+				763A06A31D14BF88EE42E0CF /* libPods-StainManagement-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,10 +143,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				9AFF0B3C6E0B41FB8655E9F9 /* Pods_StainManagement.framework */,
-				6D44426306E0197A5D139471 /* Pods_StainManagement_tvOS.framework */,
-				58F297CDA1607FBC1A0EAE10 /* Pods_StainManagement_tvOSTests.framework */,
-				9D9ACBA0A4ACA7EAB22B232D /* Pods_StainManagementTests.framework */,
+				C25C600D0FA34EDCE43F2E04 /* libPods-StainManagement.a */,
+				EBAB831A30684E1260DF11A7 /* libPods-StainManagement-StainManagementTests.a */,
+				DCDBF58E39D26E6CBB935ED6 /* libPods-StainManagement-tvOS.a */,
+				548B91CFAF426C5ED79D5E35 /* libPods-StainManagement-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -222,6 +222,7 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				A00AF780BE23D3CCE9B36DFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,6 +244,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				9C97E818F58FFDF984A01C72 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,7 +419,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StainManagementTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-StainManagement-StainManagementTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -444,6 +446,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C97E818F58FFDF984A01C72 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StainManagement/Pods-StainManagement-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StainManagement/Pods-StainManagement-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A00AF780BE23D3CCE9B36DFB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StainManagement-StainManagementTests/Pods-StainManagement-StainManagementTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StainManagement-StainManagementTests/Pods-StainManagement-StainManagementTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A65E015E0D81668652B44630 /* [CP] Check Pods Manifest.lock */ = {
@@ -583,7 +621,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5439A10EC5B08522C51DF54 /* Pods-StainManagementTests.debug.xcconfig */;
+			baseConfigurationReference = B03BFEDF125F9C1958764941 /* Pods-StainManagement-StainManagementTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -606,7 +644,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CF9276CDD5C666A24E62B24 /* Pods-StainManagementTests.release.xcconfig */;
+			baseConfigurationReference = 8D3C520CC053A7C86CE6F16D /* Pods-StainManagement-StainManagementTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;

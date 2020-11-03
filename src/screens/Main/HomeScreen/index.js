@@ -13,14 +13,14 @@ function HomeScreen(props) {
   const selector=useSelector(state=>state.StainDetails)
   console.log(selector)
   useEffect(()=>{
-    // BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+  BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
   loadData();
   },[])
   
-//  const handleBackButtonClick=()=> {
-//     BackHandler.exitApp();
-//     return true;
-// }
+ const handleBackButtonClick=()=> {
+    BackHandler.exitApp();
+    return true;
+}
 
   const loadData=async()=>{
     dispatch({

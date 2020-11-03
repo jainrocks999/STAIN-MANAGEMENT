@@ -7,9 +7,9 @@ export default {
   Username:'Username',
   Lastname: 'Lastname',
   UserId:'UserId',
-  Url:'',
-  textvalue:'',
-  button_text:'',
-  msg:'',
+  Url:'url',
+  textvalue:'text',
+  button_text:'btn',
+  msg:'msg',
  
 };

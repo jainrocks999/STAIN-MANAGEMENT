@@ -31,14 +31,13 @@ const SupportScreen = ({ route }) => {
   console.log(selector)
   useEffect(() => {
     setButton(btnName)
-
-    const selectedName = selector.map(element => {
-      if (element.name == btnName) {
-        setChart(false)
-        setContent(element.content)
-      }
-    });
-
+    console.log('rohit'+selector)
+      const selectedName = selector.map(element => {
+        if (element.name == btnName) {
+          setChart(false)
+          setContent(element.content)
+        }
+      });
   })
   const ShowStain = () => {
     selector.map(element => {
