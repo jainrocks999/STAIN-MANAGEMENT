@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  BackHandler
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import colors from '../../../component/colors';
@@ -25,14 +26,22 @@ const AccManagement_1 = () => {
   const [email,setEmail]=useState('')
   console.log(email);
   useEffect(()=>{
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
      EditData()
   })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   console.log(name);
 const EditData=async()=>{
   const name = await AsyncStorage.getItem(storage.Username);
   setName(name)
   const email1=await AsyncStorage.getItem(storage.Email)
   setEmail(email1)
+  const pass=await AsyncStorage.getItem(storage.Password)
+  console.log(pass);
 }
   return (
     <View style={{flex: 1}}>

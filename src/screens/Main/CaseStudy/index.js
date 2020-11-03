@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
+  BackHandler,
   Image,
   ImageBackground,
   Text,
@@ -20,6 +21,17 @@ import { ScrollView } from 'react-native-gesture-handler';
 const CaseStudy = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
 
   return (
     <View style={{flex: 1}}>

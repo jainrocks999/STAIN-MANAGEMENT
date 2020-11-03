@@ -1,5 +1,5 @@
-import React, {useState } from 'react';
-import {Alert, ImageBackground, Text,View} from 'react-native';
+import React, {useEffect, useState } from 'react';
+import {Alert, BackHandler, ImageBackground, Text,View} from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -9,6 +9,18 @@ import CustomHeader from '../../../component/header1';
 
 const SupportTwo =()=> {
   const navigation = useNavigation();
+
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   
   
   return (

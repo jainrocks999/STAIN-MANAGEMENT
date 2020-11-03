@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ImageBackground, Image, StatusBar } from 'react-native';
+import { View, Text, ImageBackground, Image, StatusBar, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +21,17 @@ const TopBar = ({ play, fullScreen }) => (
   </View>
 );
 const Video = () => {
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
 
   const navigation = useNavigation();
   const [fullScreen, setFullScreen] = useState(false)

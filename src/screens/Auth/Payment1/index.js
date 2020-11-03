@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  BackHandler,
   ImageBackground,
   StatusBar,
   Text,
@@ -18,6 +19,16 @@ import colors from '../../../component/colors';
 const AccManagement_1 = () => {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   return (
     <View style={{flex: 1}}>
       <CustomHeader/>

@@ -5,7 +5,8 @@ import {
   Text,
   StatusBar, 
   TouchableOpacity, 
-  View
+  View,
+  BackHandler
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
@@ -18,7 +19,16 @@ import colors from '../../../component/colors';
 const AccManagement =()=> {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   
   return (
     <View style={{flex:1}}>

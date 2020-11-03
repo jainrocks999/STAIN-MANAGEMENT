@@ -18,24 +18,29 @@ import BottomTab from '../../../component/BottomTab';
 import { ScrollView, Dimensions } from 'react-native';
 import colors from '../../../component/colors';
 import HTML from 'react-native-render-html';
-import style from './style';
+//import style from './style';
 import Loader from '../../../component/loader';
 
-const SupportScreen = ({ route }) => {
+const HowTo = ({ route }) => {
   const navigation = useNavigation();
   const [contents, setContent] = useState()
   const selector = useSelector(state => state.StainDetails)
   const isFetching = useSelector(state => state.isFetching)
   const [button, setButton] = useState(null)
   const [chart, setChart] = useState(false)
-  const { btnName } = route.params;
+  //const { btnName } = route.params;
   console.log(selector)
+
+    
+   
+  
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-    setButton(btnName)
+   
+    setButton('How to Apply a Poultice')
     console.log('rohit'+selector)
       const selectedName = selector.map(element => {
-        if (element.name == btnName) {
+        if (element.name == 'How to Apply a Poultice') {
           setChart(false)
           setContent(element.content)
         }
@@ -68,7 +73,7 @@ const SupportScreen = ({ route }) => {
   const renderItem1 = () => {
     if (button == 'STAIN CHART') {
       return (
-        <View style={style.search}>
+        <View style={styles.search}>
           <TextInput
             placeholder=''
             style={{ width: '50%' }}
@@ -81,7 +86,7 @@ const SupportScreen = ({ route }) => {
     }
     else if (chart) {
       return (
-        <View style={style.search}>
+        <View style={styles.search}>
           <TextInput
             placeholder=''
             style={{ width: '50%' }}
@@ -156,19 +161,19 @@ const SupportScreen = ({ route }) => {
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <Text
-          style={style.headerText}>
+          style={styles.headerText}>
           {chart == true ? 'STAIN CHART' : button}
         </Text>
         {renderItem1()}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={style.scroll}>
+          style={styles.scroll}>
           {renderItem()}
         </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       <BottomTab
-        goToAboutStain={ShowStain}
+       // goToAboutStain={ShowStain}
         goToWhatIs={ShowWhat}
         goToStainChart={() => setChart(true)}
       />
@@ -176,5 +181,5 @@ const SupportScreen = ({ route }) => {
   );
 };
 
-export default SupportScreen
+export default HowTo;
 

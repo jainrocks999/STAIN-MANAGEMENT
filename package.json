@@ -31,6 +31,7 @@
     "react-native-simple-toast": "^1.1.3",
     "react-native-webview": "^10.9.2",
     "react-native-youtube-sdk": "^1.0.12",
+    "react-navigation-backhandler": "^2.0.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",

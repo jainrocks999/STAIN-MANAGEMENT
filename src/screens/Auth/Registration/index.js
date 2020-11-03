@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar, BackHandler} from 'react-native';
 
 
 import styles from './style';
@@ -8,6 +8,8 @@ import CustomHeader from '../../../component/header';
 import colors from '../../../component/colors';
 import { useDispatch,useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../../component/storage';
 
 
 const Registration =()=> {
@@ -20,8 +22,22 @@ const Registration =()=> {
   const dispatch=useDispatch()
   const isFetching=useSelector(state=>state.isFetching)
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
+
  
  const doRegister = async() => {
+
+  const Password= await AsyncStorage.getItem(storage.Password)
+  console.log(Password);
     if(Username==''){
       Toast.show('Please Enter Username')
     }

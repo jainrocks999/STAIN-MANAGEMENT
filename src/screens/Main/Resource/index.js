@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
+  BackHandler,
   Dimensions,
   Image,
   ImageBackground,
@@ -15,6 +16,16 @@ import CustomHeader from '../../../component/header1';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Resource = () => {
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   const navigation = useNavigation();
   return (
     <View style={{flex: 1}}>

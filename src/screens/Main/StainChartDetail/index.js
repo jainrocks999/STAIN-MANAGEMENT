@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  BackHandler,
   ImageBackground,
   StatusBar,
   Text,
@@ -25,12 +26,19 @@ const StainChartDetail = ({route}) => {
   const {btnName} = route.params;
   
   useEffect(()=>{
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
     setButton(btnName)
   const selectedName=selector.map(element =>{ 
      if(element.name==btnName) {
         setContent(element.content) 
   }});
   },[])
+
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   const ShowStain=()=>{
     selector.map(element =>{ 
       if(element.name=="About Stains") {

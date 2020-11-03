@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Alert, Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Alert, BackHandler, Image, ImageBackground, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
 //import Statusbar from '../../../common/Statusbar';
@@ -13,7 +13,16 @@ import CustomHeader from '../../../component/header1';
 const Common =()=> {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   
   return (
     <View style={{flex:1}}>

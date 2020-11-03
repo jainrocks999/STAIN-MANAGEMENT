@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  Alert
+  Alert,
+  BackHandler
 } from 'react-native';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
@@ -22,6 +23,17 @@ const ForgotPassword = () => {
   const dispatch=useDispatch();
   const isFetching=useSelector(state=>state.isFetching)
 
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
 const loadData=()=>{
   if(email==''){
      Toast.show('Please enter Email')

@@ -1,5 +1,5 @@
-import React, {useState } from 'react';
-import {Alert, Image, ImageBackground, Text,View} from 'react-native';
+import React, {useEffect, useState } from 'react';
+import {Alert, BackHandler, Image, ImageBackground, Text,View} from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -10,8 +10,16 @@ import CustomHeader from '../../../component/header1';
 const About =()=> {
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  
-  
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+   
+
+  })
+
+  const handleBackButtonClick=()=> {
+    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+    return true;
+}
   return (
     <View style={{flex:1}}>
 <CustomHeader onPress ={()=>{Alert.alert('hey')}}/>

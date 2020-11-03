@@ -53,10 +53,10 @@ function HomeScreen(props) {
            <Text style={styles.subHeading}>For stone, tile, concrete and{'\n'} other hard porous surfaces</Text>
             
             </View>
-            <View style={{flex:1,}}>
+            <View style={{flex:1,justifyContent:'center'}}>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support', {
+              navigation.navigate('AboutStains', {
                 btnName:'About Stains',
               });
             }}
@@ -75,7 +75,7 @@ function HomeScreen(props) {
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-             navigation.navigate('Support' ,{
+             navigation.navigate('HowTo' ,{
              btnName:'How to Apply a Poultice',
                 });
             }}
@@ -93,13 +93,14 @@ function HomeScreen(props) {
             </TouchableOpacity>
             <TouchableOpacity 
              onPress={()=>{
-              navigation.navigate('Support', {
+              navigation.navigate('Stain', {
                 btnName:'STAIN CHART',
               });
             }}
             style={styles.button}>
               <Text style={styles.buttonText}>Stain Chart</Text>
             </TouchableOpacity>
+            
             <TouchableOpacity
              onPress={()=>{
               navigation.navigate('Support', {

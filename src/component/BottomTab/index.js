@@ -13,7 +13,7 @@ function BottomTab({goToAboutStain,goToStainChart,goToWhatIs}){
 style={{width:40,height:40,alignItems:'center'}}
 onPress={()=>{
   
-  navigation.navigate('Home')
+  navigation.navigate('Home')  
 }}>
 <Image source={require('../../assets/Icons/home.png')}
 style={styles.bottomTab}
@@ -36,7 +36,9 @@ resizeMode='center'/>
 
 <TouchableOpacity 
 style={{width:40,height:40,alignItems:'center',}}
-onPress={goToAboutStain}>
+onPress={()=>{navigation.navigate('AboutStains')}}
+
+>
 <Image source={require('../../assets/Icons/About.png')}
 style={styles.bottomTab}
 resizeMode='center' />
@@ -45,7 +47,8 @@ resizeMode='center' />
 
 <TouchableOpacity 
 style={{width:40,height:40,alignItems:'center'}}
- onPress={goToWhatIs}>
+onPress={()=>{navigation.navigate('HowTo')}}
+>
 <Image source={require('../../assets/Icons/How_To.png')}
 style={styles.bottomTab}
 resizeMode='center' />
@@ -54,7 +57,8 @@ resizeMode='center' />
 
 <TouchableOpacity  
 style={{width:38,height:38,alignItems:'center'}}
-   onPress={goToStainChart}>
+onPress={()=>{navigation.navigate('Stain')}}
+   >
 <Image source={require('../../assets/Icons/Stain_Chart.png')}
 style={styles.bottomTab}
 resizeMode='center' />

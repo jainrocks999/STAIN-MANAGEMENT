@@ -22,9 +22,11 @@ import ChangePassword from '../screens/Auth/ChangePassword';
 import About from '../screens/Main/About';
 import SupportTwo from '../screens/Main/SupportTwo';
 import Resource from '../screens/Main/Resource';
+import HowTo from '../screens/Main/HowTo';
 const Stack = createStackNavigator();
 
 function App() {
+  
   return (
     <NavigationContainer>
       
@@ -39,14 +41,15 @@ function App() {
         <Stack.Screen name="Change" component={ChangePassword}/>
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
-        <Stack.Screen name="AboutStains" component={AboutStain}/>
+        <Stack.Screen name="AboutStains" component={AboutStain} options={{animationEnabled: false,}}/>
+        <Stack.Screen name="HowTo" component={HowTo} options={{animationEnabled: false,}}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
         <Stack.Screen name="Payment" component={Payment}/>
         <Stack.Screen name="Payment1" component={Payment1}/>
-        <Stack.Screen name="Video" component={Video}/>
+        <Stack.Screen name="Video" component={Video} options={{animationEnabled: false,}}/>
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />
-        <Stack.Screen name="Stain" component={StainChart}/>
+        <Stack.Screen name="Stain" component={StainChart} options={{animationEnabled: false,}}/>
         <Stack.Screen name="About" component={About}/>
         <Stack.Screen name="supportTwo" component={SupportTwo}/>
         <Stack.Screen name="resource" component={Resource}/>
