@@ -10,7 +10,7 @@ initialstate = {
   EditProfileDetails: [],
   ForgotPasswordDetails: [],
   ChangePassword: [],
-  getEditDetails:'',
+  getEditDetails:[],
 };
 export default (state = initialstate, action) => {
   switch (action.type) {
@@ -62,7 +62,7 @@ export default (state = initialstate, action) => {
     case 'User_Get_Edit_Profile_Success':
       return { ...state, isFetching: false,getEditDetails: action.payload };
     case 'User_Get_Edit_Profile_Error':
-      return { ...state, isFetching: false }
+      return { ...state, isFetching: false };
 
     case 'User_Change_Password_Request':
       return { ...state, isFetching: true };

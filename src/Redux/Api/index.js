@@ -19,6 +19,23 @@ export default class Api {
     }
   };
 
+  static fetchDataByPOSTValue = async (url) => {
+    try {
+      const response = await axios({
+        method: 'POST',
+        // headers: {
+        //   'content-type': 'multipart/form-data',
+        //   Accept: 'multipart/form-data',
+        // },
+        url: Constants.MainUrl + url,
+         //data,
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   static fetchDataByGET = async (url) => {
     try {
       const response = await axios({

@@ -71,20 +71,24 @@ function* doRegister(action) {
 }
 //getEditProfile()
 function* doGetEditProfile(action) {
-  const response = yield call(Api.fetchDataByPOST, action.url);
-  console.log('Edit user detail' + response)
+  console.log('hello guru'+action)
+  const response = yield call(Api.fetchDataByPOSTValue, action.url);
+  console.log('Edit user detail' + response.status)
   const formatedResponse = JSON.parse(response)
-  console.log('respostex', formatedResponse);
+  console.log('Edit user detail123' + formatedResponse.status)
+ // ALert.alert('Alert', formatedResponse.status);
   console.log(action.url)
   if (formatedResponse.status == 'true') {
+
+    AsyncStorage.setItem(storage.Email, formatedResponse.email);
+    AsyncStorage.setItem(storage.Name, formatedResponse.name);
+    AsyncStorage.setItem(storage.Lastname, formatedResponse.lastname);
+    AsyncStorage.setItem(storage.Username, formatedResponse.username);
     yield put({
       type: 'User_Get_Edit_Profile_Success',
-      payload: formatedResponse.data,
+      payload: formatedResponse,
     });
-    AsyncStorage.setItem(storage.Email, formatRes.email);
-    AsyncStorage.setItem(storage.Name, formatRes.name);
-    AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
-    AsyncStorage.setItem(storage.Username, formatRes.username);
+    
     Toast.show(formatedResponse.message)
   } else {
     Toast.show(formatedResponse.message)
@@ -98,7 +102,7 @@ function* doGetEditProfile(action) {
 
 //EditProfile
 function* doEditProfile(action) {
-
+//Alert.alert('yeh')
   const data = new FormData()
   data.append("user_id", action.userId)
   data.append("username", action.username)
@@ -107,7 +111,7 @@ function* doEditProfile(action) {
   data.append("email", action.email)
   console.log('hhjjhj' + JSON.stringify(data))
   const response = yield call(Api.fetchDataByPOST, action.url, data);
-  console.log('Edit user detail' + response)
+  console.log('dit user detailE' + response)
   const formatedResponse = JSON.parse(response)
   console.log('respostex', formatedResponse);
   console.log(action.url)
