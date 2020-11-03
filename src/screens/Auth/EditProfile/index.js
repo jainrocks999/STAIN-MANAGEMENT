@@ -168,6 +168,10 @@ class EditProfile extends React.Component {
     this.api();
   }
   api = async () => {
+    this.props.dispatch({
+      type: 'User_Get_Edit_Profile_Request',
+      url: `v1/user/get_edit_profile?user_id=${userId}`,
+    })
     const username = await AsyncStorage.getItem(storage.Username);
     const email = await AsyncStorage.getItem(storage.Email)
     const name = await AsyncStorage.getItem(storage.Name);
@@ -181,9 +185,11 @@ class EditProfile extends React.Component {
       userId: userId
     })
 
+
+
   }
   loadData = () => {
-    const {userId, username, email, name, lastname } = this.state
+    const { userId, username, email, name, lastname } = this.state
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (username == '') {
       Toast.show('Please Enter Username')
@@ -201,7 +207,7 @@ class EditProfile extends React.Component {
       this.props.dispatch({
         type: 'User_Edit_Profile_Request',
         url: 'v1/user/edit_profile',
-        username:username,
+        username: username,
         name: name,
         lastname: lastname,
         email: email,
@@ -211,6 +217,8 @@ class EditProfile extends React.Component {
 
   render() {
     const { username, email, name, lastname } = this.state
+
+    console.log('rohitttttt ' + JSON.stringify(getEditDetails))
     return (
       <View style={{ flex: 1 }}>
         <CustomHeader />
@@ -229,8 +237,8 @@ class EditProfile extends React.Component {
               editable={true}
               placeholderTextColor='grey'
               onChangeText={text => this.setState({
-                username:text
-                })}
+                username: text
+              })}
             />
             <TextInput
               style={styles.textInput}
@@ -238,7 +246,7 @@ class EditProfile extends React.Component {
               value={name}
               placeholderTextColor='grey'
               onChangeText={(text) => this.setState({
-                name:text
+                name: text
               })}
             />
             <TextInput
@@ -246,7 +254,7 @@ class EditProfile extends React.Component {
               placeholder='Lastname'
               value={lastname}
               placeholderTextColor='grey'
-              onChangeText={(text) => this.setState({lastname:text})}
+              onChangeText={(text) => this.setState({ lastname: text })}
             />
             <TextInput
               style={styles.textInput}
@@ -271,6 +279,7 @@ class EditProfile extends React.Component {
 const mapStateToProps = state => {
   return {
     isFetching: state.isFetching,
+    getEditDetails: state.getEditDetails,
 
   };
 };

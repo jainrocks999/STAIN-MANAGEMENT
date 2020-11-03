@@ -97,7 +97,9 @@ const CustomHeader = (props) => {
           <Menu
             style={{ paddingHorizontal: 20, width: '40%', }}
             ref={setMenuRef}
-            button={<TouchableOpacity onPress={showMenu}>
+            button={<TouchableOpacity 
+              //activeOpacity={10.00}
+            onPress={showMenu}>
               <Image source={require('../../assets/Icons/menu.png')} />
             </TouchableOpacity>}
           >

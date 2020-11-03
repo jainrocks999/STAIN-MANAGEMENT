@@ -17,19 +17,20 @@ function* doLogin(action) {
       type: 'User_Login_Success',
       payload: formatRes,
     });
-    AsyncStorage.setItem(storage.Email, formatRes.email);
-    AsyncStorage.setItem(storage.Name, formatRes.name);
-    AsyncStorage.setItem(storage.UserId, id);
-    AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
-    AsyncStorage.setItem(storage.Username, formatRes.username);
-    AsyncStorage.setItem(storage.Url, formatRes.url);
-    AsyncStorage.setItem(storage.textvalue, formatRes.msg_text);
-    AsyncStorage.setItem(storage.button_text, formatRes.button_text);
+
     if (formatRes.url == '') {
+      AsyncStorage.setItem(storage.Email, formatRes.email);
+      AsyncStorage.setItem(storage.Name, formatRes.name);
+      AsyncStorage.setItem(storage.UserId, id);
+      AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
+      AsyncStorage.setItem(storage.Username, formatRes.username);
+      AsyncStorage.setItem(storage.Url, formatRes.url);
+      AsyncStorage.setItem(storage.textvalue, formatRes.msg_text);
+      AsyncStorage.setItem(storage.button_text, formatRes.button_text);
       Toast.show('Login Sucessful');
-       action.props.navigate('Home')
+      action.props.navigate('Home')
     } else {
-     // Alert.alert('jdjh')
+      // Alert.alert('jdjh')
 
     }
   } else {
@@ -68,17 +69,43 @@ function* doRegister(action) {
     });
   }
 }
+//getEditProfile()
+function* doGetEditProfile(action) {
+  const response = yield call(Api.fetchDataByPOST, action.url);
+  console.log('Edit user detail' + response)
+  const formatedResponse = JSON.parse(response)
+  console.log('respostex', formatedResponse);
+  console.log(action.url)
+  if (formatedResponse.status == 'true') {
+    yield put({
+      type: 'User_Get_Edit_Profile_Success',
+      payload: formatedResponse.data,
+    });
+    AsyncStorage.setItem(storage.Email, formatRes.email);
+    AsyncStorage.setItem(storage.Name, formatRes.name);
+    AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
+    AsyncStorage.setItem(storage.Username, formatRes.username);
+    Toast.show(formatedResponse.message)
+  } else {
+    Toast.show(formatedResponse.message)
+    // Alert.alert('narendra', formatedResponse.message);
+    yield put({
+      type: 'User_Get_Edit_Profile_Error',
+    });
+  }
+}
+
 
 //EditProfile
 function* doEditProfile(action) {
-  
+
   const data = new FormData()
   data.append("user_id", action.userId)
   data.append("username", action.username)
   data.append("name", action.name)
   data.append("lastname", action.lastname)
   data.append("email", action.email)
-console.log('hhjjhj'+JSON.stringify(data))
+  console.log('hhjjhj' + JSON.stringify(data))
   const response = yield call(Api.fetchDataByPOST, action.url, data);
   console.log('Edit user detail' + response)
   const formatedResponse = JSON.parse(response)
@@ -92,7 +119,7 @@ console.log('hhjjhj'+JSON.stringify(data))
     Toast.show(formatedResponse.message)
   } else {
     Toast.show(formatedResponse.message)
-   // Alert.alert('narendra', formatedResponse.message);
+    // Alert.alert('narendra', formatedResponse.message);
     yield put({
       type: 'User_Edit_Profile_Error',
     });
@@ -199,4 +226,5 @@ export default function* authSaga() {
   yield takeEvery('User_Edit_Profile_Request', doEditProfile);
   yield takeEvery('User_Forgot_Password_Request', doForgot);
   yield takeEvery('User_Change_Password_Request', doChangePassword);
+  yield takeEvery('User_Get_Edit_Profile_Request', doGetEditProfile);
 }
