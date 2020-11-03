@@ -321,6 +321,10 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
+  - YoutubePlayerView (1.2.1)
+  - YouTubeSdk (1.0.12):
+    - React
+    - YoutubePlayerView
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -380,6 +384,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+  - YouTubeSdk (from `../node_modules/react-native-youtube-sdk`)
 
 SPEC REPOS:
   trunk:
@@ -396,6 +401,7 @@ SPEC REPOS:
     - OpenSSL-Universal
     - Toast
     - YogaKit
+    - YoutubePlayerView
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -470,6 +476,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
+  YouTubeSdk:
+    :path: "../node_modules/react-native-youtube-sdk"
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
@@ -521,6 +529,8 @@ SPEC CHECKSUMS:
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
+  YoutubePlayerView: 3870fc10f2db3f54156697757f44d304203bdc7e
+  YouTubeSdk: fccbb6558ce7b3517c186f27ded0580c40a021e5
 
 PODFILE CHECKSUM: a77e92372d616ef8426f688917bbae0411bd451c
 

@@ -30,11 +30,13 @@ function App() {
       
       <Stack.Navigator initialRouteName="Splash" headerMode='none'>
         <Stack.Screen name="Splash" component={SplashScreen} />
-        <Stack.Screen name="Edit" component={EditProfile} />
+        
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={Registration}/>
-        <Stack.Screen name="Change" component={ChangePassword}/>
+        
         <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Edit" component={EditProfile} />
+        <Stack.Screen name="Change" component={ChangePassword}/>
         <Stack.Screen name="Account" component={AccManagement} />
         <Stack.Screen name="Account_1" component={AccManagement_1} />
         <Stack.Screen name="AboutStains" component={AboutStain}/>
