@@ -170,6 +170,26 @@ function* doStain(action) {
   }
 }
 
+//CaseStudy
+function* doCaseStudy(action) {
+
+  const response = yield call(Api.fetchDataByGET, action.url);
+  const formatedResponse = JSON.parse(response)
+  console.log(action.url)
+  if (formatedResponse.status == 'true') {
+    console.log('yogi');
+    yield put({
+      type: 'User_CaseStudy_Success',
+      payload: formatedResponse.data,
+    });
+  } else {
+    Alert.alert('yogendra', response.message);
+    yield put({
+      type: 'User_CaseStudy_Error',
+    });
+  }
+}
+
 //Logout
 function* doLogout(action) {
 
@@ -224,6 +244,7 @@ function* doChangePassword(action) {
 export default function* authSaga() {
   yield takeEvery('User_Login_Request', doLogin);
   yield takeEvery('User_Stain_Request', doStain);
+  yield takeEvery('User_CaseStudy_Request', doCaseStudy);
   yield takeEvery('User_Register_Request', doRegister);
   yield takeEvery('User_Logout_Request', doLogout);
   yield takeEvery('User_Version_Request', doVersion);

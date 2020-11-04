@@ -11,10 +11,14 @@ function HomeScreen(props) {
   const [data,setData]=useState([])
   const navigation = useNavigation();
   const selector=useSelector(state=>state.StainDetails)
+  const CaseStudy = useSelector(state=>state.CaseStudyDetails)
   console.log(selector)
+  console.log('CaseStudy : ',CaseStudy)
+
   useEffect(()=>{
   BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
   loadData();
+  loadData1();
   },[])
   
  const handleBackButtonClick=()=> {
@@ -26,6 +30,12 @@ function HomeScreen(props) {
     dispatch({
       type: 'User_Stain_Request',
       url:'v1/stain/all',
+    });
+  }
+  const loadData1=async()=>{
+    dispatch({
+      type: 'User_CaseStudy_Request',
+      url:'v1/stain/case_studies',      
     });
   }
   return (

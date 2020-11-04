@@ -25,21 +25,45 @@ const SupportScreen = ({ route }) => {
   const navigation = useNavigation();
   const [contents, setContent] = useState()
   const selector = useSelector(state => state.StainDetails)
+  const CaseStudy = useSelector(state=>state.CaseStudyDetails)
   const isFetching = useSelector(state => state.isFetching)
   const [button, setButton] = useState(null)
   const [chart, setChart] = useState(false)
   const { btnName } = route.params;
   console.log(selector)
+  console.log(CaseStudy)
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
     setButton(btnName)
     console.log('rohit'+selector)
+    console.log('Case Study : '+CaseStudy)
       const selectedName = selector.map(element => {
         if (element.name == btnName) {
+          console.log('element : ',element.name);
           setChart(false)
           setContent(element.content)
         }
       });
+      
+      // const selectedName1 = CaseStudy.map(element => {
+      //   return (
+      //     <View>
+      //       <TouchableOpacity
+      //         // onPress={() => {
+      //         //   navigation.navigate('StainChart', {
+      //         //     btnName: element.case_study_name,
+      //         //   });
+      //         // }}
+      //         style={{ margin: 5 }}
+      //       >
+      //         <Text style={{ fontSize: 15 }}>{element.case_study_name}</Text>
+      //       </TouchableOpacity>
+      //     </View>
+      //   )
+      // })
+
+
+      
   })
 
   const handleBackButtonClick=()=> {
@@ -148,6 +172,35 @@ const SupportScreen = ({ route }) => {
     };
   }
 
+  const renderCaseStudies = () => {
+    if (button == 'Case Studies') {
+      return (
+        CaseStudy.map(element => {
+          return (
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('StainChart', {
+                    btnName: element.name,
+                  });
+                }}
+                style={{ margin: 5,justifyContent:'flex-start' }}
+              >
+
+                <Text style={{ fontSize: 16,fontWeight:'bold' ,marginBottom:5}}>{element.case_study_name}</Text>
+                <Text style={{ fontSize: 14 }}>{element.case_study_content}</Text>
+
+              </TouchableOpacity>
+            </View>
+          )
+        }
+        )
+      )
+    }
+    
+    };
+  
+
   return (
     <View style={{ flex: 1 }}>
       <CustomHeader />
@@ -163,6 +216,7 @@ const SupportScreen = ({ route }) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={style.scroll}>
+          {renderCaseStudies()}
           {renderItem()}
         </ScrollView>
       </ImageBackground>

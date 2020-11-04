@@ -5,6 +5,7 @@ initialstate = {
   LogoutDetails: [],
   UserDetails: [],
   StainDetails: [],
+  CaseStudyDetails:[],
   RegisterDetails: [],
   VersionDetails: [],
   EditProfileDetails: [],
@@ -22,11 +23,19 @@ export default (state = initialstate, action) => {
     case 'User_Login_Error':
       return { ...state, isFetching: false };
 
+
     case 'User_Stain_Request':
       return { ...state, isFetching: true };
     case 'User_Stain_Success':
       return { ...state, isFetching: false, StainDetails: action.payload };
     case 'User_Stain_Error':
+      return { ...state, isFetching: false };
+
+      case 'User_CaseStudy_Request':
+      return { ...state, isFetching: true };
+    case 'User_CaseStudy_Success':
+      return { ...state, isFetching: false, CaseStudyDetails: action.payload };
+    case 'User_CaseStudy_Error':
       return { ...state, isFetching: false };
 
     case 'User_Register_Request':

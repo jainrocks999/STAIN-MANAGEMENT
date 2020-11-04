@@ -52,4 +52,21 @@ export default class Api {
       throw error;
     }
   };
+  
+  static fetchDataByGET = async (url) => {
+    try {
+      const response = await axios({
+         method: 'GET',
+        headers: {
+          'Cookie': 'PHPSESSID=0f615dc3d7a6a6f12b72c02c689440b7',
+          Accept: 'v1/stain/case_studies',
+        },
+        url: Constants.MainUrl + url,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('érror' +JSON.stringify(error));
+      throw error;
+    }
+  };
 }
