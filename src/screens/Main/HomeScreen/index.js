@@ -16,15 +16,30 @@ function HomeScreen(props) {
   console.log('CaseStudy : ',CaseStudy)
 
   useEffect(()=>{
-  BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+    const backAction = () => {
+      Alert.alert("Hold on!", "Are you sure you want to go back?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "YES", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+  //  return () => backHandler.remove();
+
   loadData();
   loadData1();
+  return () => backHandler.remove();
+
   },[])
-  
-  const handleBackButtonClick = () => {
-    BackHandler.exitApp();
-    return true;
-  }
+ 
+ 
   const loadData=async()=>{
     dispatch({
       type: 'User_Stain_Request',

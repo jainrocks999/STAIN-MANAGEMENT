@@ -1,196 +1,185 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
-  Image,
-  ImageBackground,
-  Text,
-  TextInput,
-  TouchableOpacity,
   View,
+  Text,
+  Image,
   StatusBar,
-  FlatList,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+  TextInput,
+  Modal,
   BackHandler,
+  FlatList,
   Alert
 } from 'react-native';
-import styles from './style';
-import { useSelector } from 'react-redux';
-import { useNavigation, } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
-import BottomTab from '../../../component/BottomTab';
-import { ScrollView, Dimensions } from 'react-native';
-import colors from '../../../component/colors';
-import HTML from 'react-native-render-html';
 import style from './style';
+import BottomTab from '../../../component/BottomTab';
+import { connect } from 'react-redux';
+import CustomHeader from '../../../component/header1';
+import colors from '../../../component/colors';
+import Toast from 'react-native-simple-toast';
+import storage from '../../../component/storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import Loader from '../../../component/loader';
+
 let filtter = [];
-//let arrayholder = [];
-const StainChart = ({ route }) => {
-  const navigation = useNavigation();
-  const [contents, setContent] = useState()
-  const [value, setvalue] = useState('');
-  const selector = useSelector(state => state.StainDetails)
-  const isFetching = useSelector(state => state.isFetching)
-  const [button, setButton] = useState(null)
+// //let arrayholder = [];
+class StainChart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: '',
+      data: [],
+      fill:[],
+      button: 'STAIN CHART',
 
-
-  const [arrayholder, setArrayholder] = useState([])
-  const [text, setText] = useState('')
-  const [data, setData] = useState([])
-  useEffect(() => {
-    // BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-    setButton('STAIN CHART')
+    };
+    this.arrayholder = [];
+    this.fill=[];
+    this.api();
+  }
+  api = async () => {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+    const { selector } = this.props;
+    console.log('yadav' + JSON.stringify(selector))
+    //setButton('STAIN CHART')
     selector.map(element => {
       console.log('RAHUL' + element.name)
       if (element.name == 'About Stains') {
-        console.log('rohitjai' + element.name)
+        //console.log('rohitjai' + element.name)
       } else if (element.name == 'Watch Video') {
       } else if (element.name == 'What is a Poultice?') {
       } else if (element.name == 'How to Apply a Poultice') {
       } else if (element.name == 'Important Cautions') {
       } else {
-        filtter.push(element)
-        setData(filtter)
+        console.log('Rohit' + JSON.stringify(element))
+       this.fill.push(element)
+        // this.setState({
+        // data:filtter
+        // })
       }
-      setArrayholder(filtter)
+     // console.log('filtter', filtter);
+      // setData(filtter)
+      this.arrayholder = selector;
     });
-  })
+  // BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+
+  }
+  // const navigation = useNavigation();
+  // const [contents, setContent] = useState()
+  // const [value, setvalue] = useState('');
+  // const selector = useSelector(state => state.StainDetails)
+  // const isFetching = useSelector(state => state.isFetching)
+  // const [button, setButton] = useState(null)
 
 
-  // const handleBackButtonClick = () => {
-  //   BackHandler.addEventListener('hardwareBackPress', navigation.goBack());
-  //   return true;
-  // }
+  // const [arrayholder, setArrayholder] = useState([])
+  // const [text, setText] = useState('')
+  // const [data, setData] = useState([])
+  // useEffect(() => {
+  // // BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+  // //const filtter = [];
+  //
 
-
-  const loadsearch = (text) => {
-    const newData = arrayholder.filter(item => {
-      const itemData = item.name.toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1
-    });
-
-    setData(newData)
-    setText(text)
+   handleBackButtonClick = () => {
+  BackHandler.addEventListener('hardwareBackPress', this.props.navigation.goBack(null));
+  return true;
   }
 
-  // const ShowStain = () => {
-  //   selector.map(element => {
-  //     if (element.name == "About Stains") {
-  //       setChart(false)
-  //       setButton(element.name)
-  //       setContent(element.content)
-  //     }
-  //   });
-  // }
 
-  // const ShowWhat = () => {
-  //   selector.map(element => {
-  //     if (element.name == "What is a Poultice?") {
-  //       setChart(false)
-  //       setButton(element.name)
-  //       setContent(element.content)
-  //     }
-  //   });
-  // }
-  // const renderItem1 = () => {
-  //   if (button == 'STAIN CHART') {
-  //     return (
-  //       <View style={style.search}>
-  //         <TextInput
-  //           placeholder=''
-  //           style={{ width: '50%' }}
-  //         />
-  //         <Image source={require('../../../assets/Icons/Search.png')}
-  //           style={{ height: 20, width: 20 }}
-  //         />
-  //       </View>
-  //     )
-  //   }
-  //   else if (chart) {
-  //     return (
-  //       <View style={style.search}>
-  //         <TextInput
-  //           placeholder=''
-  //           style={{ width: '50%' }}
-  //         />
-  //         <Image source={require('../../../assets/Icons/Search.png')}
-  //           style={{ height: 20, width: 20 }}
-  //         />
-  //       </View>
-  //     )
-  //   }
+  loadsearch = (text) => {
+    this.setState({
+      value:text
+    })
+    console.log('arrayholder1 :', this.arrayholder);
+    const newData = this.arrayholder.filter(item => {
+      console.log('rohit jj' + item.name)
+      console.log('rohit jjww' + text)
+      const itemData = item.name.toUpperCase();
+      const textData = text.toUpperCase();
+    //  console.log('rohit jah' + (itemData.indexOf(textData) > -1))
+    //  console.log('rohit jah' + (itemData.indexOf(textData) > -1))
+      return itemData.indexOf(textData) > -1
 
-  // }
-  // const renderItem = () => {
-  //   console.log('mummy ji' + JSON.stringify(filtter))
-  //   return (
-  //     filtter.map(element => {
-  //       console.log('ram' + element.name)
-  //       return (
-  //         <View style={{marginTop:10}}>
+    });
+    console.log('gg'+JSON.stringify(newData))
 
-  //           <Text style={{ fontSize: 15 }}>{element.name.toUpperCase()}</Text>
+    // this.setState({
+    // filter:newData
+    // })
+//filtter = newData
+    this.fill = (newData);
+    console.log('tttttt'+JSON.stringify(this.fill))
+    //filtter==newData;
 
-  //         </View>
-  //       )
-  //     }
-  //     )
-  //   )
+    // setData(newData)
+    //setText(,text)
+  }
 
-  // else {
+  render() {
+    console.log('filter:', +this.fill);
+    // const {data} =this.state;
+    const { isFetching } = this.props;
+    //console.log('kapil123'+JSON.stringify(selector))
+    return (
+      <View style={{ flex: 1 }}>
+        <CustomHeader />
+        {isFetching ? <Loader /> : null}
+        <ImageBackground
+          style={style.imageBackground}
+          source={require('../../../assets/Images/AppBackground.jpg')}>
+          <Text
+            style={style.headerText}>
+            STAIN CHART
+</Text>
+          <View style={style.search}>
+            <TextInput
+              placeholder=''
+              //value={text}
+              style={{ width: '50%' }}
+              onChangeText={search => {
+                this.loadsearch(search)
+              }}
+            />
+            <Image source={require('../../../assets/Icons/Search.png')}
+              style={{ height: 20, width: 20 }}
+            />
+          </View>
+          <FlatList
 
-  //   return (
-  //     <HTML
-  //       html={contents}
-  //       imagesMaxWidth={Dimensions.get('window').width}
-  //     />
-  //   );
+            data={this.fill}
+            keyExtractor={(item, index) => index.toString()}
+            //ItemSeparatorComponent={itemSeparator}
+            renderItem={({ item }) =>
+              <View style={{ marginTop: 10,width:'99%' }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate('StainChart', {
+                      btnName: item.name,
+                    });
+                  }}>
+                  <Text style={{ fontSize: 15 }}>{item.name}</Text>
+                </TouchableOpacity>
+              </View>}
+            style={{ marginTop: 10,width:'80%',marginLeft:24 }} />
+        </ImageBackground>
+        <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
+        <BottomTab
+        // goToAboutStain={ShowStain}
+        // goToWhatIs={ShowWhat}
+        // goToStainChart={() => setChart(true)}
+        />
+      </View>
+    );
+  };
+}
+const mapStateToProps = state => {
+  console.log('rorooror' + JSON.stringify(state))
+  return {
+    isFetching: state.isFetching,
+    selector: state.StainDetails,
 
-  // }
-
-  return (
-    <View style={{ flex: 1 }}>
-      <CustomHeader />
-      {isFetching ? <Loader /> : null}
-      <ImageBackground
-        style={styles.imageBackground}
-        source={require('../../../assets/Images/AppBackground.jpg')}>
-        <Text
-          style={style.headerText}>
-          STAIN CHART
-        </Text>
-        <View style={style.search}>
-          <TextInput
-            placeholder=''
-            style={{ width: '50%' }}
-            onChangeText={search => {
-              loadsearch(search)
-            }}
-          />
-          <Image source={require('../../../assets/Icons/Search.png')}
-            style={{ height: 20, width: 20 }}
-          />
-        </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          //ItemSeparatorComponent={itemSeparator}
-          renderItem={({ item }) =>
-            <View style={{ marginTop: 10 }}>
-
-              <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
-
-            </View>}
-          style={{ marginTop: 10 }} />
-      </ImageBackground>
-      <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
-      <BottomTab
-      // goToAboutStain={ShowStain}
-      // goToWhatIs={ShowWhat}
-      // goToStainChart={() => setChart(true)}
-      />
-    </View>
-  );
+  };
 };
-
-export default StainChart
-
+export default connect(mapStateToProps)(StainChart);

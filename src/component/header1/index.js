@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Image, ImageBackground, View, Text, TouchableOpacity, Alert } from 'react-native';
+import { Image, ImageBackground, View, Text, TouchableOpacity, Alert ,Pressable} from 'react-native';
 //import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
+import { FlatList, ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
 
 const CustomHeader = (props) => {
 
@@ -66,6 +67,10 @@ const CustomHeader = (props) => {
     _menu.show();
   };
 
+  getListViewItem = (item) => {  
+    Alert.alert(item.key);  
+}  
+
   return (
 
     <View style={styles.header1}>
@@ -87,21 +92,33 @@ const CustomHeader = (props) => {
 
 
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => { Alert.alert('notification') }}>
+        <TouchableOpacity
+        style={{height:26,width:26,justifyContent:'center',alignItems:'center',alignSelf:'center'}}
+        onPress={() => { Alert.alert('notification') }}>
           <Image source={require('../../assets/Icons/bell.png')}
-            style={{ tintColor: '#fff' }}
-            resizeMode='center' />
+            style={{ tintColor: '#fff' ,height:'100%',width:'100%'}}
+            resizeMode='cover' />
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={props.onPress}>
+        <TouchableOpacity 
+         style={{height:30,width:30,marginLeft:20,alignItems:'center',justifyContent:'center'}}
+        onPress={props.onPress}>
+            <ScrollView >
           <Menu
-            style={{ paddingHorizontal: 20, width: '40%', }}
             ref={setMenuRef}
-            button={<TouchableOpacity 
+            button={
+            <TouchableHighlight 
+            activeOpacity={0.6}
+             underlayColor="transparent"
+            style={{height:26,width:26,justifyContent:'center',alignItems:'center'}}
+              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
               //activeOpacity={10.00}
             onPress={showMenu}>
-              <Image source={require('../../assets/Icons/menu.png')} />
-            </TouchableOpacity>}
+              <Image
+              style={{height:'100%',width:'100%'}}
+              resizeMode='contain'
+              source={require('../../assets/Icons/menu.png')} />
+            </TouchableHighlight>}
           >
             <MenuItem
               style={styles.itemSeperator}
@@ -119,8 +136,30 @@ const CustomHeader = (props) => {
               onPress={Support}>Support</MenuItem>
             <MenuItem
               style={styles.itemSeperator}
+              onPress={Logout}>Subscribe</MenuItem>
+            <MenuItem
+              style={styles.itemSeperator}
               onPress={Logout}>Logout</MenuItem>
+            
+
+{/* <FlatList  
+                    data={[  
+                        {key: 'Android'},{key: 'iOS'}, {key: 'Java'},{key: 'Swift'},  
+                        {key: 'Php'},{key: 'Hadoop'},{key: 'Sap'},  
+                        {key: 'Python'},{key: 'Ajax'}, {key: 'C++'},  
+                        {key: 'Ruby'},{key: 'Rails'},{key: '.Net'},  
+                        {key: 'Perl'},{key: 'Sap'},{key: 'Python'},  
+                        {key: 'Ajax'}, {key: 'C++'},{key: 'Ruby'},  
+                        {key: 'Rails'},{key: '.Net'},{key: 'Perl'}  
+                    ]}  
+                    renderItem={({item}) =>  
+                        <Text style={styles.item}  
+                              onPress={this.getListViewItem.bind(this, item)}>{item.key}</Text>}  
+                    
+                />   */}
+
           </Menu>
+          </ScrollView>
 
         </TouchableOpacity>
       </View>
@@ -130,4 +169,3 @@ const CustomHeader = (props) => {
 }
 
 export default connect()(CustomHeader);
-
