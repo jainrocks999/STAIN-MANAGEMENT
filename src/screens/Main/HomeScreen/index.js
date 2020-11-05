@@ -21,11 +21,10 @@ function HomeScreen(props) {
   loadData1();
   },[])
   
- const handleBackButtonClick=()=> {
+  const handleBackButtonClick = () => {
     BackHandler.exitApp();
     return true;
-}
-
+  }
   const loadData=async()=>{
     dispatch({
       type: 'User_Stain_Request',

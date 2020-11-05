@@ -133,7 +133,7 @@ export default StyleSheet.create({
     width:'76%',
     height:40,
     borderWidth:1,
-    marginBottom:26,
+    marginBottom:6,
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-between',
@@ -143,6 +143,7 @@ export default StyleSheet.create({
   scroll:{
     flex: 1,
     paddingHorizontal:30,
-    marginBottom:45
+  // marginTop:20,
+    marginBottom:62
   }
 });

@@ -8,7 +8,8 @@ import {
   View,
   StatusBar,
   FlatList,
-  BackHandler
+  BackHandler,
+  Alert
 } from 'react-native';
 import styles from './style';
 import { useSelector } from 'react-redux';
@@ -20,7 +21,8 @@ import colors from '../../../component/colors';
 import HTML from 'react-native-render-html';
 import style from './style';
 import Loader from '../../../component/loader';
-
+let filtter = [];
+let arrayholder = [];
 const StainChart = ({ route }) => {
   const navigation = useNavigation();
   const [contents, setContent] = useState()
@@ -31,122 +33,127 @@ const StainChart = ({ route }) => {
   //const { btnName } = route.params;
   console.log(selector)
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
     setButton('STAIN CHART')
-    console.log('rohiitt'+selector)
-      const selectedName = selector.map(element => {
-        if (element.name == 'STAIN CHART') {
-          setChart(false)
-          setContent(element.content)
-        }
-      });
+    console.log('bajaj' + JSON.stringify(selector.name))
+
+    filtter = selector.slice('About Stains', 'Watch Video', 'What is a Poultice?', 'Important Cautions', '')
+    console.log('rohith' + JSON.stringify(filtter));
+    selector.map(element => {
+      console.log('RAHUL' + element.name)
+      if (element.name == 'About Stains') {
+        console.log('rohitjai' + element.name)
+      } else if (element.name == 'Watch Video') {
+      } else if (element.name == 'What is a Poultice?') {
+      } else if (element.name == 'How to Apply a Poultice') {
+      } else if (element.name == 'Important Cautions') {
+      } else {
+        filtter.push(element)
+      }
+      arrayholder = filtter;
+    });
   })
 
 
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
+  const handleBackButtonClick = () => {
+    BackHandler.addEventListener('hardwareBackPress', navigation.goBack());
     return true;
-}
-  const ShowStain = () => {
-    selector.map(element => {
-      if (element.name == "About Stains") {
-        setChart(false)
-        setButton(element.name)
-        setContent(element.content)
-      }
-    });
   }
 
-  const ShowWhat = () => {
-    selector.map(element => {
-      if (element.name == "What is a Poultice?") {
-        setChart(false)
-        setButton(element.name)
-        setContent(element.content)
-      }
-    });
-  }
-  const renderItem1 = () => {
-    if (button == 'STAIN CHART') {
-      return (
-        <View style={style.search}>
-          <TextInput
-            placeholder=''
-            style={{ width: '50%' }}
-          />
-          <Image source={require('../../../assets/Icons/Search.png')}
-            style={{ height: 20, width: 20 }}
-          />
-        </View>
-      )
-    }
-    else if (chart) {
-      return (
-        <View style={style.search}>
-          <TextInput
-            placeholder=''
-            style={{ width: '50%' }}
-          />
-          <Image source={require('../../../assets/Icons/Search.png')}
-            style={{ height: 20, width: 20 }}
-          />
-        </View>
-      )
-    }
 
-  }
+  const loadsearch = text => {
+    console.log('rohitbt' + text)
+    //setvalue(text)
+    // this.setState({
+    //     value: text,
+    // });
+    const newData = arrayholder.filter(item => {
+      console.log('hdbfhdvfhv' + (item.name))
+      const itemData = `${item.name}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+
+
+    });
+
+    filtter.push(newData)
+    // this.setState({
+    //     productData: newData,
+    // });
+  };
+  // const ShowStain = () => {
+  //   selector.map(element => {
+  //     if (element.name == "About Stains") {
+  //       setChart(false)
+  //       setButton(element.name)
+  //       setContent(element.content)
+  //     }
+  //   });
+  // }
+
+  // const ShowWhat = () => {
+  //   selector.map(element => {
+  //     if (element.name == "What is a Poultice?") {
+  //       setChart(false)
+  //       setButton(element.name)
+  //       setContent(element.content)
+  //     }
+  //   });
+  // }
+  // const renderItem1 = () => {
+  //   if (button == 'STAIN CHART') {
+  //     return (
+  //       <View style={style.search}>
+  //         <TextInput
+  //           placeholder=''
+  //           style={{ width: '50%' }}
+  //         />
+  //         <Image source={require('../../../assets/Icons/Search.png')}
+  //           style={{ height: 20, width: 20 }}
+  //         />
+  //       </View>
+  //     )
+  //   }
+  //   else if (chart) {
+  //     return (
+  //       <View style={style.search}>
+  //         <TextInput
+  //           placeholder=''
+  //           style={{ width: '50%' }}
+  //         />
+  //         <Image source={require('../../../assets/Icons/Search.png')}
+  //           style={{ height: 20, width: 20 }}
+  //         />
+  //       </View>
+  //     )
+  //   }
+
+  // }
   const renderItem = () => {
-    if (button == 'STAIN CHART') {
-      return (
-        selector.map(element => {
-          return (
-            <View style={{bottom:'1%'}}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('StainChart', {
-                    btnName: element.name,
-                  });
-                }}
-                style={{ margin: 5, }}
-              >
-                <Text style={{ fontSize: 15 }}>{element.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }
-        )
-      )
-    }
-    else if (chart) {
-      return (
-        selector.map(element => {
-          return (
-            <View>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('StainChart', {
-                    btnName: element.name,
-                  });
-                }}
-                style={{ margin: 5 }}
-              >
-                <Text style={{ fontSize: 15 }}>{element.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }
-        )
-      )
-    }
-    else {
+    console.log('mummy ji' + JSON.stringify(filtter))
+    return (
+      filtter.map(element => {
+        console.log('ram' + element.name)
+        return (
+          <View style={{marginTop:10}}>
 
-      return (
-        <HTML
-          html={contents}
-          imagesMaxWidth={Dimensions.get('window').width}
-        />
-      );
-    };
+            <Text style={{ fontSize: 15 }}>{element.name.toUpperCase()}</Text>
+
+          </View>
+        )
+      }
+      )
+    )
+
+    // else {
+
+    //   return (
+    //     <HTML
+    //       html={contents}
+    //       imagesMaxWidth={Dimensions.get('window').width}
+    //     />
+    //   );
+
   }
 
   return (
@@ -158,20 +165,31 @@ const StainChart = ({ route }) => {
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <Text
           style={style.headerText}>
-          {chart == true ? 'STAIN CHART' : button}
+          STAIN CHART
         </Text>
-        {renderItem1()}
+        <View style={style.search}>
+          <TextInput
+            placeholder=''
+            style={{ width: '50%' }}
+            onChangeText={search => {
+              loadsearch(search)
+            }}
+          />
+          <Image source={require('../../../assets/Icons/Search.png')}
+            style={{ height: 20, width: 20 }}
+          />
+        </View>
         <ScrollView
-          showsVerticalScrollIndicator={false}
+         // showsVerticalScrollIndicator={false}
           style={style.scroll}>
           {renderItem()}
         </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       <BottomTab
-        // goToAboutStain={ShowStain}
-        // goToWhatIs={ShowWhat}
-        // goToStainChart={() => setChart(true)}
+      // goToAboutStain={ShowStain}
+      // goToWhatIs={ShowWhat}
+      // goToStainChart={() => setChart(true)}
       />
     </View>
   );
