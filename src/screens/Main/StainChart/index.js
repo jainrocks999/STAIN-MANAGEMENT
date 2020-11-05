@@ -22,23 +22,22 @@ import HTML from 'react-native-render-html';
 import style from './style';
 import Loader from '../../../component/loader';
 let filtter = [];
-let arrayholder = [];
+//let arrayholder = [];
 const StainChart = ({ route }) => {
   const navigation = useNavigation();
   const [contents, setContent] = useState()
+  const [value, setvalue] = useState('');
   const selector = useSelector(state => state.StainDetails)
   const isFetching = useSelector(state => state.isFetching)
   const [button, setButton] = useState(null)
-  const [chart, setChart] = useState(false)
-  //const { btnName } = route.params;
-  console.log(selector)
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-    setButton('STAIN CHART')
-    console.log('bajaj' + JSON.stringify(selector.name))
 
-    filtter = selector.slice('About Stains', 'Watch Video', 'What is a Poultice?', 'Important Cautions', '')
-    console.log('rohith' + JSON.stringify(filtter));
+
+  const [arrayholder, setArrayholder] = useState([])
+  const [text, setText] = useState('')
+  const [data, setData] = useState([])
+  useEffect(() => {
+    // BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+    setButton('STAIN CHART')
     selector.map(element => {
       console.log('RAHUL' + element.name)
       if (element.name == 'About Stains') {
@@ -49,38 +48,30 @@ const StainChart = ({ route }) => {
       } else if (element.name == 'Important Cautions') {
       } else {
         filtter.push(element)
+        setData(filtter)
       }
-      arrayholder = filtter;
+      setArrayholder(filtter)
     });
   })
 
 
-  const handleBackButtonClick = () => {
-    BackHandler.addEventListener('hardwareBackPress', navigation.goBack());
-    return true;
-  }
+  // const handleBackButtonClick = () => {
+  //   BackHandler.addEventListener('hardwareBackPress', navigation.goBack());
+  //   return true;
+  // }
 
 
-  const loadsearch = text => {
-    console.log('rohitbt' + text)
-    //setvalue(text)
-    // this.setState({
-    //     value: text,
-    // });
+  const loadsearch = (text) => {
     const newData = arrayholder.filter(item => {
-      console.log('hdbfhdvfhv' + (item.name))
-      const itemData = `${item.name}`;
+      const itemData = item.name.toUpperCase();
       const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-
-
+      return itemData.indexOf(textData) > -1
     });
 
-    filtter.push(newData)
-    // this.setState({
-    //     productData: newData,
-    // });
-  };
+    setData(newData)
+    setText(text)
+  }
+
   // const ShowStain = () => {
   //   selector.map(element => {
   //     if (element.name == "About Stains") {
@@ -129,32 +120,32 @@ const StainChart = ({ route }) => {
   //   }
 
   // }
-  const renderItem = () => {
-    console.log('mummy ji' + JSON.stringify(filtter))
-    return (
-      filtter.map(element => {
-        console.log('ram' + element.name)
-        return (
-          <View style={{marginTop:10}}>
+  // const renderItem = () => {
+  //   console.log('mummy ji' + JSON.stringify(filtter))
+  //   return (
+  //     filtter.map(element => {
+  //       console.log('ram' + element.name)
+  //       return (
+  //         <View style={{marginTop:10}}>
 
-            <Text style={{ fontSize: 15 }}>{element.name.toUpperCase()}</Text>
+  //           <Text style={{ fontSize: 15 }}>{element.name.toUpperCase()}</Text>
 
-          </View>
-        )
-      }
-      )
-    )
+  //         </View>
+  //       )
+  //     }
+  //     )
+  //   )
 
-    // else {
+  // else {
 
-    //   return (
-    //     <HTML
-    //       html={contents}
-    //       imagesMaxWidth={Dimensions.get('window').width}
-    //     />
-    //   );
+  //   return (
+  //     <HTML
+  //       html={contents}
+  //       imagesMaxWidth={Dimensions.get('window').width}
+  //     />
+  //   );
 
-  }
+  // }
 
   return (
     <View style={{ flex: 1 }}>
@@ -179,11 +170,17 @@ const StainChart = ({ route }) => {
             style={{ height: 20, width: 20 }}
           />
         </View>
-        <ScrollView
-         // showsVerticalScrollIndicator={false}
-          style={style.scroll}>
-          {renderItem()}
-        </ScrollView>
+        <FlatList
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          //ItemSeparatorComponent={itemSeparator}
+          renderItem={({ item }) =>
+            <View style={{ marginTop: 10 }}>
+
+              <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+
+            </View>}
+          style={{ marginTop: 10 }} />
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       <BottomTab
