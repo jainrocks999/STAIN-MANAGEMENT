@@ -2,10 +2,7 @@ import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors'
 export default StyleSheet.create({
   imageBackground: {
-   
-    width:'100%',
-    height:'100%',
-    alignItems: 'center',
+   flex:1
   },
   logoContainer: {
     marginTop:'40%',
@@ -13,6 +10,14 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   header:{height:40,width:'100%',backgroundColor:colors.orange},
+  SignIn: {
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: colors.darkOrange,
+  },
+  
+
   subHeading:{
     fontFamily:'Arial',
     fontWeight:'bold',
@@ -21,11 +26,11 @@ export default StyleSheet.create({
   },
   textInputContainer:{
     marginTop:'10%',
-    width:'80%'
+    width:'100%'
     
   },
   textInput:{
-    marginTop:'5%',
+    marginTop:10,
     backgroundColor:colors.white,
     padding:15,
     borderWidth:1,
@@ -48,13 +53,13 @@ export default StyleSheet.create({
   },
   
   button:{
-    height:'7%',
+    height:40,
     width:'40%',
-    marginTop:'15%',
+    marginTop:'10%',
     backgroundColor:colors.orange,
     opacity:87,
     justifyContent:'center',
-    alignItems:'center',
+    alignSelf:'center',
     borderRadius:4,
   },
   buttonText:{

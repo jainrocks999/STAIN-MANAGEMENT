@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  BackHandler
+  BackHandler,
+  ScrollView
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import colors from '../../../component/colors';
@@ -45,12 +46,11 @@ const EditData=async()=>{
 }
   return (
     <View style={{flex: 1}}>
-      <CustomHeader
-       
-      />
+      <CustomHeader/>
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom:20  }}>
         <View style={styles.heading}>
           <Text style={styles.subHeading}>Account Management</Text>
         </View>
@@ -63,7 +63,7 @@ const EditData=async()=>{
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginTop: '15%',
+              marginTop: '5%',
             }}>
             <Image 
             source={require('../../../assets/Icons/Photo.png')} />
@@ -125,12 +125,13 @@ const EditData=async()=>{
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigation.navigate('Change')}>
           <Text 
-          style={[styles.checkbox,{textAlign:'center',marginTop:'10%'}]}>
+          style={[styles.checkbox,{textAlign:'center',marginTop:'5%'}]}>
             Change Password
             </Text>
           </TouchableOpacity>
          
         </View>
+        </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>  
   </View>

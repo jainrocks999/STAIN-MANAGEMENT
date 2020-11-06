@@ -1,17 +1,19 @@
 import { Alert } from 'react-native';
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call, take } from 'redux-saga/effects';
 import Api from '../Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../component/storage';
 import Toast from 'react-native-simple-toast';
 //Login
 function* doLogin(action) {
+  console.log('login :',action.Username);
   const data = new FormData();
   data.append("username", action.Username)
   data.append("password", action.Password)
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   const formatRes = JSON.parse(res)
   const id = JSON.stringify(formatRes.user_id)
+  console.log('fprmatRes',formatRes);
   if (formatRes.status == 'true') {
     yield put({
       type: 'User_Login_Success',
@@ -71,12 +73,12 @@ function* doRegister(action) {
 }
 //getEditProfile()
 function* doGetEditProfile(action) {
-  console.log('hello guru'+action)
+  console.log('hello guru' + action)
   const response = yield call(Api.fetchDataByPOSTValue, action.url);
   console.log('Edit user detail' + response.status)
   const formatedResponse = JSON.parse(response)
   console.log('Edit user detail123' + formatedResponse.status)
- // ALert.alert('Alert', formatedResponse.status);
+  // ALert.alert('Alert', formatedResponse.status);
   console.log(action.url)
   if (formatedResponse.status == 'true') {
 
@@ -88,7 +90,7 @@ function* doGetEditProfile(action) {
       type: 'User_Get_Edit_Profile_Success',
       payload: formatedResponse,
     });
-    
+
     Toast.show(formatedResponse.message)
   } else {
     Toast.show(formatedResponse.message)
@@ -99,10 +101,36 @@ function* doGetEditProfile(action) {
   }
 }
 
+//Getsubscribe
+function* doGetSubScribe(action) {
+  console.log('hello guru' + action.url)
+  const response = yield call(Api.fetchDataByGETValue, action.url);
+  console.log('Edit user detail' + response.status)
+  const formatedResponse = JSON.parse(response)
+  console.log('Edit user detail123' + formatedResponse)
+  // ALert.alert('Alert', formatedResponse.status);
+//  console.log(action.url)
+  if (formatedResponse.status == 'true') {
+  // Alert.alert(formatedResponse.status)
+    yield put({
+      type: 'User_SubScribeDetails_Success',
+      payload: formatedResponse,
+    });
+
+    Toast.show(formatedResponse.message)
+  } else {
+    Toast.show(formatedResponse.message)
+    // Alert.alert('narendra', formatedResponse.message);
+    yield put({
+      type: 'User_SubScribeDetails_Error',
+    });
+  }
+}
+
 
 //EditProfile
 function* doEditProfile(action) {
-//Alert.alert('yeh')
+  //Alert.alert('yeh')
   const data = new FormData()
   data.append("user_id", action.userId)
   data.append("username", action.username)
@@ -252,4 +280,5 @@ export default function* authSaga() {
   yield takeEvery('User_Forgot_Password_Request', doForgot);
   yield takeEvery('User_Change_Password_Request', doChangePassword);
   yield takeEvery('User_Get_Edit_Profile_Request', doGetEditProfile);
+  yield takeEvery('User_SubScribeDetails_Request', doGetSubScribe);
 }

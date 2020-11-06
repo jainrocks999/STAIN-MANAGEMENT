@@ -34,6 +34,10 @@ const CustomHeader = (props) => {
     navigation.navigate('supportTwo')
     _menu.hide();
   };
+  const Subscribe = () => {
+    navigation.navigate('Subscribe')
+    _menu.hide();
+  };
   const Logout = () => {
     Alert.alert(
       'Are you want to logout ?',
@@ -73,7 +77,7 @@ const CustomHeader = (props) => {
 
   return (
 
-    <View style={styles.header1}>
+    <View style={styles.header}>
 
 
       <TouchableOpacity
@@ -91,9 +95,9 @@ const CustomHeader = (props) => {
 
 
 
-      <View style={styles.header}>
+      <View style={styles.header1}>
         <TouchableOpacity
-        style={{height:26,width:26,justifyContent:'center',alignItems:'center',alignSelf:'center'}}
+        style={{height:26,width:26,justifyContent:'center',alignItems:'center',alignSelf:'center',}}
         onPress={() => { Alert.alert('notification') }}>
           <Image source={require('../../assets/Icons/bell.png')}
             style={{ tintColor: '#fff' ,height:'100%',width:'100%'}}
@@ -102,8 +106,8 @@ const CustomHeader = (props) => {
         </TouchableOpacity>
         <TouchableOpacity 
          style={{height:30,width:30,marginLeft:20,alignItems:'center',justifyContent:'center'}}
-        onPress={props.onPress}>
-            <ScrollView >
+         onPress={showMenu}>
+            
           <Menu
             ref={setMenuRef}
             button={
@@ -111,7 +115,7 @@ const CustomHeader = (props) => {
             activeOpacity={0.6}
              underlayColor="transparent"
             style={{height:26,width:26,justifyContent:'center',alignItems:'center'}}
-              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+             // hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
               //activeOpacity={10.00}
             onPress={showMenu}>
               <Image
@@ -136,7 +140,7 @@ const CustomHeader = (props) => {
               onPress={Support}>Support</MenuItem>
             <MenuItem
               style={styles.itemSeperator}
-              onPress={Logout}>Subscribe</MenuItem>
+              onPress={Subscribe}>Subscribe</MenuItem>
             <MenuItem
               style={styles.itemSeperator}
               onPress={Logout}>Logout</MenuItem>
@@ -159,7 +163,7 @@ const CustomHeader = (props) => {
                 />   */}
 
           </Menu>
-          </ScrollView>
+          
 
         </TouchableOpacity>
       </View>

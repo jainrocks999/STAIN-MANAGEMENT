@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  BackHandler
+  BackHandler,
+  ScrollView
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
@@ -34,6 +35,7 @@ const AccManagement_1 = () => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
+            <ScrollView contentContainerStyle={{ flexGrow:1, paddingHorizontal:20,paddingBottom:30,}}>
         <View style={styles.heading}>
           <Text style={styles.subHeading}>Account Management</Text>
         </View>
@@ -46,7 +48,7 @@ const AccManagement_1 = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginTop: '15%',borderWidth:0.3, padding:10,borderColor:colors.darkOrange
+              marginTop: '5%',borderWidth:0.3, padding:10,borderColor:colors.darkOrange
             }}>
             <Image 
             source={require('../../../assets/Icons/card1.png')} />
@@ -110,6 +112,7 @@ const AccManagement_1 = () => {
           </TouchableOpacity>
 
         </View>
+        </ScrollView>
       </ImageBackground>
      <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
     </View>

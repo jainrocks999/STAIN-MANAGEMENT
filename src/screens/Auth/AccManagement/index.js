@@ -6,7 +6,8 @@ import {
   StatusBar, 
   TouchableOpacity, 
   View,
-  BackHandler
+  BackHandler,
+  ScrollView
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
@@ -32,17 +33,18 @@ const AccManagement =()=> {
   
   return (
     <View style={{flex:1}}>
-<CustomHeader onPress ={()=>{Alert.alert('hey')}}/>
+<CustomHeader />
           <ImageBackground
 
             style={styles.imageBackground}
             source={require('../../../assets/Images/AppBackground.jpg')}
             
             >
+              <ScrollView contentContainerStyle={{ flexGrow: 1,alignItems:'center' }}>
               <View style={styles.heading}>
            <Text style={styles.subHeading}>Account Management</Text>
             </View>
-             
+            
             <View style={styles.settings}>
              <Text style={styles.settingsText}>Account Settings</Text>
             <View style={styles.settingsContainer}>
@@ -70,6 +72,7 @@ const AccManagement =()=> {
               </TouchableOpacity>
             </View>
           </View>
+          </ScrollView>
           </ImageBackground>
      <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
       </View>

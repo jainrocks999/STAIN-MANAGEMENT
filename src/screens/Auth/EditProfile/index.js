@@ -239,9 +239,15 @@ class EditProfile extends React.Component {
           style={styles.imageBackground}
           source={require('../../../assets/Images/AppBackground.jpg')}>
 
+          <ScrollView contentContainerStyle={{ flexGrow:1, paddingHorizontal:20,paddingBottom:20,}}>
+         
+         
           <View style={styles.logoContainer}>
-            <Text style={styles.subHeading}>Edit Your Profile</Text>
+            <Text style={styles.subHeading}>Account Management</Text>
+          
           </View>
+          <View style={{justifyContent:'center',flex: 0.6,marginTop:'10%',}}>
+          <Text style={styles.SignIn}>Edit Your Profile</Text>
           <View style={styles.textInputContainer}>
             <TextInput
               style={styles.textInput}
@@ -283,6 +289,8 @@ class EditProfile extends React.Component {
           >
             <Text style={styles.buttonText}>Edit</Text>
           </TouchableOpacity>
+          </View>
+          </ScrollView>
         </ImageBackground>
         <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content' />
       </View>

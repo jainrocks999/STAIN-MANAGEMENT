@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './style';
@@ -35,7 +36,9 @@ const AccManagement_1 = () => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
+        <ScrollView contentContainerStyle={{ flexGrow:1, paddingHorizontal:20,paddingBottom:30,}}>
         <View style={styles.heading}>
+
           <Text style={styles.subHeading}>Account Management</Text>
         </View>
         
@@ -99,6 +102,7 @@ const AccManagement_1 = () => {
           </TouchableOpacity>
 
           </View>
+          </ScrollView>
       </ImageBackground>
      <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
     </View>

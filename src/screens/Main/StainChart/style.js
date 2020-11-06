@@ -130,7 +130,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   search:{
-    width:'76%',
+    width:'80%',
     height:40,
     borderWidth:1,
     marginBottom:6,

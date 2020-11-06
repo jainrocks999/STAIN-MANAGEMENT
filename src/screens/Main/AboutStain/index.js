@@ -163,7 +163,7 @@ const AboutStain = ({ route }) => {
         {renderItem1()}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={styles.scroll}>
+          contentContainerStyle={styles.scroll}>
           {renderItem()}
         </ScrollView>
       </ImageBackground>

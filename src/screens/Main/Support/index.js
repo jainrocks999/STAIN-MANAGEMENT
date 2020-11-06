@@ -210,7 +210,8 @@ const SupportScreen = ({ route }) => {
         {renderItem1()}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={style.scroll}>
+          style={style.scroll}
+          >
           {renderCaseStudies()}
           {renderItem()}
         </ScrollView>

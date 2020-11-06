@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import {Alert, BackHandler, Image, ImageBackground, Text,View} from 'react-native';
+import {Alert, BackHandler, Image, ImageBackground, ScrollView, Text,View} from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -22,13 +22,16 @@ const About =()=> {
 }
   return (
     <View style={{flex:1}}>
-<CustomHeader onPress ={()=>{Alert.alert('hey')}}/>
+<CustomHeader />
           <ImageBackground
 
             style={styles.imageBackground}
             source={require('../../../assets/Images/AppBackground.jpg')}
             
             >
+      <ScrollView contentContainerStyle={styles.scroll}>
+              
+
               <View style={styles.headingView}>
            <Text style={styles.heading}>ABOUT THIS APP</Text>
             </View>
@@ -54,6 +57,7 @@ const About =()=> {
              particular stain you may need information on immediately or to just use for 
              reference as needed.</Text>
             </View>
+              </ScrollView>
           </ImageBackground>
       
       </View>

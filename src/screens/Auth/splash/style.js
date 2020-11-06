@@ -2,10 +2,7 @@ import {StyleSheet} from 'react-native';
 import color from '../../../component/colors'
 export default StyleSheet.create({
   imageBackground: {
-   
-    width:'100%',
-    height:'100%',
-    alignItems: 'center',
+   flex:1,
   },
   logoContainer: {
     marginTop:40,

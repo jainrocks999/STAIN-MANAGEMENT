@@ -7,6 +7,7 @@ import {
   View,
   StatusBar,
   Alert,
+  ScrollView,
   BackHandler
 } from 'react-native';
 import styles from './style';
@@ -67,6 +68,7 @@ const loadData=async()=>{
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom:20  }}>
         <View style={styles.heading}>
           <Text style={styles.subHeading}>Account Management</Text>
         </View> 
@@ -105,8 +107,9 @@ const loadData=async()=>{
           </TouchableOpacity>
 
        </View>
+       </ScrollView>
       </ImageBackground>
-    <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content'/>
+    <StatusBar backgroundColor={colors.darkOrange} barStyle='default'/>
     </View>
   );
 };

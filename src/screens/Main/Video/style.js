@@ -5,11 +5,7 @@ const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
     flex:1,
-    width: '100%',
-    height: Dimensions.get('window').height,
-    alignItems: 'center',
-    alignSelf:'center',
-    alignContent:'center'
+    
   },
   headingView: {   
     marginTop: '10%',

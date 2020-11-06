@@ -107,7 +107,7 @@ class StainChart extends React.Component {
             <TextInput
               placeholder=''
               //value={text}
-              style={{ width: '50%' }}
+              style={{ width: '90%',padding:7, }}
               onChangeText={search => {
                 this.loadsearch(search)
               }}

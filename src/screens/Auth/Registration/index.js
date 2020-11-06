@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar, BackHandler} from 'react-native';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar, BackHandler,ScrollView} from 'react-native';
 
 
 import styles from './style';
@@ -74,8 +74,9 @@ const Registration =()=> {
 
             style={styles.imageBackground}
             source={require('../../../assets/Images/AppBackground.jpg')}>
-            
+             <ScrollView contentContainerStyle={{ flexGrow:1, paddingHorizontal:20,paddingBottom:30,justifyContent:'center'}}>
             <View style={styles.textInputContainer}>
+            <Text style={styles.SignIn}>Sign Up </Text>
             <TextInput 
             style={styles.textInput}
             placeholder=' Username'
@@ -117,7 +118,7 @@ const Registration =()=> {
           onPress={doRegister}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
-
+            </ScrollView>
           </ImageBackground>
        <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
       </View>

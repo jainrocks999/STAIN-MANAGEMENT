@@ -1,5 +1,5 @@
 import React, { useEffect, useState,} from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert,BackHandler} from 'react-native';
+import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert,BackHandler, ScrollView} from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
 import { useNavigation } from '@react-navigation/native';
@@ -55,12 +55,13 @@ function HomeScreen(props) {
   return (
     <View style={{flex:1}}>
        <CustomHeader/>
+       
           <ImageBackground
 
             style={styles.imageBackground}
-            source={require('../../../assets/Images/HomeScreen.png')}
-            
+            source={require('../../../assets/Images/HomeScreen.png')}            
             >
+              <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', }}>
               <View style={styles.logoContainer}>
             <Image
             style={styles.logo}
@@ -69,6 +70,8 @@ function HomeScreen(props) {
             />
             
             </View>
+           
+            
               <View style={styles.logoContainer}>
            <Text style={styles.heading}>INTERACTIVE STAIN MANAGEMENT APP</Text>
             
@@ -77,14 +80,15 @@ function HomeScreen(props) {
            <Text style={styles.subHeading}>For stone, tile, concrete and{'\n'} other hard porous surfaces</Text>
             
             </View>
-            <View style={{flex:1,justifyContent:'center'}}>
+           
+            <View style={{justifyContent:'center',marginVertical:40}}>
             <TouchableOpacity 
              onPress={()=>{
               navigation.navigate('AboutStains', {
                 btnName:'About Stains',
               });
             }}
-            style={[styles.button,{marginTop:'5%'}]}>
+            style={[styles.button,{marginTop:5}]}>
               <Text style={styles.buttonText}
               >About Stains</Text>
             </TouchableOpacity>
@@ -139,6 +143,7 @@ function HomeScreen(props) {
               <Text style={styles.buttonText}>Important!</Text>
             </TouchableOpacity>
             </View>
+            </ScrollView>
           </ImageBackground>
        <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content' />
       </View>

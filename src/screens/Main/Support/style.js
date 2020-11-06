@@ -5,8 +5,6 @@ const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
     flex:1,
-    width: '100%',
-    height: Dimensions.get('window').height,
     alignItems: 'center',
     alignSelf:'center',
     alignContent:'center'
@@ -143,6 +141,8 @@ export default StyleSheet.create({
   scroll:{
     flex: 1,
     paddingHorizontal:30,
-    marginBottom:45
+    paddingBottom:45,
+    marginBottom:60
+
   }
 });

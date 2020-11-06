@@ -2,9 +2,7 @@ import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
 export default StyleSheet.create({
   imageBackground: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
+flex:1
   },
   heading: {
     marginTop: '10%',
@@ -26,14 +24,16 @@ export default StyleSheet.create({
   },
   
   Subscriber: {
-    paddingHorizontal:'3%',
+    paddingHorizontal:10,
     fontFamily: 'Arial',
     fontSize: 14,
     color: colors.darkOrange,
   },
   settings: {
-    marginTop: '20%',
-    width: '70%',
+    flex:0.6,
+    justifyContent:'center',
+    marginTop: '10%',
+    width: '100%',
   },
   settingsContainer: {
     marginTop: '10%',
@@ -59,7 +59,7 @@ export default StyleSheet.create({
   },
   textInputContainer: {},
   textInput: {
-    marginTop: '2%',
+    marginTop:5,
     width: '100%',
     backgroundColor: colors.white,
     padding: 15,
@@ -74,7 +74,7 @@ export default StyleSheet.create({
     color:'#5D5D5D'
   },
   checkboxContainer: {
-    marginTop: '10%',
+    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -85,9 +85,9 @@ export default StyleSheet.create({
 checkboxContainerView1:{backgroundColor: '#fff', marginRight: 10,},
 
   button: {
-    height: '10%',
+    height: 40,
     width: '40%',
-    marginTop: '15%',
+    marginTop: '10%',
     backgroundColor: colors.orange,
     opacity: 87,
     justifyContent: 'center',

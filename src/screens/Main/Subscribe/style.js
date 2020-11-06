@@ -1,20 +1,36 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
+
+const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
-    flex:1
+flex:1
   },
-  heading: {
-    marginTop:'5%',
+  headingView: {   
+    marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf:'center',
+    borderBottomWidth:2,
+    borderBottomColor:colors.darkOrange
   },
-  
-  subHeading: {
+  heading: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
     fontSize: 17,
     color: colors.darkOrange,
+  },
+  subHeadingView: {
+    borderWidth:1,
+    width:'100%',
+    marginTop:'10%',
+  },
+  
+  subHeading: {
+    fontFamily: 'Arial',
+    lineHeight:18,
+    fontSize: 14,
+    color: '#000000',
   },
   settingsText: {
     fontFamily: 'Arial',
@@ -23,16 +39,12 @@ export default StyleSheet.create({
     color: colors.darkOrange,
   },
   settings: {
-    flex:1/2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:'100%'
-    
+  
+    marginTop: '25%',
+    width: '70%',
   },
   settingsContainer: {
-  width:'80%',
-    // marginTop: '10%',
-    margin:20,
+    width:'100%',
     borderTopWidth: 1,
     borderRightWidth:1,
     borderLeftWidth:1,
@@ -53,7 +65,7 @@ export default StyleSheet.create({
     color: colors.darkOrange,
   },
   textInput: {
-    // marginTop: '5%',
+    marginTop: '5%',
     backgroundColor: colors.white,
     padding: 15,
     borderWidth: 1,

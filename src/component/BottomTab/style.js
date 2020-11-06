@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 58,
     paddingVertical: 8,
-    width: Dimensions.get('screen').width,
+    width: Dimensions.get('window').width,
     backgroundColor: colors.orange,
     alignItems: 'center',
     justifyContent: 'space-evenly',

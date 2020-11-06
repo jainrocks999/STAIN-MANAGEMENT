@@ -23,6 +23,7 @@ import About from '../screens/Main/About';
 import SupportTwo from '../screens/Main/SupportTwo';
 import Resource from '../screens/Main/Resource';
 import HowTo from '../screens/Main/HowTo';
+import SubScribeDetails from '../screens/Main/Subscribe';
 const Stack = createStackNavigator();
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
         <Stack.Screen name="Payment" component={Payment}/>
         <Stack.Screen name="Payment1" component={Payment1}/>
+        <Stack.Screen name="Subscribe" component={SubScribeDetails}/>
         <Stack.Screen name="Video" component={Video} options={{animationEnabled: false,}}/>
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />

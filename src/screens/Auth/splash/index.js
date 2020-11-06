@@ -30,12 +30,12 @@ const SplashScreen =()=> {
   }
   return (
     <View style={{flex:1}}>
-          <CustomHeader/>
           <ImageBackground
 
-            style={styles.imageBackground}
-            source={require('../../../assets/Images/HomeScreen.png')}
-            >
+style={styles.imageBackground}
+source={require('../../../assets/Images/HomeScreen.png')}
+>
+<CustomHeader/>
               <View style={styles.logoContainer}>
             <Image
             style={styles.logo}

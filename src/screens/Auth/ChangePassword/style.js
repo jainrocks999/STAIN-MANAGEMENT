@@ -2,9 +2,7 @@ import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
 export default StyleSheet.create({
   imageBackground: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
+flex:1
   },
   heading: {
     marginTop: '10%',
@@ -31,8 +29,10 @@ export default StyleSheet.create({
     color: colors.darkOrange,
   },
   settings: {
-    marginTop: '20%',
-    width: '70%',
+    flex:0.7,
+    paddingHorizontal:20,
+    justifyContent:'center',
+    width: '99%',
   },
   settingsContainer: {
     marginTop: '10%',
@@ -58,10 +58,10 @@ export default StyleSheet.create({
   },
   textInputContainer: {},
   textInput: {
-    marginTop: '5%',
+    marginTop:10,
     width: '100%',
     backgroundColor: colors.white,
-    padding: 15,
+    padding: 10,
     borderWidth: 1,
     borderRadius: 4,
     borderColor: '#C9C8C7',
@@ -84,9 +84,9 @@ export default StyleSheet.create({
 checkboxContainerView1:{backgroundColor: '#fff', marginRight: 10,},
 
   button: {
-    height: '15%',
+    height: 40,
     width: '40%',
-    marginTop: '15%',
+    marginTop: '5%',
     backgroundColor: colors.orange,
     opacity: 87,
     justifyContent: 'center',

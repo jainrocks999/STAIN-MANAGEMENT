@@ -3,7 +3,6 @@ import colors from '../../../component/colors'
 export default StyleSheet.create({
   imageBackground: {
   flex:1, 
-    alignItems: 'center',
     
   },
   logoContainer: {
@@ -26,8 +25,9 @@ export default StyleSheet.create({
     fontWeight:'bold',
     textAlign:'center'
   },
-  button:{height:'12%',
+  button:{height:50,
 width:200,
+padding:10,
     marginTop:'3%',
     backgroundColor:colors.orange,
     opacity:87,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, Text, TextInput, Linking, TouchableOpacity, View, Alert, StatusBar, ActivityIndicator } from 'react-native';
+import { ImageBackground, Text, TextInput, Linking, TouchableOpacity, View, Alert, StatusBar, ActivityIndicator, ScrollView } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import Loader from '../../../component/loader';
 import styles from './style';
@@ -26,10 +26,11 @@ const LoginScreen = ({ route }) => {
 
   useEffect(() => {
     subscription();
-  })
+  },[])
 
   const subscription = async () => {
     let url = await AsyncStorage.getItem(storage.Url);
+    console.log('url',url);
     seturl(url)
     let btn = await AsyncStorage.getItem(storage.button_text);
     setbtn(btn)
@@ -63,20 +64,31 @@ const LoginScreen = ({ route }) => {
         props: navigation
       });
       if (url == null) {
-        // Alert.alert('not allow')
+        //Alert.alert('not allow')
       } else {
        setisVisible(true)
       }
     }
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1,}}>
       <CustomHeader />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}
       >
+            <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center',paddingBottom:20 }}>
+        {/* <ScrollView style={{}}
+        // contentContainerStyle={{justifyContent:'center',alignItems:'center'}}
+        > */}
+          <View style={{
+     flex:1,
+     justifyContent: 'center',
+     alignItems: 'center'
+    
+}}>
+  
         <View style={styles.logoContainer}>
           <Text style={styles.subHeading}>Member Login</Text>
         </View>
@@ -96,8 +108,9 @@ const LoginScreen = ({ route }) => {
           />
         </View>
         <View style={styles.checkboxContainer}>
-          <View style={{ backgroundColor: "#fff" }}>
+          <View style={{ backgroundColor: "#fff" ,marginRight:10,height:30,width:30}}>
             <CheckBox
+              style={{height:'100%',width:'100%'}}
               disabled={false}
               value={toggleCheckBox}
               onValueChange={(newValue) => setToggleCheckBox(newValue)}
@@ -115,7 +128,7 @@ const LoginScreen = ({ route }) => {
         </TouchableOpacity>
         <View>
 
-          <TouchableOpacity style={{ marginTop: 10 }}
+          <TouchableOpacity style={{ marginBottom: 10 }}
             onPress={() => navigation.navigate('Register')}>
             <Text style={{ fontSize: 19, color: colors.darkOrange }}>Register Now</Text>
           </TouchableOpacity>
@@ -155,7 +168,8 @@ const LoginScreen = ({ route }) => {
 
           </View>
         </Modal>
-
+        </View>
+        </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
 

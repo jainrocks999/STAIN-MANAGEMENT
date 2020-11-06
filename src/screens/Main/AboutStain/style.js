@@ -141,8 +141,8 @@ export default StyleSheet.create({
     backgroundColor:colors.white
   },
   scroll:{
-    flex: 1,
     paddingHorizontal:30,
-    marginBottom:45
+    paddingBottom:45,
+    flexGrow: 1, justifyContent: 'center',
   }
 });

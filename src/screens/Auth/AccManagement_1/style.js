@@ -2,13 +2,11 @@ import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
 export default StyleSheet.create({
   imageBackground: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
+flex:1
+  
   },
   heading: {
     marginTop: '10%',
-    justifyContent: 'center',
     alignItems: 'center',
   },
 
@@ -31,8 +29,11 @@ export default StyleSheet.create({
     color: colors.darkOrange,
   },
   settings: {
-    marginTop: '20%',
-    width: '70%',
+flex:0.75,
+    width:'99%',
+    paddingHorizontal:20,
+    justifyContent:'center'
+    
   },
   settingsContainer: {
     marginTop: '10%',
@@ -58,7 +59,7 @@ export default StyleSheet.create({
   },
   textInputContainer: {},
   textInput: {
-    marginTop: '5%',
+    marginTop:'5%',
     width: '100%',
     backgroundColor: colors.white,
     padding: 15,
@@ -73,13 +74,14 @@ export default StyleSheet.create({
     color:'#5D5D5D'
   },
   checkboxContainer: {
-    marginTop: '10%',
+    paddingHorizontal:20,
+    marginTop: '5%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   checkboxContainer1: {
-    marginTop: '5%',
+    paddingHorizontal:20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -90,9 +92,9 @@ export default StyleSheet.create({
 checkboxContainerView1:{backgroundColor: '#fff', marginRight: 10,},
 
   button: {
-    height: '10%',
+    height: 40,
     width: '40%',
-    marginTop: '15%',
+    marginTop: '5%',
     backgroundColor: colors.orange,
     opacity: 87,
     justifyContent: 'center',
