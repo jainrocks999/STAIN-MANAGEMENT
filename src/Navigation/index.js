@@ -23,6 +23,7 @@ import About from '../screens/Main/About';
 import SupportTwo from '../screens/Main/SupportTwo';
 import Resource from '../screens/Main/Resource';
 import HowTo from '../screens/Main/HowTo';
+import SubScribeDetails from '../screens/Main/SubScribeDetails';
 const Stack = createStackNavigator();
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Stack.Screen name="About" component={About}/>
         <Stack.Screen name="supportTwo" component={SupportTwo}/>
         <Stack.Screen name="resource" component={Resource}/>
+        <Stack.Screen name="SubScribeDetails" component={SubScribeDetails}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

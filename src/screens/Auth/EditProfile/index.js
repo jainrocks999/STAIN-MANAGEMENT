@@ -242,6 +242,7 @@ class EditProfile extends React.Component {
           <View style={styles.logoContainer}>
             <Text style={styles.subHeading}>Edit Your Profile</Text>
           </View>
+          <ScrollView>
           <View style={styles.textInputContainer}>
             <TextInput
               style={styles.textInput}
@@ -278,6 +279,7 @@ class EditProfile extends React.Component {
 
             />
           </View>
+          </ScrollView>
           <TouchableOpacity style={styles.button}
             onPress={this.loadData}
           >

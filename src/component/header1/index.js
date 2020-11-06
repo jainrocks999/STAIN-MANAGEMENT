@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Image, ImageBackground, View, Text, TouchableOpacity, Alert ,Pressable} from 'react-native';
+import { Image, ImageBackground, View, Text, TouchableOpacity, Alert, Pressable } from 'react-native';
 //import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import { connect } from 'react-redux';
@@ -34,6 +34,10 @@ const CustomHeader = (props) => {
     navigation.navigate('supportTwo')
     _menu.hide();
   };
+  const Subscribe = () => {
+    navigation.navigate('SubScribeDetails')
+    _menu.hide();
+  }
   const Logout = () => {
     Alert.alert(
       'Are you want to logout ?',
@@ -67,9 +71,9 @@ const CustomHeader = (props) => {
     _menu.show();
   };
 
-  getListViewItem = (item) => {  
-    Alert.alert(item.key);  
-}  
+  getListViewItem = (item) => {
+    Alert.alert(item.key);
+  }
 
   return (
 
@@ -93,56 +97,56 @@ const CustomHeader = (props) => {
 
       <View style={styles.header}>
         <TouchableOpacity
-        style={{height:26,width:26,justifyContent:'center',alignItems:'center',alignSelf:'center'}}
-        onPress={() => { Alert.alert('notification') }}>
+          style={{ height: 26, width: 26, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}
+          onPress={() => { Alert.alert('notification') }}>
           <Image source={require('../../assets/Icons/bell.png')}
-            style={{ tintColor: '#fff' ,height:'100%',width:'100%'}}
+            style={{ tintColor: '#fff', height: '100%', width: '100%' }}
             resizeMode='cover' />
 
         </TouchableOpacity>
-        <TouchableOpacity 
-         style={{height:30,width:30,marginLeft:20,alignItems:'center',justifyContent:'center'}}
-        onPress={props.onPress}>
-            <ScrollView >
-          <Menu
-            ref={setMenuRef}
-            button={
-            <TouchableHighlight 
-            activeOpacity={0.6}
-             underlayColor="transparent"
-            style={{height:26,width:26,justifyContent:'center',alignItems:'center'}}
-              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-              //activeOpacity={10.00}
-            onPress={showMenu}>
-              <Image
-              style={{height:'100%',width:'100%'}}
-              resizeMode='contain'
-              source={require('../../assets/Icons/menu.png')} />
-            </TouchableHighlight>}
-          >
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={Account}>Account</MenuItem>
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={About}>About the APP</MenuItem>
+        <TouchableOpacity
+          style={{ height: 30, width: 30, marginLeft: 20, alignItems: 'center', justifyContent: 'center' }}
+          onPress={props.onPress}>
+          <ScrollView >
+            <Menu
+              ref={setMenuRef}
+              button={
+                <TouchableHighlight
+                  activeOpacity={0.6}
+                  underlayColor="transparent"
+                  style={{ height: 26, width: 26, justifyContent: 'center', alignItems: 'center' }}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                  //activeOpacity={10.00}
+                  onPress={showMenu}>
+                  <Image
+                    style={{ height: '100%', width: '100%' }}
+                    resizeMode='contain'
+                    source={require('../../assets/Icons/menu.png')} />
+                </TouchableHighlight>}
+            >
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={Account}>Account</MenuItem>
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={About}>About the APP</MenuItem>
 
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={Resource}>Resources</MenuItem>
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={Resource}>Resources</MenuItem>
 
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={Support}>Support</MenuItem>
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={Logout}>Subscribe</MenuItem>
-            <MenuItem
-              style={styles.itemSeperator}
-              onPress={Logout}>Logout</MenuItem>
-            
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={Support}>Support</MenuItem>
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={Subscribe}>Subscribe</MenuItem>
+              <MenuItem
+                style={styles.itemSeperator}
+                onPress={Logout}>Logout</MenuItem>
 
-{/* <FlatList  
+
+              {/* <FlatList  
                     data={[  
                         {key: 'Android'},{key: 'iOS'}, {key: 'Java'},{key: 'Swift'},  
                         {key: 'Php'},{key: 'Hadoop'},{key: 'Sap'},  
@@ -158,7 +162,7 @@ const CustomHeader = (props) => {
                     
                 />   */}
 
-          </Menu>
+            </Menu>
           </ScrollView>
 
         </TouchableOpacity>

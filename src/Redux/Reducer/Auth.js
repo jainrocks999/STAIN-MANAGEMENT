@@ -1,3 +1,4 @@
+import { act } from "react-test-renderer";
 
 
 initialstate = {
@@ -5,24 +6,32 @@ initialstate = {
   LogoutDetails: [],
   UserDetails: [],
   StainDetails: [],
-  CaseStudyDetails:[],
+  CaseStudyDetails: [],
   RegisterDetails: [],
   VersionDetails: [],
   EditProfileDetails: [],
   ForgotPasswordDetails: [],
   ChangePassword: [],
-  getEditDetails:[],
+  getEditDetails: [],
+  GetSubscribeDetails: '',
 };
 export default (state = initialstate, action) => {
-  switch (action.type) {
+  console.log('saga', +action.payload)
 
+  switch (action.type) {
     case 'User_Login_Request':
       return { ...state, isFetching: true };
     case 'User_Login_Success':
       return { ...state, isFetching: false, UserDetails: action.payload };
     case 'User_Login_Error':
       return { ...state, isFetching: false };
-
+    // SubScribe
+    case 'User_SubScribeDetails_Request':
+      return { ...state, isFetching: true };
+    case 'User_SubScribeDetails_Success':
+      return { ...state, isFetching: false, GetSubscribeDetails: action.payload };
+    case 'User_SubScribeDetails_Error':
+      return { ...state, isFetching: false };
 
     case 'User_Stain_Request':
       return { ...state, isFetching: true };
@@ -31,7 +40,7 @@ export default (state = initialstate, action) => {
     case 'User_Stain_Error':
       return { ...state, isFetching: false };
 
-      case 'User_CaseStudy_Request':
+    case 'User_CaseStudy_Request':
       return { ...state, isFetching: true };
     case 'User_CaseStudy_Success':
       return { ...state, isFetching: false, CaseStudyDetails: action.payload };
@@ -69,7 +78,7 @@ export default (state = initialstate, action) => {
     case 'User_Get_Edit_Profile_Request':
       return { ...state, isFetching: true };
     case 'User_Get_Edit_Profile_Success':
-      return { ...state, isFetching: false,getEditDetails: action.payload };
+      return { ...state, isFetching: false, getEditDetails: action.payload };
     case 'User_Get_Edit_Profile_Error':
       return { ...state, isFetching: false };
 
