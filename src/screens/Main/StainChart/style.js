@@ -143,7 +143,11 @@ export default StyleSheet.create({
   scroll:{
     flex: 1,
     paddingHorizontal:30,
+    marginTop: 10,
+    width:'80%',
+
+    marginLeft:24,
   // marginTop:20,
-    marginBottom:62
+    marginBottom:70
   }
 });

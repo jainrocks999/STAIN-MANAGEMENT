@@ -55,32 +55,11 @@ class StainChart extends React.Component {
       } else {
         console.log('Rohit' + JSON.stringify(element))
        this.fill.push(element)
-        // this.setState({
-        // data:filtter
-        // })
       }
-     // console.log('filtter', filtter);
-      // setData(filtter)
       this.arrayholder = selector;
     });
-  // BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
 
   }
-  // const navigation = useNavigation();
-  // const [contents, setContent] = useState()
-  // const [value, setvalue] = useState('');
-  // const selector = useSelector(state => state.StainDetails)
-  // const isFetching = useSelector(state => state.isFetching)
-  // const [button, setButton] = useState(null)
-
-
-  // const [arrayholder, setArrayholder] = useState([])
-  // const [text, setText] = useState('')
-  // const [data, setData] = useState([])
-  // useEffect(() => {
-  // // BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-  // //const filtter = [];
-  //
 
    handleBackButtonClick = () => {
   BackHandler.addEventListener('hardwareBackPress', this.props.navigation.goBack(null));
@@ -98,23 +77,14 @@ class StainChart extends React.Component {
       console.log('rohit jjww' + text)
       const itemData = item.name.toUpperCase();
       const textData = text.toUpperCase();
-    //  console.log('rohit jah' + (itemData.indexOf(textData) > -1))
-    //  console.log('rohit jah' + (itemData.indexOf(textData) > -1))
+    
       return itemData.indexOf(textData) > -1
 
     });
     console.log('gg'+JSON.stringify(newData))
 
-    // this.setState({
-    // filter:newData
-    // })
-//filtter = newData
     this.fill = (newData);
     console.log('tttttt'+JSON.stringify(this.fill))
-    //filtter==newData;
-
-    // setData(newData)
-    //setText(,text)
   }
 
   render() {
@@ -147,12 +117,12 @@ class StainChart extends React.Component {
             />
           </View>
           <FlatList
-
+style={style.scroll}
             data={this.fill}
             keyExtractor={(item, index) => index.toString()}
             //ItemSeparatorComponent={itemSeparator}
             renderItem={({ item }) =>
-              <View style={{ marginTop: 10,width:'99%' }}>
+              <View style={{ marginTop: 10,width:'99%'}}>
                 <TouchableOpacity
                   onPress={() => {
                     this.props.navigation.navigate('StainChart', {
@@ -162,7 +132,7 @@ class StainChart extends React.Component {
                   <Text style={{ fontSize: 15 }}>{item.name}</Text>
                 </TouchableOpacity>
               </View>}
-            style={{ marginTop: 10,width:'80%',marginLeft:24 }} />
+             />
         </ImageBackground>
         <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
         <BottomTab
