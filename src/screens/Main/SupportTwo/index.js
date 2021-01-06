@@ -1,49 +1,53 @@
-import React, {useEffect, useState } from 'react';
-import {Alert, BackHandler, ImageBackground, Text,View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  View,
+} from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import {connect, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
+import TitleText from '../../../component/TitleText';
+import HTML from 'react-native-htmlview';
+import BottomTab from '../../../component/BottomTab';
 
+const SupportTwo = () => {
 
-
-const SupportTwo =()=> {
-  const navigation = useNavigation();
-
+  const [contents, setContent] = useState();
+  const AppDetail = useSelector((state) => state.AppDetails);
+  const selector = useSelector((state) => state.StainDetails);
+  const isFetching = useSelector((state) => state.isFetching);
+  const [button, setButton] = useState(null);
 
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-   
+    setButton('About Stains'.toUpperCase());
+    const selectedName = AppDetail.map((element) => {
+      if (element.support != '') {
+        setContent(element.support);
+      }
+    });
+  });
 
-  })
-
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
-    return true;
-}
-  
-  
   return (
-    <View style={{flex:1}}>
-<CustomHeader onPress ={()=>{Alert.alert('hey')}}/>
-          <ImageBackground
-
-            style={styles.imageBackground}
-            source={require('../../../assets/Images/AppBackground.jpg')}
-            
-            >
-              <View style={styles.headingView}>
-           <Text style={styles.heading}>SUPPORT</Text>
-            </View>
-              <View style={styles.subHeadingView}>
-           <Text style={styles.subHeading}>
-            App Technical support 
-           </Text>
-            </View>
-          </ImageBackground>
-      
-      </View>
+    <View style={styles.imageBackground}>
+      <CustomHeader />
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/Images/AppBackground.jpg')}>
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <TitleText title={'SUPPORT'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+          <View style={styles.subHeadingView}>
+            <HTML
+              value={contents}
+              // imagesMaxWidth={Dimensions.get('window').width}
+            />
+          </View>
+        </ScrollView>
+      </ImageBackground>
+      <BottomTab/>
+    </View>
   );
-}
+};
 
-export default SupportTwo
+export default connect()(SupportTwo);

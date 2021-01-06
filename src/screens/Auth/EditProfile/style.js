@@ -4,36 +4,19 @@ export default StyleSheet.create({
   imageBackground: {
 flex:1
   },
-  subHeading: {
-    fontFamily: 'Arial',
-    fontWeight: 'bold',
-    fontSize: 17,
-    color: colors.darkOrange,
-    marginTop:10
+  logoContainer: {
+    marginTop:'5%',
+    alignItems:'center'
   },
   SignIn: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
     fontSize: 18,
-    color: colors.darkOrange,
-    
-  },
- 
-  logoContainer: {
-    marginTop:'5%',
-    alignItems:'center'
-  },
-  header:{height:40,width:'100%',backgroundColor:colors.orange},
-  subHeading:{
-    fontFamily:'Arial',
-    fontWeight:'bold',
-    fontSize:17,
-    color:colors.darkOrange
+    color: colors.darkOrange,   
   },
   textInputContainer:{
     marginTop:10,  
-    width:'100%'
-    
+    width:'100%' 
   },
   textInput:{
     marginBottom:10,
@@ -43,39 +26,13 @@ flex:1
     width:'99%',
     borderRadius:4,
     borderColor:'#C9C8C7'
-
   },
-  checkbox:{
-    
+  checkbox:{    
     fontFamily:'Arial',
     fontWeight:'bold',
-    fontSize:12,
-  },
-  checkboxContainer:{
-    marginTop:'10%',
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'space-evenly',
-    width:'40%',
-  },
-  
-  button:{
-    height:40,
-    width:'40%',
-    marginTop:20,
-    backgroundColor:colors.orange,
-    opacity:87,
-    justifyContent:'center',
-    alignSelf:'center',
-    borderRadius:4,
-  },
-  buttonText:{
-    color:colors.white,
-    fontSize:12,
-    alignSelf:'center',
-    fontFamily:'Arial',
-    fontWeight:'bold',
-    textAlign:'center'
+    fontSize:14,
+    marginTop:10,
+    paddingHorizontal:20
   },
  
 });

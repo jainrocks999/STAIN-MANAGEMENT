@@ -1,128 +1,135 @@
-import React, { useEffect, useState } from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View,StatusBar, BackHandler,ScrollView} from 'react-native';
-
-
+import React, {useEffect, useState} from 'react';
+import {
+  ImageBackground,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StatusBar,
+  BackHandler,
+  ScrollView,
+} from 'react-native';
 import styles from './style';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header';
 import colors from '../../../component/colors';
-import { useDispatch,useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import Loader from '../../../component/loader';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
+import TitleText from '../../../component/TitleText';
+import CustomButton from '../../../component/Button';
 
-
-const Registration =()=> {
+const Registration = () => {
   const navigation = useNavigation();
-  const [Username, setUsername] = useState('')
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState('')
-  const [Name, setName] = useState('')
-  const [LastName, setLastName] = useState('')
-  const dispatch=useDispatch()
-  const isFetching=useSelector(state=>state.isFetching)
+  const [Username, setUsername] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const [Name, setName] = useState('');
+  const [LastName, setLastName] = useState('');
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state) => state.isFetching);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-   
+  useEffect(() => {});
 
-  })
-
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
-    return true;
-}
-
- 
- const doRegister = async() => {
-
-  const Password= await AsyncStorage.getItem(storage.Password)
-  console.log(Password);
-    if(Username==''){
-      Toast.show('Please Enter Username')
-    }
-    else if(Email==''){
-      Toast.show('Please Enter Email')
-    }
-    else if(Password==''){
-      Toast.show('Please Enter Password')
-    }
-    else if(Name==''){
-      Toast.show('Please Enter Name')
-    }
-    else if(LastName==''){
-      Toast.show('Please Enter LastName')
-    }
-    else{
-    dispatch({
-      type: 'User_Register_Request',
-      url: 'v1/user/register',
-      Username,
-      Email,
-      Password,
-      Name,
-      LastName,
-      props:navigation
-    })
+  const doRegister = async () => {
+    if (Email == '') {
+      Toast.show('Please Enter Email');
+    // } else if (Email == '') {
+    //   Toast.show('Please Enter Email');
+    } else if (Password == '') {
+      Toast.show('Please Enter Password');
+    } else if (Name == '') {
+      Toast.show('Please Enter Name');
+    } else if (LastName == '') {
+      Toast.show('Please Enter LastName');
+    } else {
+      dispatch({
+        type: 'User_Register_Request',
+        url: 'v1/user/register',
+        Username,
+        Email,
+        Password,
+        Name,
+        LastName,
+        props: navigation,
+      });
     }
   };
 
   return (
-    <View style={{flex:1}}>
-<CustomHeader/>
-          <ImageBackground
+    <View style={{flex: 1}}>
+      <CustomHeader />
+      {isFetching ? <Loader /> : null}
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/Images/AppBackground.jpg')}>
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View style={styles.logoContainer}>
+              <Image
+                style={styles.logo}
+                source={require('../../../assets/Images/logo.png')}
+              />
+            </View>
+            <View style={styles.logoContainer}>
+              <TitleText title={'Sign Up'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+            </View>
 
-            style={styles.imageBackground}
-            source={require('../../../assets/Images/AppBackground.jpg')}>
-             <ScrollView contentContainerStyle={{ flexGrow:1, paddingHorizontal:20,paddingBottom:30,justifyContent:'center'}}>
             <View style={styles.textInputContainer}>
-            <Text style={styles.SignIn}>Sign Up </Text>
-            <TextInput 
-            style={styles.textInput}
-            placeholder=' Username'
-            placeholderTextColor='grey'
-            onChangeText={(text)=>setUsername(text)}
-            />
-             <TextInput 
-            style={styles.textInput}
-            placeholder=' Email'
-            placeholderTextColor='grey'
-            onChangeText={(text)=>setEmail(text)}
-            />
-             <TextInput 
-            style={styles.textInput}
-            placeholder=' Password'
-            placeholderTextColor='grey'
-            secureTextEntry={true}
-            onChangeText={(text)=>setPassword(text)}
-            />
-            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-            <TextInput 
-            style={[{width:'49%'},styles.textInput]}
-            placeholder=' Name'
-            placeholderTextColor='grey'
-            onChangeText={(text)=>setName(text)}
-            />
-           
-           <TextInput 
-            style={[{width:'49%'},styles.textInput]}
-            placeholder=' Lastname'
-            placeholderTextColor='grey'
-            onChangeText={(p)=>setLastName(p)}
-            />
-            </View>
-            </View>
-          
+            <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TextInput
+                  style={[{width: '49%'}, styles.textInput]}
+                  placeholder=" First Name"
+                  placeholderTextColor={colors.textGrey}
+                  onChangeText={(text) => setName(text)}
+                />
 
-          <TouchableOpacity style={styles.button}
-          onPress={doRegister}>
-              <Text style={styles.buttonText}>Register</Text>
-            </TouchableOpacity>
-            </ScrollView>
-          </ImageBackground>
-       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
-      </View>
+                <TextInput
+                  style={[{width: '49%'}, styles.textInput]}
+                  placeholder=" Last Name"
+                  placeholderTextColor={colors.textGrey}
+                  onChangeText={(p) => setLastName(p)}
+                />
+              </View>
+              
+              {/* <TextInput
+                style={styles.textInput}
+                placeholder=" Username"
+                placeholderTextColor={colors.textGrey}
+                onChangeText={(text) => setUsername(text)}
+              /> */}
+              <TextInput
+                style={styles.textInput}
+                placeholder=" Email"
+                placeholderTextColor={colors.textGrey}
+                onChangeText={(text) => setEmail(text)}
+              />
+              <TextInput
+                style={styles.textInput}
+                placeholder="Password"
+                placeholderTextColor={colors.textGrey}
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+              />
+              
+
+              <CustomButton title="REGISTER" onPress={doRegister} />
+            </View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
+      <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
+    </View>
   );
-}
+};
 
 export default Registration;

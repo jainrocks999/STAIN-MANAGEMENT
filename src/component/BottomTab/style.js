@@ -5,14 +5,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 58,
     paddingVertical: 8,
-    width: Dimensions.get('window').width,
+    width:'100%',
     backgroundColor: colors.orange,
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    bottom: 0,
-    position: 'absolute',
-    left: 0,
-    right: 0
   },
   itemSeperator: {
     borderBottomWidth: 0.5,
@@ -21,8 +17,9 @@ export default StyleSheet.create({
   },
   bottomTab: {
     tintColor: '#fff',
-    height: 28,
-    width: 28
+    height: 26,
+    width: 26,
+    resizeMode:'cover',
   },
   buttonText: {
     color: 'white',

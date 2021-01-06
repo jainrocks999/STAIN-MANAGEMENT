@@ -1,13 +1,21 @@
-import {StyleSheet} from 'react-native';
-import color from '../../../component/colors'
+import { StyleSheet } from 'react-native';
+import colors from '../../../component/colors'
 export default StyleSheet.create({
-  imageBackground: {
-   flex:1,
+  MainView: {
+    flex: 1,
   },
   logoContainer: {
-    marginTop:40,
+    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  header:{height:40,width:'100%',backgroundColor:color.orange}
+  
+  header: {
+    flexDirection: 'row',
+    backgroundColor: colors.orange,
+    height: 40,
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
 });

@@ -1,67 +1,66 @@
-import React, {useEffect, useState } from 'react';
-import {Alert, BackHandler, Image, ImageBackground, ScrollView, Text,View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
+import TitleText from '../../../component/TitleText';
+import StaticText from '../../../component/StaticText';
+import HTMLView from 'react-native-htmlview';
+import BottomTab from '../../../component/BottomTab';
 
-
-
-const About =()=> {
+const About = () => {
   const navigation = useNavigation();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const [contents, setContent] = useState();
+  const AppDetail = useSelector((state) => state.AppDetails);
+  const selector = useSelector((state) => state.StainDetails);
+  const isFetching = useSelector((state) => state.isFetching);
+  const [button, setButton] = useState(null);
+  const [chart, setChart] = useState(false);
+
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-   
+    setButton('About Stains'.toUpperCase());
 
-  })
+    const selectedName = AppDetail.map((element) => {
+      if (element.about_app != '') {
+        setContent(element.about_app);
+      }
+    });
+  });
 
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
-    return true;
-}
   return (
-    <View style={{flex:1}}>
-<CustomHeader />
-          <ImageBackground
+    <View
+      style={styles.imageBackground}>
+      <CustomHeader />
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/Images/AppBackground.jpg')}>
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <TitleText title={StaticText.About.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+          <View style={styles.subHeadingView}>
 
-            style={styles.imageBackground}
-            source={require('../../../assets/Images/AppBackground.jpg')}
-            
-            >
-      <ScrollView contentContainerStyle={styles.scroll}>
-              
+            <HTMLView
+              value={contents}
+            // stylesheet={styles}
+            />
 
-              <View style={styles.headingView}>
-           <Text style={styles.heading}>ABOUT THIS APP</Text>
-            </View>
-              <View style={styles.subHeadingView}>
-           <Text style={styles.subHeading}>
-             SurpHaces is a professional resource and support
-            organization for quality surface PROS and their customers. 
-            At SurpHaces, you can find expert answers, solutions,
-             and service providers for stone, tile, terrazzo, wood, 
-             carpet and interior textiles, polished concrete, metal, 
-             VCT, and more. The PROS in this network consist of skilled 
-             specialists in a variety of disciplines including specification, 
-             installation, repair, restoration, and maintenance. Each one is 
-             concerned with the art and science of surfaces—that is, they provide 
-             solutions that take into account both the beauty of surfaces and other 
-             important considerations, such as surface functionality, 
-             safety, preservation, and sustainability. It was with help 
-             from our Chief Technical Director, author of over 30 books, 
-             10 instructional videos, and over 100 articles on stone installation, 
-             care, and restoration in both the United States and foreign publications 
-             and journals, Fred Hueston is a world renowned industry expert that this 
-             app was created. It was created to help you find answers quickly about any 
-             particular stain you may need information on immediately or to just use for 
-             reference as needed.</Text>
-            </View>
-              </ScrollView>
-          </ImageBackground>
-      
-      </View>
+          </View>
+        </ScrollView>
+
+        <View
+          style={styles.version}>
+          <Text style={[styles.checkbox, { color: '#9E3B22' }]}>
+            {StaticText.VersionText}
+          </Text>
+        </View>
+      </ImageBackground>
+    </View>
   );
-}
+};
 
 export default connect()(About);

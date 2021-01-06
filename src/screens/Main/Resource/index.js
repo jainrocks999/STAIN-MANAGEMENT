@@ -1,95 +1,51 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
-  BackHandler,
-  Dimensions,
-  Image,
   ImageBackground,
-  Text,
-  TextInput,
-  TouchableOpacity,
+  ScrollView,
   View,
 } from 'react-native';
 import styles from './style';
+import {connect, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import { ScrollView } from 'react-native-gesture-handler';
+import TitleText from '../../../component/TitleText';
+import HTMLView from 'react-native-htmlview';
+import StaticText from '../../../component/StaticText';
 
-const Resource = () => {
+const Resources = () => {
+  const [contents, setContent] = useState();
+  const AppDetail = useSelector((state) => state.AppDetails);
+  const [button, setButton] = useState(null);
+ 
+
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-   
-
-  })
-
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
-    return true;
-}
-  const navigation = useNavigation();
+    setButton('About Stains'.toUpperCase());
+    const selectedName = AppDetail.map((element) => {
+      if (element.resources != '') {
+        setContent(element.resources);
+      }
+    });
+  });
   return (
-    <View style={{flex: 1}}>
-      <CustomHeader
-        onPress={() => {
-          Alert.alert('hey');
-        }}
-      />
-
+    <View style={styles.imageBackground}>
+      <CustomHeader />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-          <ScrollView style={{height:Dimensions.get('screen').height}}
-          contentContainerStyle={{alignItems:'center'}}
-          >
-        <View style={styles.headingView}>
-          <Text style={styles.title}>RESOURCES</Text>
-        </View>
-       
-        <View style={styles.subHeadingView}>
-          <Text style={styles.heading}>
-            Dr. Fred’s Innovative Solutions Professional Stain Removal Reagents
-          </Text>
-          <Text style={styles.subHeading}>
-            Over many years as a contractor and expert, Fred Hueston refined the
-            techniques and and ultimately created just 3 special reagents that
-            are needed to treat virtually any kind of stain. These reagents are
-            now available through the Dr. Fred’s Innovative Solutions product
-            line. 
-            
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <TitleText title={StaticText.Resources.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+          <View style={styles.subHeadingView}>
 
-          </Text>
-          <Text style={[styles.subHeading,{marginTop:'10%',fontStyle:'italic'}]}>
-          They include:
-          </Text>
-          <Text style={styles.subHeading}>
-          <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • Reagent #1</Text> for organic stains A blend of
-            peroxides and other reactive reagents that effectively break down
-            organic stains. • Reagent #2 for inorganic stains A blend of
-            solvents designed to effectively remove inorganic stains. 
-            </Text>
-            <Text style={styles.subHeading}>
-          <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • Reagent #2</Text> for inorganic stains A blend of
-            solvents designed to effectively remove inorganic stains. 
-            </Text>
-            <Text style={styles.subHeading}>
-          <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • Reagent #3</Text> for metal stains A blend of metal reducing reagents, formulated
-            to treat metal stains.
-            </Text>
-            <Text style={[styles.subHeading,{marginTop:'5%',marginBottom:'9%'}]}>
-          <Text style={[styles.subHeading,{fontWeight:'bold'}]}> • To order: </Text> ESP Sales Reynolds Circle Business
-            Park 434 Roberson Ln. San Jose, CA 95112 (408) 441-1407
-            www.espsales.net PROFESSIONAL TRAINING Interactive eLearning Course
-            on Stain Management and other courses offered by Fred Hueston and
-            other industry experts can be found at
-            https://elearninginstitute.surphaces.com.
-            </Text>
-            
-        </View>
+            <HTMLView
+        value={contents}
+       
+      />
+
+          </View>
         </ScrollView>
       </ImageBackground>
-     
     </View>
   );
 };
 
-export default Resource;
+export default connect()(Resources);

@@ -1,117 +1,98 @@
-import React, {useEffect, useState} from 'react';
+//import Npm dependancy 
+import React, { useEffect, useState } from 'react';
 import {
   ImageBackground,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
   StatusBar,
-  Alert,
   ScrollView,
-  BackHandler
 } from 'react-native';
 import styles from './style';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import colors from '../../../component/colors';
-import Toast from "react-native-simple-toast";
-import { useDispatch,useSelector } from 'react-redux'
+import Toast from 'react-native-simple-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../../component/loader';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
+import TitleText from '../../../component/TitleText';
+import CustomButton from '../../../component/Button';
+import TextValue from '../../../component/StaticText';
 
 const ChangePassword = () => {
-  const navigation = useNavigation();
-  const [oldPassword,setOldPassword] = useState('');
-  const [userId,setUserId] = useState('');
-  const [newPassword,setNewPassword]=useState('')
-  const [confirmPassword,setConfirmPassword]=useState('')
-  const dispatch=useDispatch();
-  const isFetching=useSelector(state=>state.isFetching)
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress',handleBackButtonClick);
-
-
-  })
-
-  const handleBackButtonClick=()=> {
-    BackHandler.addEventListener('hardwareBackPress',navigation.goBack());
-    return true;
-}
-const loadData=async()=>{
-  const userId1=await AsyncStorage.getItem(storage.UserId)
-  setUserId(userId1)
-  if(oldPassword==''){
-     Toast.show('Please enter old password')
-  }
-  else if(newPassword==''){
-      Toast.show('Please enter  new Password')
-  }
-  else if(confirmPassword==''){
-    Toast.show('Please Confirm Password')
-   }
-  else{
-   dispatch({
-     type:'User_Change_Password_Request',
-     url:'v1/user/change_password',
-     Old: oldPassword,
-     New:newPassword,
-     Confirm:confirmPassword,
-     Id:userId
-   })
-  }
-}
+  const [oldPassword, setOldPassword] = useState('');
+  const [userId, setUserId] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state) => state.isFetching);
+  const loadData = async () => {
+    const userId1 = await AsyncStorage.getItem(storage.UserId);
+    setUserId(userId1);
+    if (oldPassword == '') {
+      Toast.show('Please enter old password');
+    } else if (newPassword == '') {
+      Toast.show('Please enter  new Password');
+    } else if (confirmPassword == '') {
+      Toast.show('Please Confirm Password');
+    } else {
+      dispatch({
+        type: 'User_Change_Password_Request',
+        url: 'v1/user/change_password?',
+        Old: oldPassword,
+        New: newPassword,
+        Id: userId1,
+      });
+    }
+  };
   return (
-    <View style={{flex: 1}}>
-      <CustomHeader/>
-      {isFetching?<Loader/>:null}
+    <View style={styles.imageBackground}>
+      <CustomHeader />
+      {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom:20  }}>
-        <View style={styles.heading}>
-          <Text style={styles.subHeading}>Account Management</Text>
-        </View> 
-        <View style={styles.settings}>
-          <Text style={styles.SignIn}>Change Password ?</Text> 
-          <View>
-           
-             <TextInput
-              style={styles.textInput}
-              placeholder="Old Password"
-              placeholderTextColor="grey"
-              secureTextEntry={true}
-              onChangeText={(text)=>setOldPassword(text)}
-            />
+        <ScrollView contentContainerStyle={styles.ScrollView}>
+          <View style={styles.heading}>
+            <TitleText title={TextValue.AccManagement.toUpperCase()} color={'#9E3B22'} fontSize={22} />
           </View>
-          <View>
-            <TextInput
-              style={styles.textInput}
-              placeholder="New Password"
-              placeholderTextColor="grey"
-              secureTextEntry={true}
-              onChangeText={(text)=>setNewPassword(text)}
-            />
-             <TextInput
-              style={styles.textInput}
-              placeholder="Confirm Password"
-              placeholderTextColor="grey"
-              secureTextEntry={true}
-              onChangeText={(text)=>setConfirmPassword(text)}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={loadData}>
-            <Text style={styles.buttonText}>SEND</Text>
-          </TouchableOpacity>
+          <View style={styles.settings}>
+            <Text style={styles.SignIn}>{TextValue.ChangePassword}</Text>
+            <View>
+              <TextInput
+                style={styles.textInput}
+                placeholder={TextValue.PlaceholderOldpwd}
+                placeholderTextColor={colors.textGrey}
+                // secureTextEntry={true}
+                onChangeText={(text) => setOldPassword(text)}
+              />
+            </View>
+            <View>
+              <TextInput
+                style={styles.textInput}
+                placeholder={TextValue.PlaceholderNewpwd}
+                placeholderTextColor={colors.textGrey}
+                secureTextEntry={true}
+                onChangeText={(text) => setNewPassword(text)}
+              />
+              <TextInput
+                style={styles.textInput}
+                placeholder={TextValue.PlaceholderConpwd}
+                placeholderTextColor={colors.textGrey}
+                secureTextEntry={true}
+                onChangeText={(text) => setConfirmPassword(text)}
+              />
+            </View>
 
-       </View>
-       </ScrollView>
+            <CustomButton title={TextValue.BtnSEND} onPress={loadData} />
+          </View>
+        </ScrollView>
       </ImageBackground>
-    <StatusBar backgroundColor={colors.darkOrange} barStyle='default'/>
+      <StatusBar backgroundColor={colors.darkOrange} barStyle="default" />
     </View>
   );
 };
 
-export default ChangePassword
+export default ChangePassword;

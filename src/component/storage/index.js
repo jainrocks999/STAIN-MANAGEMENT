@@ -4,12 +4,18 @@ export default {
   loggedIn:'loggedIn',
   Name: 'Name',
   Email:'Email',
-  Username:'Username',
   Lastname: 'Lastname',
   UserId:'UserId',
   Url:'url',
   textvalue:'text',
   button_text:'btn',
   msg:'msg',
+  pass:'pass',
+  Wrong:'wrong',
+
+
+  rememberUserName:'RememberUser',
+  rememberuserpass:'RememberPass',
+
  
 };

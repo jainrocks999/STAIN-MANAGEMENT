@@ -1,152 +1,135 @@
-import React, { useEffect, useState,} from 'react';
-import {Image, ImageBackground, View,Text, TouchableOpacity, StatusBar,Alert,BackHandler, ScrollView} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  Image,
+  ImageBackground,
+  View,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  ScrollView,
+} from 'react-native';
 import styles from './style';
-import CustomHeader from '../../../component/header';
+import CustomHeader from '../../../component/HomeHeader';
 import { useNavigation } from '@react-navigation/native';
-import {  useDispatch,useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import colors from '../../../component/colors';
-
+import CustomButton from '../../../component/Button';
+import StaticText from '../../../component/StaticText';
 function HomeScreen(props) {
-  const dispatch=useDispatch();
-  const [data,setData]=useState([])
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const selector=useSelector(state=>state.StainDetails)
-  const CaseStudy = useSelector(state=>state.CaseStudyDetails)
-  console.log(selector)
-  console.log('CaseStudy : ',CaseStudy)
 
-  useEffect(()=>{
-    const backAction = () => {
-      Alert.alert("Hold on!", "Are you sure you want to go back?", [
-        {
-          text: "Cancel",
-          onPress: () => null,
-          style: "cancel"
-        },
-        { text: "YES", onPress: () => BackHandler.exitApp() }
-      ]);
-      return true;
-    };
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
-  //  return () => backHandler.remove();
+  useEffect(() => {
+    loadData();
+    loadData1();
+    loadData2();
+  }, []);
 
-  loadData();
-  loadData1();
-  return () => backHandler.remove();
 
-  },[])
- 
- 
-  const loadData=async()=>{
+  const loadData = async () => {
     dispatch({
       type: 'User_Stain_Request',
-      url:'v1/stain/all',
+      url: 'v1/stain/all',
     });
-  }
-  const loadData1=async()=>{
+  };
+  const loadData1 = async () => {
     dispatch({
       type: 'User_CaseStudy_Request',
-      url:'v1/stain/case_studies',      
+      url: 'v1/stain/case_studies',
     });
-  }
-  return (
-    <View style={{flex:1}}>
-       <CustomHeader/>
-       
-          <ImageBackground
+  };
 
-            style={styles.imageBackground}
-            source={require('../../../assets/Images/HomeScreen.png')}            
-            >
-              <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', }}>
-              <View style={styles.logoContainer}>
+  const loadData2 = async () => {
+    dispatch({
+      type: 'User_App_Request',
+      url: 'v1/stain/about_app',
+    });
+  };
+  return (
+    <View style={styles.imageBackground}>
+      <CustomHeader />
+
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/Images/HomeScreen.png')}>
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <View style={styles.logoContainer}>
             <Image
-            style={styles.logo}
-            
-            source={require('../../../assets/Images/logo.png')}
+              style={styles.logo}
+              source={require('../../../assets/Images/logo.png')}
             />
-            
-            </View>
-           
-            
-              <View style={styles.logoContainer}>
-           <Text style={styles.heading}>INTERACTIVE STAIN MANAGEMENT APP</Text>
-            
-            </View>
-              <View style={styles.logoContainer}>
-           <Text style={styles.subHeading}>For stone, tile, concrete and{'\n'} other hard porous surfaces</Text>
-            
-            </View>
-           
-            <View style={{justifyContent:'center',marginVertical:40}}>
-            <TouchableOpacity 
-             onPress={()=>{
-              navigation.navigate('AboutStains', {
-                btnName:'About Stains',
-              });
-            }}
-            style={[styles.button,{marginTop:5}]}>
-              <Text style={styles.buttonText}
-              >About Stains</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-             onPress={()=>{
-              navigation.navigate('Support', {
-                btnName:'Case Studies',
-              });
-            }}
-            style={styles.button}>
-              <Text style={styles.buttonText}>Case Studies</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-             onPress={()=>{
-             navigation.navigate('HowTo' ,{
-             btnName:'How to Apply a Poultice',
+          </View>
+
+          <View style={styles.logoContainer}>
+            <Text style={styles.heading}>{StaticText.INTERACTIVEtext}</Text>
+          </View>
+          <View style={styles.logoContainer}>
+            <Text style={styles.subHeading}>
+              For stone, tile, concrete and{'\n'} other hard porous surfaces
+            </Text>
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              title="About Stains"
+              onPress={() => {
+                navigation.navigate('AboutStains', {
+                  btnName: 'About Stains',
                 });
-            }}
-            style={styles.button}>
-              <Text style={styles.buttonText}>How to Apply a Poultice</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-             onPress={()=>{
-              navigation.navigate('Support', {
-                btnName:'What is a Poultice?',
-              });
-            }}
-            style={styles.button}>
-              <Text style={styles.buttonText}>What is a Poultice?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-             onPress={()=>{
-              navigation.navigate('Stain', {
-                btnName:'STAIN CHART',
-              });
-            }}
-            style={styles.button}>
-              <Text style={styles.buttonText}>Stain Chart</Text>
-            </TouchableOpacity>
-            
+              }}
+            />
+
+            <CustomButton
+              title="How to Apply a Poultice"
+              onPress={() => {
+                navigation.navigate('HowTo', {
+                  btnName: 'How to Apply a Poultice',
+                });
+              }}
+            />
+            <CustomButton
+              title="What is a Poultice?"
+              onPress={() => {
+                navigation.navigate('Support', {
+                  btnName: 'What is a Poultice?',
+                });
+              }}
+            />
+            <CustomButton
+              title="Stain Chart"
+              onPress={() => {
+                navigation.navigate('Stain', {
+                  btnName: 'STAIN CHART',
+                });
+              }}
+            />
+            <CustomButton
+              title="Case Studies"
+              onPress={() => {
+                navigation.navigate('Support', {
+                  btnName: 'Case Studies',
+                });
+              }}
+            />
             <TouchableOpacity
-             onPress={()=>{
-              navigation.navigate('Support', {
-                btnName:'IMPORTANT',
-              });
-            }}
-            style={[styles.button,{flexDirection:'row',}]}>
-              <Image 
-              resizeMode='stretch'
-              style={styles.icon}
-              source={require('../../../assets/Icons/Important.png')} />
+              onPress={() => {
+                navigation.navigate('Support', {
+                  btnName: 'IMPORTANT',
+                });
+              }}
+              style={[styles.button, { flexDirection: 'row' }]}>
+              <Image
+                resizeMode="stretch"
+                style={styles.icon}
+                source={require('../../../assets/Icons/Important.png')}
+              />
               <Text style={styles.buttonText}>Important!</Text>
             </TouchableOpacity>
-            </View>
-            </ScrollView>
-          </ImageBackground>
-       <StatusBar backgroundColor={colors.darkOrange} barStyle='light-content' />
-      </View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
+      <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
+    </View>
   );
 }
 

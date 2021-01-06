@@ -13,10 +13,12 @@ initialstate = {
   ForgotPasswordDetails: [],
   ChangePassword: [],
   getEditDetails: [],
+  VideoDetails:[],
   GetSubscribeDetails: '',
+  AppDetails:[],
 };
 export default (state = initialstate, action) => {
-  console.log('saga', +action.payload)
+  
 
   switch (action.type) {
     case 'User_Login_Request':
@@ -39,12 +41,27 @@ export default (state = initialstate, action) => {
       return { ...state, isFetching: false, StainDetails: action.payload };
     case 'User_Stain_Error':
       return { ...state, isFetching: false };
-
+      
     case 'User_CaseStudy_Request':
       return { ...state, isFetching: true };
     case 'User_CaseStudy_Success':
       return { ...state, isFetching: false, CaseStudyDetails: action.payload };
     case 'User_CaseStudy_Error':
+      return { ...state, isFetching: false };
+
+      //App Details
+      case 'User_App_Request':
+      return { ...state, isFetching: true };
+    case 'User_App_Success':
+      return { ...state, isFetching: false, AppDetails: action.payload };
+    case 'User_App_Error':
+      return { ...state, isFetching: false };
+
+      case 'User_Video_Request':
+      return { ...state, isFetching: true };
+    case 'User_Video_Success':
+      return { ...state, isFetching: false, VideoDetails: action.payload };
+    case 'User_Video_Error':
       return { ...state, isFetching: false };
 
     case 'User_Register_Request':
