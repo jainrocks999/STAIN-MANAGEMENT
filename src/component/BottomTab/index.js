@@ -41,7 +41,8 @@ function BottomTab() {
       <TouchableOpacity
         style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
         onPress={() => {
-          navigation.navigate('HowTo');
+          // navigation.navigate('HowTo');
+          navigation.navigate('VideoList');
         }}>
         <Image
           //source={require('../../assets/Icons1/HowTo.png')}
@@ -57,7 +58,8 @@ function BottomTab() {
       <TouchableOpacity
         style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
         onPress={() => {
-          navigation.navigate('VideoList');
+          // navigation.navigate('VideoList');
+          navigation.navigate('resource');
         }}>
         <Image
           source={require('../../assets/Icons1/Video.png')}
@@ -73,9 +75,15 @@ function BottomTab() {
 
       <TouchableOpacity
         style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
+        // onPress={() => {
+        //   navigation.navigate('AboutStains');
+        // }}
         onPress={() => {
-          navigation.navigate('AboutStains');
-        }}>
+          navigation.navigate('Support', {
+            btnName: 'Case Studies',
+          });
+        }}
+        >
         <Image
           source={require('../../assets/Icons1/About.png')}
           style={styles.bottomTab}

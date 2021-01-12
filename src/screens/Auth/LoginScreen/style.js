@@ -67,6 +67,12 @@ export default StyleSheet.create({
     fontSize: 14,
     padding: 4
   },
+  logoContainer: {
+    marginTop: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
   checkboxContainer: {
     marginTop: 8,
     flexDirection: 'row',

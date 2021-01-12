@@ -236,7 +236,12 @@ class LoginScreen extends React.Component {
                 </Text>
                 </TouchableOpacity>
               </View>
-
+              <View style={styles.logoContainer}>
+               <Image
+             
+              source={require('../../../assets/Images/logo.png')}
+              />
+              </View>
 
             </View>
             <Modal

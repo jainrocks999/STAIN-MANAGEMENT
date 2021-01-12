@@ -9,12 +9,13 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './style';
-import CustomHeader from '../../../component/HomeHeader';
+import CustomHeader from '../../../component/HomeHeader2';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import colors from '../../../component/colors';
 import CustomButton from '../../../component/Button';
 import StaticText from '../../../component/StaticText';
+import TitleText from '../../../component/TitleText';
 function HomeScreen(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -54,19 +55,24 @@ function HomeScreen(props) {
         source={require('../../../assets/Images/HomeScreen.png')}>
         <ScrollView contentContainerStyle={styles.scroll}>
           <View style={styles.logoContainer}>
-            <Image
+            {/* <Image
               style={styles.logo}
               source={require('../../../assets/Images/logo.png')}
-            />
+            /> */}
+             <Image
+                  style={styles.logo}
+                  source={require('../../../assets/Images/stain.png')}
+                />
           </View>
 
           <View style={styles.logoContainer}>
             <Text style={styles.heading}>{StaticText.INTERACTIVEtext}</Text>
           </View>
           <View style={styles.logoContainer}>
-            <Text style={styles.subHeading}>
+            {/* <Text style={styles.subHeading}>
               For stone, tile, concrete and{'\n'} other hard porous surfaces
-            </Text>
+            </Text> */}
+              <TitleText title={'Interactive Stain App for hard Porous Surfaces'}  color={'#000'} fontSize={16} />
           </View>
 
           <View style={styles.buttonContainer}>
@@ -89,17 +95,21 @@ function HomeScreen(props) {
             <CustomButton
               title="How to video"
               onPress={() => {
-                navigation.navigate('HowTo', {
-                  btnName: 'How to Apply a Poultice',
-                });
+                navigation.navigate('VideoList')
+                
+                // ('HowTo', {
+                //   btnName: 'How to Apply a Poultice',
+                // });
               }}
             />
             <CustomButton
               title="Recommended supplies"
               onPress={() => {
-                navigation.navigate('HowTo', {
-                  btnName: 'How to Apply a Poultice',
-                });
+                navigation.navigate('Recommendedsupply',
+                //  {
+                //   btnName: 'How to Apply a Poultice',
+                // }
+                );
               }}
             />
             <CustomButton
@@ -136,8 +146,14 @@ function HomeScreen(props) {
             />
             */}
 
-
+             <View style={styles.logoContainer}>
+               <Image
+             
+              source={require('../../../assets/Images/logo.png')}
+              />
+              </View>
           </View>
+         
         </ScrollView>
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />

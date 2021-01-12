@@ -11,6 +11,8 @@ import CustomHeader from '../../../component/header1';
 import TitleText from '../../../component/TitleText';
 import HTMLView from 'react-native-htmlview';
 import StaticText from '../../../component/StaticText';
+import BottomTab from '../../../component/BottomTab';
+
 
 const Resources = () => {
   const [contents, setContent] = useState();
@@ -43,6 +45,7 @@ const Resources = () => {
 
           </View>
         </ScrollView>
+        <BottomTab/>
       </ImageBackground>
     </View>
   );

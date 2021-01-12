@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/HomeHeader';
 import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 import storage from '../../../component/storage';

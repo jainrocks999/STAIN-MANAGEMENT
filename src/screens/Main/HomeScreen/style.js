@@ -10,12 +10,20 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
+    // backgroundColor:'white'
+  },
+  logo:{
+    width:80,
+    height:80,
+    borderRadius:10,
+    justifyContent:'center',
+    alignContent:'center'
   },
 
   heading: {
     textAlign: 'center',
     color: colors.darkOrange,
-    fontSize: 29,
+    fontSize: 25,
     fontFamily: 'Arial',
     fontWeight: 'bold',
   },
@@ -26,7 +34,10 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  buttonContainer: {justifyContent: 'center', marginVertical: 40},
+  buttonContainer: {
+    justifyContent: 'center', 
+    marginVertical: 30
+  },
 
   button: {
     height: 50,

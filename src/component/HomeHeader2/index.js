@@ -94,7 +94,7 @@ const CustomHeader = (props) => {
   // Logout 
   return (
     <View style={styles.header}>
-       <TouchableOpacity
+       {/* <TouchableOpacity
         style={styles.iconmain}
         onPress={() => {
           navigation.goBack(null);
@@ -105,7 +105,7 @@ const CustomHeader = (props) => {
           // style={{ tintColor: '#fff' }}
           resizeMode={'contain'}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.header1}>
         <TouchableOpacity
           style={{
@@ -169,10 +169,10 @@ const CustomHeader = (props) => {
             <MenuItem style={styles.itemSeperator} onPress={Support}>
               <Text style={{ fontFamily: 'Arial', }}>Support</Text>
             </MenuItem>
-            <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
 
               <Text style={{ fontFamily: 'Arial', }}>Subscribe</Text>
-            </MenuItem>
+            </MenuItem> */}
 
             {/* <MenuItem style={styles.itemSeperator} onPress={Resource}>
 

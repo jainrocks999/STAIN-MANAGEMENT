@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {
   Image,
   View,
@@ -16,7 +16,7 @@ import {
   TouchableHighlight,
 } from 'react-native-gesture-handler';
 
-const CustomHeader = (props) => {
+const CustomHeader = ({props}) => {
   const navigation = useNavigation();
   let _menu = null;
 
@@ -161,25 +161,24 @@ const CustomHeader = (props) => {
             }>
             <MenuItem style={styles.itemSeperator} onPress={Profile}>
               
-              <Text style={{fontFamily:'Arial',}}>Account</Text>
+              <Text style={{fontFamily:'Arial',}}>My Account</Text>
             </MenuItem>
-
+            <MenuItem style={styles.itemSeperator} onPress={About}>
+              <Text style={{fontFamily:'Arial',}}>About the APP</Text>
+            </MenuItem>
             <MenuItem style={styles.itemSeperator} onPress={Support}>
               <Text style={{fontFamily:'Arial',}}>Support</Text>
             </MenuItem>
-            <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
               
               <Text style={{fontFamily:'Arial',}}>Subscribe</Text>
-            </MenuItem>
+            </MenuItem> */}
 
-            <MenuItem style={styles.itemSeperator} onPress={Resource}>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Resource}>
               
               <Text style={{fontFamily:'Arial',}}>Resources</Text>
-            </MenuItem>
-            <MenuItem style={styles.itemSeperator} onPress={About}>
-              
-              <Text style={{fontFamily:'Arial',}}>About the APP</Text>
-            </MenuItem>
+            </MenuItem> */}
+           
             <MenuItem style={styles.itemSeperator} onPress={Logout}>
               
               <Text style={{fontFamily:'Arial',}}>Logout</Text>

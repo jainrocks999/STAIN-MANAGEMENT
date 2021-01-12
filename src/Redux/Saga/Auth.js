@@ -139,7 +139,7 @@ function* doEditProfile(action) {
       type: 'User_Edit_Profile_Success',
       payload: formatedResponse.data,
     });
-    Toast.show(formatedResponse.message);
+     Toast.show(formatedResponse.message);
   } else {
     Toast.show(formatedResponse.message);
    

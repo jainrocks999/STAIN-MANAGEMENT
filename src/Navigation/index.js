@@ -23,6 +23,7 @@ import HowTo from '../screens/Main/HowTo';
 import SubScribeDetails from '../screens/Main/Subscribe';
 import CaseStudyDetails from '../screens/Main/CaseStudyDetails';
 import VideoList from '../screens/Main/VideoList';
+import Recommendedsupply from '../screens/Main/Recommendedsupplies';
 const Stack = createStackNavigator();
 
 function App() {
@@ -38,13 +39,13 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
 
 
-
         <Stack.Screen name="Edit" component={EditProfile} />
         <Stack.Screen name="Change" component={ChangePassword} />
         <Stack.Screen name="AboutStains" component={AboutStain} options={{ animationEnabled: false, }} />
         <Stack.Screen name="HowTo" component={HowTo} options={{ animationEnabled: false, }} />
         <Stack.Screen name="Subscribe" component={SubScribeDetails} />
         <Stack.Screen name="Video" component={Video} options={{ animationEnabled: false, }} />
+        <Stack.Screen name="Recommendedsupply" component={Recommendedsupply} options={{ animationEnabled: false, }} />
         <Stack.Screen name="VideoList" component={VideoList} options={{ animationEnabled: false, }} />
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />
@@ -54,6 +55,7 @@ function App() {
         <Stack.Screen name="supportTwo" component={SupportTwo} />
         <Stack.Screen name="resource" component={Resource} />
         <Stack.Screen name="SubScribeDetails" component={SubScribeDetails} />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
