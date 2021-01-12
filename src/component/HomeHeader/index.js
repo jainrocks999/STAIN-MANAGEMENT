@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   Image,
   View,
@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 
 import styles from './style';
-import {connect} from 'react-redux';
-import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
-import {useNavigation} from '@react-navigation/native';
+import { connect } from 'react-redux';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
 import {
@@ -49,7 +49,7 @@ const CustomHeader = (props) => {
     navigation.navigate('Edit');
     _menu.hide();
   };
-  
+
   const Logout = () => {
     Alert.alert(
       'Are you want to logout ?',
@@ -62,21 +62,21 @@ const CustomHeader = (props) => {
           },
           style: 'cancel',
         },
-        {text: 'ok', onPress: () => setlog()},
+        { text: 'ok', onPress: () => setlog() },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
-    
+
   };
   const setlog = () => {
     try {
       _menu.hide();
       AsyncStorage.setItem(storage.Username, '');
-      AsyncStorage.setItem(storage.Password,'');
+      AsyncStorage.setItem(storage.Password, '');
       AsyncStorage.setItem(storage.Email, '');
       AsyncStorage.setItem(storage.Name, '');
       AsyncStorage.setItem(storage.UserId, '');
-      AsyncStorage.setItem(storage.Url,'');
+      AsyncStorage.setItem(storage.Url, '');
       navigation.replace('Login');
     } catch (error) {
       console.error(error);
@@ -87,9 +87,14 @@ const CustomHeader = (props) => {
     _menu.show();
   };
 
+
+  //   My account 
+  // About the App 
+  // Support 
+  // Logout 
   return (
     <View style={styles.header}>
-    
+
       <View style={styles.header1}>
         <TouchableOpacity
           style={{
@@ -100,11 +105,11 @@ const CustomHeader = (props) => {
             alignSelf: 'center',
           }}
           onPress={() => {
-  
+
           }}>
           <Image
             source={require('../../assets/Icons/bell.png')}
-            style={{tintColor: '#fff', height: '100%', width: '100%'}}
+            style={{ tintColor: '#fff', height: '100%', width: '100%' }}
             resizeMode="cover"
           />
         </TouchableOpacity>
@@ -118,7 +123,7 @@ const CustomHeader = (props) => {
           }}
           onPress={showMenu}>
           <Menu
-            style={{width: '38%'}}
+            style={{ width: '38%' }}
             ref={setMenuRef}
             button={
               <TouchableHighlight
@@ -134,37 +139,39 @@ const CustomHeader = (props) => {
                 //activeOpacity={10.00}
                 onPress={showMenu}>
                 <Image
-                  style={{height: '90%', width: '100%'}}
+                  style={{ height: '90%', width: '100%' }}
                   resizeMode="contain"
                   source={require('../../assets/Icons/menu.png')}
                 />
               </TouchableHighlight>
             }>
             <MenuItem style={styles.itemSeperator} onPress={Profile}>
-              
-              <Text style={{fontFamily:'Arial',}}>Accounts</Text>
-            </MenuItem>
 
-            <MenuItem style={styles.itemSeperator} onPress={Support}>
-              <Text style={{fontFamily:'Arial',}}>Support</Text>
-            </MenuItem>
-            <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
-              
-              <Text style={{fontFamily:'Arial',}}>Subscribe</Text>
-            </MenuItem>
-
-            <MenuItem style={styles.itemSeperator} onPress={Resource}>
-              
-              <Text style={{fontFamily:'Arial',}}>Resources</Text>
+              <Text style={{ fontFamily: 'Arial', }}>My account</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={About}>
-              
-              <Text style={{fontFamily:'Arial',}}>About the APP</Text>
+
+              <Text style={{ fontFamily: 'Arial', }}>About the App</Text>
             </MenuItem>
+
+            <MenuItem style={styles.itemSeperator} onPress={Support}>
+              <Text style={{ fontFamily: 'Arial', }}>Support</Text>
+            </MenuItem>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
+
+              <Text style={{ fontFamily: 'Arial', }}>Subscribe</Text>
+            </MenuItem> */}
+
+            <MenuItem style={styles.itemSeperator} onPress={Resource}>
+
+              <Text style={{ fontFamily: 'Arial', }}>Resources</Text>
+            </MenuItem>
+
+
             <MenuItem style={styles.itemSeperator} onPress={Logout}>
-              
-              <Text style={{fontFamily:'Arial',}}>Logout</Text>
+
+              <Text style={{ fontFamily: 'Arial', }}>Logout</Text>
             </MenuItem>
           </Menu>
         </TouchableOpacity>

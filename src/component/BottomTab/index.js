@@ -1,18 +1,19 @@
-import React, {useEffect} from 'react';
-import {Image, View, TouchableOpacity, Text} from 'react-native';
+import React, { useEffect } from 'react';
+import { Image, View, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 function BottomTab() {
   const navigation = useNavigation();
   return (
     <View style={styles.header}>
+
       <TouchableOpacity
-        style={{width: 40, height: 40, alignItems: 'center'}}
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
         onPress={() => {
           navigation.navigate('Home');
         }}>
-        <Image 
+        <Image
           source={require('../../assets/Icons/home.png')}
           style={styles.bottomTab}
           resizeMode="center"
@@ -20,47 +21,9 @@ function BottomTab() {
         <Text style={styles.buttonText}>HOME</Text>
       </TouchableOpacity>
 
-      {/* <TouchableOpacity
-        style={{width: 40, height: 40, alignItems: 'center'}}
-        onPress={() => {
-          navigation.navigate('VideoList');
-        }}>
-        <Image
-          source={require('../../assets/Icons1/Video.png')}
-          style={styles.bottomTab}
-          resizeMode="center"
-        />
-        <Text style={styles.buttonText}>VIDEO</Text>
-      </TouchableOpacity> */}
 
       <TouchableOpacity
-        style={{width: 40, height: 40, alignItems: 'center'}}
-        onPress={() => {
-          navigation.navigate('AboutStains');
-        }}>
-        <Image
-          source={require('../../assets/Icons1/About.png')}
-          style={styles.bottomTab}
-          resizeMode="center"
-        />
-        <Text style={styles.buttonText}>ABOUT STAINS</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{width: 40, height: 40, alignItems: 'center'}}
-        onPress={() => {
-          navigation.navigate('HowTo');
-        }}>
-        <Image
-          source={require('../../assets/Icons1/HowTo.png')}
-          style={styles.bottomTab}
-          resizeMode="center"
-        />
-        <Text style={styles.buttonText}>HOW TO</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{width: 38, height: 38, alignItems: 'center',}}
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
         onPress={() => {
           navigation.navigate('Stain');
         }}>
@@ -69,8 +32,81 @@ function BottomTab() {
           style={styles.bottomTab}
           resizeMode="center"
         />
-        <Text style={styles.buttonText}>STAIN CHART</Text>
+        <View style={{ width: 60 }}>
+          <Text style={styles.buttonText}>STAIN CHART</Text>
+        </View>
       </TouchableOpacity>
+
+
+      <TouchableOpacity
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
+        onPress={() => {
+          navigation.navigate('HowTo');
+        }}>
+        <Image
+          //source={require('../../assets/Icons1/HowTo.png')}
+          source={require('../../assets/Icons1/Video.png')}
+          style={styles.bottomTab}
+          resizeMode="center"
+        />
+        <View style={{ width: 60 }}>
+          <Text numberOfLines={3} style={styles.buttonText}>How to</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
+        onPress={() => {
+          navigation.navigate('VideoList');
+        }}>
+        <Image
+          source={require('../../assets/Icons1/Video.png')}
+          style={styles.bottomTab}
+          resizeMode="center"
+        />
+        <View style={{ width: 60 }}>
+          <Text
+            numberOfLines={2} style={styles.buttonText}>supplies & resources</Text>
+
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
+        onPress={() => {
+          navigation.navigate('AboutStains');
+        }}>
+        <Image
+          source={require('../../assets/Icons1/About.png')}
+          style={styles.bottomTab}
+          resizeMode="center"
+        />
+        <View style={{ width: 60 }}>
+          <Text
+            numberOfLines={2} style={styles.buttonText}>case studies</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{ width: 40, height: 40, alignItems: 'center', marginBottom: 10 }}
+        onPress={() => {
+          navigation.navigate('AboutStains');
+        }}>
+        <Image
+          source={require('../../assets/Icons1/About.png')}
+          style={styles.bottomTab}
+          resizeMode="center"
+        />
+        <View style={{ width: 60 }}>
+          <Text
+            numberOfLines={2} style={styles.buttonText}>About Stains</Text>
+        </View>
+
+      </TouchableOpacity>
+
+
+
+
     </View>
   );
 }

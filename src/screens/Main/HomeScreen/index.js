@@ -78,9 +78,16 @@ function HomeScreen(props) {
                 });
               }}
             />
-
             <CustomButton
-              title="How to Apply a Poultice"
+              title="Stain Chart"
+              onPress={() => {
+                navigation.navigate('Stain', {
+                  btnName: 'STAIN CHART',
+                });
+              }}
+            />
+            <CustomButton
+              title="How to video"
               onPress={() => {
                 navigation.navigate('HowTo', {
                   btnName: 'How to Apply a Poultice',
@@ -88,18 +95,10 @@ function HomeScreen(props) {
               }}
             />
             <CustomButton
-              title="What is a Poultice?"
+              title="Recommended supplies"
               onPress={() => {
-                navigation.navigate('Support', {
-                  btnName: 'What is a Poultice?',
-                });
-              }}
-            />
-            <CustomButton
-              title="Stain Chart"
-              onPress={() => {
-                navigation.navigate('Stain', {
-                  btnName: 'STAIN CHART',
+                navigation.navigate('HowTo', {
+                  btnName: 'How to Apply a Poultice',
                 });
               }}
             />
@@ -111,7 +110,8 @@ function HomeScreen(props) {
                 });
               }}
             />
-            <TouchableOpacity
+
+            {/* <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Support', {
                   btnName: 'IMPORTANT',
@@ -124,7 +124,19 @@ function HomeScreen(props) {
                 source={require('../../../assets/Icons/Important.png')}
               />
               <Text style={styles.buttonText}>Important!</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
+            {/* <CustomButton
+              title="What is a Poultice?"
+              onPress={() => {
+                navigation.navigate('Support', {
+                  btnName: 'What is a Poultice?',
+                });
+              }}
+            />
+            */}
+
+
           </View>
         </ScrollView>
       </ImageBackground>
