@@ -72,7 +72,7 @@ function HomeScreen(props) {
             {/* <Text style={styles.subHeading}>
               For stone, tile, concrete and{'\n'} other hard porous surfaces
             </Text> */}
-              <TitleText title={'Interactive Stain App for hard Porous Surfaces'}  color={'#000'} fontSize={16} />
+              <TitleText title={'Interactive Stain App For Hard Porous Surfaces'}  color={'#000'} fontSize={16} />
           </View>
 
           <View style={styles.buttonContainer}>
@@ -93,7 +93,7 @@ function HomeScreen(props) {
               }}
             />
             <CustomButton
-              title="How to video"
+              title="How To Video"
               onPress={() => {
                 navigation.navigate('VideoList')
                 
@@ -103,7 +103,7 @@ function HomeScreen(props) {
               }}
             />
             <CustomButton
-              title="Recommended supplies"
+              title="Recommended Supplies"
               onPress={() => {
                 navigation.navigate('Recommendedsupply',
                 //  {

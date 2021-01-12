@@ -175,7 +175,7 @@ class LoginScreen extends React.Component {
                   source={require('../../../assets/Images/stain.png')}
                 />
                  <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={22}  />
-                 <TitleText title={'Interactive Stain App for hard Porous Surfaces'}  color={'#000'} fontSize={16} />
+                 <TitleText title={'Interactive Stain App For Hard Porous Surfaces'}  color={'#000'} fontSize={16} />
                  <TitleText title={'Login'.toUpperCase()} color={'#9E3B22'} fontSize={22}/>
               </View>
           
