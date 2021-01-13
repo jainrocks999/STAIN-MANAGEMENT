@@ -13,12 +13,13 @@ initialstate = {
   ForgotPasswordDetails: [],
   ChangePassword: [],
   getEditDetails: [],
-  VideoDetails:[],
+  VideoDetails: [],
   GetSubscribeDetails: '',
-  AppDetails:[],
+  AppDetails: [],
+  StainPagesDetails: [],
 };
 export default (state = initialstate, action) => {
-  
+
 
   switch (action.type) {
     case 'User_Login_Request':
@@ -41,7 +42,7 @@ export default (state = initialstate, action) => {
       return { ...state, isFetching: false, StainDetails: action.payload };
     case 'User_Stain_Error':
       return { ...state, isFetching: false };
-      
+
     case 'User_CaseStudy_Request':
       return { ...state, isFetching: true };
     case 'User_CaseStudy_Success':
@@ -49,15 +50,15 @@ export default (state = initialstate, action) => {
     case 'User_CaseStudy_Error':
       return { ...state, isFetching: false };
 
-      //App Details
-      case 'User_App_Request':
+    //App Details
+    case 'User_App_Request':
       return { ...state, isFetching: true };
     case 'User_App_Success':
       return { ...state, isFetching: false, AppDetails: action.payload };
     case 'User_App_Error':
       return { ...state, isFetching: false };
 
-      case 'User_Video_Request':
+    case 'User_Video_Request':
       return { ...state, isFetching: true };
     case 'User_Video_Success':
       return { ...state, isFetching: false, VideoDetails: action.payload };
@@ -110,6 +111,15 @@ export default (state = initialstate, action) => {
       return { ...state, isFetching: true };
     case 'User_Version_Success':
       return { ...state, isFetching: false, VersionDetails: action.payload };
+    //comman Stain Pages
+    case 'User_StainPages_Request':
+      return { ...state, isFetching: true };
+    case 'User_StainPages_Success':
+      return { ...state, isFetching: false, StainPagesDetails: action.payload };
+    case 'User_StainPages_Error':
+      return { ...state, isFetching: false }
+
+
 
     default:
       return state;

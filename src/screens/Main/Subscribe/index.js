@@ -13,7 +13,8 @@ import storage from '../../../component/storage';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
+
 
 const SubScribeDetails = () => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const SubScribeDetails = () => {
   const selector = useSelector((state) => state.GetSubscribeDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [userId, setuserId] = useState('');
-
+console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
   const [button, setButton] = useState(null);
   const [chart, setChart] = useState(false);
   useEffect(() => {
@@ -35,7 +36,6 @@ const SubScribeDetails = () => {
     setuserId(UserId);
     dispatch({
       type: 'User_SubScribeDetails_Request',
-
       url: `v1/user/get_subscribe_detail?user_id=${UserId}`,
     });
   };
@@ -50,31 +50,14 @@ const SubScribeDetails = () => {
         <ScrollView contentContainerStyle={styles.scroll}>
           <TitleText title={'Subscription Details'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
 
-          <View style={{flex: 0.6, justifyContent: 'center'}}>
+          <View style={{flex: 0.6, justifyContent: 'center',}}>
             <View style={styles.settingsContainer}>
-              <View>
-                <TouchableOpacity style={styles.settingsItems}>
-                  <Text style={styles.settingsItemsText}> {'Username :-'}</Text>
-                  {/* <Text style={styles.settingsItemsText}>{':'}</Text> */}
-                  <Text style={styles.settingsItemsText}>
-                    {selector.username}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View>
-                <TouchableOpacity style={styles.settingsItems}>
-                  <Text style={styles.settingsItemsText}> {'Email :'}</Text>
-                  {/* <Text style={styles.settingsItemsText}>{':'}</Text> */}
-                  <Text style={styles.settingsItemsText}>
-                    {selector.registered_mail}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+           
               <View>
                 <TouchableOpacity style={styles.settingsItems}>
                   <Text style={styles.settingsItemsText}>
                     {' '}
-                    {'Purchase Date :'}
+                    {'Start Date :'}
                   </Text>
                   {/* <Text style={styles.settingsItemsText}>{':'}</Text> */}
                   <Text style={styles.settingsItemsText}>
@@ -86,7 +69,7 @@ const SubScribeDetails = () => {
                 <TouchableOpacity style={styles.settingsItems}>
                   <Text style={styles.settingsItemsText}>
                     {' '}
-                    {'Expiry Date :'}
+                    {'End Date :'}
                   </Text>
                   {/* <Text style={styles.settingsItemsText}>{':'}</Text> */}
                   <Text style={styles.settingsItemsText}>

@@ -11,7 +11,7 @@ settingsContainer: {
   width:'100%',
   borderTopWidth: 1,
   borderRightWidth:1,
-  borderLeftWidth:1,
+  borderLeftWidth:2,
   borderColor: '#ACACAC',
 },
 settingsItems: {

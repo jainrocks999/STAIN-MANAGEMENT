@@ -7,8 +7,8 @@ export default StyleSheet.create({
     flex:1,
   },
   scroll:{
-    paddingHorizontal:30,
-    paddingBottom:45,
+    paddingHorizontal:20,
+   // paddingBottom:5,
     flexGrow: 1,
   },
 

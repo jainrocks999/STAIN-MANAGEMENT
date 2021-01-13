@@ -20,7 +20,7 @@ import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 
 
 let count = '';

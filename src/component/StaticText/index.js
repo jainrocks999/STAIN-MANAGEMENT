@@ -1,10 +1,10 @@
 export default {
-    ChangePassword: 'Change Password ?',
+    ChangePassword: 'Change Password',
     Password:'Password',
     PlaceholderOldpwd:'Old Password',
     PlaceholderNewpwd: 'New Password',
     PlaceholderConpwd:'Confirm Password',
-    BtnSEND: 'SEND',
+    BtnSEND: 'Send',
     AccManagement:'Account Management',
     About:'ABOUT THIS APP',
     VersionText:'App Version 1.0',

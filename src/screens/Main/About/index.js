@@ -24,7 +24,7 @@ const About = () => {
   const [chart, setChart] = useState(false);
 
   useEffect(() => {
-    setButton('About Stains'.toUpperCase());
+   // setButton('About Stains'.toUpperCase());
 
     const selectedName = AppDetail.map((element) => {
       if (element.about_app != '') {

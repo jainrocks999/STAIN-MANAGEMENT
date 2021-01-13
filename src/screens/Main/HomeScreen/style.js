@@ -6,16 +6,24 @@ export default StyleSheet.create({
   },
   scroll:{ flexGrow: 1, justifyContent: 'center', },
   logoContainer: {
-    marginTop: '5%',
+  //  marginTop: '5%',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     // backgroundColor:'white'
   },
+  logoContainer1: {
+      marginTop: '10%',
+      justifyContent: 'center',
+      alignItems: 'center',
+     // alignSelf: 'baseline',
+      // backgroundColor:'white'
+    },
   logo:{
     width:80,
     height:80,
     borderRadius:10,
+    margin:6,
     justifyContent:'center',
     alignContent:'center'
   },
@@ -36,7 +44,8 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     justifyContent: 'center', 
-    marginVertical: 30
+    marginVertical: 20,
+    alignContent:'center'
   },
 
   button: {

@@ -15,7 +15,7 @@ import CustomHeader from '../../../component/header1';
 import BottomTab from '../../../component/BottomTab';
 import HTMLView from 'react-native-htmlview';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 
 let images = '';

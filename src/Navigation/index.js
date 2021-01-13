@@ -24,6 +24,7 @@ import SubScribeDetails from '../screens/Main/Subscribe';
 import CaseStudyDetails from '../screens/Main/CaseStudyDetails';
 import VideoList from '../screens/Main/VideoList';
 import Recommendedsupply from '../screens/Main/Recommendedsupplies';
+
 const Stack = createStackNavigator();
 
 function App() {

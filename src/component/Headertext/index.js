@@ -15,10 +15,10 @@ return(
 }
 const styles = StyleSheet.create({
     headerText:{
-       marginTop:4,
-      // width:'90%',
+       margin:4,
+       width:'90%',
         textAlign:'center',
-        width:210,
+       // width:210,
        // fontFamily:'Arial',
     fontWeight:"600"
       },

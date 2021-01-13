@@ -13,13 +13,13 @@ import BottomTab from '../../../component/BottomTab';
 import HTML from 'react-native-render-html';
 //import style from './style';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 
 const HowTo = ({route}) => {
   const navigation = useNavigation();
   const [contents, setContent] = useState();
-  const selector = useSelector((state) => state.StainDetails);
+  const selector = useSelector((state) => state.StainPagesDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState(null);
   const [chart, setChart] = useState(false);
@@ -43,8 +43,9 @@ const HowTo = ({route}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
+             <View style={styles.logoContainer}>
           <TitleText title={button} color={'#9E3B22'} fontSize={22} />
-         
+          </View>
           <HTML html={contents} 
 
             imagesMaxWidth={Dimensions.get('window').width} />

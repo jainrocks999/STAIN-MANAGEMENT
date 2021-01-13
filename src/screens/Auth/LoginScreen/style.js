@@ -5,10 +5,17 @@ export default StyleSheet.create({
   MainView: {
     flex: 1,
   },
+  logoContainer1: {
+    marginTop: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    // backgroundColor:'white'
+  },
   scroll: {
     flexGrow: 1,
     justifyContent: 'center',
-    paddingBottom: 20,
+    //paddingBottom: 20,
   },
   ViewMiddle: {
     justifyContent: 'center',
@@ -16,9 +23,10 @@ export default StyleSheet.create({
     width: '88%',
   },
   SecondView: {
-    //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
+    
   },
   ModelBtntext: {
     color: colors.white,
@@ -99,11 +107,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-logo:{
-  width:80,
-  height:80,
-  borderRadius:10,
-  justifyContent:'center',
-  alignContent:'center'
-}
+  logo:{
+    width:80,
+    height:80,
+    borderRadius:10,
+    marginTop:16,
+    justifyContent:'center',
+    alignContent:'center'
+  },
+
 });

@@ -158,12 +158,12 @@ const CustomHeader = (props) => {
             }>
             <MenuItem style={styles.itemSeperator} onPress={Profile}>
 
-              <Text style={{ fontFamily: 'Arial', }}>My account</Text>
+              <Text style={{ fontFamily: 'Arial', }}>My Account</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={About}>
 
-              <Text style={{ fontFamily: 'Arial', }}>About the App</Text>
+              <Text style={{ fontFamily: 'Arial', }}>About The App</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={Support}>

@@ -8,7 +8,7 @@ import styles from './style';
 import {connect, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import HTMLView from 'react-native-htmlview';
 import StaticText from '../../../component/StaticText';
 import BottomTab from '../../../component/BottomTab';

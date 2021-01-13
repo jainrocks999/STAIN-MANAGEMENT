@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { useNavigation, Route } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import HTML from 'react-native-render-html';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 import BottomTab from '../../../component/BottomTab';
 

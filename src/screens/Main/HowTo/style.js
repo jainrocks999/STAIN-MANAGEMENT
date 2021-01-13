@@ -11,5 +11,10 @@ export default StyleSheet.create({
     paddingBottom:60,
     flexGrow: 1,
   },
+  logoContainer: {
+    marginTop:'5%',
+    alignItems:'center'
+    ,width:'99%'
+  },
 
 });

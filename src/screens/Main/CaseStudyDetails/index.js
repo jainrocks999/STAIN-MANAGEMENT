@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SliderBox } from 'react-native-image-slider-box';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import BottomTab from '../../../component/BottomTab';
 
 const CaseStudy = ({ route }) => {

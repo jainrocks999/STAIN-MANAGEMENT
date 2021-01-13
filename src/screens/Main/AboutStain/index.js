@@ -13,22 +13,23 @@ import StatusBar from '../../../component/StatusBar';
 import HTMLView from 'react-native-htmlview';
 //import style from './style';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 
 const AboutStain = ({route}) => {
   const [contents, setContent] = useState();
-  const selector = useSelector((state) => state.StainDetails);
+  const selector = useSelector((state) => state.StainPagesDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState(null);
   const [chart, setChart] = useState(false);
 
   useEffect(() => {
+    console.log('StainPagesDetails'+JSON.stringify(selector))
     setButton('About Stains'.toUpperCase());
 
     const selectedName = selector.map((element) => {
       if (element.name == 'About Stains') {
         setChart(false);
-        setContent(element.mobile_content);
+        setContent(element.content);
       }
     });
   });
