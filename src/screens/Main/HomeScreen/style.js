@@ -4,13 +4,31 @@ export default StyleSheet.create({
   imageBackground: {
     flex: 1,
   },
-  scroll:{ flexGrow: 1, justifyContent: 'center', },
+  scroll:{  flexGrow: 1,
+    // justifyContent: 'center',
+     padding: 20,},
   logoContainer: {
   //  marginTop: '5%',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     // backgroundColor:'white'
+  },
+  SecondView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+   // width:300
+    
+  },
+  logo1:{
+    width:220,
+    height:30,
+    borderRadius:10,
+    marginTop:10,
+    justifyContent:'center',
+    alignContent:'center',
+    resizeMode:'center'
   },
   logoContainer1: {
       marginTop: '10%',
@@ -19,14 +37,15 @@ export default StyleSheet.create({
      // alignSelf: 'baseline',
       // backgroundColor:'white'
     },
-  logo:{
-    width:80,
-    height:80,
-    borderRadius:10,
-    margin:6,
-    justifyContent:'center',
-    alignContent:'center'
-  },
+    logo:{
+      width:65,
+      height:65,
+      //borderRadius:10,
+      marginTop:12,
+      padding:10,
+      justifyContent:'center',
+      alignContent:'center'
+    },
 
   heading: {
     textAlign: 'center',

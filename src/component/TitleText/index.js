@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
        marginTop:4,
       // width:'90%',
         textAlign:'center',
-        width:210,
-       // fontFamily:'Arial',
-    fontWeight:"600"
+        width:180,
+        fontFamily:'Arial',
+    fontWeight:"400"
       },
 })
 

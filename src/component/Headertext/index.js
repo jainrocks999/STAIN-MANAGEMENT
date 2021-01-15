@@ -4,7 +4,7 @@ import colors from '../colors';
 
 const TitleText =(props)=>{
 return(
-    <View style={{width:'90%', alignSelf:'center'}}>
+    <View style={{width:'99%', alignSelf:'center',margin:5}}>
         <Text
         numberOfLines={2}
             style={[styles.headerText,{color:props.color,fontSize:props.fontSize}]}>
@@ -15,12 +15,12 @@ return(
 }
 const styles = StyleSheet.create({
     headerText:{
-       margin:4,
+      // margin:4,
        width:'90%',
         textAlign:'center',
-       // width:210,
+        width:210,
        // fontFamily:'Arial',
-    fontWeight:"600"
+    fontWeight:"bold"
       },
 })
 

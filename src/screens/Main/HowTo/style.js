@@ -1,20 +1,18 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import colors from '../../../component/colors';
 
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
-    flex:1,
+    flex: 1,
   },
-  scroll:{
-    paddingHorizontal:30,
-    paddingBottom:60,
-    flexGrow: 1,
+  scroll: {
+    flexGrow: 1, marginHorizontal: 20, paddingBottom: 30
   },
   logoContainer: {
-    marginTop:'5%',
-    alignItems:'center'
-    ,width:'99%'
+    marginTop: '5%',
+    alignItems: 'center'
+    , width: '99%'
   },
 
 });

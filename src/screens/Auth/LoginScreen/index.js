@@ -20,6 +20,7 @@ import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 import Modal from 'react-native-modal';
 import TitleText from '../../../component/TitleText';
+import Headertext from '../../../component/Headertext';
 import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
 
@@ -168,19 +169,28 @@ class LoginScreen extends React.Component {
           <ScrollView contentContainerStyle={styles.scroll}>
             <View
               style={styles.SecondView}>
-              <TitleText title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+              <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
               <Image
                 style={styles.logo}
+
                 source={require('../../../assets/Images/stain.png')}
               />
-             
-              <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
+              <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
+                <Image
+                  style={styles.logo1}
+                  source={require('../../../assets/Images/stain_text.png')}
+                />
+              </View>
+              {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
               <View style={{marginTop:8}}>
               <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
-            </View>
-              <View style={{marginTop:8}}>
-              <TitleText title={'Login'.toUpperCase()} color={'#9E3B22'} fontSize={18} />
-          </View>
+            </View> */}
+              <View style={{ marginTop: 8 }}>
+                <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={13} />
+              </View>
+              <View style={{ marginTop: 30 }}>
+                <Headertext title={'Login'} color={'#9E3B22'} fontSize={18} />
+              </View>
             </View>
 
             <View style={styles.textInputContainer}>
@@ -212,14 +222,14 @@ class LoginScreen extends React.Component {
                 onPress={() => {
                   this.props.navigation.navigate('ForgotPassword');
                 }}
-                style={[styles.checkbox, { color: '#0058FF' }]}>
+                style={[styles.checkbox, { color: '#0058FF', alignSelf: 'center' }]}>
                 Forgot Password?
               </Text>
             </View>
             <View style={styles.checkboxContainer}>
-              <View style={{ marginRight: 10, height: 30, width: 30 }}>
+              <View style={{ marginRight: 4, height: 25, width: 30 }}>
                 <CheckBox
-                  style={{ height: '100%', width: '100%' }}
+                  style={{ height: '90%', width: '90%' }}
                   disabled={false}
                   value={toggleCheckBox}
                   onValueChange={(newValue) => this.keepme(newValue)}
@@ -230,22 +240,22 @@ class LoginScreen extends React.Component {
               <Text style={styles.checkbox}>Keep me logged in</Text>
             </View>
 
-            <CustomButton title="LOGIN" onPress={this.doLogin} />
-            <View style={{justifyContent:'center',alignSelf:'center'}}>
+            <CustomButton title="Login" onPress={this.doLogin} />
+            <View style={{ justifyContent: 'center', alignSelf: 'center',marginTop:5 }}>
               <TouchableOpacity
-                style={{ marginVertical: 10 ,justifyContent:'center'}}
+                style={{ marginVertical: 10, justifyContent: 'center', alignSelf: 'center' }}
                 onPress={this.dolink}>
                 <Text style={{ fontSize: 19, color: colors.darkOrange }}>
                   Register Now
                 </Text>
               </TouchableOpacity>
 
-              {/* <View style={styles.logoContainer}>
-               <Image
-             
-              source={require('../../../assets/Images/logo.png')}
-              />
-              </View> */}
+              <View style={styles.logoContainer}>
+                <Image
+
+                  source={require('../../../assets/Images/surphce.jpg')}
+                />
+              </View>
 
             </View>
             {/* <Modal
@@ -286,11 +296,11 @@ class LoginScreen extends React.Component {
                 </TouchableOpacity>
               </View>
             </Modal> */}
-            <View style={styles.logoContainer1}>
+            {/* <View style={styles.logoContainer1}>
               <Image
                 source={require('../../../assets/Images/logo.png')}
               />
-            </View>
+            </View> */}
           </ScrollView>
 
         </ImageBackground>

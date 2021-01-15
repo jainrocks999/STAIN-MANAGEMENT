@@ -3,14 +3,24 @@ import colors from '../colors';
 export default StyleSheet.create({
   header: {
     flexDirection: 'row',
-    height: 68,
+  // height: 68,
     paddingVertical: 8,
-    width:'100%',
+   // width:'100%',
     backgroundColor: colors.orange,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    alignSelf:'center',
+  //  alignItems: 'center',
+   // justifyContent: 'space-between',
+   // alignSelf:'center',
   },
+
+  // headerOptionsCtnr: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   marginTop: 10,
+  //   // marginLeft:30,
+  //   marginBottom: 20,
+  // },
+  
   itemSeperator: {
     borderBottomWidth: 0.5,
     borderColor: '#C1C1C1',

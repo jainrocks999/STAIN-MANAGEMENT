@@ -10,7 +10,8 @@ import CustomHeader from '../../../component/header1';
 import BottomTab from '../../../component/BottomTab';
 import {ScrollView, Dimensions} from 'react-native';
 import StatusBar from '../../../component/StatusBar';
-import HTMLView from 'react-native-htmlview';
+//import HTMLView from 'react-native-htmlview';
+import HTMLView from 'react-native-render-html';
 //import style from './style';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
@@ -47,7 +48,7 @@ const Recommadsuplly = ({route}) => {
           contentContainerStyle={styles.scroll}>
           <TitleText title={button}  color={'#9E3B22'} fontSize={22}/>
           <HTMLView
-            value={contents}
+            html={contents}
             imagesMaxWidth={Dimensions.get('window').width}
           />
         </ScrollView>

@@ -41,11 +41,11 @@ const HowTo = ({route}) => {
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView
-          showsVerticalScrollIndicator={false}
+         // showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
-             <View style={styles.logoContainer}>
+           
           <TitleText title={button} color={'#9E3B22'} fontSize={22} />
-          </View>
+        
           <HTML html={contents} 
 
             imagesMaxWidth={Dimensions.get('window').width} />

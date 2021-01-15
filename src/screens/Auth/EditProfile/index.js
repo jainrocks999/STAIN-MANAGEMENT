@@ -114,9 +114,9 @@ class EditProfile extends React.Component {
         <ImageBackground
           style={styles.imageBackground}
           source={require('../../../assets/Images/AppBackground.jpg')}>
-          <View style={styles.logoContainer}>
+          
             <TitleText title={'Account Management'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
-          </View>
+        
           <ScrollView
             contentContainerStyle={{
               flexGrow: 1,
@@ -125,8 +125,8 @@ class EditProfile extends React.Component {
             }}>
 
             <View
-              style={{ justifyContent: 'center', marginTop: 20, borderRadius: 10, }}>
-              <View style={{ justifyContent: 'center', marginTop: 20, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: '#9E3B22', alignItems: 'center' }}>
+              style={{ justifyContent: 'center', marginTop: 10, borderRadius: 10, }}>
+              <View style={{ justifyContent: 'center', marginTop: 10, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: '#9E3B22', alignItems: 'center' }}>
                 <Text style={styles.SignIn}>Edit Your Profile</Text>
 
                 <View style={styles.textInputContainer}>

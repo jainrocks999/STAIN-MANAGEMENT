@@ -9,7 +9,7 @@ export default StyleSheet.create({
   subHeadingView: {
     width: '100%',
     padding: 15,
-    marginTop: 20,
+   // marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
