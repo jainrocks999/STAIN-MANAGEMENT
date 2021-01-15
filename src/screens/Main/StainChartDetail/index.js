@@ -78,8 +78,7 @@ const StainChartDetail = ({ route }) => {
               onPress={popupshow}>
               {show_information == true && (
                 <Image
-                  style={{ tintColor: 'red',width:30,height:30 }}
-
+                  style={{ tintColor: 'red',width:34,height:30 }}
                   source={require('../../../assets/Icons/Important.png')}
                 />
               )}
