@@ -81,7 +81,7 @@ function HomeScreen(props) {
               <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
             </View> */}
             <View style={{ marginTop: 8 }}>
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={13} />
+              <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
             </View>
           </View>
 

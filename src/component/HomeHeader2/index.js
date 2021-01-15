@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   Alert,
+  TouchableHighlight,
 } from 'react-native';
 
 import styles from './style';
@@ -13,9 +14,7 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
-import {
-  TouchableHighlight,
-} from 'react-native-gesture-handler';
+
 
 const CustomHeader = (props) => {
   const navigation = useNavigation();

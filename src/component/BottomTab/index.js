@@ -16,12 +16,12 @@ let arr = [{
 {
   img: require('../../assets/Icons1/Video.png'),
   name: 'How To',
-  pagename: 'VideoList',
+  pagename: 'HowTo',
 },
 {
   img: require('../../assets/Images/RS.png'),
   name: 'Supplies & Resources',
-  pagename: 'resource',
+  pagename: 'Recommendedsupply',
 },
 {
   img: require('../../assets/Images/cs.png'),
@@ -50,7 +50,7 @@ function BottomTab() {
         renderItem={({ item }) => (
           <View style={{width: 94, alignItems: 'center',  justifyContent: 'space-between', marginBottom: 10 }}>
             <TouchableOpacity
-              style={{  marginBottom: 4, height: 40, alignItems: 'center' }}
+              style={{  marginBottom: 2, height: 38, alignItems: 'center',alignSelf:'center' }}
               onPress={() => {
                 navigation.navigate(item.pagename);
               }}>

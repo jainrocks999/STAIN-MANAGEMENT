@@ -9,7 +9,8 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height,
     alignItems: 'center',
     alignSelf:'center',
-    alignContent:'center'
+    alignContent:'center',
+    justifyContent:'center',
   },
   search:{
     width:'80%',

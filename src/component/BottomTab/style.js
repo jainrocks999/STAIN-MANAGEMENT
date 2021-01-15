@@ -3,13 +3,13 @@ import colors from '../colors';
 export default StyleSheet.create({
   header: {
     flexDirection: 'row',
-  // height: 68,
-    paddingVertical: 8,
+   height: 60,
+    padding: 4,
    // width:'100%',
     backgroundColor: colors.orange,
-  //  alignItems: 'center',
-   // justifyContent: 'space-between',
-   // alignSelf:'center',
+    alignItems: 'center',
+   justifyContent: 'center',
+   alignSelf:'center',
   },
 
   // headerOptionsCtnr: {
@@ -28,8 +28,8 @@ export default StyleSheet.create({
   },
   bottomTab: {
     tintColor: '#fff',
-    height: 26,
-    width: 26,
+    height: 22,
+    width: 22,
     resizeMode:'cover',
   },
   bottomTab1: {

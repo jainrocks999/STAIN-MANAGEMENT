@@ -230,6 +230,52 @@ class StainChart extends React.Component {
               style={{ height: 20, width: 20 }}
             />
           </View>
+          <View style={{ flexDirection: 'row', width: '85%', height: 50, justifyContent: 'space-between' }}>
+            <TouchableOpacity
+              style={{ alignSelf: 'center' }}
+              onPress={() => {
+                this.props.navigation.navigate('StainChart', {
+                  btnName: 'Unknown Stain',
+                });
+              }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', paddingHorizontal: 10 }}>
+                <Image
+                  source={require('../../../assets/Images/u.png')}
+                  style={{ height: 30, width: 20, resizeMode: 'center' }}
+
+                />
+                <Text style={{
+                  fontSize: 14, marginTop: 4, marginLeft: 4, color: '#9E3B22', fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                }}>
+                  Unknown Stain
+           </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ alignSelf: 'center' }}
+              onPress={() => {
+                 this.props.navigation.navigate('TipPage'
+                // , {
+                // //   btnName: 'Stain Identification Tips',
+                // // }
+                 );
+              }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', paddingHorizontal: 10 }}>
+                <Image
+                  source={require('../../../assets/Images/t.png')}
+                  style={{ height: 30, width: 20, resizeMode: 'center' }}
+                />
+                <Text style={{
+                  fontSize: 14, marginTop: 4, marginLeft: 4, color: '#9E3B22', fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                }}>
+                  Stain Identification Tips
+           </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
           <FlatList
             style={styles.scroll}
             data={this.fill}

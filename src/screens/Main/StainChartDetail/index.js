@@ -78,7 +78,7 @@ const StainChartDetail = ({ route }) => {
               onPress={popupshow}>
               {show_information == true && (
                 <Image
-                  style={{ tintColor: 'red' }}
+                  style={{ tintColor: 'red',width:30,height:30 }}
 
                   source={require('../../../assets/Icons/Important.png')}
                 />
@@ -104,7 +104,7 @@ const StainChartDetail = ({ route }) => {
                   </Text>
                 </TouchableHighlight>
               </View>
-              <TitleText title={'Information'} color={'#9E3B22'} fontSize={22} />
+              <TitleText title={'Caution'} color={'#9E3B22'} fontSize={22} />
 
 
               <HTML html={Important} />
