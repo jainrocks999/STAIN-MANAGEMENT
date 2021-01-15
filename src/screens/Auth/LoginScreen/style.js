@@ -5,20 +5,31 @@ export default StyleSheet.create({
   MainView: {
     flex: 1,
   },
+  logoContainer1: {
+    marginTop: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    // backgroundColor:'white'
+  },
   scroll: {
     flexGrow: 1,
-    justifyContent: 'center',
-    paddingBottom: 20,
+   // justifyContent: 'center',
+    padding: 20,
   },
   ViewMiddle: {
     justifyContent: 'center',
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    alignSelf:'center',
     width: '88%',
+    marginTop:-10,
   },
   SecondView: {
-    //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
+   // width:300
+    
   },
   ModelBtntext: {
     color: colors.white,
@@ -63,9 +74,10 @@ export default StyleSheet.create({
   },
   checkbox: {
     fontFamily: 'Arial',
-    fontWeight: 'bold',
-    fontSize: 14,
-    padding: 4
+    fontWeight: '400',
+    fontSize: 12,
+    alignSelf:'center',
+    marginTop:-4,
   },
   logoContainer: {
     marginTop: '5%',
@@ -74,11 +86,12 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   checkboxContainer: {
-    marginTop: 8,
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    alignSelf:'center',
+   // width: '100%',
   },
   modal: {
     width: '100%',
@@ -99,11 +112,23 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-logo:{
-  width:80,
-  height:80,
-  borderRadius:10,
-  justifyContent:'center',
-  alignContent:'center'
-}
+  logo:{
+    width:65,
+    height:65,
+    //borderRadius:10,
+    marginTop:12,
+    padding:10,
+    justifyContent:'center',
+    alignContent:'center'
+  },
+  logo1:{
+    width:220,
+    height:30,
+    borderRadius:10,
+    marginTop:10,
+    justifyContent:'center',
+    alignContent:'center',
+    resizeMode:'center'
+  },
+
 });

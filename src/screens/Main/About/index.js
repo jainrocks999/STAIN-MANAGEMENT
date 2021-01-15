@@ -9,7 +9,7 @@ import styles from './style';
 import { connect, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import CustomHeader from '../../../component/header1';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import StaticText from '../../../component/StaticText';
 import HTMLView from 'react-native-htmlview';
 import BottomTab from '../../../component/BottomTab';
@@ -24,7 +24,7 @@ const About = () => {
   const [chart, setChart] = useState(false);
 
   useEffect(() => {
-    setButton('About Stains'.toUpperCase());
+   // setButton('About Stains'.toUpperCase());
 
     const selectedName = AppDetail.map((element) => {
       if (element.about_app != '') {
@@ -58,6 +58,7 @@ const About = () => {
             {StaticText.VersionText}
           </Text>
         </View>
+        <BottomTab/>
       </ImageBackground>
     </View>
   );

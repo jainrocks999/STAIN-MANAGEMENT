@@ -15,7 +15,7 @@ import CustomHeader from '../../../component/header1';
 import BottomTab from '../../../component/BottomTab';
 import HTMLView from 'react-native-htmlview';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 
 let images = '';
@@ -27,15 +27,15 @@ const SupportScreen = ({ route }) => {
   const isFetching = useSelector(state => state.isFetching)
   const [button, setButton] = useState(null)
   const [chart, setChart] = useState(false)
-  const { btnName } = route.params;
-  let buttonName = '';
-  buttonName = btnName
+  //const { btnName } = route.params;
+  let buttonName = 'Case Studies';
+//  buttonName = btnName
   useEffect(() => {
 
     setButton(buttonName)
     const selectedName = selector.map(element => {
 
-      if (element.name == btnName) {
+      if (element.name == buttonName) {
         setChart(false)
         setContent(element.mobile_content)
       }

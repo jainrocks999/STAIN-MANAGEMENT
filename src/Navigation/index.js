@@ -24,6 +24,8 @@ import SubScribeDetails from '../screens/Main/Subscribe';
 import CaseStudyDetails from '../screens/Main/CaseStudyDetails';
 import VideoList from '../screens/Main/VideoList';
 import Recommendedsupply from '../screens/Main/Recommendedsupplies';
+import TipPage from '../screens/Main/TipsPage';
+
 const Stack = createStackNavigator();
 
 function App() {
@@ -39,13 +41,14 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
 
 
-        <Stack.Screen name="Edit" component={EditProfile} />
+        <Stack.Screen name="Edit" component={EditProfile}  options={{ animationEnabled: false, }} />
         <Stack.Screen name="Change" component={ChangePassword} />
         <Stack.Screen name="AboutStains" component={AboutStain} options={{ animationEnabled: false, }} />
         <Stack.Screen name="HowTo" component={HowTo} options={{ animationEnabled: false, }} />
         <Stack.Screen name="Subscribe" component={SubScribeDetails} />
         <Stack.Screen name="Video" component={Video} options={{ animationEnabled: false, }} />
         <Stack.Screen name="Recommendedsupply" component={Recommendedsupply} options={{ animationEnabled: false, }} />
+        <Stack.Screen name="TipPage" component={TipPage} options={{ animationEnabled: false, }} />
         <Stack.Screen name="VideoList" component={VideoList} options={{ animationEnabled: false, }} />
         <Stack.Screen name="Support" component={Support} />
         <Stack.Screen name="StainChart" component={StainChartDetail} />

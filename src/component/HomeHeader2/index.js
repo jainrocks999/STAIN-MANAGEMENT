@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   Alert,
+  TouchableHighlight,
 } from 'react-native';
 
 import styles from './style';
@@ -13,9 +14,7 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
-import {
-  TouchableHighlight,
-} from 'react-native-gesture-handler';
+
 
 const CustomHeader = (props) => {
   const navigation = useNavigation();
@@ -158,12 +157,12 @@ const CustomHeader = (props) => {
             }>
             <MenuItem style={styles.itemSeperator} onPress={Profile}>
 
-              <Text style={{ fontFamily: 'Arial', }}>My account</Text>
+              <Text style={{ fontFamily: 'Arial', }}>My Account</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={About}>
 
-              <Text style={{ fontFamily: 'Arial', }}>About the App</Text>
+              <Text style={{ fontFamily: 'Arial', }}>About The App</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={Support}>

@@ -41,10 +41,10 @@ const CustomHeader = (props) => {
     navigation.navigate('supportTwo');
     _menu.hide();
   };
-  const Subscribe = () => {
-    navigation.navigate('Subscribe');
-    _menu.hide();
-  };
+  // const Subscribe = () => {
+  //   navigation.navigate('Subscribe');
+  //   _menu.hide();
+  // };
   const Profile = () => {
     navigation.navigate('Edit');
     _menu.hide();
@@ -158,21 +158,21 @@ const CustomHeader = (props) => {
             }>
             <MenuItem style={styles.itemSeperator} onPress={Profile}>
 
-              <Text style={{ fontFamily: 'Arial', }}>My account</Text>
+              <Text style={{ fontFamily: 'Arial', }}>My Account</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={About}>
 
-              <Text style={{ fontFamily: 'Arial', }}>About the App</Text>
+              <Text style={{ fontFamily: 'Arial', }}>About The App</Text>
             </MenuItem>
 
             <MenuItem style={styles.itemSeperator} onPress={Support}>
               <Text style={{ fontFamily: 'Arial', }}>Support</Text>
             </MenuItem>
-            <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
 
               <Text style={{ fontFamily: 'Arial', }}>Subscribe</Text>
-            </MenuItem>
+            </MenuItem> */}
 
             {/* <MenuItem style={styles.itemSeperator} onPress={Resource}>
 

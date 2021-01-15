@@ -15,7 +15,7 @@ import {ScrollView, Dimensions} from 'react-native';
 import colors from '../../../component/colors';
 import StatusBar from '../../../component/StatusBar';
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 
 const VideoList = ({route}) => {
   const dispatch = useDispatch();

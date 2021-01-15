@@ -5,10 +5,10 @@ import {
   Image,
   StatusBar,
   TouchableOpacity,
- 
+
   ImageBackground,
   TextInput,
- 
+
   FlatList,
 
 } from 'react-native';
@@ -20,7 +20,7 @@ import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 
 import Loader from '../../../component/loader';
-import TitleText from '../../../component/TitleText';
+import TitleText from '../../../component/Headertext';
 
 
 let count = '';
@@ -33,6 +33,7 @@ class StainChart extends React.Component {
       data: [],
       fill: [],
       button: 'STAIN CHART',
+      // colors:'';
     };
     this.arrayholder = [];
     this.fill = [];
@@ -58,10 +59,11 @@ class StainChart extends React.Component {
   loadsearch = (text) => {
     this.setState({
       value: text,
+      colors: 'Black',
     });
     const newData = this.arrayholder.filter((item) => {
-  
-      const itemData = `${item.name.toUpperCase()}   
+
+      const itemData = `${item.name.toUpperCase()}"/n"   
         ${item.tag.toUpperCase()} `;
 
       const textData = text.toUpperCase();
@@ -73,78 +75,130 @@ class StainChart extends React.Component {
 
     if (newData == '') {
       Toast.show('No item found');
-     
+
     }
   };
 
   renderItem = (item) => {
-  
+
     if (item.name == 'IMPORTANT') {
       return (
         <View>
-          <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-            {item.name.toUpperCase()}
-          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', }}>
+              {item.name.toUpperCase()}
+
+            </Text>
+          </TouchableOpacity>
         </View>
       );
     }
 
     else {
       count = this.fill.length;
-     
+
       if (this.fill.length > 30) {
 
-      
+
 
         return <View>
 
-
-          <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
-
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
       }
       else if (item.tag == '') {
 
-       
+
         return <View>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
 
-
-          <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+            <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
       }
 
       else if (item.name == '') {
 
-       
-        return <View>
-          <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
 
+        return <View>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
       }
 
       else if (item.name == '' && item.tag != '') {
 
-       
-        return <View>
-          <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
 
+        return <View>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
       }
 
       else if (item.name != '' && item.tag == '') {
-       
+
         return <View>
-          <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
       }
 
       else {
-       
+
         return <View>
-          <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
-          <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.tag.toUpperCase()}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('StainChart', {
+                btnName: item.name,
+              });
+            }}>
+            <Text style={{ fontSize: 15 }}>{item.name.toUpperCase()}</Text>
+          </TouchableOpacity>
         </View>
-       
+
       }
 
     }
@@ -153,7 +207,7 @@ class StainChart extends React.Component {
 
   render() {
     const { isFetching } = this.props;
-   
+
     return (
       <View style={styles.imageBackground}>
         <CustomHeader />
@@ -161,7 +215,7 @@ class StainChart extends React.Component {
         <ImageBackground
           style={styles.imageBackground}
           source={require('../../../assets/Images/AppBackground.jpg')}>
-          <TitleText title={'STAIN CHART'.toUpperCase()}color={'#9E3B22'} fontSize={22} />
+          <TitleText title={'STAIN CHART'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
           <View style={styles.search}>
             <TextInput
               placeholder=""
@@ -176,6 +230,52 @@ class StainChart extends React.Component {
               style={{ height: 20, width: 20 }}
             />
           </View>
+          <View style={{ flexDirection: 'row', width: '85%', height: 50, justifyContent: 'space-between' }}>
+            <TouchableOpacity
+              style={{ alignSelf: 'center' }}
+              onPress={() => {
+                this.props.navigation.navigate('StainChart', {
+                  btnName: 'Unknown Stain',
+                });
+              }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', paddingHorizontal: 10 }}>
+                <Image
+                  source={require('../../../assets/Images/u.png')}
+                  style={{ height: 30, width: 20, resizeMode: 'center' }}
+
+                />
+                <Text style={{
+                  fontSize: 14, marginTop: 4, marginLeft: 4, color: '#9E3B22', fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                }}>
+                  Unknown Stain
+           </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ alignSelf: 'center' }}
+              onPress={() => {
+                 this.props.navigation.navigate('TipPage'
+                // , {
+                // //   btnName: 'Stain Identification Tips',
+                // // }
+                 );
+              }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', paddingHorizontal: 10 }}>
+                <Image
+                  source={require('../../../assets/Images/t.png')}
+                  style={{ height: 30, width: 20, resizeMode: 'center' }}
+                />
+                <Text style={{
+                  fontSize: 14, marginTop: 4, marginLeft: 4, color: '#9E3B22', fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                }}>
+                  Stain Identification Tips
+           </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
           <FlatList
             style={styles.scroll}
             data={this.fill}
@@ -185,24 +285,19 @@ class StainChart extends React.Component {
             renderItem={({ item }) => (
               <View style={{ marginTop: 10, width: '99%' }}>
 
-                <TouchableOpacity
-                  onPress={() => {
-                    this.props.navigation.navigate('StainChart', {
-                      btnName: item.name,
-                    });
-                  }}>
-                  {this.renderItem(item)}
-                </TouchableOpacity>
+
+                {this.renderItem(item)}
+
               </View>
             )}
           />
-              <BottomTab />
+          <BottomTab />
         </ImageBackground>
         <StatusBar
           backgroundColor={colors.darkOrange}
           barStyle="light-content"
         />
-    
+
       </View>
     );
   }

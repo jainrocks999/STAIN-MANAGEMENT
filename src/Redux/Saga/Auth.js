@@ -1,6 +1,6 @@
 //Import NPM File
 
-import { takeEvery, put, call} from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import Api from '../Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../component/storage';
@@ -33,7 +33,7 @@ function* doLogin(action) {
       action.props.navigation.replace('Home');
     } else {
       AsyncStorage.setItem(storage.Url, formatRes.url);
-     
+
     }
   } else {
     AsyncStorage.setItem(storage.Url, '');
@@ -93,7 +93,7 @@ function* doGetEditProfile(action) {
     Toast.show(formatedResponse.message);
   } else {
     Toast.show(formatedResponse.message);
-   
+
     yield put({
       type: 'User_Get_Edit_Profile_Error',
     });
@@ -116,7 +116,7 @@ function* doGetSubScribe(action) {
     Toast.show(formatedResponse.message);
   } else {
     Toast.show(formatedResponse.message);
-  
+
     yield put({
       type: 'User_SubScribeDetails_Error',
     });
@@ -139,10 +139,10 @@ function* doEditProfile(action) {
       type: 'User_Edit_Profile_Success',
       payload: formatedResponse.data,
     });
-     Toast.show(formatedResponse.message);
+    Toast.show(formatedResponse.message);
   } else {
     Toast.show(formatedResponse.message);
-   
+
     yield put({
       type: 'User_Edit_Profile_Error',
     });
@@ -181,12 +181,31 @@ function* doStain(action) {
       payload: formatedResponse.data,
     });
   } else {
-  
+
     yield put({
       type: 'User_Stain_Error',
     });
   }
 }
+//Pages
+function* doStainPage(action) {
+  const response = yield call(Api.fetchDataByGET, action.url);
+  const formatedResponse = JSON.parse(response);
+
+  if (formatedResponse.status == 'true') {
+    yield put({
+      type: 'User_StainPages_Success',
+      payload: formatedResponse.data,
+    });
+  } else {
+
+    yield put({
+      type: 'User_StainPages_Error',
+    });
+  }
+}
+
+
 
 //CaseStudy
 function* doCaseStudy(action) {
@@ -198,7 +217,7 @@ function* doCaseStudy(action) {
       payload: response.data,
     });
   } else {
-  
+
     yield put({
       type: 'User_CaseStudy_Error',
     });
@@ -295,4 +314,5 @@ export default function* authSaga() {
   yield takeEvery('User_Change_Password_Request', doChangePassword);
   yield takeEvery('User_Get_Edit_Profile_Request', doGetEditProfile);
   yield takeEvery('User_SubScribeDetails_Request', doGetSubScribe);
+  yield takeEvery('User_StainPages_Request', doStainPage);
 }

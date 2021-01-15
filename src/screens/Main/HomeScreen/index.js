@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import colors from '../../../component/colors';
 import CustomButton from '../../../component/Button';
 import StaticText from '../../../component/StaticText';
+import Headertext from '../../../component/Headertext';
 import TitleText from '../../../component/TitleText';
 function HomeScreen(props) {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function HomeScreen(props) {
     loadData();
     loadData1();
     loadData2();
+    loadData3();
   }, []);
 
 
@@ -46,6 +48,12 @@ function HomeScreen(props) {
       url: 'v1/stain/about_app',
     });
   };
+  const loadData3 = async () => {
+    dispatch({
+      type: 'User_StainPages_Request',
+      url: 'v1/stain/stain_pages',
+    });
+  };
   return (
     <View style={styles.imageBackground}>
       <CustomHeader />
@@ -54,27 +62,40 @@ function HomeScreen(props) {
         style={styles.imageBackground}
         source={require('../../../assets/Images/HomeScreen.png')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <View style={styles.logoContainer}>
-            {/* <Image
+          <View
+            style={styles.SecondView}>
+            <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+            <Image
               style={styles.logo}
-              source={require('../../../assets/Images/logo.png')}
-            /> */}
-             <Image
-                  style={styles.logo}
-                  source={require('../../../assets/Images/stain.png')}
-                />
+
+              source={require('../../../assets/Images/stain.png')}
+            />
+            <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
+              <Image
+                style={styles.logo1}
+                source={require('../../../assets/Images/stain_text.png')}
+              />
+            </View>
+            {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
+              <View style={{marginTop:8}}>
+              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
+            </View> */}
+            <View style={{ marginTop: 8 }}>
+              <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
+            </View>
           </View>
 
-          <View style={styles.logoContainer}>
-            <Text style={styles.heading}>{StaticText.INTERACTIVEtext}</Text>
-          </View>
-          <View style={styles.logoContainer}>
-            {/* <Text style={styles.subHeading}>
-              For stone, tile, concrete and{'\n'} other hard porous surfaces
-            </Text> */}
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces'}  color={'#000'} fontSize={16} />
-          </View>
+          {/* <View style={styles.logoContainer}>
+              <TitleText title={'Fred Hueston’s'} color={'#000'} fontSize={16}  />
+            <Image
+              style={styles.logo}
+              source={require('../../../assets/Images/stain.png')}
+            />
+         
 
+          <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26}  />
+            <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
+            </View> */}
           <View style={styles.buttonContainer}>
             <CustomButton
               title="About Stains"
@@ -95,21 +116,19 @@ function HomeScreen(props) {
             <CustomButton
               title="How To Video"
               onPress={() => {
-                navigation.navigate('VideoList')
-                
-                // ('HowTo', {
-                //   btnName: 'How to Apply a Poultice',
-                // });
+                navigation.navigate('HowTo', {
+                  btnName: 'How to Apply a Poultice',
+                });
               }}
             />
+
             <CustomButton
               title="Recommended Supplies"
               onPress={() => {
-                navigation.navigate('Recommendedsupply',
-                //  {
-                //   btnName: 'How to Apply a Poultice',
-                // }
-                );
+                navigation.navigate('Recommendedsupply', {
+                  btnName: 'Supplies & Resources',
+
+                });
               }}
             />
             <CustomButton
@@ -146,15 +165,15 @@ function HomeScreen(props) {
             />
             */}
 
-             <View style={styles.logoContainer}>
-               <Image
-             
-              source={require('../../../assets/Images/logo.png')}
-              />
-              </View>
+
           </View>
-         
+          <View style={styles.logoContainer1}>
+            <Image
+              source={require('../../../assets/Images/surphce.jpg')}
+            />
+          </View>
         </ScrollView>
+
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
     </View>

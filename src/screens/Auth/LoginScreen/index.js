@@ -20,6 +20,7 @@ import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 import Modal from 'react-native-modal';
 import TitleText from '../../../component/TitleText';
+import Headertext from '../../../component/Headertext';
 import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
 
@@ -62,10 +63,10 @@ class LoginScreen extends React.Component {
   };
   dolink = async () => {
 
-    await Linking.openURL(this.state.Url);
-    this.setState({
-      isVisible: false
-    })
+    await Linking.openURL('https://backstage.surphaces.com/subscription/');
+    // this.setState({
+    //   isVisible: false
+    // })
   };
 
   loginbtn = async () => {
@@ -168,83 +169,96 @@ class LoginScreen extends React.Component {
           <ScrollView contentContainerStyle={styles.scroll}>
             <View
               style={styles.SecondView}>
-              <View style={styles.logoContainer}>
-              <TitleText title={'Fred Hueston’s'} color={'#000'} fontSize={16}  />
-                <Image
-                  style={styles.logo}
-                  source={require('../../../assets/Images/stain.png')}
-                />
-                 <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={22}  />
-                 <TitleText title={'Interactive Stain App For Hard Porous Surfaces'}  color={'#000'} fontSize={16} />
-                 <TitleText title={'Login'.toUpperCase()} color={'#9E3B22'} fontSize={22}/>
-              </View>
-          
-              <View style={styles.textInputContainer}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="Username"
-                  value={Username}
-                  placeholderTextColor={colors.textGrey}
-                  onChangeText={(text) =>
-                    this.setState({
-                      Username: text,
-                    })}
-                />
-                <TextInput
-                  style={styles.textInput}
-                  value={Password}
-                  placeholder="Password"
-                  placeholderTextColor={colors.textGrey}
-                  secureTextEntry={true}
-                  onChangeText={(p) =>
-                    this.setState({
-                      Password: p,
-                    })}
-                />
-              </View>
-              <View
-                style={styles.ViewMiddle}>
-                <Text
-                  onPress={() => {
-                    this.props.navigation.navigate('ForgotPassword');
-                  }}
-                  style={[styles.checkbox, { color: '#0058FF' }]}>
-                  Forgot Password?
-              </Text>
-              </View>
-              <View style={styles.checkboxContainer}>
-                <View style={{ marginRight: 10, height: 30, width: 30 }}>
-                  <CheckBox
-                    style={{ height: '100%', width: '100%' }}
-                    disabled={false}
-                    value={toggleCheckBox}
-                    onValueChange={(newValue) => this.keepme(newValue)}
-                    boxType="square"
-                    onFillColor="orange"
-                  />
-                </View>
-                <Text style={styles.checkbox}>Keep me logged in</Text>
-              </View>
+              <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+              <Image
+                style={styles.logo}
 
-              <CustomButton title="LOGIN" onPress={this.doLogin} />
-              <View>
-                <TouchableOpacity
-                  style={{ marginVertical: 10 }}
-                  onPress={() => this.props.navigation.navigate('Register')}>
-                  <Text style={{ fontSize: 19, color: colors.darkOrange }}>
-                    Register Now
-                </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.logoContainer}>
-               <Image
-             
-              source={require('../../../assets/Images/logo.png')}
+                source={require('../../../assets/Images/stain.png')}
               />
+              <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
+                <Image
+                  style={styles.logo1}
+                  source={require('../../../assets/Images/stain_text.png')}
+                />
+              </View>
+              {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
+              <View style={{marginTop:8}}>
+              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
+            </View> */}
+              <View style={{ marginTop: 8 }}>
+                <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
+              </View>
+              <View style={{ marginTop: 30 }}>
+                <Headertext title={'Login'} color={'#9E3B22'} fontSize={18} />
+              </View>
+            </View>
+
+            <View style={styles.textInputContainer}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Username"
+                value={Username}
+                placeholderTextColor={colors.textGrey}
+                onChangeText={(text) =>
+                  this.setState({
+                    Username: text,
+                  })}
+              />
+              <TextInput
+                style={styles.textInput}
+                value={Password}
+                placeholder="Password"
+                placeholderTextColor={colors.textGrey}
+                secureTextEntry={true}
+                onChangeText={(p) =>
+                  this.setState({
+                    Password: p,
+                  })}
+              />
+            </View>
+            <View
+              style={styles.ViewMiddle}>
+              <Text
+                onPress={() => {
+                  this.props.navigation.navigate('ForgotPassword');
+                }}
+                style={[styles.checkbox, { color: '#0058FF', alignSelf: 'center' }]}>
+                Forgot Password?
+              </Text>
+            </View>
+            <View style={styles.checkboxContainer}>
+              <View style={{ marginRight: 4, height: 25, width: 30 }}>
+                <CheckBox
+                  style={{ height: '90%', width: '90%' }}
+                  disabled={false}
+                  value={toggleCheckBox}
+                  onValueChange={(newValue) => this.keepme(newValue)}
+                  boxType="square"
+                  onFillColor="orange"
+                />
+              </View>
+              <Text style={styles.checkbox}>Keep me logged in</Text>
+            </View>
+
+            <CustomButton title="Login" onPress={this.doLogin} />
+            <View style={{ justifyContent: 'center', alignSelf: 'center',marginTop:5 }}>
+              <TouchableOpacity
+                style={{ marginVertical: 10, justifyContent: 'center', alignSelf: 'center' }}
+                onPress={this.dolink}>
+                <Text style={{ fontSize: 19, color: colors.darkOrange }}>
+                  Register Now
+                </Text>
+              </TouchableOpacity>
+
+              <View style={styles.logoContainer}>
+                <Image
+
+                  source={require('../../../assets/Images/surphce.jpg')}
+                />
               </View>
 
             </View>
-            <Modal
+            {/* <Modal
               isVisible={this.state.isVisible}
               onSwipeComplete={() =>
                 this.setState({
@@ -281,7 +295,12 @@ class LoginScreen extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-            </Modal>
+            </Modal> */}
+            {/* <View style={styles.logoContainer1}>
+              <Image
+                source={require('../../../assets/Images/logo.png')}
+              />
+            </View> */}
           </ScrollView>
 
         </ImageBackground>

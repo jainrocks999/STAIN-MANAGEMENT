@@ -1,22 +1,62 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ImageBackground,
-  ScrollView,
-  Text,
   View,
 } from 'react-native';
+import styles from './style';
+import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import CustomHeader from '../../../component/header1';
+import BottomTab from '../../../component/BottomTab';
+import {ScrollView, Dimensions} from 'react-native';
+import StatusBar from '../../../component/StatusBar';
+//import HTMLView from 'react-native-htmlview';
+import HTMLView from 'react-native-render-html';
+//import style from './style';
+import Loader from '../../../component/loader';
+import TitleText from '../../../component/Headertext';
 
+const Recommadsuplly = ({route}) => {
+  const [contents, setContent] = useState();
+  const selector = useSelector((state) => state.StainPagesDetails);
+  const isFetching = useSelector((state) => state.isFetching);
+  const [button, setButton] = useState(null);
+  const [chart, setChart] = useState(false);
 
+  useEffect(() => {
+    console.log('StainPagesDetails'+JSON.stringify(selector))
+    setButton('Supplies & Resources'.toUpperCase());
 
-const Recommendedsupplies = () => {
- 
+    const selectedName = selector.map((element) => {
+  
+      if (element.name == 'Supplies & Resources') {
+        setChart(false);
+        setContent(element.content);
+      }
+    });
+  });
 
- 
   return (
-    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-    <Text>This is Recommended screem</Text>   
+    <View style={styles.imageBackground}>
+      <CustomHeader />
+      {isFetching ? <Loader /> : null}
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/Images/AppBackground.jpg')}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scroll}>
+          <TitleText title={button}  color={'#9E3B22'} fontSize={22}/>
+          <HTMLView
+            html={contents}
+            imagesMaxWidth={Dimensions.get('window').width}
+          />
+        </ScrollView>
+      </ImageBackground>
+      <StatusBar/>
+      <BottomTab />
     </View>
   );
 };
 
-export default Recommendedsupplies;
+export default Recommadsuplly;
