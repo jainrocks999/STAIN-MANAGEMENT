@@ -78,6 +78,7 @@ class LoginScreen extends React.Component {
       onAction: function (notification) {
       console.log("ACTION:", notification.action);
       console.log("NOTIFICATION:", notification);
+      // this.props.navigation.navigate('Notifications')
     },
       onRegistrationError: function(err) {
       console.error(err.message, err);

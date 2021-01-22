@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
 import DeviceInfo from 'react-native-device-info';
-
+import Toast from 'react-native-simple-toast';
 
 const CustomHeader = (props) => {
   const [anim,setAnim]=useState(new Animated.Value(0))
@@ -53,6 +53,7 @@ const CustomHeader = (props) => {
   };
 
   const Logout = () => {
+   
     Alert.alert(
       'Are you want to logout ?',
       '',
@@ -73,27 +74,21 @@ const CustomHeader = (props) => {
   const setlog = () => {
     try {
       _menu.hide();
-      AsyncStorage.setItem(storage.Username, '');
+      const user_id= AsyncStorage.getItem(storage.UserId)
+      console.log('djfksad',user_id)
+      const device_id=DeviceInfo.getDeviceId();
+      Axios.get(`https://backstage.surphaces.com/wp-json/wp/v1/user/logout?user_id=${user_id}&device_id=null`).
+      then(responce=>{
+        // Toast.show(responce.status)
+        // console.log('Logout res',responce.status)
+      })
+      navigation.replace('Login');
+       AsyncStorage.setItem(storage.Username, '');
       AsyncStorage.setItem(storage.Password, '');
       AsyncStorage.setItem(storage.Email, '');
       AsyncStorage.setItem(storage.Name, '');
       AsyncStorage.setItem(storage.UserId, '');
       AsyncStorage.setItem(storage.Url, '');
-      const user_id=AsyncStorage.getItem(storage.UserId)
-      console.log('user_id',user_id)
-      const device_id=DeviceInfo.getDeviceId();
-      const data = new FormData();
-      data.append('user_id',user_id);
-      data.append('device_id',null);
-      const headers = {
-        'content-type': 'multipart/form-data',
-        Accept: 'multipart/form-data',
-      }
-      Axios.get('https://backstage.surphaces.com/wp-json/wp/v1/user/logout',data,{ headers }).
-      then(responce=>{
-        console.log('Logout status',responce)
-      })
-      navigation.replace('Login');
     } catch (error) {
       console.error(error);
     }
