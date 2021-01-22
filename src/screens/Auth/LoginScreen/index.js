@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Platform
 } from 'react-native';
 import Axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -23,7 +24,12 @@ import TitleText from '../../../component/TitleText';
 import Headertext from '../../../component/Headertext';
 import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
-
+import DeviceInfo from 'react-native-device-info';
+import PushNotification from "react-native-push-notification";
+import messaging from '@react-native-firebase/messaging';
+import { set } from 'react-native-reanimated';
+import { StackActions } from '@react-navigation/native';
+let pusToken=null
 class LoginScreen extends React.Component {
 
   constructor(props) {
@@ -40,15 +46,56 @@ class LoginScreen extends React.Component {
       button_text: '',
       Wrong: '',
       spinner: false,
+      token:''
     };
     this.keepmevalue();
+    this.loadToken()
   }
+  async componentDidMount(){
+    
+    await messaging().registerDeviceForRemoteMessages();
+     pusToken = await messaging().getToken();
+  console.log('message',pusToken)
+  }
+  
+  loadToken=async()=>{
+    const navigation=this.props
+  PushNotification.configure({
+    onRegister: function (token) {
+     // pusToken=token.token
+    },
+   
+    onNotification: function (notification) {
+      console.log("NOTIFICATION:", notification);
+      PushNotification.localNotification({
+        title:notification.title, 
+        message: notification.message,
+        // onOpen: () => { this.props.navigation.navigate("Notifications") },
+      });
+      // navigation.navigate('Notifications')
+    // notification.finish(PushNotificationIOS.FetchResult.NoData);
+    },
+      onAction: function (notification) {
+      console.log("ACTION:", notification.action);
+      console.log("NOTIFICATION:", notification);
+    },
+      onRegistrationError: function(err) {
+      console.error(err.message, err);
+    },
+
+    permissions: {
+      alert: true,
+      badge: true,
+      sound: true,
+    },
+    popInitialNotification: true,
+    requestPermissions: true,
+  });
+ }
 
   keepmevalue = async () => {
     let Username = await AsyncStorage.getItem(storage.rememberUserName);
     let Pass = await AsyncStorage.getItem(storage.rememberuserpass);
-
-
     this.setState({
       Username: Username,
       Password: Pass,
@@ -71,13 +118,19 @@ class LoginScreen extends React.Component {
 
   loginbtn = async () => {
     const { Username, Password } = this.state;
-
+   const device_type=Platform.OS=='android'?'Android':'Ios'
+   const device_id=DeviceInfo.getDeviceId();
+   const fcm_token=pusToken
+   console.log('cheking',device_id,device_type,fcm_token)
     this.setState({
       spinner: true
     })
     const data = new FormData();
     data.append('username', Username);
     data.append('password', Password);
+    data.append('device_id', device_id);
+    data.append('fcm_token', fcm_token);
+    data.append('device_type',device_type)
     const headers = {
       'content-type': 'multipart/form-data',
       Accept: 'multipart/form-data',
@@ -104,7 +157,7 @@ class LoginScreen extends React.Component {
           this.props.navigation.replace('Home');
         } else {
           AsyncStorage.setItem(storage.Url, formatRes.url);
-
+         
           this.setState({
             isVisible: true,
             msg_text: formatRes.msg_text,
@@ -116,7 +169,8 @@ class LoginScreen extends React.Component {
         }
 
       } else {
-        Toast.show('Please Enter Valid Username and Password');
+        Toast.show(formatRes.message)
+       // Toast.show('Please Enter Valid Username and Password');
         // setspinner(false)
         this.setState({
           spinner: false
@@ -145,13 +199,8 @@ class LoginScreen extends React.Component {
           Password: Password,
         });
         this.loginbtn();
-
       }
-
     }
-
-
-
   }
   render() {
     const { Username, Password, url, btn, msg, toggleCheckBox, isVisible } = this.state;

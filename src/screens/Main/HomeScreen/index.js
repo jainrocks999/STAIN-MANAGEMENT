@@ -26,6 +26,7 @@ function HomeScreen(props) {
     loadData1();
     loadData2();
     loadData3();
+    notification();
   }, []);
 
 
@@ -52,6 +53,12 @@ function HomeScreen(props) {
     dispatch({
       type: 'User_StainPages_Request',
       url: 'v1/stain/stain_pages',
+    });
+  };
+  const notification = async () => {
+    dispatch({
+      type: 'User_Notification_Request',
+      url: 'v1/stain/stain_notifications',
     });
   };
   return (

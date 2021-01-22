@@ -17,6 +17,7 @@ initialstate = {
   GetSubscribeDetails: '',
   AppDetails: [],
   StainPagesDetails: [],
+  NotificationDetails:[]
 };
 export default (state = initialstate, action) => {
 
@@ -117,6 +118,13 @@ export default (state = initialstate, action) => {
     case 'User_StainPages_Success':
       return { ...state, isFetching: false, StainPagesDetails: action.payload };
     case 'User_StainPages_Error':
+      return { ...state, isFetching: false }
+
+    case 'User_Notification_Request':
+      return { ...state, isFetching: true };
+    case 'User_Notification_Success':
+      return { ...state, isFetching: false, NotificationDetails: action.payload };
+    case 'User_Notification_Error':
       return { ...state, isFetching: false }
 
 

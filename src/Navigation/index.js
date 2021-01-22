@@ -25,6 +25,7 @@ import CaseStudyDetails from '../screens/Main/CaseStudyDetails';
 import VideoList from '../screens/Main/VideoList';
 import Recommendedsupply from '../screens/Main/Recommendedsupplies';
 import TipPage from '../screens/Main/TipsPage';
+import Notifications from '../screens/Main/Notifications';
 
 const Stack = createStackNavigator();
 
@@ -58,7 +59,7 @@ function App() {
         <Stack.Screen name="supportTwo" component={SupportTwo} />
         <Stack.Screen name="resource" component={Resource} />
         <Stack.Screen name="SubScribeDetails" component={SubScribeDetails} />
-      
+        <Stack.Screen name="Notifications" component={Notifications} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -42,10 +42,10 @@ class EditProfile extends React.Component {
       type: 'User_Get_Edit_Profile_Request',
       url: `v1/user/get_edit_profile?user_id=${userId}`,
     });
-    this.props.dispatch({
-      type: 'User_SubScribeDetails_Request',
-      url: `v1/user/get_subscribe_detail?user_id=${userId}`,
-    });
+    // this.props.dispatch({
+    //   type: 'User_SubScribeDetails_Request',
+    //   url: `v1/user/get_subscribe_detail?user_id=${userId}`,
+    // });
     let username = await AsyncStorage.getItem(storage.Username);
     let email = await AsyncStorage.getItem(storage.Email);
     let name = await AsyncStorage.getItem(storage.Name);

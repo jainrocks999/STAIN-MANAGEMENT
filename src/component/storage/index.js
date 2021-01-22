@@ -12,6 +12,7 @@ export default {
   msg:'msg',
   pass:'pass',
   Wrong:'wrong',
+  Token:'Token',
 
 
   rememberUserName:'RememberUser',

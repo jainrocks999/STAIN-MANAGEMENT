@@ -300,6 +300,22 @@ function* doChangePassword(action) {
     });
   }
 }
+
+//Notification
+function* getNotifications(action) {
+  const response = yield call(Api.fetchDataByGET, action.url);
+  const formatedResponse = JSON.parse(response);
+  if (formatedResponse.status == 'true') {
+    yield put({
+      type: 'User_Notification_Success',
+      payload: formatedResponse.data,
+    });
+  } else {
+    yield put({
+      type: 'User_Notification_Error',
+    });
+  }
+}
 export default function* authSaga() {
   yield takeEvery('User_Login_Request', doLogin);
   yield takeEvery('User_Stain_Request', doStain);
@@ -315,4 +331,6 @@ export default function* authSaga() {
   yield takeEvery('User_Get_Edit_Profile_Request', doGetEditProfile);
   yield takeEvery('User_SubScribeDetails_Request', doGetSubScribe);
   yield takeEvery('User_StainPages_Request', doStainPage);
+  yield takeEvery('User_Notification_Request', getNotifications);
+
 }

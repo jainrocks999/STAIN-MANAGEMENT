@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   View,
@@ -6,17 +6,20 @@ import {
   TouchableOpacity,
   Alert,
   TouchableHighlight,
+  Animated
 } from 'react-native';
-
+import Axios from 'axios';
 import styles from './style';
 import { connect } from 'react-redux';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
+import DeviceInfo from 'react-native-device-info';
 
 
 const CustomHeader = (props) => {
+  const [anim,setAnim]=useState(new Animated.Value(0))
   const navigation = useNavigation();
   let _menu = null;
 
@@ -76,6 +79,20 @@ const CustomHeader = (props) => {
       AsyncStorage.setItem(storage.Name, '');
       AsyncStorage.setItem(storage.UserId, '');
       AsyncStorage.setItem(storage.Url, '');
+      const user_id=AsyncStorage.getItem(storage.UserId)
+      console.log('user_id',user_id)
+      const device_id=DeviceInfo.getDeviceId();
+      const data = new FormData();
+      data.append('user_id',user_id);
+      data.append('device_id',null);
+      const headers = {
+        'content-type': 'multipart/form-data',
+        Accept: 'multipart/form-data',
+      }
+      Axios.get('https://backstage.surphaces.com/wp-json/wp/v1/user/logout',data,{ headers }).
+      then(responce=>{
+        console.log('Logout status',responce)
+      })
       navigation.replace('Login');
     } catch (error) {
       console.error(error);
@@ -91,6 +108,40 @@ const CustomHeader = (props) => {
   // About the App 
   // Support 
   // Logout 
+  
+  React.useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(anim, {
+          toValue: -1,
+          duration: 120,
+          useNativeDriver: true
+          // delay: 800
+        }),
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+        Animated.timing(anim, {
+          toValue: -1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+       
+      ])
+    ).start();
+
+  }, []);
+  const rotation = anim.interpolate({
+    inputRange: [-1, 1],
+    outputRange: ['-20deg', '20deg']
+  });
   return (
     <View style={styles.header}>
        {/* <TouchableOpacity
@@ -115,14 +166,17 @@ const CustomHeader = (props) => {
             alignSelf: 'center',
           }}
           onPress={() => {
-
+             navigation.navigate('Notifications')
           }}>
+          <Animated.View style={{ alignSelf: 'center', transform: [{ rotate: rotation }], }}>
           <Image
             source={require('../../assets/Icons/bell.png')}
-            style={{ tintColor: '#fff', height: '100%', width: '100%' }}
+             style={{ tintColor: '#fff',height:26,width:26}}
             resizeMode="cover"
           />
+          </Animated.View>
         </TouchableOpacity>
+       
         <TouchableOpacity
           style={{
             height: 30,

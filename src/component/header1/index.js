@@ -5,12 +5,14 @@ import {
   Text,
   TouchableOpacity,
   Alert,
+  Animated
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
 import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
+import BellIcon from 'react-bell-icon';
 import storage from '../storage';
 import {
   TouchableHighlight,
@@ -18,6 +20,7 @@ import {
 
 const CustomHeader = ({props}) => {
   const navigation = useNavigation();
+  const [anim,setAnim]=useState(new Animated.Value(0))
   let _menu = null;
 
   const setMenuRef = (ref) => {
@@ -93,7 +96,38 @@ const CustomHeader = ({props}) => {
   getListViewItem = (item) => {
     
   };
+  React.useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(anim, {
+          toValue: -1,
+          duration: 120,
+          useNativeDriver: true
+          // delay: 800
+        }),
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+        Animated.timing(anim, {
+          toValue: -1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 120,
+          useNativeDriver: true
+        }),
+      ])
+    ).start();
 
+  }, []);
+  const rotation = anim.interpolate({
+    inputRange: [-1, 1], // left side to right side
+    outputRange: ['-20deg', '20deg']// before that we have to check now it's perfect
+  });
   return (
     <View style={styles.header}>
       <TouchableOpacity
@@ -121,11 +155,14 @@ const CustomHeader = ({props}) => {
           onPress={() => {
           
           }}>
+          <Animated.View style={{ alignSelf: 'center', transform: [{ rotate: rotation }], }}>
           <Image
             source={require('../../assets/Icons/bell.png')}
-            style={{tintColor: '#fff', height: '100%', width: '100%'}}
+             style={{ tintColor: '#fff',height:26,width:26}}
             resizeMode="cover"
           />
+          </Animated.View>
+           {/* <BellIcon width='40' active={true} animate={true} /> */}
         </TouchableOpacity>
         <TouchableOpacity
           style={{
