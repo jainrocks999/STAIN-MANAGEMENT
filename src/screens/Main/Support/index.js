@@ -97,13 +97,11 @@ const SupportScreen = ({ route }) => {
       )
 
   };
-
-
   return (
     <View style={styles.imageBackground}>
       <CustomHeader 
-             goBack={()=>this.props.navigation.goBack()}
-             goToNotification={()=>this.props.navigation.navigate('Notifications')}
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
             />
       {isFetching ? <Loader /> : null}
       <ImageBackground

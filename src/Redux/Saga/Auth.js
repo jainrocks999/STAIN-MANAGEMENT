@@ -113,10 +113,9 @@ function* doGetSubScribe(action) {
       type: 'User_SubScribeDetails_Success',
       payload: formatedResponse,
     });
-
     Toast.show(formatedResponse.message);
   } else {
-    Toast.show(formatedResponse.message);
+ // Toast.show(formatedResponse.message);
 
     yield put({
       type: 'User_SubScribeDetails_Error',
