@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import storage from '../../../component/storage';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch, useSelector} from 'react-redux';
@@ -42,7 +42,10 @@ console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+       <CustomHeader 
+             goBack={()=>this.props.navigation.goBack()}
+             goToNotification={()=>this.props.navigation.navigate('Notifications')}
+            />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}

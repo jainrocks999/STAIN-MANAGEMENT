@@ -7,7 +7,7 @@ import {
 import styles from './style';
 import { connect } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SliderBox } from 'react-native-image-slider-box';
 import TitleText from '../../../component/Headertext';
@@ -15,11 +15,14 @@ import BottomTab from '../../../component/BottomTab';
 
 const CaseStudy = ({ route }) => {
     const { elementdata } = route.params;
-
+    const navigation=useNavigation()
 
     return (
         <View style={styles.imageBackground}>
-            <CustomHeader />
+            <CustomHeader 
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
+            />
             {/* {isFetching ? <Loader /> : null} */}
             <ImageBackground
                 style={styles.imageBackground}

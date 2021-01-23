@@ -6,7 +6,7 @@ import {
 import styles from './style';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import BottomTab from '../../../component/BottomTab';
 import { ScrollView, Dimensions } from 'react-native';
 import StatusBar from '../../../component/StatusBar';
@@ -22,6 +22,8 @@ const AboutStain = ({ route }) => {
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState(null);
   const [chart, setChart] = useState(false);
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     console.log('StainPagesDetails' + JSON.stringify(selector))
@@ -37,7 +39,10 @@ const AboutStain = ({ route }) => {
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+      goBack={()=> navigation.goBack()}
+      goToNotification={()=>navigation.navigate('Notifications')}
+      />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}

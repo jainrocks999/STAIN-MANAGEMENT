@@ -1,6 +1,6 @@
 //Import Npm 
 import React, { useEffect, useState } from 'react';
-import { Image, ImageBackground, View } from 'react-native';
+import { Alert, Image, ImageBackground, View } from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -18,9 +18,8 @@ const SplashScreen = () => {
   const selector=useSelector(state=>state.GetSubscribeDetails);
   React.useEffect(() => {
     getSubscribeDetail();
-    directCall();
     apiCall();
-  
+    directCall();
   }, []);
   const directCall = async () => {
     let Username = await AsyncStorage.getItem(storage.Username);
@@ -28,16 +27,17 @@ const SplashScreen = () => {
     if (Username == null) {
       setTimeout(() => navigation.replace('Login'), 2000);
     } else {
-      // const currentDate=moment().format("MMM-DD-YYYY hh:mm:ss");
-      // console.log(currentDate)
-      // if(selector.exp_date>=currentDate){
-       setTimeout(() => navigation.replace('Home'), 2000);
-      // }
-      // else{
-      //   Toast.show('Subscription date complete')
-      // }
+      const currentDate=moment().format("MMM-DD-YYYY hh:mm:ss");
+      console.log('current_date',currentDate)
+      console.log('expiry_date_from_splash',selector.exp_date)
+      if(selector.exp_date>=currentDate){
+      setTimeout(() => navigation.replace('Home'), 2000);
+       }
+       else{
+        // Toast.show('Subscription date complete')
+        Alert.alert('Subscription date complete')
+       }
     }
-    
   };
   const apiCall = async () => {
     await fetch('https://backstage.surphaces.com/wp-json/wp/v1/app/vesion')

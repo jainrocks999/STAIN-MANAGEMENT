@@ -8,7 +8,7 @@ import {
 import styles from './style';
 import { connect, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
 import StaticText from '../../../component/StaticText';
 import HTMLView from 'react-native-htmlview';
@@ -36,7 +36,10 @@ const About = () => {
   return (
     <View
       style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+      goBack={()=>navigation.goBack()}
+      goToNotification={()=>navigation.navigate('Notifications')}
+      />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>

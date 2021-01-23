@@ -205,6 +205,7 @@ class LoginScreen extends React.Component {
   }
   render() {
     const { Username, Password, url, btn, msg, toggleCheckBox, isVisible } = this.state;
+    const {SubscribeDetails}=this.props
     return (
       <View style={styles.MainView}>
         <View style={styles.header}></View>
@@ -308,7 +309,7 @@ class LoginScreen extends React.Component {
               </View>
 
             </View>
-            {/* <Modal
+            <Modal
               isVisible={this.state.isVisible}
               onSwipeComplete={() =>
                 this.setState({
@@ -345,7 +346,7 @@ class LoginScreen extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-            </Modal> */}
+            </Modal>
             {/* <View style={styles.logoContainer1}>
               <Image
                 source={require('../../../assets/Images/logo.png')}
@@ -367,6 +368,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
     UserDetails: state.UserDetails,
+    SubscribeDetails:state.GetSubscribeDetails
   };
 };
 export default connect(mapStateToProps)(LoginScreen);

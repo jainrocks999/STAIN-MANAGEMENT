@@ -15,10 +15,9 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
-import DeviceInfo from 'react-native-device-info';
 import Toast from 'react-native-simple-toast';
 
-const CustomHeader = (props) => {
+const CustomHeader = ({goBack,goToNotification}) => {
   const [anim,setAnim]=useState(new Animated.Value(0))
   const navigation = useNavigation();
   let _menu = null;
@@ -53,7 +52,7 @@ const CustomHeader = (props) => {
   };
 
   const Logout = () => {
-   
+    _menu.hide();
     Alert.alert(
       'Are you want to logout ?',
       '',
@@ -71,16 +70,13 @@ const CustomHeader = (props) => {
     );
 
   };
-  const setlog = () => {
+  const setlog =async() => {
     try {
-      _menu.hide();
-      const user_id= AsyncStorage.getItem(storage.UserId)
-      console.log('djfksad',user_id)
-      const device_id=DeviceInfo.getDeviceId();
+     // _menu.hide();
+      const user_id= await AsyncStorage.getItem(storage.UserId)
       Axios.get(`https://backstage.surphaces.com/wp-json/wp/v1/user/logout?user_id=${user_id}&device_id=null`).
       then(responce=>{
-        // Toast.show(responce.status)
-        // console.log('Logout res',responce.status)
+        Toast.show('Logout Successful')
       })
       navigation.replace('Login');
        AsyncStorage.setItem(storage.Username, '');
@@ -96,14 +92,7 @@ const CustomHeader = (props) => {
 
   const showMenu = () => {
     _menu.show();
-  };
-
-
-  //   My account 
-  // About the App 
-  // Support 
-  // Logout 
-  
+  };  
   React.useEffect(() => {
     Animated.loop(
       Animated.sequence([
@@ -137,20 +126,95 @@ const CustomHeader = (props) => {
     inputRange: [-1, 1],
     outputRange: ['-20deg', '20deg']
   });
+  if (goBack) {
+    return(
+      <View style={[styles.header,{justifyContent:'space-between'}]}>
+         <TouchableOpacity
+          style={styles.iconmain}
+          onPress={
+          goBack
+          }>
+          <Image
+            source={require('../../assets/Icons/arrow1.png')}
+            style={styles.icon}
+            resizeMode={'contain'}
+          />
+        </TouchableOpacity>
+        <View style={styles.header1}>
+          <TouchableOpacity
+            style={{
+              height: 26,
+              width: 26,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'center',
+            }}
+            onPress={goToNotification}>
+            <Animated.View style={{ alignSelf: 'center', transform: [{ rotate: rotation }], }}>
+            <Image
+              source={require('../../assets/Icons/bell.png')}
+               style={{ tintColor: '#fff',height:26,width:26}}
+              resizeMode="cover"
+            />
+            </Animated.View>
+          </TouchableOpacity>
+         
+          <TouchableOpacity
+            style={{
+              height: 30,
+              width: 30,
+              marginLeft: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={showMenu}>
+            <Menu
+              style={{ width: '38%' }}
+              ref={setMenuRef}
+              button={
+                <TouchableHighlight
+                  activeOpacity={0.6}
+                  underlayColor="transparent"
+                  style={{
+                    height: 26,
+                    width: 26,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  onPress={showMenu}>
+                  <Image
+                    style={{ height: '90%', width: '100%' }}
+                    resizeMode="contain"
+                    source={require('../../assets/Icons/menu.png')}
+                  />
+                </TouchableHighlight>
+              }>
+              <MenuItem style={styles.itemSeperator} onPress={Profile}>
+  
+                <Text style={{ fontFamily: 'Arial', }}>My Account</Text>
+              </MenuItem>
+  
+              <MenuItem style={styles.itemSeperator} onPress={About}>
+  
+                <Text style={{ fontFamily: 'Arial', }}>About The App</Text>
+              </MenuItem>
+  
+              <MenuItem style={styles.itemSeperator} onPress={Support}>
+                <Text style={{ fontFamily: 'Arial', }}>Support</Text>
+              </MenuItem>
+              <MenuItem style={styles.itemSeperator} onPress={Logout}>
+  
+                <Text style={{ fontFamily: 'Arial', }}>Logout</Text>
+              </MenuItem>
+            </Menu>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+  else{
   return (
-    <View style={styles.header}>
-       {/* <TouchableOpacity
-        style={styles.iconmain}
-        onPress={() => {
-          navigation.goBack(null);
-        }}>
-        <Image
-          source={require('../../assets/Icons/arrow1.png')}
-          style={styles.icon}
-          // style={{ tintColor: '#fff' }}
-          resizeMode={'contain'}
-        />
-      </TouchableOpacity> */}
+    <View style={[styles.header,{justifyContent:'flex-end'}]}>
       <View style={styles.header1}>
         <TouchableOpacity
           style={{
@@ -160,9 +224,7 @@ const CustomHeader = (props) => {
             alignItems: 'center',
             alignSelf: 'center',
           }}
-          onPress={() => {
-             navigation.navigate('Notifications')
-          }}>
+          onPress={goToNotification}>
           <Animated.View style={{ alignSelf: 'center', transform: [{ rotate: rotation }], }}>
           <Image
             source={require('../../assets/Icons/bell.png')}
@@ -194,8 +256,6 @@ const CustomHeader = (props) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
-                // hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-                //activeOpacity={10.00}
                 onPress={showMenu}>
                 <Image
                   style={{ height: '90%', width: '100%' }}
@@ -217,17 +277,6 @@ const CustomHeader = (props) => {
             <MenuItem style={styles.itemSeperator} onPress={Support}>
               <Text style={{ fontFamily: 'Arial', }}>Support</Text>
             </MenuItem>
-            {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
-
-              <Text style={{ fontFamily: 'Arial', }}>Subscribe</Text>
-            </MenuItem> */}
-
-            {/* <MenuItem style={styles.itemSeperator} onPress={Resource}>
-
-              <Text style={{ fontFamily: 'Arial', }}>Resources</Text>
-            </MenuItem> */}
-
-
             <MenuItem style={styles.itemSeperator} onPress={Logout}>
 
               <Text style={{ fontFamily: 'Arial', }}>Logout</Text>
@@ -237,6 +286,7 @@ const CustomHeader = (props) => {
       </View>
     </View>
   );
+ }
 };
 
 export default connect()(CustomHeader);

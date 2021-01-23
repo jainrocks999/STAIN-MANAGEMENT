@@ -8,10 +8,9 @@ import {
 import styles from './style';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import BottomTab from '../../../component/BottomTab';
 import HTML from 'react-native-render-html';
-//import style from './style';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
@@ -35,7 +34,10 @@ const HowTo = ({route}) => {
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
+            />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}

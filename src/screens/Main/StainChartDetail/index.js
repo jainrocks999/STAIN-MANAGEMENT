@@ -12,7 +12,7 @@ import {
 import styles from './style';
 import { useSelector } from 'react-redux';
 import { useNavigation, Route } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import HTML from 'react-native-render-html';
 import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
@@ -59,7 +59,10 @@ const StainChartDetail = ({ route }) => {
   }
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+       <CustomHeader 
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
+            />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>

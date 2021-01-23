@@ -7,7 +7,7 @@ import {
 import styles from './style';
 import {connect, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
 import HTML from 'react-native-htmlview';
 import BottomTab from '../../../component/BottomTab';
@@ -19,7 +19,7 @@ const SupportTwo = () => {
   const selector = useSelector((state) => state.StainDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState(null);
-
+  const navigation=useNavigation()
   useEffect(() => {
     setButton('About Stains'.toUpperCase());
     const selectedName = AppDetail.map((element) => {
@@ -31,7 +31,10 @@ const SupportTwo = () => {
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
+            />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>

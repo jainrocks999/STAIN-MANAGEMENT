@@ -6,7 +6,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import {useNavigation} from '@react-navigation/native';
 import HTML from 'react-native-htmlview';
 import YouTubePlayer from 'react-native-youtube-sdk';
@@ -15,19 +15,18 @@ import colors from '../../../component/colors';
 import StatusBar from '../../../component/StatusBar';
 const Video = ({route}) => {
   const {elementdata} = route.params;
-
+  const navigation=useNavigation()
   let videoId = elementdata.video_iframe_code.slice(30);
   useEffect(() => {});
-
   const play = () => {
     player.playVideo();
   };
- 
-
-
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+             goBack={()=>navigation.goBack()}
+             goToNotification={()=>navigation.navigate('Notifications')}
+            />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>

@@ -13,14 +13,6 @@ export default class App extends React.Component {
     super(props)
     //this.fetchDevice()
   }
-componentDidMount(){
- 
- 
-}
-
-
-
-
   render(){
     return (
       <SafeAreaView style={{flex:1}}>

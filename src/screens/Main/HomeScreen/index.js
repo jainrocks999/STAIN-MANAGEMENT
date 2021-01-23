@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './style';
-import CustomHeader from '../../../component/HomeHeader2';
+import CustomHeader from '../../../component/MainHeader';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import colors from '../../../component/colors';
@@ -63,8 +63,9 @@ function HomeScreen(props) {
   };
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
-
+      <CustomHeader
+      goToNotification={()=>navigation.navigate('Notifications')}
+      />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/HomeScreen.png')}>

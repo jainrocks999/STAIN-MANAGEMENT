@@ -14,6 +14,7 @@ function* doLogin(action) {
 
   const res = yield call(Api.fetchDataByPOST, action.url, data);
   const formatRes = JSON.parse(res);
+  console.log('login responce',res)
   const id = JSON.stringify(formatRes.user_id);
 
   if (formatRes.status == 'true') {

@@ -5,7 +5,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.orange,
     height: 40,
-    justifyContent: 'flex-end',
     paddingHorizontal: 10,
     alignItems: 'center',
   },
@@ -23,8 +22,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   iconmain: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 35,
     justifyContent: 'center',
     alignItems: 'center',
   },

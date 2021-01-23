@@ -11,7 +11,7 @@ import {
 import styles from './style';
 import { useSelector } from 'react-redux';
 import { useNavigation, } from '@react-navigation/native';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import BottomTab from '../../../component/BottomTab';
 import HTMLView from 'react-native-htmlview';
 import Loader from '../../../component/loader';
@@ -101,7 +101,10 @@ const SupportScreen = ({ route }) => {
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader />
+      <CustomHeader 
+             goBack={()=>this.props.navigation.goBack()}
+             goToNotification={()=>this.props.navigation.navigate('Notifications')}
+            />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}

@@ -36,7 +36,8 @@ const Notification = () => {
         source={require('../../../assets/Images/AppBackground.jpg')}>
              <TitleText title={'Notifications'} color={'#9E3B22'} fontSize={22} />
        <FlatList
-       data={arr}
+       style={{marginTop:10}}
+       data={notificationDetails}
        renderItem={({item})=>(
         // <View style={styles.subHeadingView}>
         <View style={{shadowColor:'black',
@@ -47,12 +48,10 @@ const Notification = () => {
         borderRadius:10,
         backgroundColor:'white',
         height:100,
-        margin:10,
+        marginHorizontal:10,
+        marginVertical:3,
         padding:10
         }}>
-              {/* <HTMLView
-              value={item}
-            /> */}
         <Text style={{color:'green'}}>{item.title}</Text>
         <Text style={{marginTop:10}}>{item.description}</Text>
         </View>

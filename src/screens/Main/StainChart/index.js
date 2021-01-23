@@ -15,10 +15,10 @@ import {
 import styles from './style';
 import BottomTab from '../../../component/BottomTab';
 import { connect } from 'react-redux';
-import CustomHeader from '../../../component/header1';
+import CustomHeader from '../../../component/MainHeader';
 import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
-
+import {useNavigation} from '@react-navigation/native';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 
@@ -210,10 +210,13 @@ class StainChart extends React.Component {
 
     return (
       <View style={styles.imageBackground}>
-        <CustomHeader />
+        <CustomHeader 
+             goBack={()=>this.props.navigation.goBack()}
+             goToNotification={()=>this.props.navigation.navigate('Notifications')}
+            />
         {isFetching ? <Loader /> : null}
         <ImageBackground
-          style={styles.imageBackground}
+          style={[styles.imageBackground,{alignItems:'center'}]}
           source={require('../../../assets/Images/AppBackground.jpg')}>
           <TitleText title={'STAIN CHART'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
           <View style={styles.search}>
