@@ -20,6 +20,8 @@ import StatusBar from '../../../component/StatusBar';
 import YouTubePlayer from 'react-native-youtube-sdk';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-player';
+import { WebView } from 'react-native-webview';
+
 
 let images = '';
 const SupportScreen = ({ route }) => {
@@ -78,7 +80,7 @@ const SupportScreen = ({ route }) => {
                       <View
                        style={{ width: "100%", height: 200 }}
                       >
-                       <VideoPlayer
+                       {/* <VideoPlayer
                         pauseOnPress
                         autoplay={true}
                         videoWidth={1600}
@@ -88,7 +90,8 @@ const SupportScreen = ({ route }) => {
                         }}
                         //'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
                         video={{ uri: element.video_url }}
-                        />
+                        /> */}
+                        <WebView source={{ uri: element.video_url }} />
                         </View>
                   <View style={{ alignSelf: 'flex-start', marginTop: 8 }} >
                     <Text style={styles.cardView_InsideText}>{element.case_study_name}</Text>
