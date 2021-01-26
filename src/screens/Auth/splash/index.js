@@ -6,53 +6,68 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import StatusBar from '../../../component/StatusBar';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch,useSelector,connect } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 import moment from 'moment';
 
 //create Function
-const SplashScreen = () => {
-  const navigation = useNavigation();
-  const [version, setVersion] = useState('');
-  const dispatch=useDispatch();
-  const selector=useSelector(state=>state.GetSubscribeDetails);
-  React.useEffect(() => {
-    getSubscribeDetail();
-    apiCall();
-    directCall();
-  }, []);
-  const directCall = async () => {
+class SplashScreen extends React.Component{
+  constructor(props) {
+    super(props);
+    this.getSubscribeDetail()
+  }
+//   const navigation = useNavigation();
+//   const [version, setVersion] = useState('');
+//   const dispatch=useDispatch();
+//   const selector=useSelector(state=>state.GetSubscribeDetails);
+//  useEffect(() => {
+//     getSubscribeDetail();
+//     directCall();
+//     apiCall();
+   
+//   }, []);
+    componentDidMount(){
+     
+      this.apiCall()
+      this.directCall()
+    
+    }
+
+   directCall = async () => {
+     const {SubscribeDetails}=this.props
+    
     let Username = await AsyncStorage.getItem(storage.Username);
 
     if (Username == null) {
-      setTimeout(() => navigation.replace('Login'), 2000);
+      setTimeout(() => this.props.navigation.replace('Login'), 2000);
     } else {
       const currentDate=moment().format("MMM-DD-YYYY hh:mm:ss");
       console.log('current_date',currentDate)
-      console.log('expiry_date_from_splash',selector.exp_date)
-      if(selector.exp_date>=currentDate){
-      setTimeout(() => navigation.replace('Home'), 2000);
+      console.log('narndra',SubscribeDetails.exp_date)
+      //  if(SubscribeDetails.exp_date >= currentDate){
+      setTimeout(() => this.props.navigation.replace('Home'), 2000);
+      console.log('ets worikkdgj')
        }
-       else{
-        // Toast.show('Subscription date complete')
-        Alert.alert('Subscription date complete')
-       }
-    }
+    //    else{
+    //     Alert.alert('Subscription date complete')
+    //    }
+    // }
   };
-  const apiCall = async () => {
+   apiCall = async () => {
     await fetch('https://backstage.surphaces.com/wp-json/wp/v1/app/vesion')
       .then((res) => res.json())
-      .then((response) => setVersion(response));
+      // .then((response) => setVersion(response));
   };
-  const getSubscribeDetail=async()=>{
+   getSubscribeDetail=async()=>{
     let userId = await AsyncStorage.getItem(storage.UserId);
     console.log('narendra here',userId)
-    dispatch({
+    this.props.dispatch({
       type: 'User_SubScribeDetails_Request',
       url: `v1/user/get_subscribe_detail?user_id=${userId}`,
     });
   }
  
+  render(){
   return (
     <View style={styles.MainView}>
       <View style={styles.header}></View>
@@ -70,5 +85,13 @@ const SplashScreen = () => {
     </View>
   );
 };
+}
+const mapStateToProps = (state) => {
 
-export default SplashScreen;
+  return {
+    isFetching: state.isFetching,
+    SubscribeDetails:state.GetSubscribeDetails
+  };
+};
+export default connect(mapStateToProps)(SplashScreen);
+

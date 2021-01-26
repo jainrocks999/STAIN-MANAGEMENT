@@ -39,7 +39,6 @@ const Notification = () => {
        style={{marginTop:10}}
        data={notificationDetails}
        renderItem={({item})=>(
-        // <View style={styles.subHeadingView}>
         <View style={{shadowColor:'black',
         shadowOpacity:0.25,
         shadowRadius:8,
@@ -47,13 +46,13 @@ const Notification = () => {
         elevation:5,
         borderRadius:10,
         backgroundColor:'white',
-        height:100,
-        marginHorizontal:10,
+        // height:100,
+         marginHorizontal:10,
         marginVertical:3,
-        padding:10
+         paddingHorizontal:10
         }}>
-        <Text style={{color:'green'}}>{item.title}</Text>
-        <Text style={{marginTop:10}}>{item.description}</Text>
+        <Text style={{color:'green',marginTop:8}}>{item.title}</Text>
+        <Text style={{marginTop:7}}>{item.description}</Text>
         </View>
        )}
        keyExtractor={item => item.id}

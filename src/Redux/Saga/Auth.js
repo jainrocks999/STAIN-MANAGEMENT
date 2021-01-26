@@ -107,6 +107,7 @@ function* doGetSubScribe(action) {
   const response = yield call(Api.fetchDataByGETValue, action.url);
 
   const formatedResponse = JSON.parse(response);
+  
   if (formatedResponse.status == 'true') {
 
     yield put({

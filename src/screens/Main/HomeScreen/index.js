@@ -131,7 +131,7 @@ function HomeScreen(props) {
             />
 
             <CustomButton
-              title="Recommended Supplies"
+              title="Supply List"
               onPress={() => {
                 navigation.navigate('Recommendedsupply', {
                   btnName: 'Supplies & Resources',
@@ -145,6 +145,12 @@ function HomeScreen(props) {
                 navigation.navigate('Support', {
                   btnName: 'Case Studies',
                 });
+              }}
+            />
+             <CustomButton
+              title="Resources"
+              onPress={() => {
+                navigation.navigate('resource');
               }}
             />
 

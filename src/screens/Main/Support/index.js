@@ -17,6 +17,9 @@ import HTMLView from 'react-native-htmlview';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
+import YouTubePlayer from 'react-native-youtube-sdk';
+import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 
 let images = '';
 const SupportScreen = ({ route }) => {
@@ -24,9 +27,11 @@ const SupportScreen = ({ route }) => {
   const [contents, setContent] = useState()
   const selector = useSelector(state => state.StainDetails)
   const CaseStudy = useSelector(state => state.CaseStudyDetails)
+  console.log('narendara video check',CaseStudy)
   const isFetching = useSelector(state => state.isFetching)
   const [button, setButton] = useState(null)
   const [chart, setChart] = useState(false)
+  const [showPlayIcon,setShowPlayIcon]=useState(true)
   //const { btnName } = route.params;
   let buttonName = 'Case Studies';
 //  buttonName = btnName
@@ -53,35 +58,46 @@ const SupportScreen = ({ route }) => {
           let imageArray = [];
           images = element.images;
           imageArray.push(images);
+          console.log('cheking',element.video_url)
           return (
             <View style={styles.MainContainer} >
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('CaseStudyDetails', {
-                    elementdata: element
-                  });
-                }}
-                style={{ margin: 5 }}
-              >
+              <View>
                 <View
                   style={styles.cardViewStyle}>
-
-                  <Image
+                  {/* <Image
                     source={{ uri: element.single_image }}
                     style={styles.cardView_Image}
-
-                  />
+                  /> */}           
+                      {/* <Video 
+                      source={{uri: element.video_url}}
+                      controls
+                      paused
+                      muted
+                      style={{ width: "100%", height: 200 }}
+                      /> */}
+                      <View
+                       style={{ width: "100%", height: 200 }}
+                      >
+                       <VideoPlayer
+                        pauseOnPress
+                        autoplay={true}
+                        videoWidth={1600}
+                        videoHeight={900}
+                        onPlayPress={() => {
+                          setShowPlayIcon(false);
+                        }}
+                        //'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+                        video={{ uri: element.video_url }}
+                        />
+                        </View>
                   <View style={{ alignSelf: 'flex-start', marginTop: 8 }} >
                     <Text style={styles.cardView_InsideText}>{element.case_study_name}</Text>
                   </View>
                   <View style={{ alignSelf: 'flex-start', marginTop: 1, marginBottom: 15 }} >
                     <Text style={styles.cardView_InsideText1}>{element.short_description}</Text>
                   </View>
-
                 </View>
-
-
-              </TouchableOpacity>
+              </View>
             </View>
           )
         }

@@ -19,8 +19,8 @@ let arr = [{
   pagename: 'HowTo',
 },
 {
-  img: require('../../assets/Images/RS.png'),
-  name: 'Supplies & Resources',
+  img: require('../../assets/Images/SL.png'),
+  name: 'Supply List',
   pagename: 'Recommendedsupply',
 },
 {
@@ -32,6 +32,11 @@ let arr = [{
   img: require('../../assets/Icons1/About.png'),
   name: 'About Stains',
   pagename: 'AboutStains',
+},
+{
+  img: require('../../assets/Images/RS.png'),
+  name: 'Resources',
+  pagename: 'resource',
 }
 ]
 
