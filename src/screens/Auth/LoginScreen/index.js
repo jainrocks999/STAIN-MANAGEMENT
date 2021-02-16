@@ -26,10 +26,9 @@ import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
 import DeviceInfo from 'react-native-device-info';
 import PushNotification from 'react-native-push-notification';
-import messaging from '@react-native-firebase/messaging';
+//import messaging from '@react-native-firebase/messaging';
 import Header from '../../../component/LoginHeader ';
-import {set} from 'react-native-reanimated';
-import {StackActions} from '@react-navigation/native';
+
 let pusToken = null;
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -49,51 +48,22 @@ class LoginScreen extends React.Component {
       token: '',
     };
     this.keepmevalue();
-    this.loadToken();
+   // this.loadToken();
   }
   async componentDidMount() {
-    await messaging().registerDeviceForRemoteMessages();
-    pusToken = await messaging().getToken();
+    // await messaging().registerDeviceForRemoteMessages();
+    // pusToken = await messaging().getToken();
   }
-  loadToken = async () => {
-    const navigation = this.props;
-    PushNotification.configure({
-      onRegister: function (token) {
-        // pusToken=token.token
-      },
-
-      onNotification: function (notification) {
-        PushNotification.localNotification({
-          title: notification.title,
-          message: notification.message,
-          // onOpen: () => { this.props.navigation.navigate("Notifications") },
-        });
-        // navigation.navigate('Notifications')
-        // notification.finish(PushNotificationIOS.FetchResult.NoData);
-      },
-      onAction: function (notification) {
-        // this.props.navigation.navigate('Notifications')
-      },
-      onRegistrationError: function (err) {
-        console.error(err.message, err);
-      },
-
-      permissions: {
-        alert: true,
-        badge: true,
-        sound: true,
-      },
-      popInitialNotification: true,
-      requestPermissions: true,
-    });
-  };
+  
 
   keepmevalue = async () => {
     let Username = await AsyncStorage.getItem(storage.rememberUserName);
     let Pass = await AsyncStorage.getItem(storage.rememberuserpass);
+    let Token = await AsyncStorage.getItem('Token');
     this.setState({
       Username: Username,
       Password: Pass,
+      token:Token,
     });
   };
   keepme = async (newValue) => {
@@ -139,6 +109,7 @@ class LoginScreen extends React.Component {
               storage.UserId,
               JSON.stringify(formatRes.user_id),
             );
+            console.log('dhjkfbdbhdbhdbc'+formatRes.lastname)
             AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
             AsyncStorage.setItem(storage.Username, formatRes.username);
             this.setState({

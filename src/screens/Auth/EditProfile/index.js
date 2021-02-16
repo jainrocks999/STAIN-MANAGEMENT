@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import CustomHeader from '../../../component/MainHeader';
 import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
@@ -49,7 +49,7 @@ class EditProfile extends React.Component {
     let email = await AsyncStorage.getItem(storage.Email);
     let name = await AsyncStorage.getItem(storage.Name);
     let lastname = await AsyncStorage.getItem(storage.Lastname);
-
+    console.log('ename', lastname)
     this.setState({
       username: username,
       email: email,
@@ -60,7 +60,7 @@ class EditProfile extends React.Component {
   };
 
   loadData = async () => {
-    const {userId, username, email, name, lastname} = this.state;
+    const { userId, username, email, name, lastname } = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (username == '') {
       Toast.show('Please Enter Username');
@@ -108,11 +108,11 @@ class EditProfile extends React.Component {
   };
 
   render() {
-    const {username, email, name, lastname} = this.state;
+    const { username, email, name, lastname } = this.state;
 
-    const {isFetching, GetSubscribeDetails, getEditDetails} = this.props;
+    const { isFetching, GetSubscribeDetails, getEditDetails } = this.props;
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <CustomHeader
           goBack={() => this.props.navigation.goBack()}
           goToNotification={() =>
@@ -170,7 +170,7 @@ class EditProfile extends React.Component {
                     placeholder="Last Name"
                     value={lastname}
                     placeholderTextColor={colors.textGrey}
-                    onChangeText={(text) => this.setState({lastname: text})}
+                    onChangeText={(text) => this.setState({ lastname: text })}
                   />
                   <TextInput
                     style={styles.textInput}
