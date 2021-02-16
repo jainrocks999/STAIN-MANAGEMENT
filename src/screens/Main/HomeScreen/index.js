@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/MainHeader';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 import colors from '../../../component/colors';
 import CustomButton from '../../../component/Button';
 import StaticText from '../../../component/StaticText';
@@ -20,41 +20,36 @@ import TitleText from '../../../component/TitleText';
 function HomeScreen(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const selector = useSelector((state) => state.StainPagesDetails);
+  const StainDetails = useSelector((state) => state.StainDetails);
+
+  //let Aboutstain = '';
 
   useEffect(() => {
     loadData();
+    getstainpage();
     loadData1();
-    loadData2();
-    loadData3();
-    notification();
   }, []);
 
-
-  const loadData = async () => {
-    dispatch({
-      type: 'User_Stain_Request',
-      url: 'v1/stain/all',
-    });
-  };
   const loadData1 = async () => {
     dispatch({
       type: 'User_CaseStudy_Request',
       url: 'v1/stain/case_studies',
     });
   };
-
-  const loadData2 = async () => {
+  const loadData = async () => {
     dispatch({
-      type: 'User_App_Request',
-      url: 'v1/stain/about_app',
+      type: 'User_Stain_Request',
+      url: 'v1/stain/all',
     });
   };
-  const loadData3 = async () => {
+  const getstainpage = () => {
     dispatch({
       type: 'User_StainPages_Request',
       url: 'v1/stain/stain_pages',
     });
   };
+
   const notification = async () => {
     dispatch({
       type: 'User_Notification_Request',
@@ -64,130 +59,114 @@ function HomeScreen(props) {
   return (
     <View style={styles.imageBackground}>
       <CustomHeader
-      goToNotification={()=>navigation.navigate('Notifications')}
+        goToNotification={() => navigation.navigate('Notifications')}
       />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/HomeScreen.png')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <View
-            style={styles.SecondView}>
+          <View style={styles.SecondView}>
             <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
             <Image
               style={styles.logo}
-
               source={require('../../../assets/Images/stain.png')}
             />
-            <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
+            <View
+              style={{
+                height: 30,
+                width: 390,
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}>
               <Image
                 style={styles.logo1}
                 source={require('../../../assets/Images/stain_text.png')}
               />
             </View>
-            {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
-              <View style={{marginTop:8}}>
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
-            </View> */}
-            <View style={{ marginTop: 8 }}>
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
+            <View style={{marginTop: 8}}>
+              <View style={{width: '80%', alignSelf: 'center'}}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}>
+                  THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
+                </Text>
+              </View>
+              <View style={{width: '100%'}}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                  }}>
+                  For Stone, Concrete and Other Hard Porous Surfaces
+                </Text>
+              </View>
             </View>
           </View>
 
-          {/* <View style={styles.logoContainer}>
-              <TitleText title={'Fred Hueston’s'} color={'#000'} fontSize={16}  />
-            <Image
-              style={styles.logo}
-              source={require('../../../assets/Images/stain.png')}
-            />
-         
-
-          <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26}  />
-            <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
-            </View> */}
           <View style={styles.buttonContainer}>
-            <CustomButton
-              title="About Stains"
-              onPress={() => {
-                navigation.navigate('AboutStains', {
-                  btnName: 'About Stains',
-                });
-              }}
-            />
             <CustomButton
               title="Stain Chart"
               onPress={() => {
-                navigation.navigate('Stain', {
-                  btnName: 'STAIN CHART',
-                });
+                navigation.navigate('Stain');
               }}
             />
             <CustomButton
-              title="How To Video"
+              title="How-To Video"
               onPress={() => {
-                navigation.navigate('HowTo', {
-                  btnName: 'How to Apply a Poultice',
-                });
+                navigation.navigate('HowTo');
               }}
             />
-
-            <CustomButton
-              title="Supply List"
-              onPress={() => {
-                navigation.navigate('Recommendedsupply', {
-                  btnName: 'Supplies & Resources',
-
-                });
-              }}
-            />
+            {selector.map((element) => {
+              if (element.id == '6') {
+                return (
+                  <CustomButton
+                    title={element.name}
+                    onPress={() => {
+                      navigation.navigate('Recommendedsupply');
+                    }}
+                  />
+                );
+              }
+            })}
+            {/* {selector.map((element) => {
+              if (element.id == '1') {
+                return ( */}
             <CustomButton
               title="Case Studies"
               onPress={() => {
-                navigation.navigate('Support', {
-                  btnName: 'Case Studies',
-                });
+                navigation.navigate('Support');
               }}
             />
-             <CustomButton
+            {/* )
+             // }cd 
+            }) */}
+            {/* //} */}
+            {selector.map((element) => {
+              if (element.id == '1') {
+                return (
+                  <CustomButton
+                    title={element.name}
+                    onPress={() => {
+                      navigation.navigate('AboutStains');
+                    }}
+                  />
+                );
+              }
+            })}
+
+            <CustomButton
               title="Resources"
               onPress={() => {
                 navigation.navigate('resource');
               }}
             />
-
-            {/* <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Support', {
-                  btnName: 'IMPORTANT',
-                });
-              }}
-              style={[styles.button, { flexDirection: 'row' }]}>
-              <Image
-                resizeMode="stretch"
-                style={styles.icon}
-                source={require('../../../assets/Icons/Important.png')}
-              />
-              <Text style={styles.buttonText}>Important!</Text>
-            </TouchableOpacity> */}
-
-            {/* <CustomButton
-              title="What is a Poultice?"
-              onPress={() => {
-                navigation.navigate('Support', {
-                  btnName: 'What is a Poultice?',
-                });
-              }}
-            />
-            */}
-
-
           </View>
           <View style={styles.logoContainer1}>
-            <Image
-              source={require('../../../assets/Images/surphce.jpg')}
-            />
+            <Image source={require('../../../assets/Images/surphce.jpg')} />
           </View>
         </ScrollView>
-
       </ImageBackground>
       <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
     </View>

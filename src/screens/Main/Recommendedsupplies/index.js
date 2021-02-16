@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ImageBackground,
-  View,
-} from 'react-native';
+import {ImageBackground, View} from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -17,31 +14,30 @@ import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 
 const Recommadsuplly = ({route}) => {
-  const [contents, setContent] = useState();
+  
   const selector = useSelector((state) => state.StainPagesDetails);
   const isFetching = useSelector((state) => state.isFetching);
-  const [button, setButton] = useState(null);
-  const [chart, setChart] = useState(false);
-  const navigation=useNavigation()
+  const [Button, setButton] = useState('');
+  const [contents, setContent] = useState('');
+  const navigation = useNavigation();
   useEffect(() => {
-    console.log('StainPagesDetails'+JSON.stringify(selector))
-    setButton('Supplies & Resources'.toUpperCase());
+   
 
     const selectedName = selector.map((element) => {
-  
-      if (element.name == 'Supplies & Resources') {
-        setChart(false);
-        setContent(element.content);
+      if (element.id == '6') {
+        //setChart(false);
+        setContent(element.mobile_content);
+        setButton(element.name.toUpperCase());
       }
     });
   });
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader 
-             goBack={()=>navigation.goBack()}
-             goToNotification={()=>navigation.navigate('Notifications')}
-            />
+      <CustomHeader
+        goBack={() => navigation.goBack()}
+        goToNotification={() => navigation.navigate('Notifications')}
+      />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}
@@ -49,14 +45,14 @@ const Recommadsuplly = ({route}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
-          <TitleText title={button}  color={'#9E3B22'} fontSize={22}/>
+          <TitleText title={Button} color={'#9E3B22'} fontSize={22} />
           <HTMLView
             html={contents}
             imagesMaxWidth={Dimensions.get('window').width}
           />
         </ScrollView>
       </ImageBackground>
-      <StatusBar/>
+      <StatusBar />
       <BottomTab />
     </View>
   );

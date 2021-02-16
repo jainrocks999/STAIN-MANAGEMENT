@@ -1,54 +1,56 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ImageBackground,
-  ScrollView,
-  View,
-} from 'react-native';
+import {ImageBackground, ScrollView, View, Dimensions} from 'react-native';
 import styles from './style';
 import {connect, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
-import HTML from 'react-native-htmlview';
+import HTML from 'react-native-render-html';
 import BottomTab from '../../../component/BottomTab';
 
 const SupportTwo = () => {
-
-  const [contents, setContent] = useState();
-  const AppDetail = useSelector((state) => state.AppDetails);
+  const StainPagesDetails = useSelector((state) => state.StainPagesDetails);
   const selector = useSelector((state) => state.StainDetails);
   const isFetching = useSelector((state) => state.isFetching);
-  const [button, setButton] = useState(null);
-  const navigation=useNavigation()
+  const [Button, setButton] = useState('');
+  const [Content, setContent] = useState('');
+  const navigation = useNavigation();
   useEffect(() => {
-    setButton('About Stains'.toUpperCase());
-    const selectedName = AppDetail.map((element) => {
-      if (element.support != '') {
-        setContent(element.support);
+    // setButton('About Stains'.toUpperCase());
+    const selectedName = StainPagesDetails.map((element) => {
+      if (element.id == '11') {
+        console.log('ggggg:', JSON.stringify(element));
+        console.log('gggggsssss:', element.name);
+        setContent(element.mobile_content);
+        setButton(element.name);
       }
     });
   });
 
   return (
     <View style={styles.imageBackground}>
-      <CustomHeader 
-             goBack={()=>navigation.goBack()}
-             goToNotification={()=>navigation.navigate('Notifications')}
-            />
+      <CustomHeader
+        goBack={() => navigation.goBack()}
+        goToNotification={() => navigation.navigate('Notifications')}
+      />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <TitleText title={'SUPPORT'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+          <TitleText
+            title={Button.toUpperCase()}
+            color={'#9E3B22'}
+            fontSize={22}
+          />
           <View style={styles.subHeadingView}>
             <HTML
-              value={contents}
-              // imagesMaxWidth={Dimensions.get('window').width}
+              html={Content}
+              imagesMaxWidth={Dimensions.get('window').width}
             />
           </View>
         </ScrollView>
       </ImageBackground>
-      <BottomTab/>
+      <BottomTab />
     </View>
   );
 };

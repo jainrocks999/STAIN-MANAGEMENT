@@ -4,11 +4,13 @@ export default StyleSheet.create({
   imageBackground: {
     flex: 1,
   },
-  scroll:{  flexGrow: 1,
+  scroll: {
+    flexGrow: 1,
     // justifyContent: 'center',
-     padding: 20,},
+    padding: 20,
+  },
   logoContainer: {
-  //  marginTop: '5%',
+    //  marginTop: '5%',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -18,34 +20,34 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-   // width:300
-    
+    // width:300
   },
-  logo1:{
-    width:220,
-    height:30,
-    borderRadius:10,
-    marginTop:10,
-    justifyContent:'center',
-    alignContent:'center',
-    resizeMode:'center'
+  logo1: {
+    width: '90%',
+    height: 30,
+    // borderRadius:10,
+    marginTop: 10,
+
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
   },
   logoContainer1: {
-      marginTop: '10%',
-      justifyContent: 'center',
-      alignItems: 'center',
-     // alignSelf: 'baseline',
-      // backgroundColor:'white'
-    },
-    logo:{
-      width:65,
-      height:65,
-      //borderRadius:10,
-      marginTop:12,
-      padding:10,
-      justifyContent:'center',
-      alignContent:'center'
-    },
+    marginTop: '10%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // alignSelf: 'baseline',
+    // backgroundColor:'white'
+  },
+  logo: {
+    width: 65,
+    height: 65,
+    //borderRadius:10,
+    marginTop: 12,
+    padding: 10,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
 
   heading: {
     textAlign: 'center',
@@ -62,9 +64,9 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    justifyContent: 'center', 
+    justifyContent: 'center',
     marginVertical: 20,
-    alignContent:'center'
+    alignContent: 'center',
   },
 
   button: {

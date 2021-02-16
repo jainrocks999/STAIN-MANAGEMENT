@@ -17,21 +17,20 @@ import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 
 const TipPage = ({ route }) => {
-    const [contents, setContent] = useState();
+    
     const selector = useSelector((state) => state.StainPagesDetails);
     const isFetching = useSelector((state) => state.isFetching);
-    const [button, setButton] = useState(null);
-    const [chart, setChart] = useState(false);
+    const [button, setButton] = useState('');
+  
+    const [contents, setContent] = useState('');
     const navigation=useNavigation();
     useEffect(() => {
-        console.log('StainPagesDetails' + JSON.stringify(selector))
-        setButton(' Stain Identification Tips'.toUpperCase());
-
         const selectedName = selector.map((element) => {
 
-            if (element.name == 'Stain Identification Tips') {
-                setChart(false);
-                setContent(element.content);
+            if (element.id == '7') {
+               
+                setButton(element.name)
+                setContent(element.mobile_content);
             }
         });
     });

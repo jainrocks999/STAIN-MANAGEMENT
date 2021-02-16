@@ -8,10 +8,9 @@ import {
 import {connect} from 'react-redux';
 import CustomHeader from '../../../component/MainHeader';
 import {useNavigation} from '@react-navigation/native';
-import HTML from 'react-native-htmlview';
-import YouTubePlayer from 'react-native-youtube-sdk';
+import HTML from 'react-native-render-html';
+//import YouTubePlayer from 'react-native-youtube-sdk';
 import styles from './style';
-import colors from '../../../component/colors';
 import StatusBar from '../../../component/StatusBar';
 const Video = ({route}) => {
   const {elementdata} = route.params;
@@ -31,19 +30,7 @@ const Video = ({route}) => {
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <YouTubePlayer
-            //ref={ref => (this.youTubePlayer = ref)}
-            videoId={videoId}
-            autoPlay={true}
-            fullscreen={false}
-            showFullScreenButton={true}
-            showSeekBar={true}
-            showPlayPauseButton={true}
-            startTime={5}
-            style={styles.video}
-            onStart={() => play}
-            
-          />
+      
 
           <View style={{padding: 10}}>
             <Text style={styles.video_name}>{elementdata.video_name}</Text>

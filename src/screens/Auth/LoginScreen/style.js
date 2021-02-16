@@ -122,13 +122,15 @@ export default StyleSheet.create({
     alignContent:'center'
   },
   logo1:{
-    width:220,
+    width:'90%',
     height:30,
-    borderRadius:10,
-    marginTop:10,
-    justifyContent:'center',
+    // borderRadius:10,
+     marginTop:10,
+    
+     justifyContent:'center',
     alignContent:'center',
-    resizeMode:'center'
+     alignSelf:'center',
+    
   },
 
 });

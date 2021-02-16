@@ -4,12 +4,11 @@ import colors from '../../../component/colors';
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
-    flex:1,
+    flex: 1,
   },
-  scroll:{
-    paddingHorizontal:20,
-   // paddingBottom:5,
+  scroll: {
+    // paddingHorizontal:20,
+    // paddingBottom:5,
     flexGrow: 1,
   },
-
 });

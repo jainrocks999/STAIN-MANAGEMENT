@@ -6,12 +6,11 @@ import {
   ScrollView,
   ImageBackground,
   TextInput,
-
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
-import { connect } from 'react-redux';
-import CustomHeader from '../../../component/HomeHeader';
+import {connect} from 'react-redux';
+import CustomHeader from '../../../component/MainHeader';
 import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 import storage from '../../../component/storage';
@@ -61,7 +60,7 @@ class EditProfile extends React.Component {
   };
 
   loadData = async () => {
-    const { userId, username, email, name, lastname } = this.state;
+    const {userId, username, email, name, lastname} = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (username == '') {
       Toast.show('Please Enter Username');
@@ -84,7 +83,13 @@ class EditProfile extends React.Component {
   };
 
   ChangePassword = async () => {
-    const { userId, oldPassword, newPassword, confirmPassword, lastname } = this.state;
+    const {
+      userId,
+      oldPassword,
+      newPassword,
+      confirmPassword,
+      lastname,
+    } = this.state;
     if (oldPassword == '') {
       Toast.show('Please enter old password');
     } else if (newPassword == '') {
@@ -103,34 +108,52 @@ class EditProfile extends React.Component {
   };
 
   render() {
-    const { username, email, name, lastname } = this.state;
+    const {username, email, name, lastname} = this.state;
 
-    const { isFetching, GetSubscribeDetails, getEditDetails } = this.props;
-    console.log('kapil profile' + JSON.stringify(getEditDetails))
+    const {isFetching, GetSubscribeDetails, getEditDetails} = this.props;
     return (
-      <View style={{ flex: 1 }}>
-        <CustomHeader />
+      <View style={{flex: 1}}>
+        <CustomHeader
+          goBack={() => this.props.navigation.goBack()}
+          goToNotification={() =>
+            this.props.navigation.navigate('Notifications')
+          }
+        />
         {isFetching ? <Loader /> : null}
         <ImageBackground
           style={styles.imageBackground}
           source={require('../../../assets/Images/AppBackground.jpg')}>
-          
-            <TitleText title={'Account Management'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
-        
+          <TitleText
+            title={'Account Management'.toUpperCase()}
+            color={'#9E3B22'}
+            fontSize={22}
+          />
+
           <ScrollView
             contentContainerStyle={{
               flexGrow: 1,
               paddingHorizontal: 20,
               //paddingBottom: 20,
             }}>
-
             <View
-              style={{ justifyContent: 'center', marginTop: 10, borderRadius: 10, }}>
-              <View style={{ justifyContent: 'center', marginTop: 10, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: '#9E3B22', alignItems: 'center' }}>
+              style={{
+                justifyContent: 'center',
+                marginTop: 10,
+                borderRadius: 10,
+              }}>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  marginTop: 10,
+                  borderRadius: 10,
+                  padding: 10,
+                  borderWidth: 1,
+                  borderColor: '#9E3B22',
+                  alignItems: 'center',
+                }}>
                 <Text style={styles.SignIn}>Edit Your Profile</Text>
 
                 <View style={styles.textInputContainer}>
-
                   <TextInput
                     style={styles.textInput}
                     placeholder="First Name"
@@ -147,7 +170,7 @@ class EditProfile extends React.Component {
                     placeholder="Last Name"
                     value={lastname}
                     placeholderTextColor={colors.textGrey}
-                    onChangeText={(text) => this.setState({ lastname: text })}
+                    onChangeText={(text) => this.setState({lastname: text})}
                   />
                   <TextInput
                     style={styles.textInput}
@@ -160,8 +183,21 @@ class EditProfile extends React.Component {
 
                 <CustomButton title="Update" onPress={this.loadData} />
               </View>
-              <View style={{ justifyContent: 'center', marginTop: 20, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: '#9E3B22', alignItems: 'center' }}>
-                <TitleText title={'Subscription Details'} color={'#9E3B22'} fontSize={22} />
+              <View
+                style={{
+                  justifyContent: 'center',
+                  marginTop: 20,
+                  borderRadius: 10,
+                  padding: 10,
+                  borderWidth: 1,
+                  borderColor: '#9E3B22',
+                  alignItems: 'center',
+                }}>
+                <TitleText
+                  title={'Subscription Details'}
+                  color={'#9E3B22'}
+                  fontSize={22}
+                />
 
                 <View style={styles.textInputContainer}>
                   <View style={styles.settingsItems}>
@@ -175,7 +211,6 @@ class EditProfile extends React.Component {
                     </Text>
                   </View>
 
-
                   <View style={styles.settingsItems}>
                     <Text style={styles.settingsItemsText}>
                       {' '}
@@ -186,7 +221,6 @@ class EditProfile extends React.Component {
                       {GetSubscribeDetails.exp_date}
                     </Text>
                   </View>
-
 
                   <View style={styles.settingsItems}>
                     <Text style={styles.settingsItemsText}> {'Amount :'}</Text>
@@ -208,9 +242,16 @@ class EditProfile extends React.Component {
                 </View>
               </View>
 
-              <View style={{ justifyContent: 'center', marginTop: 20, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: '#9E3B22', alignItems: 'center' }}>
-
-
+              <View
+                style={{
+                  justifyContent: 'center',
+                  marginTop: 20,
+                  borderRadius: 10,
+                  padding: 10,
+                  borderWidth: 1,
+                  borderColor: '#9E3B22',
+                  alignItems: 'center',
+                }}>
                 <Text style={styles.SignIn}>{TextValue.ChangePassword}</Text>
                 <View style={styles.textInputContainer}>
                   <TextInput
@@ -219,9 +260,11 @@ class EditProfile extends React.Component {
                     placeholder={TextValue.PlaceholderOldpwd}
                     placeholderTextColor={colors.textGrey}
                     // secureTextEntry={true}
-                    onChangeText={(text) => this.setState({
-                      oldPassword: text
-                    })}
+                    onChangeText={(text) =>
+                      this.setState({
+                        oldPassword: text,
+                      })
+                    }
                   />
 
                   <TextInput
@@ -230,9 +273,11 @@ class EditProfile extends React.Component {
                     placeholder={TextValue.PlaceholderNewpwd}
                     placeholderTextColor={colors.textGrey}
                     //secureTextEntry={true}
-                    onChangeText={(text) => this.setState({
-                      newPassword: text
-                    })}
+                    onChangeText={(text) =>
+                      this.setState({
+                        newPassword: text,
+                      })
+                    }
                   />
                   <TextInput
                     value={this.state.confirmPassword}
@@ -240,25 +285,27 @@ class EditProfile extends React.Component {
                     placeholder={TextValue.PlaceholderConpwd}
                     placeholderTextColor={colors.textGrey}
                     //secureTextEntry={true}
-                    onChangeText={(text) => this.setState({
-                      confirmPassword: text
-                    })}
+                    onChangeText={(text) =>
+                      this.setState({
+                        confirmPassword: text,
+                      })
+                    }
                   />
                 </View>
 
-                <CustomButton title={TextValue.BtnSEND} onPress={this.ChangePassword} />
+                <CustomButton
+                  title={TextValue.BtnSEND}
+                  onPress={this.ChangePassword}
+                />
               </View>
-
-
             </View>
-           
           </ScrollView>
         </ImageBackground>
         <StatusBar
           backgroundColor={colors.darkOrange}
           barStyle="light-content"
         />
-           <BottomTab />
+        <BottomTab />
       </View>
     );
   }

@@ -7,10 +7,10 @@ export default StyleSheet.create({
     flex: 1,
   },
   scroll: {
-    paddingHorizontal:30,
-    paddingBottom:80,
+    paddingHorizontal: 30,
+    paddingBottom: 80,
     flexGrow: 1,
-    marginBottom:50
+    marginBottom: 50,
   },
 
   MainContainer: {flex: 1, width: '100%'},
@@ -38,5 +38,54 @@ export default StyleSheet.create({
     fontSize: 15,
     textAlignVertical: 'center',
     fontFamily: 'Arial',
+  },
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+  modal: {
+    flex: 1,
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  ModelBtntext: {
+    color: colors.white,
+    fontSize: 14,
+    alignSelf: 'center',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    padding: 16,
+    textAlign: 'center',
+  },
+  ModelMsgText: {
+    width: '99%',
+    alignSelf: 'center',
+    color: colors.black,
+    fontSize: 14,
+    fontWeight: '500',
+    alignItems: 'center',
+    padding: 6,
+    textAlign: 'center',
+  },
+  ModelmsgView: {
+    width: '99%',
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  popup: {
+    width: '30%',
+    height: 40,
+    marginTop: 10,
+    backgroundColor: colors.orange,
+    justifyContent: 'center',
+    borderRadius: 4,
+    alignItems: 'center',
+    alignSelf: 'center',
   },
 });

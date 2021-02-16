@@ -1,6 +1,6 @@
 //Import NPM File
 
-import { takeEvery, put, call } from 'redux-saga/effects';
+import {takeEvery, put, call} from 'redux-saga/effects';
 import Api from '../Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../component/storage';
@@ -13,9 +13,10 @@ function* doLogin(action) {
   data.append('password', action.Password);
 
   const res = yield call(Api.fetchDataByPOST, action.url, data);
+
   const formatRes = JSON.parse(res);
-  console.log('login responce',res)
-  const id = JSON.stringify(formatRes.user_id);
+
+  //const id = JSON.stringify(formatRes.user_id);
 
   if (formatRes.status == 'true') {
     yield put({
@@ -23,6 +24,7 @@ function* doLogin(action) {
       payload: formatRes,
     });
 
+    console.log('formatRes.lastname', formatRes);
     if (formatRes.url == '') {
       AsyncStorage.setItem(storage.Email, formatRes.email);
       AsyncStorage.setItem(storage.Name, formatRes.name);
@@ -30,11 +32,10 @@ function* doLogin(action) {
       AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
       AsyncStorage.setItem(storage.Username, formatRes.username);
 
-      Toast.show('Login Sucessful');
+      Toast.show(formatRes.message);
       action.props.navigation.replace('Home');
     } else {
       AsyncStorage.setItem(storage.Url, formatRes.url);
-
     }
   } else {
     AsyncStorage.setItem(storage.Url, '');
@@ -49,7 +50,6 @@ function* doLogin(action) {
 
 //Register
 function* doRegister(action) {
-
   const data = new FormData();
   data.append('username', action.Email);
   data.append('email', action.Email);
@@ -75,11 +75,9 @@ function* doRegister(action) {
 }
 //getEditProfile()
 function* doGetEditProfile(action) {
-
   const response = yield call(Api.fetchDataByPOSTValue, action.url);
 
   const formatedResponse = JSON.parse(response);
-
 
   if (formatedResponse.status == 'true') {
     AsyncStorage.setItem(storage.Email, formatedResponse.email);
@@ -91,7 +89,7 @@ function* doGetEditProfile(action) {
       payload: formatedResponse,
     });
 
-    Toast.show(formatedResponse.message);
+    // Toast.show(formatedResponse.message);
   } else {
     Toast.show(formatedResponse.message);
 
@@ -103,20 +101,18 @@ function* doGetEditProfile(action) {
 
 //Getsubscribe
 function* doGetSubScribe(action) {
-
   const response = yield call(Api.fetchDataByGETValue, action.url);
 
   const formatedResponse = JSON.parse(response);
-  
-  if (formatedResponse.status == 'true') {
 
+  if (formatedResponse.status == 'true') {
     yield put({
       type: 'User_SubScribeDetails_Success',
       payload: formatedResponse,
     });
-    Toast.show(formatedResponse.message);
+    // Toast.show(formatedResponse.message);
   } else {
- // Toast.show(formatedResponse.message);
+    // Toast.show(formatedResponse.message);
 
     yield put({
       type: 'User_SubScribeDetails_Error',
@@ -126,7 +122,6 @@ function* doGetSubScribe(action) {
 
 //EditProfile
 function* doEditProfile(action) {
-
   const data = new FormData();
   data.append('user_id', action.userId);
   data.append('username', action.username);
@@ -151,18 +146,21 @@ function* doEditProfile(action) {
 }
 function* doForgot(action) {
   const data = new FormData();
-  data.append('email', action.Email);
+  data.append('email', action.email);
   const res = yield call(Api.fetchDataByPOST, action.url, data);
 
   const formatRes = JSON.parse(res);
-
+  // if (res == '') {
+  //   Toast.show('empty', formatRes);
+  // }
+  // else
   if (formatRes.status == 200) {
-
     yield put({
       type: 'User_Forgot_Password_Success',
       payload: formatRes,
     });
-    Toast.show('new password setted');
+    // Toast.show('new password setted');
+    Toast.show(formatRes.message);
   } else {
     Toast.show(formatRes.message);
     yield put({
@@ -182,7 +180,6 @@ function* doStain(action) {
       payload: formatedResponse.data,
     });
   } else {
-
     yield put({
       type: 'User_Stain_Error',
     });
@@ -192,6 +189,7 @@ function* doStain(action) {
 function* doStainPage(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
   const formatedResponse = JSON.parse(response);
+  console.log('respo222::::', JSON.stringify(formatedResponse.data));
 
   if (formatedResponse.status == 'true') {
     yield put({
@@ -199,26 +197,21 @@ function* doStainPage(action) {
       payload: formatedResponse.data,
     });
   } else {
-
     yield put({
       type: 'User_StainPages_Error',
     });
   }
 }
 
-
-
 //CaseStudy
 function* doCaseStudy(action) {
-  const response = yield call(Api.fetchDataByGET1, action.url);
+  const response = yield call(Api.fetchDataByGET, action.url);
   if (response.status == true) {
-
     yield put({
       type: 'User_CaseStudy_Success',
       payload: response.data,
     });
   } else {
-
     yield put({
       type: 'User_CaseStudy_Error',
     });
@@ -227,14 +220,13 @@ function* doCaseStudy(action) {
 
 //AppDetail
 function* doAppDetail(action) {
-  const response = yield call(Api.fetchDataByGET3, action.url);
+  const response = yield call(Api.fetchDataByGET, action.url);
   if (response.status == true) {
     yield put({
       type: 'User_App_Success',
       payload: response.data,
     });
   } else {
-
     yield put({
       type: 'User_App_Error',
     });
@@ -243,7 +235,7 @@ function* doAppDetail(action) {
 
 //Video
 function* doVideo(action) {
-  const response = yield call(Api.fetchDataByGET2, action.url);
+  const response = yield call(Api.fetchDataByGET, action.url);
   if (response.status == true) {
     yield put({
       type: 'User_Video_Success',
@@ -265,20 +257,25 @@ function* doLogout(action) {
       type: 'User_Logout_Success',
       payload: formatedResponse.data,
     });
-  } else {
-    yield put({
-      type: 'User_Logout_Error',
-    });
   }
 }
 
 //Version
 function* doVersion(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
-  yield put({
-    type: 'User_Version_Success',
-    payload: response,
-  });
+
+  if (response == '') {
+    yield put({
+      type: 'User_Version_Success',
+      payload: response,
+    });
+    AsyncStorage.setItem(storage.Android_Version, formatRes.android_version);
+    AsyncStorage.setItem(storage.ios_Version, formatRes.ios_version);
+  } else {
+    yield put({
+      type: 'User_Version_Error',
+    });
+  }
 }
 //Change_Password
 function* doChangePassword(action) {
@@ -306,6 +303,7 @@ function* doChangePassword(action) {
 function* getNotifications(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
   const formatedResponse = JSON.parse(response);
+
   if (formatedResponse.status == 'true') {
     yield put({
       type: 'User_Notification_Success',
@@ -333,5 +331,4 @@ export default function* authSaga() {
   yield takeEvery('User_SubScribeDetails_Request', doGetSubScribe);
   yield takeEvery('User_StainPages_Request', doStainPage);
   yield takeEvery('User_Notification_Request', getNotifications);
-
 }

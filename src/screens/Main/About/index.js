@@ -1,70 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  Button,
   ImageBackground,
+  Platform,
   ScrollView,
   Text,
   View,
 } from 'react-native';
 import styles from './style';
-import { connect, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import {connect, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
-import StaticText from '../../../component/StaticText';
 import HTMLView from 'react-native-htmlview';
 import BottomTab from '../../../component/BottomTab';
+import WebView from 'react-native-webview';
 
-const About = () => {
+const AboutTheApp = () => {
   const navigation = useNavigation();
-  const [contents, setContent] = useState();
-  const AppDetail = useSelector((state) => state.AppDetails);
-  const selector = useSelector((state) => state.StainDetails);
-  const isFetching = useSelector((state) => state.isFetching);
-  const [button, setButton] = useState(null);
+  const StainPagesDetails = useSelector((state) => state.StainPagesDetails);
+  const [androidVersion, setAndroidVersion] = useState('');
+  const [iosVersion, setIosVersion] = useState('');
   const [chart, setChart] = useState(false);
+  const [Button, setButton] = useState('');
+  const [contents, setContent] = useState('');
 
   useEffect(() => {
-   // setButton('About Stains'.toUpperCase());
-
-    const selectedName = AppDetail.map((element) => {
-      if (element.about_app != '') {
-        setContent(element.about_app);
+    const selectedName = StainPagesDetails.map((element) => {
+      if (element.id == '9') {
+        setContent(element.mobile_content);
+        setButton(element.name);
       }
     });
   });
 
   return (
-    <View
-      style={styles.imageBackground}>
-      <CustomHeader 
-      goBack={()=>navigation.goBack()}
-      goToNotification={()=>navigation.navigate('Notifications')}
+    <View style={styles.imageBackground}>
+      <CustomHeader
+        goBack={() => navigation.goBack()}
+        goToNotification={() => navigation.navigate('Notifications')}
       />
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <TitleText title={StaticText.About.toUpperCase()} color={'#9E3B22'} fontSize={22} />
-          <View style={styles.subHeadingView}>
-
-            <HTMLView
-              value={contents}
-            // stylesheet={styles}
-            />
-
-          </View>
+          <TitleText title={Button} color={'#9E3B22'} fontSize={22} />
+          <WebView
+            source={{
+              uri: 'https://staincarepro.com/stain-app-page/?uid=9',
+            }}
+          />
         </ScrollView>
 
-        <View
-          style={styles.version}>
-          <Text style={[styles.checkbox, { color: '#9E3B22' }]}>
-            {StaticText.VersionText}
-          </Text>
-        </View>
-        <BottomTab/>
+        <BottomTab />
       </ImageBackground>
     </View>
   );
 };
 
-export default connect()(About);
+export default connect()(AboutTheApp);

@@ -3,13 +3,13 @@ import colors from '../colors';
 export default StyleSheet.create({
   header: {
     flexDirection: 'row',
-   height: 60,
+    height: 60,
     padding: 4,
-   // width:'100%',
+    // width:'100%',
     backgroundColor: colors.orange,
     alignItems: 'center',
-   justifyContent: 'center',
-   alignSelf:'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 
   // headerOptionsCtnr: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
   //   // marginLeft:30,
   //   marginBottom: 20,
   // },
-  
+
   itemSeperator: {
     borderBottomWidth: 0.5,
     borderColor: '#C1C1C1',
@@ -30,21 +30,21 @@ export default StyleSheet.create({
     tintColor: '#fff',
     height: 22,
     width: 22,
-    resizeMode:'cover',
+    // resizeMode:'cover',
   },
   bottomTab1: {
     tintColor: '#fff',
     height: 36,
     width: 36,
-   // resizeMode:'cover',
+    // resizeMode:'cover',
   },
   buttonText: {
     color: 'white',
     fontSize: 10,
     alignSelf: 'center',
     //fontFamily: 'Arial',
-   // width:90,
-    padding:4,
+    // width:90,
+    padding: 4,
     textAlign: 'center'
   },
 });

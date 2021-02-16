@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ImageBackground,
   Image,
@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
-  Platform
+  Platform,
 } from 'react-native';
 import Axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './style';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import colors from '../../../component/colors';
@@ -25,13 +25,13 @@ import Headertext from '../../../component/Headertext';
 import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
 import DeviceInfo from 'react-native-device-info';
-import PushNotification from "react-native-push-notification";
+import PushNotification from 'react-native-push-notification';
 import messaging from '@react-native-firebase/messaging';
-import { set } from 'react-native-reanimated';
-import { StackActions } from '@react-navigation/native';
-let pusToken=null
+import Header from '../../../component/LoginHeader ';
+import {set} from 'react-native-reanimated';
+import {StackActions} from '@react-navigation/native';
+let pusToken = null;
 class LoginScreen extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -46,53 +46,47 @@ class LoginScreen extends React.Component {
       button_text: '',
       Wrong: '',
       spinner: false,
-      token:''
+      token: '',
     };
     this.keepmevalue();
-    this.loadToken()
+    this.loadToken();
   }
-  async componentDidMount(){
-    
+  async componentDidMount() {
     await messaging().registerDeviceForRemoteMessages();
-     pusToken = await messaging().getToken();
-  console.log('message',pusToken)
+    pusToken = await messaging().getToken();
   }
-  
-  loadToken=async()=>{
-    const navigation=this.props
-  PushNotification.configure({
-    onRegister: function (token) {
-     // pusToken=token.token
-    },
-   
-    onNotification: function (notification) {
-      console.log("NOTIFICATION:", notification);
-      PushNotification.localNotification({
-        title:notification.title, 
-        message: notification.message,
-        // onOpen: () => { this.props.navigation.navigate("Notifications") },
-      });
-      // navigation.navigate('Notifications')
-    // notification.finish(PushNotificationIOS.FetchResult.NoData);
-    },
-      onAction: function (notification) {
-      console.log("ACTION:", notification.action);
-      console.log("NOTIFICATION:", notification);
-      // this.props.navigation.navigate('Notifications')
-    },
-      onRegistrationError: function(err) {
-      console.error(err.message, err);
-    },
+  loadToken = async () => {
+    const navigation = this.props;
+    PushNotification.configure({
+      onRegister: function (token) {
+        // pusToken=token.token
+      },
 
-    permissions: {
-      alert: true,
-      badge: true,
-      sound: true,
-    },
-    popInitialNotification: true,
-    requestPermissions: true,
-  });
- }
+      onNotification: function (notification) {
+        PushNotification.localNotification({
+          title: notification.title,
+          message: notification.message,
+          // onOpen: () => { this.props.navigation.navigate("Notifications") },
+        });
+        // navigation.navigate('Notifications')
+        // notification.finish(PushNotificationIOS.FetchResult.NoData);
+      },
+      onAction: function (notification) {
+        // this.props.navigation.navigate('Notifications')
+      },
+      onRegistrationError: function (err) {
+        console.error(err.message, err);
+      },
+
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true,
+      },
+      popInitialNotification: true,
+      requestPermissions: true,
+    });
+  };
 
   keepmevalue = async () => {
     let Username = await AsyncStorage.getItem(storage.rememberUserName);
@@ -101,94 +95,95 @@ class LoginScreen extends React.Component {
       Username: Username,
       Password: Pass,
     });
-
   };
   keepme = async (newValue) => {
     this.setState({
       toggleCheckBox: newValue,
-
     });
   };
   dolink = async () => {
-
-    await Linking.openURL('https://backstage.surphaces.com/subscription/');
+    await Linking.openURL('https://staincarepro.com/register/');
     // this.setState({
     //   isVisible: false
     // })
   };
 
   loginbtn = async () => {
-    const { Username, Password } = this.state;
-   const device_type=Platform.OS=='android'?'Android':'Ios'
-   const device_id=DeviceInfo.getDeviceId();
-   const fcm_token=pusToken
-   console.log('cheking',device_id,device_type,fcm_token)
+    const {Username, Password} = this.state;
+    const device_type = Platform.OS == 'android' ? 'Android' : 'Ios';
+    const device_id = DeviceInfo.getDeviceId();
+    const fcm_token = pusToken;
     this.setState({
-      spinner: true
-    })
+      spinner: true,
+    });
     const data = new FormData();
     data.append('username', Username);
     data.append('password', Password);
     data.append('device_id', device_id);
     data.append('fcm_token', fcm_token);
-    data.append('device_type',device_type)
+    data.append('device_type', device_type);
     const headers = {
       'content-type': 'multipart/form-data',
       Accept: 'multipart/form-data',
-    }
-    Axios.post('https://backstage.surphaces.com/wp-json/wp/v1/user/login',
-      data,
-      { headers }
-    ).then(p => {
+    };
+    Axios.post('https://staincarepro.com/wp-json/wp/v1/user/login', data, {
+      headers,
+    })
+      .then((p) => {
+        const formatRes = JSON.parse(p.data);
+        if (formatRes.status == 'true') {
+          if (formatRes.url == '') {
+            AsyncStorage.setItem(storage.Email, formatRes.email);
+            AsyncStorage.setItem(storage.Name, formatRes.name);
+            AsyncStorage.setItem(
+              storage.UserId,
+              JSON.stringify(formatRes.user_id),
+            );
+            AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
+            AsyncStorage.setItem(storage.Username, formatRes.username);
+            this.setState({
+              spinner: false,
+            });
+            Toast.show(formatRes.message);
+            this.props.navigation.replace('Home');
+          } else {
+            AsyncStorage.setItem(storage.Url, formatRes.url);
 
-      const formatRes = JSON.parse(p.data);
-
-      if (formatRes.status == "true") {
-
-        if (formatRes.url == "") {
-          AsyncStorage.setItem(storage.Email, formatRes.email);
-          AsyncStorage.setItem(storage.Name, formatRes.name);
-          AsyncStorage.setItem(storage.UserId, JSON.stringify(formatRes.user_id))
-          AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
-          AsyncStorage.setItem(storage.Username, formatRes.username);
-          this.setState({
-            spinner: false
-          })
-          Toast.show('Login Sucessful');
-          this.props.navigation.replace('Home');
+            this.setState({
+              isVisible: true,
+              msg_text: formatRes.msg_text,
+              Url: formatRes.url,
+              button_text: formatRes.button_text,
+              spinner: false,
+            });
+          }
         } else {
-          AsyncStorage.setItem(storage.Url, formatRes.url);
-         
+          Toast.show(formatRes.message);
+          // Toast.show('Please Enter Valid Username and Password');
+          // setspinner(false)
           this.setState({
-            isVisible: true,
-            msg_text: formatRes.msg_text,
-            Url: formatRes.url,
-            button_text: formatRes.button_text,
             spinner: false,
-
           });
         }
-
-      } else {
-        Toast.show(formatRes.message)
-       // Toast.show('Please Enter Valid Username and Password');
-        // setspinner(false)
-        this.setState({
-          spinner: false
-        })
-      }
-    }).catch(Error);
-
-  }
+      })
+      .catch(Error);
+  };
 
   doLogin = async () => {
-    const { Username, Password, url, btn, msg, toggleCheckBox, isVisible } = this.state;
+    const {
+      Username,
+      Password,
+      url,
+      btn,
+      msg,
+      toggleCheckBox,
+      isVisible,
+    } = this.state;
     if (Username == '') {
       Toast.show('Please Enter Username');
     } else if (Password == '') {
       Toast.show('Please Enter Password');
     } else {
-
       if (this.state.toggleCheckBox == true) {
         await AsyncStorage.setItem(storage.rememberUserName, Username);
         await AsyncStorage.setItem(storage.rememberuserpass, Password);
@@ -202,44 +197,74 @@ class LoginScreen extends React.Component {
         this.loginbtn();
       }
     }
-  }
+  };
   render() {
-    const { Username, Password, url, btn, msg, toggleCheckBox, isVisible } = this.state;
-    const {SubscribeDetails}=this.props
+    const {
+      Username,
+      Password,
+      url,
+      btn,
+      msg,
+      toggleCheckBox,
+      isVisible,
+    } = this.state;
+    const {SubscribeDetails} = this.props;
     return (
       <View style={styles.MainView}>
-        <View style={styles.header}></View>
+        <Header />
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
-          textStyle={{ color: 'white' }}
+          textStyle={{color: 'white'}}
         />
         <ImageBackground
           style={styles.MainView}
           source={require('../../../assets/Images/AppBackground.jpg')}>
           <ScrollView contentContainerStyle={styles.scroll}>
-            <View
-              style={styles.SecondView}>
-              <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+            <View style={styles.SecondView}>
+              <Headertext
+                title={'Fred Hueston’s'}
+                color={'#000'}
+                fontSize={16}
+              />
               <Image
                 style={styles.logo}
-
                 source={require('../../../assets/Images/stain.png')}
               />
-              <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
+              <View
+                style={{
+                  height: 30,
+                  width: 390,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                }}>
                 <Image
                   style={styles.logo1}
                   source={require('../../../assets/Images/stain_text.png')}
                 />
               </View>
-              {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
-              <View style={{marginTop:8}}>
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
-            </View> */}
-              <View style={{ marginTop: 8 }}>
-                <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
+
+              <View style={{marginTop: 8}}>
+                <View style={{width: '80%', alignSelf: 'center'}}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                    }}>
+                    THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
+                  </Text>
+                </View>
+                <View style={{width: '100%'}}>
+                  <Text
+                    style={{
+                      textAlign: 'center',
+                    }}>
+                    For Stone, Concrete and Other Hard Porous Surfaces
+                  </Text>
+                </View>
               </View>
-              <View style={{ marginTop: 30 }}>
+              <View style={{marginTop: 30}}>
                 <Headertext title={'Login'} color={'#9E3B22'} fontSize={18} />
               </View>
             </View>
@@ -247,13 +272,14 @@ class LoginScreen extends React.Component {
             <View style={styles.textInputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Username"
+                placeholder=" Username (Email Id)"
                 value={Username}
                 placeholderTextColor={colors.textGrey}
                 onChangeText={(text) =>
                   this.setState({
                     Username: text,
-                  })}
+                  })
+                }
               />
               <TextInput
                 style={styles.textInput}
@@ -264,23 +290,26 @@ class LoginScreen extends React.Component {
                 onChangeText={(p) =>
                   this.setState({
                     Password: p,
-                  })}
+                  })
+                }
               />
             </View>
-            <View
-              style={styles.ViewMiddle}>
+            <View style={styles.ViewMiddle}>
               <Text
                 onPress={() => {
                   this.props.navigation.navigate('ForgotPassword');
                 }}
-                style={[styles.checkbox, { color: '#0058FF', alignSelf: 'center' }]}>
+                style={[
+                  styles.checkbox,
+                  {color: '#0058FF', alignSelf: 'center'},
+                ]}>
                 Forgot Password?
               </Text>
             </View>
             <View style={styles.checkboxContainer}>
-              <View style={{ marginRight: 4, height: 25, width: 30 }}>
+              <View style={{marginRight: 4, height: 25, width: 30}}>
                 <CheckBox
-                  style={{ height: '90%', width: '90%' }}
+                  style={{height: '90%', width: '90%'}}
                   disabled={false}
                   value={toggleCheckBox}
                   onValueChange={(newValue) => this.keepme(newValue)}
@@ -292,22 +321,28 @@ class LoginScreen extends React.Component {
             </View>
 
             <CustomButton title="Login" onPress={this.doLogin} />
-            <View style={{ justifyContent: 'center', alignSelf: 'center',marginTop:5 }}>
-              <TouchableOpacity
-                style={{ marginVertical: 10, justifyContent: 'center', alignSelf: 'center' }}
-                onPress={this.dolink}>
-                <Text style={{ fontSize: 19, color: colors.darkOrange }}>
-                  Register Now
+            <View
+              style={{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                marginTop: 5,
+              }}>
+              {/* <TouchableOpacity
+                style={{
+                  marginVertical: 10,
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                }}
+                //onPress={this.dolink}
+                >
+                <Text style={{fontSize: 19, color: colors.darkOrange}}>
+                  Not yet registered? Register now
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
               <View style={styles.logoContainer}>
-                <Image
-
-                  source={require('../../../assets/Images/surphce.jpg')}
-                />
+                <Image source={require('../../../assets/Images/surphce.jpg')} />
               </View>
-
             </View>
             <Modal
               isVisible={this.state.isVisible}
@@ -320,7 +355,8 @@ class LoginScreen extends React.Component {
               onBackdropPress={() =>
                 this.setState({
                   isVisible: false,
-                })}>
+                })
+              }>
               <View style={styles.modal}>
                 <Text
                   style={{
@@ -331,17 +367,12 @@ class LoginScreen extends React.Component {
                   }}>
                   Subscribe Alert
                 </Text>
-                <View
-                  style={styles.ModelmsgView}>
-                  <Text
-                    style={styles.ModelMsgText}>
-                    {this.state.msg_text}
-                  </Text>
+                <View style={styles.ModelmsgView}>
+                  <Text style={styles.ModelMsgText}>{this.state.msg_text}</Text>
                 </View>
 
                 <TouchableOpacity style={styles.popup} onPress={this.dolink}>
-                  <Text
-                    style={styles.ModelBtntext}>
+                  <Text style={styles.ModelBtntext}>
                     {this.state.button_text}
                   </Text>
                 </TouchableOpacity>
@@ -353,22 +384,17 @@ class LoginScreen extends React.Component {
               />
             </View> */}
           </ScrollView>
-
         </ImageBackground>
         <StaticBar />
       </View>
-    )
-
+    );
   }
-
-
-};
+}
 const mapStateToProps = (state) => {
-
   return {
     isFetching: state.isFetching,
     UserDetails: state.UserDetails,
-    SubscribeDetails:state.GetSubscribeDetails
+    SubscribeDetails: state.GetSubscribeDetails,
   };
 };
 export default connect(mapStateToProps)(LoginScreen);

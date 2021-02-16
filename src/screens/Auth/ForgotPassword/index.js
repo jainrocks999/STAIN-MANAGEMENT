@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ImageBackground,
   TextInput,
@@ -11,7 +11,7 @@ import CustomHeader from '../../../component/header';
 import colors from '../../../component/colors';
 import Toast from 'react-native-simple-toast';
 import Loader from '../../../component/loader';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import TitleText from '../../../component/TitleText';
 import TitleText1 from '../../../component/Headertext';
 import Headertext from '../../../component/Headertext';
@@ -24,16 +24,22 @@ const ForgotPassword = () => {
   const isFetching = useSelector((state) => state.isFetching);
 
   const loadData = () => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email == '') {
       Toast.show('Please enter Email');
+    } else if (reg.test(email) === false) {
+      Toast.show('Email is Not Correct');
     } else {
       dispatch({
         type: 'User_Forgot_Password_Request',
-        url: 'v1/user/forgot_password',
-        Email: email,
+        url: 'v1/user/forgot_password?',
+        email: email,
       });
     }
   };
+
+  // https://staincarepro.com/wp-json/wp/v1/user/forgot_password?
+  // //email=akhilesh.kforebear@gmail.com
   return (
     // <View style={styles.imageBackground}>
     //   <CustomHeader />
@@ -44,10 +50,9 @@ const ForgotPassword = () => {
     //     <ScrollView
     //       contentContainerStyle={styles.scroll}>
     //       <View style={styles.logoContainer1}>
-    //         <Image              
+    //         <Image
     //           source={require('../../../assets/Images/logo.png')}
     //         />
-
 
     //         <TitleText title={'Forgot Password'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
     //         </View>
@@ -87,32 +92,43 @@ const ForgotPassword = () => {
             <TitleText1 title={'Forgot Password'.toUpperCase()} color={'#9E3B22'} fontSize={20} />
           
           </View>   */}
-           <View
-              style={styles.SecondView}>
-              <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+          <View style={styles.SecondView}>
+            <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+            <Image
+              style={styles.logo}
+              source={require('../../../assets/Images/stain.png')}
+            />
+            <View
+              style={{
+                height: 40,
+                width: 390,
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}>
               <Image
-                style={styles.logo}
-
-                source={require('../../../assets/Images/stain.png')}
+                style={styles.logo1}
+                source={require('../../../assets/Images/stain_text.png')}
               />
-              <View style={{ height: 30, justifyContent: 'center', alignContent: 'center' }}>
-                <Image
-                  style={styles.logo1}
-                  source={require('../../../assets/Images/stain_text.png')}
-                />
-              </View>
-              {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
+            </View>
+            {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
               <View style={{marginTop:8}}>
               <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
             </View> */}
-              <View style={{ marginTop: 8 }}>
-                <TitleText title={'Interactive Stain App For Hard Porous Surfaces'} color={'#000'} fontSize={13} />
-              </View>
-              <View style={{ marginTop: 30 }}>
-                <Headertext title={'Forgot Password'} color={'#9E3B22'} fontSize={18} />
-              </View>
+            <View style={{marginTop: 8}}>
+              <TitleText
+                title={'Interactive Stain App For Hard Porous Surfaces'}
+                color={'#000'}
+                fontSize={13}
+              />
             </View>
-
+            <View style={{marginTop: 30}}>
+              <Headertext
+                title={'Forgot Password'}
+                color={'#9E3B22'}
+                fontSize={18}
+              />
+            </View>
+          </View>
 
           <View style={styles.textInputContainer}>
             <TextInput
@@ -124,27 +140,19 @@ const ForgotPassword = () => {
             />
           </View>
 
-          <CustomButton title='SEND' onPress={loadData} />
-
+          <CustomButton title="SEND" onPress={loadData} />
 
           {/* <View style={styles.logoContainer1}>
             <Image
               source={require('../../../assets/Images/logo.png')}
             />
           </View> */}
-           <View style={styles.logoContainer1}>
-                <Image
-
-                  source={require('../../../assets/Images/surphce.jpg')}
-                />
-              </View>
-
-         
+          <View style={styles.logoContainer1}>
+            <Image source={require('../../../assets/Images/surphce.jpg')} />
+          </View>
         </ScrollView>
-      
       </ImageBackground>
       <StatusBar />
-             
     </View>
   );
 };
