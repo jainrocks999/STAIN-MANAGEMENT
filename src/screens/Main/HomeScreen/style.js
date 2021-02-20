@@ -1,13 +1,33 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform, StatusBar} from 'react-native';
 import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+const STATUSBAR_HEIGHT = StatusBar.currentHeight;
+const APPBAR_HEIGHT = Platform.OS === 'ios' ? 90 : 56;
+
 export default StyleSheet.create({
   imageBackground: {
     flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   scroll: {
     flexGrow: 1,
     // justifyContent: 'center',
     padding: 20,
+  },
+  statusBar: {
+    height: STATUSBAR_HEIGHT,
+  },
+  appBar: {
+    backgroundColor: 'yellow',
+    height: APPBAR_HEIGHT,
+  },
+  content: {
+    flex: 1,
+    backgroundColor: 'green',
   },
   logoContainer: {
     //  marginTop: '5%',
@@ -20,11 +40,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    // width:300
   },
   logo1: {
-    width: '90%',
-    height: 30,
+    // width: '100%',
+    // height: '100%',
     // borderRadius:10,
     marginTop: 10,
 
@@ -33,16 +52,18 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   logoContainer1: {
+    height: hp('8%'),
+    width: hp('15%'),
     marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
-    // alignSelf: 'baseline',
+    alignSelf: 'center',
     // backgroundColor:'white'
   },
   logo: {
-    width: 65,
-    height: 65,
-    //borderRadius:10,
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
     marginTop: 12,
     padding: 10,
     justifyContent: 'center',
@@ -65,7 +86,7 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     justifyContent: 'center',
-    marginVertical: 20,
+    marginVertical: hp('2%'),
     alignContent: 'center',
   },
 

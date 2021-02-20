@@ -7,16 +7,12 @@ export default StyleSheet.create({
     flex: 1,
   },
   subHeadingView: {
-    width: '100%',
-    padding: 15,
-    marginTop: 20,
-    justifyContent: 'center',
- 
+    backgroundColor: 'transparent',
+    flex: 1,
   },
 
   scroll: {
     flexGrow: 1,
-    marginHorizontal: 20,
-    paddingBottom: 30,
+    backgroundColor: 'transparent',
   },
 });

@@ -18,6 +18,10 @@ import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 import BottomTab from '../../../component/BottomTab';
 import Modal from 'react-native-modal';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const StainChartDetail = ({route}) => {
   const navigation = useNavigation();
@@ -64,46 +68,9 @@ const StainChartDetail = ({route}) => {
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView style={styles.scroll}>
-          <TitleText title={button} color={'#9E3B22'} fontSize={22} />
-          <View style={{alignSelf: 'flex-end'}}>
-            <TouchableOpacity
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                alignSelf: 'flex-end',
-              }}
-              onPress={popupshow}>
-              {show_information == true && (
-                <Image
-                  style={{tintColor: 'red', width: 34, height: 30}}
-                  source={require('../../../assets/Icons/Important.png')}
-                />
-              )}
-              {show_information == false && null}
-            </TouchableOpacity>
-          </View>
-          <HTML html={contents} />
-          <Modal
-            isVisible={isVisible}
-            swipeDirection="right"
-            onBackdropPress={() => setisVisible(false)}>
-            <View style={styles.modal}>
-              <View
-                style={{
-                  justifyContent: 'flex-end',
-                  alignSelf: 'flex-end',
-                  alignItems: 'flex-end',
-                  marginBottom: -20,
-                }}>
-                <TouchableHighlight style={styles.popup} onPress={dismiss}>
-                  <Text style={styles.ModelBtntext}>X</Text>
-                </TouchableHighlight>
-              </View>
-              <TitleText title={'Caution'} color={'#9E3B22'} fontSize={22} />
+          <TitleText title={button} color={'#9E3B22'} fontSize={hp('3%')} />
 
-              <HTML html={Important} />
-            </View>
-          </Modal>
+          <HTML html={contents} />
         </ScrollView>
       </ImageBackground>
       <BottomTab />

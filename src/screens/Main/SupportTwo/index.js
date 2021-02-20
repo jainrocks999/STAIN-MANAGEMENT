@@ -7,7 +7,10 @@ import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
 import HTML from 'react-native-render-html';
 import BottomTab from '../../../component/BottomTab';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const SupportTwo = () => {
   const StainPagesDetails = useSelector((state) => state.StainPagesDetails);
   const selector = useSelector((state) => state.StainDetails);
@@ -40,7 +43,7 @@ const SupportTwo = () => {
           <TitleText
             title={Button.toUpperCase()}
             color={'#9E3B22'}
-            fontSize={22}
+            fontSize={hp('3%')}
           />
           <View style={styles.subHeadingView}>
             <HTML

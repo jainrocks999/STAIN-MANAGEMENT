@@ -12,17 +12,18 @@ import HTMLView from 'react-native-render-html';
 //import style from './style';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const Recommadsuplly = ({route}) => {
-  
   const selector = useSelector((state) => state.StainPagesDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [Button, setButton] = useState('');
   const [contents, setContent] = useState('');
   const navigation = useNavigation();
   useEffect(() => {
-   
-
     const selectedName = selector.map((element) => {
       if (element.id == '6') {
         //setChart(false);
@@ -45,11 +46,8 @@ const Recommadsuplly = ({route}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
-          <TitleText title={Button} color={'#9E3B22'} fontSize={22} />
-          <HTMLView
-            html={contents}
-            imagesMaxWidth={Dimensions.get('window').width}
-          />
+          <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
+          <HTMLView html={contents} imagesMaxWidth={hp('100%')} />
         </ScrollView>
       </ImageBackground>
       <StatusBar />

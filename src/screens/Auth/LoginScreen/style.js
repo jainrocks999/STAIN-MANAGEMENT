@@ -1,7 +1,32 @@
-import { StyleSheet } from 'react-native';
-import colors from '../../../component/colors'
+import {StyleSheet} from 'react-native';
+import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
-  header: { height: 40, width: '100%', backgroundColor: colors.orange },
+  header: {
+    flexDirection: 'row',
+    backgroundColor: colors.orange,
+    height: 40,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  header1: {
+    flexDirection: 'row',
+    backgroundColor: colors.orange,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  itemSeperator: {
+    borderBottomWidth: 0.5,
+    borderColor: '#C1C1C1',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    width: '90%',
+  },
+
   MainView: {
     flex: 1,
   },
@@ -14,23 +39,16 @@ export default StyleSheet.create({
   },
   scroll: {
     flexGrow: 1,
-   // justifyContent: 'center',
+    // justifyContent: 'center',
     padding: 20,
   },
   ViewMiddle: {
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf:'center',
-    width: '88%',
-    marginTop:-10,
-  },
-  SecondView: {
-    justifyContent: 'center',
-    alignItems: 'center',
     alignSelf: 'center',
-   // width:300
-    
+    width: wp('80%'),
   },
+
   ModelBtntext: {
     color: colors.white,
     fontSize: 14,
@@ -47,7 +65,7 @@ export default StyleSheet.create({
     fontWeight: '500',
     alignItems: 'center',
     padding: 6,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   ModelmsgView: {
     width: '99%',
@@ -62,22 +80,25 @@ export default StyleSheet.create({
   },
   textInputContainer: {
     padding: 20,
-    width: '100%'
+    width: wp('100%'),
+    alignSelf: 'center',
   },
   textInput: {
-    margin: 8,
+    alignSelf: 'center',
+    width: wp('90%'),
+    height: hp('6%'),
+    margin: wp('1%'),
     backgroundColor: colors.white,
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#C9C8C7'
+    padding: wp('2%'),
+    borderWidth: wp('0.4%'),
+    borderRadius: wp('1.3%'),
+    borderColor: '#C9C8C7',
   },
   checkbox: {
     fontFamily: 'Arial',
     fontWeight: '400',
-    fontSize: 12,
-    alignSelf:'center',
-    marginTop:-4,
+    fontSize: hp('1.5%'),
+    alignSelf: 'center',
   },
   logoContainer: {
     marginTop: '5%',
@@ -86,22 +107,22 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   checkboxContainer: {
-    marginTop: 20,
+    marginTop: hp('1.5%'),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf:'center',
-   // width: '100%',
+    alignSelf: 'center',
+    // width: wp('100%'),
   },
   modal: {
-    width: '100%',
+    width: wp('100%'),
     borderRadius: 10,
     padding: 10,
     justifyContent: 'center',
     flexDirection: 'column',
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   popup: {
     height: 40,
@@ -112,25 +133,37 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  logo:{
-    width:65,
-    height:65,
-    //borderRadius:10,
-    marginTop:12,
-    padding:10,
-    justifyContent:'center',
-    alignContent:'center'
+  SecondView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
-  logo1:{
-    width:'90%',
-    height:30,
+  logo1: {
+    // width: '100%',
+    // height: '100%',
     // borderRadius:10,
-     marginTop:10,
-    
-     justifyContent:'center',
-    alignContent:'center',
-     alignSelf:'center',
-    
-  },
+    marginTop: 10,
 
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
+  },
+  logoContainer1: {
+    height: hp('8%'),
+    width: hp('15%'),
+    marginTop: '10%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    // backgroundColor:'white'
+  },
+  logo: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+    marginTop: 12,
+    padding: 10,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
 });

@@ -18,6 +18,10 @@ import Toast from 'react-native-simple-toast';
 import {useNavigation} from '@react-navigation/native';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 let Levelname = '';
 
@@ -83,7 +87,7 @@ class StainChart extends React.Component {
                 btnName: item.name,
               });
             }}>
-            <Text style={{fontSize: 15, fontWeight: 'bold'}}>
+            <Text style={{fontSize: hp('1.5%'), fontWeight: 'bold'}}>
               {item.name.toUpperCase()}
             </Text>
           </TouchableOpacity>
@@ -103,7 +107,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: hp('1.5%'),
                 }}>
                 {item.name.toUpperCase()}
               </Text>
@@ -121,7 +125,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: hp('1.5%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -139,7 +143,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: 14}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -152,7 +156,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: 14}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -167,7 +171,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: hp('1.5%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -187,7 +191,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: hp('1.5%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -226,21 +230,32 @@ class StainChart extends React.Component {
           <TitleText
             title={'STAIN CHART'.toUpperCase()}
             color={'#9E3B22'}
-            fontSize={22}
+            fontSize={hp('3%')}
           />
           <View style={styles.search}>
             <TextInput
               placeholder=""
               //value={text}
-              style={{width: '90%', padding: 7}}
+              style={{
+                width: '90%',
+                height: '100%',
+              }}
               onChangeText={(search) => {
                 this.loadsearch(search);
               }}
             />
-            <Image
-              source={require('../../../assets/Icons/Search.png')}
-              style={{height: 20, width: 20}}
-            />
+            <View
+              style={{
+                width: wp('5%'),
+                height: hp('2.5%'),
+                marginRight: wp('1%'),
+              }}>
+              <Image
+                resizeMode="contain"
+                source={require('../../../assets/Icons/Search.png')}
+                style={{height: '100%', width: '100%'}}
+              />
+            </View>
           </View>
           <View
             style={{
@@ -262,14 +277,23 @@ class StainChart extends React.Component {
                   justifyContent: 'center',
                   alignSelf: 'center',
                   paddingHorizontal: 10,
+                  alignItems: 'center',
                 }}>
-                <Image
-                  source={require('../../../assets/Images/u.png')}
-                  style={{height: 20, width: 20}}
-                />
+                <View
+                  style={{
+                    width: wp('5%'),
+                    height: hp('2.5%'),
+                    marginRight: wp('1%'),
+                  }}>
+                  <Image
+                    resizeMode="contain"
+                    source={require('../../../assets/Images/u.png')}
+                    style={{height: '100%', width: '100%'}}
+                  />
+                </View>
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: hp('1.5%'),
                     marginTop: 4,
                     marginLeft: 4,
                     color: '#9E3B22',
@@ -299,14 +323,23 @@ class StainChart extends React.Component {
                         justifyContent: 'center',
                         alignSelf: 'center',
                         paddingHorizontal: 10,
+                        alignItems: 'center',
                       }}>
-                      <Image
-                        source={require('../../../assets/Icons/instruction.png')}
-                        style={{height: 20, width: 20, tintColor: '#9E3B22'}}
-                      />
+                      <View
+                        style={{
+                          width: wp('5%'),
+                          height: hp('2.5%'),
+                          marginRight: wp('1%'),
+                        }}>
+                        <Image
+                          resizeMode="contain"
+                          source={require('../../../assets/Icons/instruction.png')}
+                          style={{height: '100%', width: '100%'}}
+                        />
+                      </View>
                       <Text
                         style={{
-                          fontSize: 14,
+                          fontSize: hp('1.5%'),
                           marginTop: 4,
                           marginLeft: 4,
                           color: '#9E3B22',

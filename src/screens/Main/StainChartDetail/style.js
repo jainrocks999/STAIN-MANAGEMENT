@@ -1,6 +1,9 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
@@ -9,7 +12,7 @@ export default StyleSheet.create({
   scroll: {
     flex: 1,
     paddingHorizontal: 30,
-    paddingBottom: 45
+    paddingBottom: 45,
   },
   a: {
     margin: 50,
@@ -17,14 +20,14 @@ export default StyleSheet.create({
     color: 'red', // make links coloured pink
   },
   modal: {
-    width: '100%',
+    width: wp('100%'),
     borderRadius: 10,
     padding: 10,
     justifyContent: 'center',
     flexDirection: 'column',
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   ModelBtntext: {
     color: 'white',
@@ -36,7 +39,6 @@ export default StyleSheet.create({
     fontFamily: 'Arial',
     fontWeight: 'bold',
     padding: 6,
-
   },
   popup: {
     // height: 40,
@@ -49,5 +51,4 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'flex-end',
   },
-
 });

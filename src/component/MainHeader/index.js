@@ -16,6 +16,11 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../storage';
 import Toast from 'react-native-simple-toast';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 //import { connect, useDispatch, useSelector } from 'react-redux';
 
 let arrID = [];
@@ -56,8 +61,8 @@ const CustomHeader = ({goBack, goToNotification}) => {
           style={{alignSelf: 'center', transform: [{rotate: rotation}]}}>
           <Image
             source={require('../../assets/Icons/bell.png')}
-            style={{tintColor: '#fff', height: 26, width: 26}}
-            resizeMode="cover"
+            style={{tintColor: '#fff', height: '100%', width: '100%'}}
+            resizeMode="contain"
           />
         </Animated.View>
       );
@@ -65,8 +70,8 @@ const CustomHeader = ({goBack, goToNotification}) => {
       return (
         <Image
           source={require('../../assets/Icons/bell.png')}
-          style={{tintColor: '#fff', height: 26, width: 26}}
-          resizeMode="cover"
+          style={{tintColor: '#fff', height: '100%', width: '100%'}}
+          resizeMode="contain"
         />
       );
     }
@@ -75,31 +80,15 @@ const CustomHeader = ({goBack, goToNotification}) => {
     _menu = ref;
   };
 
-  const Account = () => {
-    navigation.navigate('Account');
-    _menu.hide();
-  };
   const About = () => {
     navigation.navigate('About');
     _menu.hide();
   };
-  const Resource = () => {
-    navigation.navigate('resource');
-    _menu.hide();
-  };
+
   const Support = () => {
     navigation.navigate('supportTwo');
     _menu.hide();
   };
-  const Subscribe = () => {
-    navigation.navigate('Subscribe');
-    _menu.hide();
-  };
-  const Profile = () => {
-    navigation.navigate('Edit');
-    _menu.hide();
-  };
-
   const Logout = () => {
     // _menu.hide();
     Alert.alert(
@@ -186,8 +175,10 @@ const CustomHeader = ({goBack, goToNotification}) => {
         <View style={styles.header1}>
           <TouchableOpacity
             style={{
-              height: 26,
-              width: 26,
+              width: wp('8%'),
+              height: hp('4%'),
+              // height: 26,
+              // width: 26,
               justifyContent: 'center',
               alignItems: 'center',
               alignSelf: 'center',
@@ -198,47 +189,53 @@ const CustomHeader = ({goBack, goToNotification}) => {
 
           <TouchableOpacity
             style={{
-              height: 30,
-              width: 30,
+              width: wp('8%'),
+              height: hp('4%'),
               marginLeft: 20,
               alignItems: 'center',
               justifyContent: 'center',
             }}
             onPress={showMenu}>
             <Menu
-              style={{width: '38%'}}
+              style={{width: wp('40%')}}
               ref={setMenuRef}
               button={
                 <TouchableHighlight
                   activeOpacity={0.6}
                   underlayColor="transparent"
                   style={{
-                    height: 26,
-                    width: 26,
+                    width: wp('8%'),
+                    height: hp('3%'),
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}
                   onPress={showMenu}>
                   <Image
-                    style={{height: '90%', width: '100%'}}
+                    style={{height: '100%', width: '100%'}}
                     resizeMode="contain"
                     source={require('../../assets/Icons/menu.png')}
                   />
                 </TouchableHighlight>
               }>
-              <MenuItem style={styles.itemSeperator} onPress={Profile}>
+              {/* <MenuItem style={styles.itemSeperator} onPress={Profile}>
                 <Text style={{fontFamily: 'Arial'}}>My Account</Text>
-              </MenuItem>
+              </MenuItem> */}
 
               <MenuItem style={styles.itemSeperator} onPress={About}>
-                <Text style={{fontFamily: 'Arial'}}>About The App</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  About The App
+                </Text>
               </MenuItem>
 
               <MenuItem style={styles.itemSeperator} onPress={Support}>
-                <Text style={{fontFamily: 'Arial'}}>Support</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  Support
+                </Text>
               </MenuItem>
               <MenuItem style={styles.itemSeperator} onPress={Logout}>
-                <Text style={{fontFamily: 'Arial'}}>Logout</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  Logout
+                </Text>
               </MenuItem>
             </Menu>
           </TouchableOpacity>
@@ -251,8 +248,10 @@ const CustomHeader = ({goBack, goToNotification}) => {
         <View style={styles.header1}>
           <TouchableOpacity
             style={{
-              height: 26,
-              width: 26,
+              width: wp('8%'),
+              height: hp('4%'),
+              // height: 26,
+              // width: 26,
               justifyContent: 'center',
               alignItems: 'center',
               alignSelf: 'center',
@@ -263,47 +262,53 @@ const CustomHeader = ({goBack, goToNotification}) => {
 
           <TouchableOpacity
             style={{
-              height: 30,
-              width: 30,
+              width: wp('8%'),
+              height: hp('4%'),
               marginLeft: 20,
               alignItems: 'center',
               justifyContent: 'center',
             }}
             onPress={showMenu}>
             <Menu
-              style={{width: '38%'}}
+              style={{width: wp('40%')}}
               ref={setMenuRef}
               button={
                 <TouchableHighlight
                   activeOpacity={0.6}
                   underlayColor="transparent"
                   style={{
-                    height: 26,
-                    width: 26,
+                    width: wp('8%'),
+                    height: hp('3%'),
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}
                   onPress={showMenu}>
                   <Image
-                    style={{height: '90%', width: '100%'}}
+                    style={{height: '100%', width: '100%'}}
                     resizeMode="contain"
                     source={require('../../assets/Icons/menu.png')}
                   />
                 </TouchableHighlight>
               }>
-              <MenuItem style={styles.itemSeperator} onPress={Profile}>
+              {/* <MenuItem style={styles.itemSeperator} onPress={Profile}>
                 <Text style={{fontFamily: 'Arial'}}>My Account</Text>
-              </MenuItem>
+              </MenuItem> */}
 
               <MenuItem style={styles.itemSeperator} onPress={About}>
-                <Text style={{fontFamily: 'Arial'}}>About The App</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  About The App
+                </Text>
               </MenuItem>
 
               <MenuItem style={styles.itemSeperator} onPress={Support}>
-                <Text style={{fontFamily: 'Arial'}}>Support</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  Support
+                </Text>
               </MenuItem>
               <MenuItem style={styles.itemSeperator} onPress={Logout}>
-                <Text style={{fontFamily: 'Arial'}}>Logout</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  Logout
+                </Text>
               </MenuItem>
             </Menu>
           </TouchableOpacity>

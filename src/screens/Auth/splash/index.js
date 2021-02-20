@@ -23,6 +23,10 @@ import moment from 'moment';
 import axios from 'axios';
 import Modal from 'react-native-modal';
 import Loader from '../../../component/loader';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const SplashScreen = () => {
   const navigation = useNavigation();
@@ -130,7 +134,7 @@ const SplashScreen = () => {
             style={styles.logo}
             source={require('../../../assets/Images/stain.png')}
           />
-         
+
           {/* 
           <View style={{marginTop: 8}}>
             <TitleText
@@ -171,7 +175,7 @@ const SplashScreen = () => {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-around',
-              width: '100%',
+              width: wp('100%'),
             }}>
             <TouchableOpacity style={styles.popup} onPress={toggleModal}>
               <Text style={styles.ModelBtntext}>Download</Text>

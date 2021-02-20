@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
   MainView: {
     flex: 1,
@@ -15,7 +19,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop:10,
+    marginTop: 10,
     // width:300
   },
   logo: {
@@ -47,7 +51,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   modal: {
-    width: '100%',
+    width: wp('100%'),
 
     borderRadius: 10,
     padding: 10,

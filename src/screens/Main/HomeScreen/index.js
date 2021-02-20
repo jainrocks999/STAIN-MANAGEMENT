@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   ImageBackground,
   View,
   Text,
-  TouchableOpacity,
   StatusBar,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/MainHeader';
@@ -14,16 +14,16 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import colors from '../../../component/colors';
 import CustomButton from '../../../component/Button';
-import StaticText from '../../../component/StaticText';
 import Headertext from '../../../component/Headertext';
-import TitleText from '../../../component/TitleText';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 function HomeScreen(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const selector = useSelector((state) => state.StainPagesDetails);
-  const StainDetails = useSelector((state) => state.StainDetails);
-
-  //let Aboutstain = '';
 
   useEffect(() => {
     loadData();
@@ -50,14 +50,10 @@ function HomeScreen(props) {
     });
   };
 
-  const notification = async () => {
-    dispatch({
-      type: 'User_Notification_Request',
-      url: 'v1/stain/stain_notifications',
-    });
-  };
   return (
-    <View style={styles.imageBackground}>
+    <SafeAreaView style={styles.imageBackground}>
+      <StatusBar backgroundColor={colors.darkOrange} barStyle="default" />
+
       <CustomHeader
         goToNotification={() => navigation.navigate('Notifications')}
       />
@@ -66,15 +62,29 @@ function HomeScreen(props) {
         source={require('../../../assets/Images/HomeScreen.png')}>
         <ScrollView contentContainerStyle={styles.scroll}>
           <View style={styles.SecondView}>
-            <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
-            <Image
-              style={styles.logo}
-              source={require('../../../assets/Images/stain.png')}
+            <Headertext
+              title={'Fred Hueston’s'}
+              color={'#000'}
+              fontSize={hp('2%')}
             />
+
             <View
               style={{
-                height: 30,
-                width: 390,
+                height: hp('10%'),
+                width: wp('45%'),
+                marginTop: hp('1%'),
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}>
+              <Image
+                style={styles.logo}
+                resizeMode="contain"
+                source={require('../../../assets/Images/stain.png')}
+              />
+            </View>
+            <View
+              style={{
+                marginTop: hp('1%'),
                 justifyContent: 'center',
                 alignContent: 'center',
               }}>
@@ -83,21 +93,27 @@ function HomeScreen(props) {
                 source={require('../../../assets/Images/stain_text.png')}
               />
             </View>
-            <View style={{marginTop: 8}}>
+            <View style={{marginTop: hp('1.5%')}}>
               <View style={{width: '80%', alignSelf: 'center'}}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: hp('1.8%'),
                     fontWeight: 'bold',
                     textAlign: 'center',
                   }}>
                   THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
                 </Text>
               </View>
-              <View style={{width: '100%'}}>
+              <View
+                style={{
+                  width: wp('100%'),
+                  alignSelf: 'center',
+                  marginTop: hp('1%'),
+                }}>
                 <Text
                   style={{
                     textAlign: 'center',
+                    fontSize: hp('1.6%'),
                   }}>
                   For Stone, Concrete and Other Hard Porous Surfaces
                 </Text>
@@ -106,6 +122,18 @@ function HomeScreen(props) {
           </View>
 
           <View style={styles.buttonContainer}>
+            {selector.map((element) => {
+              if (element.id == '1') {
+                return (
+                  <CustomButton
+                    title={element.name}
+                    onPress={() => {
+                      navigation.navigate('AboutStains');
+                    }}
+                  />
+                );
+              }
+            })}
             <CustomButton
               title="Stain Chart"
               onPress={() => {
@@ -130,31 +158,13 @@ function HomeScreen(props) {
                 );
               }
             })}
-            {/* {selector.map((element) => {
-              if (element.id == '1') {
-                return ( */}
+
             <CustomButton
               title="Case Studies"
               onPress={() => {
                 navigation.navigate('Support');
               }}
             />
-            {/* )
-             // }cd 
-            }) */}
-            {/* //} */}
-            {selector.map((element) => {
-              if (element.id == '1') {
-                return (
-                  <CustomButton
-                    title={element.name}
-                    onPress={() => {
-                      navigation.navigate('AboutStains');
-                    }}
-                  />
-                );
-              }
-            })}
 
             <CustomButton
               title="Resources"
@@ -164,12 +174,15 @@ function HomeScreen(props) {
             />
           </View>
           <View style={styles.logoContainer1}>
-            <Image source={require('../../../assets/Images/surphce.jpg')} />
+            <Image
+              resizeMode="contain"
+              style={{height: '100%', width: '100%'}}
+              source={require('../../../assets/Images/surphce.jpg')}
+            />
           </View>
         </ScrollView>
       </ImageBackground>
-      <StatusBar backgroundColor={colors.darkOrange} barStyle="light-content" />
-    </View>
+    </SafeAreaView>
   );
 }
 

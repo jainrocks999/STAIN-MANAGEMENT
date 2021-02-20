@@ -28,7 +28,11 @@ import DeviceInfo from 'react-native-device-info';
 import PushNotification from 'react-native-push-notification';
 //import messaging from '@react-native-firebase/messaging';
 import Header from '../../../component/LoginHeader ';
-
+import LoginHeader from '../../../component/LoginHeader2';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 let pusToken = null;
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -48,13 +52,12 @@ class LoginScreen extends React.Component {
       token: '',
     };
     this.keepmevalue();
-   // this.loadToken();
+    // this.loadToken();
   }
   async componentDidMount() {
     // await messaging().registerDeviceForRemoteMessages();
     // pusToken = await messaging().getToken();
   }
-  
 
   keepmevalue = async () => {
     let Username = await AsyncStorage.getItem(storage.rememberUserName);
@@ -63,7 +66,7 @@ class LoginScreen extends React.Component {
     this.setState({
       Username: Username,
       Password: Pass,
-      token:Token,
+      token: Token,
     });
   };
   keepme = async (newValue) => {
@@ -109,7 +112,7 @@ class LoginScreen extends React.Component {
               storage.UserId,
               JSON.stringify(formatRes.user_id),
             );
-            console.log('dhjkfbdbhdbhdbc'+formatRes.lastname)
+            console.log('dhjkfbdbhdbhdbc' + formatRes.lastname);
             AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
             AsyncStorage.setItem(storage.Username, formatRes.username);
             this.setState({
@@ -138,6 +141,9 @@ class LoginScreen extends React.Component {
         }
       })
       .catch(Error);
+  };
+  forgotPassLink = async () => {
+    await Linking.openURL('https://staincarepro.com/forgot-password/');
   };
 
   doLogin = async () => {
@@ -169,6 +175,7 @@ class LoginScreen extends React.Component {
       }
     }
   };
+
   render() {
     const {
       Username,
@@ -182,7 +189,8 @@ class LoginScreen extends React.Component {
     const {SubscribeDetails} = this.props;
     return (
       <View style={styles.MainView}>
-        <Header />
+        {/* <Header /> */}
+        <LoginHeader />
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
@@ -196,16 +204,26 @@ class LoginScreen extends React.Component {
               <Headertext
                 title={'Fred Hueston’s'}
                 color={'#000'}
-                fontSize={16}
+                fontSize={hp('2%')}
               />
-              <Image
-                style={styles.logo}
-                source={require('../../../assets/Images/stain.png')}
-              />
+
               <View
                 style={{
-                  height: 30,
-                  width: 390,
+                  height: hp('10%'),
+                  width: wp('45%'),
+                  marginTop: hp('1%'),
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                }}>
+                <Image
+                  style={styles.logo}
+                  resizeMode="contain"
+                  source={require('../../../assets/Images/stain.png')}
+                />
+              </View>
+              <View
+                style={{
+                  marginTop: hp('1%'),
                   justifyContent: 'center',
                   alignContent: 'center',
                 }}>
@@ -214,29 +232,38 @@ class LoginScreen extends React.Component {
                   source={require('../../../assets/Images/stain_text.png')}
                 />
               </View>
-
-              <View style={{marginTop: 8}}>
+              <View style={{marginTop: hp('1.5%')}}>
                 <View style={{width: '80%', alignSelf: 'center'}}>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: hp('1.8%'),
                       fontWeight: 'bold',
                       textAlign: 'center',
                     }}>
                     THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
                   </Text>
                 </View>
-                <View style={{width: '100%'}}>
+                <View
+                  style={{
+                    width: wp('100%'),
+                    alignSelf: 'center',
+                    marginTop: hp('1%'),
+                  }}>
                   <Text
                     style={{
                       textAlign: 'center',
+                      fontSize: hp('1.6%'),
                     }}>
                     For Stone, Concrete and Other Hard Porous Surfaces
                   </Text>
                 </View>
               </View>
-              <View style={{marginTop: 30}}>
-                <Headertext title={'Login'} color={'#9E3B22'} fontSize={18} />
+              <View style={{marginTop: hp('2%')}}>
+                <Headertext
+                  title={'Login'}
+                  color={'#9E3B22'}
+                  fontSize={hp('2%')}
+                />
               </View>
             </View>
 
@@ -267,20 +294,19 @@ class LoginScreen extends React.Component {
             </View>
             <View style={styles.ViewMiddle}>
               <Text
-                onPress={() => {
-                  this.props.navigation.navigate('ForgotPassword');
-                }}
+                onPress={this.forgotPassLink}
                 style={[
                   styles.checkbox,
-                  {color: '#0058FF', alignSelf: 'center'},
+                  {color: '#0058FF', alignSelf: 'center', fontSize: hp('1.5%')},
                 ]}>
-                Forgot Password?
+                Forgot password? Go to web app to reset.
               </Text>
             </View>
             <View style={styles.checkboxContainer}>
-              <View style={{marginRight: 4, height: 25, width: 30}}>
+              <View
+                style={{height: hp('2.5%'), width: wp('5%'), marginRight: 15}}>
                 <CheckBox
-                  style={{height: '90%', width: '90%'}}
+                  style={{height: '100%', width: '100%'}}
                   disabled={false}
                   value={toggleCheckBox}
                   onValueChange={(newValue) => this.keepme(newValue)}
@@ -311,8 +337,12 @@ class LoginScreen extends React.Component {
                 </Text>
               </TouchableOpacity> */}
 
-              <View style={styles.logoContainer}>
-                <Image source={require('../../../assets/Images/surphce.jpg')} />
+              <View style={styles.logoContainer1}>
+                <Image
+                  resizeMode="contain"
+                  style={{height: '100%', width: '100%'}}
+                  source={require('../../../assets/Images/surphce.jpg')}
+                />
               </View>
             </View>
             <Modal

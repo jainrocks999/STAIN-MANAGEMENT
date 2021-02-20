@@ -3,7 +3,10 @@ import {Image, FlatList, View, TouchableOpacity, Text} from 'react-native';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
 import {connect, useSelector} from 'react-redux';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 let arr = [];
 let home = '';
 let resource = '';
@@ -38,6 +41,11 @@ function BottomTab() {
         pagename: 'Home',
       },
       {
+        img: require('../../assets/Icons1/About.png'),
+        name: AboutStains,
+        pagename: 'AboutStains',
+      },
+      {
         img: require('../../assets/Icons1/Stain_Chart.png'),
         name: 'Stain Chart',
         pagename: 'Stain',
@@ -57,11 +65,7 @@ function BottomTab() {
         name: 'Case Studies',
         pagename: 'Support',
       },
-      {
-        img: require('../../assets/Icons1/About.png'),
-        name: AboutStains,
-        pagename: 'AboutStains',
-      },
+
       {
         img: require('../../assets/Images/RS.png'),
         name: resource,
@@ -82,13 +86,14 @@ function BottomTab() {
         renderItem={({item}) => (
           <View
             style={{
-              width: 94,
               alignItems: 'center',
               // justifyContent: 'space-between',
               //marginBottom: 10,
             }}>
             <TouchableOpacity
               style={{
+                height: hp('5%'),
+                width: wp('20%'),
                 // marginBottom: 2,
                 //height: 38,
                 alignItems: 'center',
@@ -97,11 +102,13 @@ function BottomTab() {
               onPress={() => {
                 navigation.navigate(item.pagename);
               }}>
-              <Image
-                source={item.img}
-                style={styles.bottomTab}
-                //resizeMode="center"
-              />
+              <View style={{height: hp('3%'), width: wp('20%')}}>
+                <Image
+                  source={item.img}
+                  style={styles.bottomTab}
+                  resizeMode="contain"
+                />
+              </View>
               <Text style={styles.buttonText}>{item.name}</Text>
             </TouchableOpacity>
           </View>

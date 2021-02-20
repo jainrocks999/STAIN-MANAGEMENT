@@ -1,12 +1,17 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 export default StyleSheet.create({
   imageBackground: {
     flex: 1,
   },
   ScrollView: {
     flexGrow: 1,
-     paddingBottom: 20
+    paddingBottom: 20,
   },
   heading: {
     marginTop: '10%',
@@ -27,7 +32,7 @@ export default StyleSheet.create({
   },
   textInput: {
     marginTop: 10,
-    width: '100%',
+    width: wp('100%'),
     backgroundColor: colors.white,
     padding: 10,
     borderWidth: 1,

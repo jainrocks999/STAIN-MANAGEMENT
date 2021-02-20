@@ -1,11 +1,15 @@
-import { StyleSheet } from 'react-native';
-import colors from '../../../component/colors'
+import {StyleSheet} from 'react-native';
+import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
-  header: { height: 40, width: '100%', backgroundColor: colors.orange },
+  header: {height: 40, width: wp('100%'), backgroundColor: colors.orange},
   imageBackground: {
-    flex: 1
+    flex: 1,
   },
-  scroll :{
+  scroll: {
     flexGrow: 1,
     paddingHorizontal: 20,
     paddingBottom: 30,
@@ -18,8 +22,7 @@ export default StyleSheet.create({
   },
   textInputContainer: {
     marginTop: '10%',
-    width: '100%'
-
+    width: '100%',
   },
   textInput: {
     marginTop: 10,
@@ -27,7 +30,6 @@ export default StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: '#C9C8C7'
-
+    borderColor: '#C9C8C7',
   },
 });

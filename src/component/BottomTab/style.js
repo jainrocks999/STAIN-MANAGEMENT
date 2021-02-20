@@ -1,50 +1,32 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
   header: {
     flexDirection: 'row',
-    height: 60,
-    padding: 4,
-    // width:'100%',
+    height: hp('6%'),
+    width: wp('100%'),
     backgroundColor: colors.orange,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
   },
 
-  // headerOptionsCtnr: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  //   marginTop: 10,
-  //   // marginLeft:30,
-  //   marginBottom: 20,
-  // },
-
-  itemSeperator: {
-    borderBottomWidth: 0.5,
-    borderColor: '#C1C1C1',
-    width: '50%'
-  },
   bottomTab: {
     tintColor: '#fff',
-    height: 22,
-    width: 22,
+    height: '100%',
+    width: '100%',
     // resizeMode:'cover',
   },
-  bottomTab1: {
-    tintColor: '#fff',
-    height: 36,
-    width: 36,
-    // resizeMode:'cover',
-  },
+
   buttonText: {
     color: 'white',
-    fontSize: 10,
+    fontSize: hp('1.3%'),
     alignSelf: 'center',
-    //fontFamily: 'Arial',
-    // width:90,
-    padding: 4,
-    textAlign: 'center'
+
+    textAlign: 'center',
   },
 });

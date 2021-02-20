@@ -15,6 +15,10 @@ import TitleText from '../../../component/Headertext';
 import HTMLView from 'react-native-htmlview';
 import BottomTab from '../../../component/BottomTab';
 import WebView from 'react-native-webview';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const AboutTheApp = () => {
   const navigation = useNavigation();
@@ -44,7 +48,7 @@ const AboutTheApp = () => {
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <TitleText title={Button} color={'#9E3B22'} fontSize={22} />
+          <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
           <WebView
             source={{
               uri: 'https://staincarepro.com/stain-app-page/?uid=9',

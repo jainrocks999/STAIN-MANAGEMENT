@@ -13,6 +13,10 @@ import HTMLView from 'react-native-render-html';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 import WebView from 'react-native-webview';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const AboutStain = ({route}) => {
   const navigation = useNavigation();
   const selector = useSelector((state) => state.StainPagesDetails);
@@ -43,8 +47,9 @@ const AboutStain = ({route}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
-          <TitleText title={Button} color={'#9E3B22'} fontSize={22} />
+          <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
           <WebView
+            style={{marginTop: hp('1%')}}
             source={{
               uri: 'https://staincarepro.com/stain-app-page/',
             }}

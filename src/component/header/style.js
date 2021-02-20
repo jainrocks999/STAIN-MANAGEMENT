@@ -1,24 +1,28 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
   // header: {
   //   height: 40,
-  //   width: '100%',
+  //   width: wp('100%'),
   //   backgroundColor: colors.orange
   // },
   iconmain: {
     width: 35,
     height: 35,
-   justifyContent: 'center',
-   alignItems: 'center',
- },
- icon: {
-   width:'100%',
-   height: '100%',
-   tintColor: '#fff',
-   justifyContent: 'center',
-   alignItems: 'center',
- },
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    width: '100%',
+    height: hp('100%'),
+    tintColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   header: {
     flexDirection: 'row',
     backgroundColor: colors.orange,

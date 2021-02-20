@@ -1,6 +1,9 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
@@ -29,13 +32,17 @@ export default StyleSheet.create({
   cardView_Image: {
     height: 190,
     resizeMode: 'stretch',
-    width: '100%',
+    width: wp('100%'),
     alignSelf: 'center',
   },
 
-  cardView_InsideText: {fontSize: 18, fontWeight: '700', fontFamily: 'Arial'},
+  cardView_InsideText: {
+    fontSize: hp('2%'),
+    fontWeight: '700',
+    fontFamily: 'Arial',
+  },
   cardView_InsideText1: {
-    fontSize: 15,
+    fontSize: hp('1.5%'),
     textAlignVertical: 'center',
     fontFamily: 'Arial',
   },

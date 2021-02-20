@@ -1,8 +1,11 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default StyleSheet.create({
-
-  header: { height: 40, width: '100%', backgroundColor: colors.orange },
+  header: {height: 40, width: wp('100%'), backgroundColor: colors.orange},
   MainView: {
     flex: 1,
   },
@@ -23,7 +26,7 @@ export default StyleSheet.create({
     // paddingBottom: 20,
     flexGrow: 1,
     // justifyContent: 'center',
-     padding: 20,
+    padding: 20,
   },
   ViewMiddle: {
     justifyContent: 'center',
@@ -34,7 +37,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    
   },
   ModelBtntext: {
     color: colors.white,
@@ -52,7 +54,7 @@ export default StyleSheet.create({
     fontWeight: '500',
     alignItems: 'center',
     padding: 6,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   ModelmsgView: {
     width: '99%',
@@ -65,7 +67,7 @@ export default StyleSheet.create({
   //   justifyContent: 'center',
   //   alignItems: 'center',
   // },
- 
+
   // textInput: {
   //   margin: 8,
   //   backgroundColor: colors.white,
@@ -78,7 +80,7 @@ export default StyleSheet.create({
     fontFamily: 'Arial',
     fontWeight: 'bold',
     fontSize: 14,
-    padding: 4
+    padding: 4,
   },
   logoContainer: {
     marginTop: '5%',
@@ -91,17 +93,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: wp('100%'),
   },
   modal: {
-    width: '100%',
+    width: wp('100%'),
     borderRadius: 10,
     padding: 10,
     justifyContent: 'center',
     flexDirection: 'column',
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   popup: {
     height: 40,
@@ -120,56 +122,53 @@ export default StyleSheet.create({
   //   justifyContent:'center',
   //   alignContent:'center'
   // },
-  logo:{
-    width:65,
-    height:65,
+  logo: {
+    width: 65,
+    height: 65,
     //borderRadius:10,
-    marginTop:12,
-    padding:10,
-    justifyContent:'center',
-    alignContent:'center'
+    marginTop: 12,
+    padding: 10,
+    justifyContent: 'center',
+    alignContent: 'center',
   },
-  logo1:{
-    width:'90%',
-    height:30,
+  logo1: {
+    width: '90%',
+    height: '90%',
     // borderRadius:10,
-     marginTop:10,
-     marginRight:50,
-     marginLeft:50,
-     justifyContent:'center',
-    alignContent:'center',
-     alignSelf:'center',
-    
+    marginTop: 10,
+
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
   },
   imageBackground: {
     flex: 1,
     justifyContent: 'center',
   },
- 
+
   logoContainer: {
-  //  padding: 20,
+    //  padding: 20,
     //flex:1,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf:'center',
+    alignSelf: 'center',
   },
- 
+
   textInputContainer: {
     padding: 20,
     width: '98%',
-    justifyContent:'center',
-    alignSelf:'center',
-    alignItems:'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
   },
   textInput: {
-   // marginTop: '5%',
+    // marginTop: '5%',
     width: '90%',
     backgroundColor: colors.white,
-    justifyContent:'center',
+    justifyContent: 'center',
     padding: 15,
     borderWidth: 1,
     borderRadius: 4,
     borderColor: '#C9C8C7',
   },
-
 });

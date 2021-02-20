@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
   Image,
+  Text,
 } from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/header';
@@ -18,6 +19,10 @@ import Headertext from '../../../component/Headertext';
 
 import CustomButton from '../../../component/Button';
 import StatusBar from '../../../component/StatusBar';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
@@ -100,26 +105,39 @@ const ForgotPassword = () => {
             />
             <View
               style={{
-                height: 40,
-                width: 390,
+                height: 30,
+                width: 345,
+                marginTop: 10,
                 justifyContent: 'center',
                 alignContent: 'center',
               }}>
               <Image
                 style={styles.logo1}
+                resizeMode="contain"
                 source={require('../../../assets/Images/stain_text.png')}
               />
             </View>
-            {/* <TitleText title={'STAIN CARE PRO'.toUpperCase()} color={'#9E3B22'} fontSize={26} />
-              <View style={{marginTop:8}}>
-              <TitleText title={'Interactive Stain App For Hard Porous Surfaces.'} color={'#000'} fontSize={14} />
-            </View> */}
-            <View style={{marginTop: 8}}>
-              <TitleText
-                title={'Interactive Stain App For Hard Porous Surfaces'}
-                color={'#000'}
-                fontSize={13}
-              />
+
+            <View style={{marginTop: 10}}>
+              <View style={{width: '80%', alignSelf: 'center', marginTop: 5}}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    lineHeight: 22,
+                  }}>
+                  THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
+                </Text>
+              </View>
+              <View style={{width: wp('100%'), marginTop: 5}}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                  }}>
+                  For Stone, Concrete and Other Hard Porous Surfaces
+                </Text>
+              </View>
             </View>
             <View style={{marginTop: 30}}>
               <Headertext

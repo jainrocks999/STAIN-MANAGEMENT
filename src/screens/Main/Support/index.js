@@ -19,7 +19,10 @@ import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
 import {WebView} from 'react-native-webview';
 import Modal from 'react-native-modal';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 let images = '';
 const SupportScreen = ({route}) => {
   const navigation = useNavigation();
@@ -59,6 +62,9 @@ const SupportScreen = ({route}) => {
   //   }
   // };
 
+  const INJECTED_JAVASCRIPT = `(function() {
+    window.ReactNativeWebView.postMessage(JSON.stringify(window.location));
+})();`;
   const renderCaseStudies = () => {
     if (button == 'Case Studies') {
       return CaseStudy.map((element) => {
@@ -73,16 +79,25 @@ const SupportScreen = ({route}) => {
               <View style={styles.cardViewStyle}>
                 <View
                   style={{
-                    width: '100%',
-                    height: 200,
+                    width: wp('100%'),
+                    height: hp('25%'),
                   }}>
                   <WebView
+                    style={{width: wp('100%')}}
+                    javaScriptEnabled={true}
+                    scrollEnabled={false}
+                    allowsFullscreenVideo={true}
+                    userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 
+ (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
                     source={{
                       uri: element.video_url,
                     }}
+                    // source={{
+                    //   uri: `https://staincarepro.com/stain-app-page/?uid=10`,
+                    // }}
                   />
                 </View>
-                <View style={{alignSelf: 'flex-start', marginTop: 8}}>
+                <View style={{alignSelf: 'flex-start', marginTop: hp('1%')}}>
                   <Text style={styles.cardView_InsideText}>
                     {element.case_study_name}
                   </Text>
@@ -99,27 +114,6 @@ const SupportScreen = ({route}) => {
                 </View>
               </View>
             </View>
-            {/* <Modal
-              isVisible={isModalVisible}
-              onSwipeComplete={() => setModalVisible(false)}
-              swipeDirection="right"
-              onBackdropPress={() => setModalVisible(false)}
-              supportedOrientations={['landscape']}>
-              <View style={styles.modal}>
-                <TouchableOpacity
-                  onPress={toggleModal}
-                  style={{flexDirection: 'row-reverse'}}>
-                  <Image
-                    style={{tintColor: '#474747', height: 25, width: 25}}
-                    source={require('../../../assets/Icons/close.png')}
-                  />
-                </TouchableOpacity>
-
-                <View style={{borderWidth: 1, flex: 1, width: '100%'}}>
-                  
-                </View>
-              </View>
-            </Modal> */}
           </View>
         );
       });
@@ -139,7 +133,7 @@ const SupportScreen = ({route}) => {
           <TitleText
             title={buttonName.toUpperCase()}
             color={'#9E3B22'}
-            fontSize={22}
+            fontSize={hp('3%')}
           />
           {renderCaseStudies()}
         </ScrollView>
