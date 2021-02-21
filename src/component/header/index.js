@@ -4,7 +4,10 @@ import { Image, ImageBackground, View, Text, TouchableOpacity } from 'react-nati
 import styles from './style';
 import { connect } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const CustomHeader = props => {
   const navigation = useNavigation();

@@ -1,12 +1,14 @@
-import React from 'react';
-
-import { StatusBar } from 'react-native';
-import colors from '../../component/colors';
-export default function Status() {
-  return (
-    <StatusBar
-      backgroundColor={colors.darkOrange}
-      barStyle='light-content'
-    />
-  );
+import React, {Component} from 'react';
+import {Platform, StyleSheet, View, StatusBar} from 'react-native';
+import colors from "../colors";
+class Statusbar extends Component {
+  render() {
+    return (
+      
+        <StatusBar translucent barStyle="light-content" />
+    );
+  }
 }
+
+
+export default Statusbar;

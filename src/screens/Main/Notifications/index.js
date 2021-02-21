@@ -11,6 +11,10 @@ import BottomTab from '../../../component/BottomTab';
 import {FlatList} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 let arrID = [];
 const Notification = () => {
@@ -39,9 +43,13 @@ const Notification = () => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-        <TitleText title={'Notifications'} color={'#9E3B22'} fontSize={22} />
+        <TitleText
+          title={'Notifications'}
+          color={'#9E3B22'}
+          fontSize={hp('3%')}
+        />
         <FlatList
-          style={{marginTop: 10}}
+          style={{marginTop: hp('1%')}}
           data={NotificationDetails}
           renderItem={({item}) => (
             <View
@@ -51,16 +59,21 @@ const Notification = () => {
                 shadowRadius: 8,
                 shadowOffset: {height: 2, width: 0},
                 elevation: 5,
-                borderRadius: 10,
+                borderRadius: hp('1.5%'),
                 backgroundColor: 'white',
                 // height:100,
                 marginHorizontal: 10,
                 marginVertical: 3,
-                paddingHorizontal: 10,
-                paddingVertical: 10,
+                paddingHorizontal: wp('1.5%'),
+                paddingVertical: hp('1.5%'),
               }}>
-              <Text style={{color: 'green', marginTop: 8}}>{item.title}</Text>
-              <Text style={{marginTop: 7}}>{item.description}</Text>
+              <Text
+                style={{color: 'green', marginTop: 8, fontSize: hp('1.8%')}}>
+                {item.title}
+              </Text>
+              <Text style={{marginTop: 7, fontSize: hp('1.5%')}}>
+                {item.description}
+              </Text>
             </View>
           )}
           keyExtractor={(item) => item.id}

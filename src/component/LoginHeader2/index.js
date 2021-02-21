@@ -17,6 +17,10 @@ import Dialog, {SlideAnimation, DialogContent} from 'react-native-popup-dialog';
 import {connect, useSelector} from 'react-redux';
 import HTML from 'react-native-render-html';
 import styles from './style';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 class LoginHeader2 extends Component {
   constructor(props) {
@@ -105,20 +109,20 @@ class LoginHeader2 extends Component {
                   activeOpacity={0.6}
                   underlayColor="transparent"
                   style={{
-                    height: 26,
-                    width: 26,
+                    height: hp('4%'),
+                    width: wp('6%'),
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
                   <Image
-                    style={{height: '90%', width: '100%'}}
+                    style={{height: '100%', width: '100%'}}
                     resizeMode="contain"
                     source={require('../../assets/Icons/menu.png')}
                   />
                 </View>
               }>
               <MenuItem style={styles.itemSeperator} onPress={this.showModal}>
-                <Text style={{fontFamily: 'Arial'}}>Help</Text>
+                <Text style={{fontFamily: 'Arial',fontSize:hp('1.5%')}}>Help</Text>
                 {/* <Pressable
                   style={[styles.button, styles.buttonOpen]}
                   onPress={() => this.setModalVisible(true)}>
@@ -130,6 +134,7 @@ class LoginHeader2 extends Component {
         </View>
 
         <Dialog
+        
           visible={this.state.visible}
           onTouchOutside={() => {
             this.setState({visible: false});
@@ -140,7 +145,7 @@ class LoginHeader2 extends Component {
                 <Text
                   style={{
                     color: 'red',
-                    fontSize: 20,
+                    fontSize: hp('2.5%'),
                     fontWeight: 'bold',
                     textAlign: 'center',
                   }}>
@@ -150,7 +155,7 @@ class LoginHeader2 extends Component {
               <View
                 style={{
                   width: '90%',
-                  marginTop: 10,
+                  marginTop: hp('1.5%'),
                   alignSelf: 'center',
                   justifyContent: 'center',
                 }}>

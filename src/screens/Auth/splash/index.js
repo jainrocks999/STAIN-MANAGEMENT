@@ -106,10 +106,10 @@ const SplashScreen = () => {
     let Username = await AsyncStorage.getItem(storage.Username);
     let noti = await AsyncStorage.getItem(storage.notificationID);
     if (Username == null) {
-      setTimeout(() => navigation.replace('Login'), 1000);
+      //setTimeout(() => navigation.replace('Login'), 1000);
     } else {
       const currentDate = moment().format('MMM-DD-YYYY hh:mm:ss');
-      setTimeout(() => navigation.replace('Home'), 1000);
+      //setTimeout(() => navigation.replace('Home'), 1000);
     }
   };
 
@@ -130,22 +130,28 @@ const SplashScreen = () => {
         source={require('../../../assets/Images/HomeScreen.png')}>
         <View style={styles.SecondView}>
           {/* <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} /> */}
-          <Image
-            style={styles.logo}
-            source={require('../../../assets/Images/stain.png')}
-          />
-
-          {/* 
-          <View style={{marginTop: 8}}>
-            <TitleText
-              title={'Interactive Stain App For Hard Porous Surfaces'}
-              color={'#000'}
-              fontSize={13}
+          <View
+            style={{
+              height: hp('10%'),
+              width: wp('45%'),
+              marginTop: hp('1%'),
+              justifyContent: 'center',
+              alignContent: 'center',
+              alignSelf: 'center',
+            }}>
+            <Image
+              style={styles.logo}
+              resizeMode="contain"
+              source={require('../../../assets/Images/stain.png')}
             />
-          </View> */}
-        </View>
-        <View style={styles.logoContainer}>
-          <Image source={require('../../../assets/Images/surphce.jpg')} />
+          </View>
+          <View style={styles.logoContainer1}>
+            <Image
+              resizeMode="contain"
+              style={{height: '100%', width: '100%'}}
+              source={require('../../../assets/Images/surphce.jpg')}
+            />
+          </View>
         </View>
       </ImageBackground>
       <StatusBar />

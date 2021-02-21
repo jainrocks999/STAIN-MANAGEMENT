@@ -15,17 +15,27 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  SecondView: {
+  logoContainer1: {
+    height: hp('8%'),
+    width: hp('15%'),
+    marginTop: '10%',
     justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    // backgroundColor:'white'
+  },
+  SecondView: {
+    flex: 0.98,
+    justifyContent: 'space-between',
     alignItems: 'center',
     alignSelf: 'center',
     marginTop: 10,
     // width:300
   },
   logo: {
-    width: 65,
-    height: 65,
-    //borderRadius:10,
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
     marginTop: 12,
     padding: 10,
     justifyContent: 'center',
@@ -45,7 +55,7 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: colors.orange,
-    height: 40,
+    height: hp('5%'),
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     alignItems: 'center',

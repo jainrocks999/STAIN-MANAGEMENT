@@ -8,7 +8,7 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: colors.orange,
-    height: 40,
+    height: hp('5%'),
     justifyContent: 'flex-end',
     paddingHorizontal: 10,
     alignItems: 'center',
@@ -41,7 +41,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   modal: {
-    width: wp('100%'),
+    width: wp('80%'),
 
     borderRadius: 10,
     padding: 10,
@@ -53,11 +53,11 @@ export default StyleSheet.create({
   },
   ModelBtntext: {
     color: colors.white,
-    fontSize: 14,
+    fontSize: hp('2%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    padding: 16,
+    padding: hp('1%'),
     textAlign: 'center',
   },
   ModelMsgText: {
@@ -78,11 +78,10 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   popup: {
-    height: 40,
-    marginTop: 10,
+    marginTop: hp('1%'),
     backgroundColor: colors.orange,
     justifyContent: 'center',
-    borderRadius: 4,
+    borderRadius: hp('1%'),
     alignItems: 'center',
     alignSelf: 'center',
   },
