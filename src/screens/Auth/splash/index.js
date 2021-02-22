@@ -106,10 +106,10 @@ const SplashScreen = () => {
     let Username = await AsyncStorage.getItem(storage.Username);
     let noti = await AsyncStorage.getItem(storage.notificationID);
     if (Username == null) {
-      //setTimeout(() => navigation.replace('Login'), 1000);
+      setTimeout(() => navigation.replace('Login'), 1000);
     } else {
       const currentDate = moment().format('MMM-DD-YYYY hh:mm:ss');
-      //setTimeout(() => navigation.replace('Home'), 1000);
+      setTimeout(() => navigation.replace('Home'), 1000);
     }
   };
 
