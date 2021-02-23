@@ -1,19 +1,22 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../../../component/colors';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
     flex: 1,
   },
-  scroll:{
+  scroll: {
     flexGrow: 1,
     marginHorizontal: 20,
     marginBottom: 62,
     paddingBottom: 50,
   },
 
-MainContainer: {flex: 1, width: '100%'},
+  MainContainer: {flex: 1, width: '100%'},
 
   cardViewStyle: {
     flex: 1,
@@ -33,7 +36,7 @@ MainContainer: {flex: 1, width: '100%'},
     alignSelf: 'center',
   },
 
-  textView:{
+  textView: {
     alignSelf: 'flex-start',
     padding: 10,
     fontFamily: 'Arial',
@@ -44,5 +47,5 @@ MainContainer: {flex: 1, width: '100%'},
     fontWeight: '700',
     fontFamily: 'Arial',
   },
-  cardView_InsideText1: {fontSize: 14, textAlignVertical: 'center'},
+  cardView_InsideText1: {fontSize: hp('1.5%'), textAlignVertical: 'center'},
 });

@@ -57,7 +57,7 @@ export default StyleSheet.create({
   settingsItemsText: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     color: colors.darkOrange,
   },
   logoContainer: {
@@ -86,7 +86,7 @@ export default StyleSheet.create({
   checkbox: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     marginTop: 10,
     paddingHorizontal: 20,
   },

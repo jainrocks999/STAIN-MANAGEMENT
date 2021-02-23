@@ -41,12 +41,12 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   modal: {
-    width: wp('80%'),
+    width: wp('78%'),
 
     borderRadius: 10,
     padding: 10,
     justifyContent: 'center',
-    flexDirection: 'column',
+
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: 'white',

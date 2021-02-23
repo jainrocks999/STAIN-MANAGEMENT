@@ -51,7 +51,7 @@ export default StyleSheet.create({
 
   ModelBtntext: {
     color: colors.white,
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',
@@ -93,6 +93,8 @@ export default StyleSheet.create({
     borderWidth: wp('0.4%'),
     borderRadius: wp('1.3%'),
     borderColor: '#C9C8C7',
+
+    fontSize: hp('1.5%'),
   },
   checkbox: {
     fontFamily: 'Arial',

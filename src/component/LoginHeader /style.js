@@ -53,7 +53,7 @@ export default StyleSheet.create({
   },
   ModelBtntext: {
     color: colors.white,
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',

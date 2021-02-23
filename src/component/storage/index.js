@@ -1,3 +1,7 @@
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 export default {
   Username: 'Username',
   Password: 'Password',
@@ -19,4 +23,7 @@ export default {
 
   rememberUserName: 'RememberUser',
   rememberuserpass: 'RememberPass',
+  small: '1.5%',
+  medium: '2%',
+  large: '3%',
 };

@@ -204,7 +204,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: 14}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -239,6 +239,8 @@ class StainChart extends React.Component {
               style={{
                 width: '90%',
                 height: '100%',
+                fontSize: hp('1.5%'),
+                padding: 10,
               }}
               onChangeText={(search) => {
                 this.loadsearch(search);

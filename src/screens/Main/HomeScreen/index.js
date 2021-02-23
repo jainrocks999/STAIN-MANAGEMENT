@@ -12,25 +12,38 @@ import styles from './style';
 import CustomHeader from '../../../component/MainHeader';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import colors from '../../../component/colors';
 import CustomButton from '../../../component/Button';
 import Headertext from '../../../component/Headertext';
+import StaticBar from '../../../component/StatusBar';
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../../component/storage';
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-
+import {useState} from 'react';
+var font = '';
 function HomeScreen(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const selector = useSelector((state) => state.StainPagesDetails);
+  const [fontSizee, setFontsizee] = useState('');
 
   useEffect(() => {
     loadData();
     getstainpage();
     loadData1();
+    CustomfontSize();
   }, []);
 
+  const CustomfontSize = async () => {
+    font = await AsyncStorage.getItem(storage.medium);
+
+    console.log('fontSizefontSize :', font);
+    setFontsizee(font);
+    console.log('fontSizefontSizeee :', fontSizee);
+  };
   const loadData1 = async () => {
     dispatch({
       type: 'User_CaseStudy_Request',
@@ -52,7 +65,7 @@ function HomeScreen(props) {
 
   return (
     <SafeAreaView style={styles.imageBackground}>
-      <StatusBar backgroundColor={colors.darkOrange} barStyle="default" />
+      <StaticBar />
 
       <CustomHeader
         goToNotification={() => navigation.navigate('Notifications')}
@@ -96,10 +109,12 @@ function HomeScreen(props) {
             <View style={{marginTop: hp('1.5%')}}>
               <View style={{width: '80%', alignSelf: 'center'}}>
                 <Text
+                  numberOfLines={2}
+                  adjustsFontSizeToFit="true"
                   style={{
-                    fontSize: hp('1.8%'),
-                    fontWeight: 'bold',
                     textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: 30,
                   }}>
                   THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
                 </Text>

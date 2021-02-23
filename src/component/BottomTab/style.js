@@ -24,7 +24,7 @@ export default StyleSheet.create({
 
   buttonText: {
     color: 'white',
-    fontSize: hp('1.3%'),
+    fontSize: hp('1.2%'),
     alignSelf: 'center',
 
     textAlign: 'center',

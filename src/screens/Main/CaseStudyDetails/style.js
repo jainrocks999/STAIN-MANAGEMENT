@@ -31,5 +31,5 @@ export default StyleSheet.create({
     fontFamily: 'Arial',
     marginBottom: 5,
   },
-  case_study_content: {fontSize: 14, fontFamily: 'Arial'},
+  case_study_content: {fontSize: hp('1.5%'), fontFamily: 'Arial'},
 });

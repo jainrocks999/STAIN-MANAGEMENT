@@ -1,23 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Alert,
   Image,
   ImageBackground,
-  Platform,
   Text,
   TouchableOpacity,
   View,
+  SafeAreaView,
 } from 'react-native';
 import styles from './style';
-import Headertext from '../../../component/Headertext';
 
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import StatusBar from '../../../component/StatusBar';
-import {useDispatch, useSelector, connect} from 'react-redux';
-import Toast from 'react-native-simple-toast';
-import TitleText from '../../../component/TitleText';
+import {useDispatch, useSelector} from 'react-redux';
 
 import moment from 'moment';
 import axios from 'axios';
@@ -31,22 +27,28 @@ import {
 const SplashScreen = () => {
   const navigation = useNavigation();
   const isFetching = useSelector((state) => state.isFetching);
-  const SubscribeDetails = useSelector((state) => state.GetSubscribeDetails);
-  const VersionDetails = useSelector((state) => state.VersionDetails);
-  const notificationDetails = useSelector((state) => state.NotificationDetails);
   const [isModalVisible, setModalVisible] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //navigation.navigate('Home');
     getstainpage();
     appVersion();
     notification();
     apiCall();
     getSubscribeDetail();
     loadData();
+    //CustomfontSize();
+    loadData1();
   }, []);
+  const CustomfontSize = async () => {
+    let smallFont = '1%';
+    let largeFont = '2.5%';
+    let mediumFont = '3%';
+    await AsyncStorage.setItem(storage.small, smallFont);
+    await AsyncStorage.setItem(storage.large, largeFont);
+    await AsyncStorage.setItem(storage.medium, mediumFont);
+  };
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
     //setModalVisible(true);
@@ -121,8 +123,15 @@ const SplashScreen = () => {
     });
   };
 
+  const loadData1 = async () => {
+    dispatch({
+      type: 'User_CaseStudy_Request',
+      url: 'v1/stain/case_studies',
+    });
+  };
+
   return (
-    <View style={styles.MainView}>
+    <SafeAreaView style={styles.MainView}>
       {isFetching ? <Loader /> : null}
       <View style={styles.header}></View>
       <ImageBackground
@@ -192,7 +201,7 @@ const SplashScreen = () => {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,11 +1,11 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   View,
   Text,
   TouchableOpacity,
   Alert,
-  Animated
+  Animated,
 } from 'react-native';
 import styles from './style';
 import {connect} from 'react-redux';
@@ -14,13 +14,11 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import storage from '../storage';
-import {
-  TouchableHighlight,
-} from 'react-native-gesture-handler';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 
 const CustomHeader = ({props}) => {
   const navigation = useNavigation();
-  const [anim,setAnim]=useState(new Animated.Value(0))
+  const [anim, setAnim] = useState(new Animated.Value(0));
   let _menu = null;
 
   const setMenuRef = (ref) => {
@@ -77,12 +75,12 @@ const CustomHeader = ({props}) => {
     try {
       _menu.hide();
       AsyncStorage.setItem(storage.Username, '');
-      AsyncStorage.setItem(storage.Password,'');
+      AsyncStorage.setItem(storage.Password, '');
       AsyncStorage.setItem(storage.Email, '');
       AsyncStorage.setItem(storage.Name, '');
       AsyncStorage.setItem(storage.UserId, '');
-      AsyncStorage.setItem(storage.Url,'');
-     // AsyncStorage.clear();
+      AsyncStorage.setItem(storage.Url, '');
+      // AsyncStorage.clear();
       navigation.replace('Login');
     } catch (error) {
       console.error(error);
@@ -93,40 +91,37 @@ const CustomHeader = ({props}) => {
     _menu.show();
   };
 
-  getListViewItem = (item) => {
-    
-  };
+  getListViewItem = (item) => {};
   React.useEffect(() => {
     Animated.loop(
       Animated.sequence([
         Animated.timing(anim, {
           toValue: -1,
           duration: 120,
-          useNativeDriver: true
+          useNativeDriver: true,
           // delay: 800
         }),
         Animated.timing(anim, {
           toValue: 1,
           duration: 120,
-          useNativeDriver: true
+          useNativeDriver: true,
         }),
         Animated.timing(anim, {
           toValue: -1,
           duration: 120,
-          useNativeDriver: true
+          useNativeDriver: true,
         }),
         Animated.timing(anim, {
           toValue: 1,
           duration: 120,
-          useNativeDriver: true
+          useNativeDriver: true,
         }),
-      ])
+      ]),
     ).start();
-
   }, []);
   const rotation = anim.interpolate({
     inputRange: [-1, 1], // left side to right side
-    outputRange: ['-20deg', '20deg']// before that we have to check now it's perfect
+    outputRange: ['-20deg', '20deg'], // before that we have to check now it's perfect
   });
   return (
     <View style={styles.header}>
@@ -152,17 +147,16 @@ const CustomHeader = ({props}) => {
             alignItems: 'center',
             alignSelf: 'center',
           }}
-          onPress={() => {
-          
-          }}>
-          <Animated.View style={{ alignSelf: 'center', transform: [{ rotate: rotation }], }}>
-          <Image
-            source={require('../../assets/Icons/bell.png')}
-             style={{ tintColor: '#fff',height:26,width:26}}
-            resizeMode="cover"
-          />
+          onPress={() => {}}>
+          <Animated.View
+            style={{alignSelf: 'center', transform: [{rotate: rotation}]}}>
+            <Image
+              source={require('../../assets/Icons/bell.png')}
+              style={{tintColor: '#fff', height: 26, width: 26}}
+              resizeMode="cover"
+            />
           </Animated.View>
-           {/* <BellIcon width='40' active={true} animate={true} /> */}
+          {/* <BellIcon width='40' active={true} animate={true} /> */}
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -196,15 +190,15 @@ const CustomHeader = ({props}) => {
                 />
               </TouchableHighlight>
             }>
-            <MenuItem style={styles.itemSeperator} onPress={Profile}>
+            {/* <MenuItem style={styles.itemSeperator} onPress={Profile}>
               
               <Text style={{fontFamily:'Arial',}}>My Account</Text>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem style={styles.itemSeperator} onPress={About}>
-              <Text style={{fontFamily:'Arial',}}>About the APP</Text>
+              <Text style={{fontFamily: 'Arial'}}>About the APP</Text>
             </MenuItem>
             <MenuItem style={styles.itemSeperator} onPress={Support}>
-              <Text style={{fontFamily:'Arial',}}>Support</Text>
+              <Text style={{fontFamily: 'Arial'}}>Support</Text>
             </MenuItem>
             {/* <MenuItem style={styles.itemSeperator} onPress={Subscribe}>
               
@@ -215,10 +209,9 @@ const CustomHeader = ({props}) => {
               
               <Text style={{fontFamily:'Arial',}}>Resources</Text>
             </MenuItem> */}
-           
+
             <MenuItem style={styles.itemSeperator} onPress={Logout}>
-              
-              <Text style={{fontFamily:'Arial',}}>Logout</Text>
+              <Text style={{fontFamily: 'Arial'}}>Logout</Text>
             </MenuItem>
           </Menu>
         </TouchableOpacity>

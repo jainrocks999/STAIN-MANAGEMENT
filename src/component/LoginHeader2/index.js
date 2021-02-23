@@ -122,7 +122,9 @@ class LoginHeader2 extends Component {
                 </View>
               }>
               <MenuItem style={styles.itemSeperator} onPress={this.showModal}>
-                <Text style={{fontFamily: 'Arial',fontSize:hp('1.5%')}}>Help</Text>
+                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                  Help
+                </Text>
                 {/* <Pressable
                   style={[styles.button, styles.buttonOpen]}
                   onPress={() => this.setModalVisible(true)}>
@@ -134,7 +136,6 @@ class LoginHeader2 extends Component {
         </View>
 
         <Dialog
-        
           visible={this.state.visible}
           onTouchOutside={() => {
             this.setState({visible: false});
@@ -155,9 +156,10 @@ class LoginHeader2 extends Component {
               <View
                 style={{
                   width: '90%',
-                  marginTop: hp('1.5%'),
+                  marginTop: hp('1%'),
                   alignSelf: 'center',
                   justifyContent: 'center',
+                  alignItems: 'center',
                 }}>
                 <HTML
                   html={this.state.Content}

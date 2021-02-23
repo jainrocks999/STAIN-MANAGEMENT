@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 //import { TouchableHighlight } from 'react-native-gesture-handler';
 import colors from '../colors';
+import fontsize from '../fontSize';
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignContent: 'center',
     color: colors.white,
-    fontSize: hp('1.5%'),
+    fontSize: fontsize.medium1,
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',

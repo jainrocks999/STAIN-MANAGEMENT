@@ -40,7 +40,7 @@ export default StyleSheet.create({
   },
   ModelBtntext: {
     color: colors.white,
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',
@@ -79,7 +79,7 @@ export default StyleSheet.create({
   checkbox: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     padding: 4,
   },
   logoContainer: {

@@ -27,7 +27,7 @@ export default StyleSheet.create({
   checkbox: {
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     paddingHorizontal: 10,
   },
 });

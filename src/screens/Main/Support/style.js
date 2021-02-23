@@ -61,7 +61,7 @@ export default StyleSheet.create({
   },
   ModelBtntext: {
     color: colors.white,
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',
@@ -72,7 +72,7 @@ export default StyleSheet.create({
     width: '99%',
     alignSelf: 'center',
     color: colors.black,
-    fontSize: 14,
+    fontSize: hp('1.5%'),
     fontWeight: '500',
     alignItems: 'center',
     padding: 6,

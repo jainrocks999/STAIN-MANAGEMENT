@@ -102,7 +102,7 @@ function BottomTab() {
               onPress={() => {
                 navigation.navigate(item.pagename);
               }}>
-              <View style={{height: hp('3%'), width: wp('20%')}}>
+              <View style={{height: hp('2%'), width: wp('18%')}}>
                 <Image
                   source={item.img}
                   style={styles.bottomTab}

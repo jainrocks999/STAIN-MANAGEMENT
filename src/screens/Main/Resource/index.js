@@ -17,13 +17,14 @@ const Resources = () => {
   const StainPagesDetails = useSelector((state) => state.StainPagesDetails);
   const [Button, setButton] = useState('');
   const [contents, setContent] = useState('');
-
+  let WebViewRef;
   useEffect(() => {
     const selectedName = StainPagesDetails.map((element) => {
       if (element.id == '10') {
         console.log('uuuuuuuuu', element.name);
         // setContent(element.content);
         setButton(element.name);
+        WebViewRef && WebViewRef.reload();
       }
     });
   });
@@ -41,9 +42,11 @@ const Resources = () => {
             <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
             <WebView
               style={{marginTop: hp('1%')}}
-              javaScriptEnabled={true}
-              scrollEnabled={false}
-              allowsFullscreenVideo={true}
+              // javaScriptEnabled={true}
+              // scrollEnabled={false}
+              // allowsFullscreenVideo={true}
+              startInLoadingState={true}
+              ref={(WEBVIEW_REF) => (WebViewRef = WEBVIEW_REF)}
               source={{
                 uri: 'https://staincarepro.com/stain-app-page/?uid=10',
               }}
