@@ -325,19 +325,6 @@ class LoginScreen extends React.Component {
                 alignSelf: 'center',
                 marginTop: 5,
               }}>
-              {/* <TouchableOpacity
-                style={{
-                  marginVertical: 10,
-                  justifyContent: 'center',
-                  alignSelf: 'center',
-                }}
-                //onPress={this.dolink}
-                >
-                <Text style={{fontSize: 19, color: colors.darkOrange}}>
-                  Not yet registered? Register now
-                </Text>
-              </TouchableOpacity> */}
-
               <View style={styles.logoContainer1}>
                 <Image
                   resizeMode="contain"
@@ -380,11 +367,6 @@ class LoginScreen extends React.Component {
                 </TouchableOpacity>
               </View>
             </Modal>
-            {/* <View style={styles.logoContainer1}>
-              <Image
-                source={require('../../../assets/Images/logo.png')}
-              />
-            </View> */}
           </ScrollView>
         </ImageBackground>
         <StaticBar />

@@ -7,6 +7,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
@@ -33,10 +34,7 @@ const SupportScreen = ({route}) => {
   const [contents, setContent] = useState('');
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState('');
-  const [chart, setChart] = useState(false);
-  const [showPlayIcon, setShowPlayIcon] = useState(true);
-  const [isModalVisible, setModalVisible] = useState(false);
-
+  console.log('caseStudy:::', CaseStudy);
   let buttonName = 'Case Studies';
 
   useEffect(() => {
@@ -48,71 +46,49 @@ const SupportScreen = ({route}) => {
       }
     });
   });
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-    //setModalVisible(true);
-  };
-
-  // _onOrientationDidChange = (orientation) => {
-  //   if (orientation == 'LANDSCAPE-LEFT') {
-  //     //do something with landscape left layout
-  //   } else {
-  //     //do something with portrait layout
-  //   }
-  // };
-
-  const INJECTED_JAVASCRIPT = `(function() {
-    window.ReactNativeWebView.postMessage(JSON.stringify(window.location));
-})();`;
   const renderCaseStudies = () => {
     if (button == 'Case Studies') {
       return CaseStudy.map((element) => {
         let imageArray = [];
         images = element.images;
         imageArray.push(images);
-        console.log('yogii:', element.video_url);
+        console.log('yogii:', element);
 
         return (
           <View style={styles.MainContainer}>
-            <View>
-              <View style={styles.cardViewStyle}>
-                <View
-                  style={{
-                    width: wp('100%'),
-                    height: hp('25%'),
-                  }}>
-                  <WebView
-                    style={{marginTop: hp('1%'), width: wp('100%')}}
-                    startInLoadingState={true}
-                    javaScriptEnabled={true}
-                    scrollEnabled={false}
-                    allowsFullscreenVideo={true}
-                    userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 
+            <View style={styles.cardViewStyle}>
+              <View
+                style={{
+                  width: wp('100%'),
+                  height: hp('25%'),
+                }}>
+                <WebView
+                  style={{marginTop: hp('1%'), width: wp('100%')}}
+                  startInLoadingState={true}
+                  javaScriptEnabled={true}
+                  scrollEnabled={false}
+                  allowsFullscreenVideo={true}
+                  userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 
  (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
-                    source={{
-                      uri: element.video_url,
-                    }}
-                    // source={{
-                    //   uri: `https://staincarepro.com/stain-app-page/?uid=10`,
-                    // }}
-                  />
-                </View>
-                <View style={{alignSelf: 'flex-start', marginTop: hp('1%')}}>
-                  <Text style={styles.cardView_InsideText}>
-                    {element.case_study_name}
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignSelf: 'flex-start',
-                    marginTop: 1,
-                    marginBottom: 15,
-                  }}>
-                  <Text style={styles.cardView_InsideText1}>
-                    {element.short_description}
-                  </Text>
-                </View>
+                  source={{
+                    uri: element.video_url,
+                  }}
+                />
+              </View>
+              <View style={{alignSelf: 'flex-start', marginTop: hp('1%')}}>
+                <Text style={styles.cardView_InsideText}>
+                  {element.case_study_name}
+                </Text>
+              </View>
+              <View
+                style={{
+                  alignSelf: 'flex-start',
+                  marginTop: 1,
+                  marginBottom: 15,
+                }}>
+                <Text style={styles.cardView_InsideText1}>
+                  {element.short_description}
+                </Text>
               </View>
             </View>
           </View>
@@ -123,21 +99,69 @@ const SupportScreen = ({route}) => {
   return (
     <View style={styles.imageBackground}>
       <CustomHeader
-        goBack={() => navigation.goBack()}
+        goBack={() => navigation.navigate('Home')}
         goToNotification={() => navigation.navigate('Notifications')}
       />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-        <ScrollView contentContainerStyle={styles.scroll}>
+        <View contentContainerStyle={styles.scroll}>
           <TitleText
             title={buttonName.toUpperCase()}
             color={'#9E3B22'}
             fontSize={hp('3%')}
           />
-          {renderCaseStudies()}
-        </ScrollView>
+          {/* {renderCaseStudies()} */}
+          <FlatList
+            data={CaseStudy}
+            keyExtractor={(item) => item.id}
+            renderItem={({item}) => (
+              <View style={styles.MainContainer}>
+                <View style={styles.cardViewStyle}>
+                  <View
+                    style={{
+                      width: wp('100%'),
+                      height: hp('25%'),
+                    }}>
+                    <WebView
+                      style={{marginTop: hp('1%'), width: wp('100%')}}
+                      startInLoadingState={true}
+                      javaScriptEnabled={true}
+                      scrollEnabled={false}
+                      allowsFullscreenVideo={true}
+                      userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 
+   (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+                      source={{
+                        uri: item.video_url,
+                      }}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      alignSelf: 'flex-start',
+                      marginLeft: wp('2%'),
+                      marginTop: hp('1%'),
+                    }}>
+                    <Text style={styles.cardView_InsideText}>
+                      {item.case_study_name}
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      alignSelf: 'flex-start',
+                      marginLeft: wp('2%'),
+                      marginBottom: 15,
+                    }}>
+                    <Text style={styles.cardView_InsideText1}>
+                      {item.short_description}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            )}
+          />
+        </View>
       </ImageBackground>
       <StatusBar />
       <BottomTab />

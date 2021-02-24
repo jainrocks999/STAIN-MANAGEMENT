@@ -110,7 +110,6 @@ function HomeScreen(props) {
               <View style={{width: '80%', alignSelf: 'center'}}>
                 <Text
                   numberOfLines={2}
-                  adjustsFontSizeToFit="true"
                   style={{
                     textAlign: 'center',
                     fontWeight: 'bold',

@@ -38,7 +38,6 @@ const SplashScreen = () => {
     apiCall();
     getSubscribeDetail();
     loadData();
-
     loadData1();
   }, []);
 
@@ -101,10 +100,10 @@ const SplashScreen = () => {
     let Username = await AsyncStorage.getItem(storage.Username);
     let noti = await AsyncStorage.getItem(storage.notificationID);
     if (Username == null) {
-      // setTimeout(() => navigation.replace('Login'), 1000);
+      setTimeout(() => navigation.replace('Login'), 1000);
     } else {
       const currentDate = moment().format('MMM-DD-YYYY hh:mm:ss');
-      //setTimeout(() => navigation.replace('Home'), 1000);
+      setTimeout(() => navigation.replace('Home'), 1000);
     }
   };
 
@@ -126,6 +125,7 @@ const SplashScreen = () => {
   return (
     <SafeAreaView style={styles.MainView}>
       {isFetching ? <Loader /> : null}
+
       <View style={styles.header}></View>
       <ImageBackground
         style={styles.MainView}
@@ -156,46 +156,48 @@ const SplashScreen = () => {
           </View>
         </View>
       </ImageBackground>
-      <StatusBar />
-
-      <Modal
-        isVisible={isModalVisible}
-        onSwipeComplete={() => setModalVisible(false)}
-        swipeDirection="right"
-        onBackdropPress={() => setModalVisible(false)}>
-        <View style={styles.modal}>
-          <View style={{width: '100%'}}>
-            <Text
-              style={{
-                color: 'red',
-                fontSize: 20,
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}>
-              Update
-            </Text>
-          </View>
-          <TouchableOpacity style={styles.ModelmsgView}>
-            <Text style={styles.ModelMsgText}>{'New Update Available'}</Text>
-          </TouchableOpacity>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              width: wp('100%'),
-            }}>
-            <TouchableOpacity style={styles.popup} onPress={toggleModal}>
-              <Text style={styles.ModelBtntext}>Download</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.popup} onPress={directCall}>
-              <Text style={styles.ModelBtntext}>Later</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
     </SafeAreaView>
   );
 };
 
 export default SplashScreen;
+
+//
+//
+
+//       <Modal
+//         isVisible={isModalVisible}
+//         onSwipeComplete={() => setModalVisible(false)}
+//         swipeDirection="right"
+//         onBackdropPress={() => setModalVisible(false)}>
+//         <View style={styles.modal}>
+//           <View style={{width: '100%'}}>
+//             <Text
+//               style={{
+//                 color: 'red',
+//                 fontSize: 20,
+//                 fontWeight: 'bold',
+//                 textAlign: 'center',
+//               }}>
+//               Update
+//             </Text>
+//           </View>
+//           <TouchableOpacity style={styles.ModelmsgView}>
+//             <Text style={styles.ModelMsgText}>{'New Update Available'}</Text>
+//           </TouchableOpacity>
+
+//           <View
+//             style={{
+//               flexDirection: 'row',
+//               justifyContent: 'space-around',
+//               width: wp('100%'),
+//             }}>
+//             <TouchableOpacity style={styles.popup} onPress={toggleModal}>
+//               <Text style={styles.ModelBtntext}>Download</Text>
+//             </TouchableOpacity>
+//             <TouchableOpacity style={styles.popup} onPress={directCall}>
+//               <Text style={styles.ModelBtntext}>Later</Text>
+//             </TouchableOpacity>
+//           </View>
+//         </View>
+//       </Modal>
