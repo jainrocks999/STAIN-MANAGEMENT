@@ -16,6 +16,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import WebView from 'react-native-webview';
 
 const Recommadsuplly = ({route}) => {
   const selector = useSelector((state) => state.StainPagesDetails);
@@ -47,7 +48,12 @@ const Recommadsuplly = ({route}) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
           <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
-          <HTMLView html={contents} imagesMaxWidth={hp('100%')} />
+          <WebView
+            style={{marginTop: hp('1%')}}
+            startInLoadingState={true}
+            source={{uri: 'https://staincarepro.com/stain-app-page/?uid=6'}}
+          />
+          {/* <HTMLView html={contents} imagesMaxWidth={hp('100%')} /> */}
         </ScrollView>
       </ImageBackground>
       <StatusBar />

@@ -83,7 +83,8 @@ const SupportScreen = ({route}) => {
                     height: hp('25%'),
                   }}>
                   <WebView
-                    style={{width: wp('100%')}}
+                    style={{marginTop: hp('1%'), width: wp('100%')}}
+                    startInLoadingState={true}
                     javaScriptEnabled={true}
                     scrollEnabled={false}
                     allowsFullscreenVideo={true}

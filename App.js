@@ -15,8 +15,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <SafeAreaView
-        style={{flex: 1, backgroundColor: colors.orange, borderWidth: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: colors.orange}}>
         <Provider store={Store}>
           <RootApp />
         </Provider>

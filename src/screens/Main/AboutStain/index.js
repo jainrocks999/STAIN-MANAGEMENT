@@ -50,6 +50,7 @@ const AboutStain = ({route}) => {
           <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
           <WebView
             style={{marginTop: hp('1%')}}
+            startInLoadingState={true}
             source={{
               uri: 'https://staincarepro.com/stain-app-page/',
             }}

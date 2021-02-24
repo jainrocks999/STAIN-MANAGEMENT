@@ -42,9 +42,6 @@ const Resources = () => {
             <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
             <WebView
               style={{marginTop: hp('1%')}}
-              // javaScriptEnabled={true}
-              // scrollEnabled={false}
-              // allowsFullscreenVideo={true}
               startInLoadingState={true}
               ref={(WEBVIEW_REF) => (WebViewRef = WEBVIEW_REF)}
               source={{

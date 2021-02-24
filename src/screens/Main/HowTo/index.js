@@ -9,6 +9,7 @@ import HTML from 'react-native-render-html';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 import StatusBar from '../../../component/StatusBar';
+import WebView from 'react-native-webview';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -48,8 +49,12 @@ const HowTo = ({route}) => {
             color={'#9E3B22'}
             fontSize={hp('3%')}
           />
-
-          <HTML html={contents} imagesMaxWidth={wp('100%')} />
+          <WebView
+            style={{marginTop: hp('1%')}}
+            startInLoadingState={true}
+            source={{uri: 'https://staincarepro.com/stain-app-page/?uid=3'}}
+          />
+          {/* <HTML html={contents} imagesMaxWidth={wp('100%')} /> */}
         </ScrollView>
       </ImageBackground>
       <StatusBar />

@@ -38,17 +38,10 @@ const SplashScreen = () => {
     apiCall();
     getSubscribeDetail();
     loadData();
-    //CustomfontSize();
+
     loadData1();
   }, []);
-  const CustomfontSize = async () => {
-    let smallFont = '1%';
-    let largeFont = '2.5%';
-    let mediumFont = '3%';
-    await AsyncStorage.setItem(storage.small, smallFont);
-    await AsyncStorage.setItem(storage.large, largeFont);
-    await AsyncStorage.setItem(storage.medium, mediumFont);
-  };
+
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
     //setModalVisible(true);
@@ -108,10 +101,10 @@ const SplashScreen = () => {
     let Username = await AsyncStorage.getItem(storage.Username);
     let noti = await AsyncStorage.getItem(storage.notificationID);
     if (Username == null) {
-      setTimeout(() => navigation.replace('Login'), 1000);
+      // setTimeout(() => navigation.replace('Login'), 1000);
     } else {
       const currentDate = moment().format('MMM-DD-YYYY hh:mm:ss');
-      setTimeout(() => navigation.replace('Home'), 1000);
+      //setTimeout(() => navigation.replace('Home'), 1000);
     }
   };
 
