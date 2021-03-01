@@ -11,6 +11,7 @@ export default StyleSheet.create({
   },
   scroll: {
     flexGrow: 1,
+    paddingBottom: 20,
   },
 
   MainContainer: {flex: 1, width: '100%'},

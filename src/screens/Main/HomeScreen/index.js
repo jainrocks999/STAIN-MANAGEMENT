@@ -113,7 +113,7 @@ function HomeScreen(props) {
                   style={{
                     textAlign: 'center',
                     fontWeight: 'bold',
-                    fontSize: 30,
+                    fontSize: hp('1.8%'),
                   }}>
                   THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
                 </Text>

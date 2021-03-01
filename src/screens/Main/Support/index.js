@@ -106,7 +106,7 @@ const SupportScreen = ({route}) => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-        <View contentContainerStyle={styles.scroll}>
+        <ScrollView contentContainerStyle={styles.scroll}>
           <TitleText
             title={buttonName.toUpperCase()}
             color={'#9E3B22'}
@@ -161,7 +161,7 @@ const SupportScreen = ({route}) => {
               </View>
             )}
           />
-        </View>
+        </ScrollView>
       </ImageBackground>
       <StatusBar />
       <BottomTab />
