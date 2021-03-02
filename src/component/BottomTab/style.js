@@ -7,12 +7,10 @@ import {
 export default StyleSheet.create({
   header: {
     flexDirection: 'row',
-    height: hp('6%'),
-    width: wp('100%'),
     backgroundColor: colors.orange,
+    height: hp('6%'),
+    paddingHorizontal: 10,
     alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
   },
 
   bottomTab: {

@@ -70,7 +70,7 @@ const StainChartDetail = ({route}) => {
         <ScrollView style={styles.scroll}>
           <TitleText title={button} color={'#9E3B22'} fontSize={hp('3%')} />
 
-          <HTML html={contents} />
+          <HTML baseFontStyle={{fontSize: hp('1.7%')}} html={contents} />
         </ScrollView>
       </ImageBackground>
       <BottomTab />

@@ -87,7 +87,7 @@ class StainChart extends React.Component {
                 btnName: item.name,
               });
             }}>
-            <Text style={{fontSize: hp('1.5%'), fontWeight: 'bold'}}>
+            <Text style={{fontSize: hp('1.7%'), fontWeight: 'bold'}}>
               {item.name.toUpperCase()}
             </Text>
           </TouchableOpacity>
@@ -107,7 +107,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: hp('1.5%'),
+                  fontSize: hp('1.7%'),
                 }}>
                 {item.name.toUpperCase()}
               </Text>
@@ -125,7 +125,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: hp('1.5%'),
+                  fontSize: hp('1.7%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -143,7 +143,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.7%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -156,7 +156,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.7%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -171,7 +171,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: hp('1.5%'),
+                  fontSize: hp('1.7%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -191,7 +191,7 @@ class StainChart extends React.Component {
               }}>
               <Text
                 style={{
-                  fontSize: hp('1.5%'),
+                  fontSize: hp('1.7%'),
                   fontWeight: '700',
                   textDecorationLine: 'underline',
                 }}>
@@ -204,7 +204,7 @@ class StainChart extends React.Component {
                   btnName: item.name,
                 });
               }}>
-              <Text style={{fontSize: hp('1.5%')}}>{item.tag}</Text>
+              <Text style={{fontSize: hp('1.7%')}}>{item.tag}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -239,7 +239,7 @@ class StainChart extends React.Component {
               style={{
                 width: '90%',
                 height: '100%',
-                fontSize: hp('1.5%'),
+                fontSize: hp('1.7%'),
                 padding: 10,
               }}
               onChangeText={(search) => {
@@ -261,6 +261,7 @@ class StainChart extends React.Component {
           </View>
           <View
             style={{
+              borderWidth: 1,
               flexDirection: 'row',
               width: '85%',
               height: 50,
@@ -295,7 +296,7 @@ class StainChart extends React.Component {
                 </View>
                 <Text
                   style={{
-                    fontSize: hp('1.5%'),
+                    fontSize: hp('1.7%'),
                     marginTop: 4,
                     marginLeft: 4,
                     color: '#9E3B22',
@@ -341,7 +342,7 @@ class StainChart extends React.Component {
                       </View>
                       <Text
                         style={{
-                          fontSize: hp('1.5%'),
+                          fontSize: hp('1.7%'),
                           marginTop: 4,
                           marginLeft: 4,
                           color: '#9E3B22',

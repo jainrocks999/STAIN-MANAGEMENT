@@ -8,11 +8,8 @@ const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   imageBackground: {
     flex: 1,
-    width: wp('100%'),
-    height: Dimensions.get('window').height,
-    alignSelf: 'center',
-    alignContent: 'center',
     justifyContent: 'center',
+    alignContent: 'center',
   },
   search: {
     alignSelf: 'center',

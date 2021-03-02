@@ -279,6 +279,7 @@ class LoginScreen extends React.Component {
                     Username: text,
                   })
                 }
+                keyboardType="email-address"
               />
               <TextInput
                 style={styles.textInput}

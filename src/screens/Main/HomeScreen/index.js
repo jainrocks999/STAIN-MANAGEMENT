@@ -109,11 +109,10 @@ function HomeScreen(props) {
             <View style={{marginTop: hp('1.5%')}}>
               <View style={{width: '80%', alignSelf: 'center'}}>
                 <Text
-                  numberOfLines={2}
                   style={{
-                    textAlign: 'center',
-                    fontWeight: 'bold',
                     fontSize: hp('1.8%'),
+                    fontWeight: 'bold',
+                    textAlign: 'center',
                   }}>
                   THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
                 </Text>

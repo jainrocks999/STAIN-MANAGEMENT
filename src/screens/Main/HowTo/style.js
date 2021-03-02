@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   scroll: {
     flexGrow: 1,
-    marginHorizontal: wp('1%'),
+    // marginHorizontal: wp('1%'),
   },
   logoContainer: {
     marginTop: '5%',
