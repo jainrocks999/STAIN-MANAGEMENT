@@ -261,7 +261,6 @@ class StainChart extends React.Component {
           </View>
           <View
             style={{
-              borderWidth: 1,
               flexDirection: 'row',
               width: '85%',
               height: 50,
@@ -291,7 +290,10 @@ class StainChart extends React.Component {
                   <Image
                     resizeMode="contain"
                     source={require('../../../assets/Images/u.png')}
-                    style={{height: '100%', width: '100%'}}
+                    style={{
+                      height: '100%',
+                      width: '100%',
+                    }}
                   />
                 </View>
                 <Text

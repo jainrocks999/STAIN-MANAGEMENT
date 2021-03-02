@@ -176,7 +176,8 @@ const CustomHeader = ({goBack, goToNotification}) => {
           <TouchableOpacity
             style={{
               width: wp('8%'),
-              height: hp('4%'),
+              height: hp('3.5%'),
+
               // height: 26,
               // width: 26,
               justifyContent: 'center',
@@ -249,7 +250,7 @@ const CustomHeader = ({goBack, goToNotification}) => {
           <TouchableOpacity
             style={{
               width: wp('8%'),
-              height: hp('4%'),
+              height: hp('3.5%'),
               // height: 26,
               // width: 26,
               justifyContent: 'center',
