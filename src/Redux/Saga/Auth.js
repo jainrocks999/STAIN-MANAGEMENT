@@ -24,7 +24,7 @@ function* doLogin(action) {
       payload: formatRes,
     });
 
-    console.log('formatRes.lastname', formatRes);
+    // console.log('formatRes.lastname', formatRes);
     if (formatRes.url == '') {
       AsyncStorage.setItem(storage.Email, formatRes.email);
       AsyncStorage.setItem(storage.Name, formatRes.name);
@@ -189,7 +189,7 @@ function* doStain(action) {
 function* doStainPage(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
   const formatedResponse = JSON.parse(response);
-  console.log('respo222::::', JSON.stringify(formatedResponse.data));
+  // console.log('respo222::::', JSON.stringify(formatedResponse.data));
 
   if (formatedResponse.status == 'true') {
     yield put({

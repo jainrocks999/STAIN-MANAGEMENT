@@ -53,7 +53,7 @@ const StainChartDetail = ({route}) => {
   }, []);
   const popupshow = () => {
     setisVisible(true);
-    console.log('omodal', isVisible);
+    //console.log('omodal', isVisible);
   };
   const dismiss = () => {
     setisVisible(false);

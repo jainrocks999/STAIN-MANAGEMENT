@@ -40,9 +40,9 @@ function HomeScreen(props) {
   const CustomfontSize = async () => {
     font = await AsyncStorage.getItem(storage.medium);
 
-    console.log('fontSizefontSize :', font);
+    //console.log('fontSizefontSize :', font);
     setFontsizee(font);
-    console.log('fontSizefontSizeee :', fontSizee);
+    // console.log('fontSizefontSizeee :', fontSizee);
   };
   const loadData1 = async () => {
     dispatch({

@@ -113,7 +113,7 @@ class LoginScreen extends React.Component {
               storage.UserId,
               JSON.stringify(formatRes.user_id),
             );
-            console.log('dhjkfbdbhdbhdbc' + formatRes.lastname);
+            // console.log('dhjkfbdbhdbhdbc' + formatRes.lastname);
             AsyncStorage.setItem(storage.Lastname, formatRes.lastname);
             AsyncStorage.setItem(storage.Username, formatRes.username);
             this.setState({

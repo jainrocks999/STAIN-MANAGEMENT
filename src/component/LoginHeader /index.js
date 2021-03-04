@@ -57,8 +57,8 @@ class CustomHeader extends React.Component {
     const {StainPagesDetails} = this.props;
     StainPagesDetails.map((element) => {
       if (element.id == '14') {
-        console.log('ggyyyyggg:', JSON.stringify(element));
-        console.log('ggyyygggsssss:', element.name);
+        // console.log('ggyyyyggg:', JSON.stringify(element));
+        // console.log('ggyyygggsssss:', element.name);
         this.setState({
           Button: element.mobile_content,
           Content: element.name,
@@ -84,13 +84,13 @@ class CustomHeader extends React.Component {
   };
 
   popupshow = () => {
-    Alert.alert('hello');
-    console.log('modall:', this.state.isVisible);
-    console.log('hrello');
+    // Alert.alert('hello');
+    // console.log('modall:', this.state.isVisible);
+    // console.log('hrello');
     this.setState({
       isVisible: true,
     });
-    console.log('modalllllll:', this.state.isVisible);
+    //  console.log('modalllllll:', this.state.isVisible);
   };
   dismiss = () => {
     this.setState({

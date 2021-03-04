@@ -34,7 +34,7 @@ const SupportScreen = ({route}) => {
   const [contents, setContent] = useState('');
   const isFetching = useSelector((state) => state.isFetching);
   const [button, setButton] = useState('');
-  console.log('caseStudy:::', CaseStudy);
+  //console.log('caseStudy:::', CaseStudy);
   let buttonName = 'Case Studies';
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const SupportScreen = ({route}) => {
         let imageArray = [];
         images = element.images;
         imageArray.push(images);
-        console.log('yogii:', element);
+        //console.log('yogii:', element);
 
         return (
           <View style={styles.MainContainer}>
@@ -96,6 +96,19 @@ const SupportScreen = ({route}) => {
       });
     } else return <HTMLView value={contents} />;
   };
+
+  const ListHeader = () => {
+    //View to set in Header
+    return (
+      <View style={styles.headerFooterStyle}>
+        <TitleText
+          title={buttonName.toUpperCase()}
+          color={'#9E3B22'}
+          fontSize={hp('3%')}
+        />
+      </View>
+    );
+  };
   return (
     <View style={styles.imageBackground}>
       <CustomHeader
@@ -106,16 +119,24 @@ const SupportScreen = ({route}) => {
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
-        <ScrollView contentContainerStyle={styles.scroll}>
+        <View style={styles.scroll}>
           <TitleText
             title={buttonName.toUpperCase()}
             color={'#9E3B22'}
             fontSize={hp('3%')}
           />
           {/* {renderCaseStudies()} */}
+
           <FlatList
             data={CaseStudy}
             keyExtractor={(item) => item.id}
+            // extraData={() => (
+            //   <View>
+            //     <Text>hi</Text>
+            //   </View>
+            // )}
+
+            // ListHeaderComponent={ListHeader}
             renderItem={({item}) => (
               <View style={styles.MainContainer}>
                 <View style={styles.cardViewStyle}>
@@ -165,7 +186,7 @@ const SupportScreen = ({route}) => {
               </View>
             )}
           />
-        </ScrollView>
+        </View>
       </ImageBackground>
       <StatusBar />
       <BottomTab />

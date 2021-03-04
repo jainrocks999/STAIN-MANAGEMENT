@@ -22,8 +22,8 @@ const SupportTwo = () => {
     // setButton('About Stains'.toUpperCase());
     const selectedName = StainPagesDetails.map((element) => {
       if (element.id == '11') {
-        console.log('ggggg:', JSON.stringify(element));
-        console.log('gggggsssss:', element.name);
+        // console.log('ggggg:', JSON.stringify(element));
+        // console.log('gggggsssss:', element.name);
         setContent(element.mobile_content);
         setButton(element.name);
       }

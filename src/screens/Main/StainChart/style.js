@@ -14,7 +14,7 @@ export default StyleSheet.create({
   search: {
     alignSelf: 'center',
     width: wp('80%'),
-    height: hp('4%'),
+    height: hp('5%'),
     margin: wp('1%'),
     borderWidth: 1,
     marginBottom: 6,

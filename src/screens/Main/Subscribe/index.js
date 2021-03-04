@@ -15,7 +15,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../../../component/loader';
 import TitleText from '../../../component/Headertext';
 
-
 const SubScribeDetails = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const SubScribeDetails = () => {
   const selector = useSelector((state) => state.GetSubscribeDetails);
   const isFetching = useSelector((state) => state.isFetching);
   const [userId, setuserId] = useState('');
-console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
+  //console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
   const [button, setButton] = useState(null);
   const [chart, setChart] = useState(false);
   useEffect(() => {
@@ -42,20 +41,23 @@ console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
 
   return (
     <View style={styles.imageBackground}>
-       <CustomHeader 
-             goBack={()=>this.props.navigation.goBack()}
-             goToNotification={()=>this.props.navigation.navigate('Notifications')}
-            />
+      <CustomHeader
+        goBack={() => this.props.navigation.goBack()}
+        goToNotification={() => this.props.navigation.navigate('Notifications')}
+      />
       {isFetching ? <Loader /> : null}
       <ImageBackground
         style={styles.imageBackground}
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <TitleText title={'Subscription Details'.toUpperCase()} color={'#9E3B22'} fontSize={22} />
+          <TitleText
+            title={'Subscription Details'.toUpperCase()}
+            color={'#9E3B22'}
+            fontSize={22}
+          />
 
-          <View style={{flex: 0.6, justifyContent: 'center',}}>
+          <View style={{flex: 0.6, justifyContent: 'center'}}>
             <View style={styles.settingsContainer}>
-           
               <View>
                 <TouchableOpacity style={styles.settingsItems}>
                   <Text style={styles.settingsItemsText}>
@@ -70,10 +72,7 @@ console.log('jjjjjjjjjjjj'+JSON.stringify(selector))
               </View>
               <View>
                 <TouchableOpacity style={styles.settingsItems}>
-                  <Text style={styles.settingsItemsText}>
-                    {' '}
-                    {'End Date :'}
-                  </Text>
+                  <Text style={styles.settingsItemsText}> {'End Date :'}</Text>
                   {/* <Text style={styles.settingsItemsText}>{':'}</Text> */}
                   <Text style={styles.settingsItemsText}>
                     {selector.exp_date}

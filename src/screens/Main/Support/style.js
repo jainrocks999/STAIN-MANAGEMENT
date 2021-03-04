@@ -10,8 +10,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   scroll: {
-    flexGrow: 1,
-    paddingBottom: 20,
+    flex: 1,
   },
 
   MainContainer: {flex: 1, width: '100%'},

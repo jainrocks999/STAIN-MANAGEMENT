@@ -239,8 +239,9 @@ class StainChart extends React.Component {
               style={{
                 width: '90%',
                 height: '100%',
-                fontSize: hp('1.7%'),
-                padding: 10,
+                fontSize: hp('1.5%'),
+                paddingHorizontal: 10,
+                paddingVertical: 5,
               }}
               onChangeText={(search) => {
                 this.loadsearch(search);
@@ -289,7 +290,7 @@ class StainChart extends React.Component {
                   }}>
                   <Image
                     resizeMode="contain"
-                    source={require('../../../assets/Images/u.png')}
+                    source={require('../../../assets/Images/u1.png')}
                     style={{
                       height: '100%',
                       width: '100%',

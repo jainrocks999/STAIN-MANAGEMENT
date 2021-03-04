@@ -98,6 +98,7 @@ function BottomTab() {
                 //height: 38,
                 alignItems: 'center',
                 alignSelf: 'center',
+                justifyContent: 'center',
               }}
               onPress={() => {
                 navigation.navigate(item.pagename);

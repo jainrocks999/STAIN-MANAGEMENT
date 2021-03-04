@@ -21,7 +21,7 @@ const Resources = () => {
   useEffect(() => {
     const selectedName = StainPagesDetails.map((element) => {
       if (element.id == '10') {
-        console.log('uuuuuuuuu', element.name);
+        // console.log('uuuuuuuuu', element.name);
         // setContent(element.content);
         setButton(element.name);
         WebViewRef && WebViewRef.reload();

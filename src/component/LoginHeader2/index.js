@@ -48,8 +48,8 @@ class LoginHeader2 extends Component {
     const {StainPagesDetails} = this.props;
     StainPagesDetails.map((element) => {
       if (element.id == '14') {
-        console.log('ggyyyyggg:', JSON.stringify(element));
-        console.log('ggyyygggsssss:', element.name);
+        // console.log('ggyyyyggg:', JSON.stringify(element));
+        // console.log('ggyyygggsssss:', element.name);
         this.setState({
           Content: element.mobile_content,
           Button: element.name,
@@ -72,7 +72,7 @@ class LoginHeader2 extends Component {
   };
 
   setModalVisible = (visible) => {
-    console.log('helloModal');
+    //console.log('helloModal');
     this.setState({modalVisible: visible});
   };
 
@@ -94,15 +94,15 @@ class LoginHeader2 extends Component {
         <View style={styles.header1}>
           <TouchableOpacity
             style={{
-              height: 30,
-              width: 30,
+              width: wp('8%'),
+              height: hp('4%'),
               marginLeft: 20,
               alignItems: 'center',
               justifyContent: 'center',
             }}
             onPress={this.showMenu}>
             <Menu
-              style={{width: '38%'}}
+              style={{width: wp('40%')}}
               ref={this.setMenuRef}
               button={
                 <View
