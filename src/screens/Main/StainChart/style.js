@@ -25,6 +25,12 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
   },
   scroll: {
+    // borderWidth: 1,
+    paddingHorizontal: 20,
+    width: wp('99%'),
+    flexGrow: 1,
+  },
+  FlatList: {
     flex: 1,
     paddingHorizontal: 30,
     marginTop: 10,

@@ -132,8 +132,8 @@ android {
         applicationId "com.stainmanagement"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.6"
+        versionCode 12
+        versionName "1.9"
         multiDexEnabled true
         //  ndk {
         // abiFilters "armeabi-v7a", "x86"

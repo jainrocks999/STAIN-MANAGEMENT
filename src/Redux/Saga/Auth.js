@@ -203,6 +203,39 @@ function* doStainPage(action) {
   }
 }
 
+//PostPages
+function* doStainPost(action) {
+  const response = yield call(Api.fetchDataByGET, action.url);
+  // const formatedResponse = JSON.parse(response);
+
+  if (response.status == 'true') {
+    yield put({
+      type: 'User_StainPost_Success',
+      payload: response.data,
+    });
+  } else {
+    yield put({
+      type: 'User_StainPost_Error',
+    });
+  }
+}
+//PostPages
+function* doStainDefination(action) {
+  const response = yield call(Api.fetchDataByGET, action.url);
+  // const formatedResponse = JSON.parse(response);
+  console.log('definition : ', response.data);
+  if (response.status == 'true') {
+    yield put({
+      type: 'User_StainDefination_Success',
+      payload: response.data,
+    });
+  } else {
+    yield put({
+      type: 'User_StainDefination_Error',
+    });
+  }
+}
+
 //CaseStudy
 function* doCaseStudy(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
@@ -330,5 +363,7 @@ export default function* authSaga() {
   yield takeEvery('User_Get_Edit_Profile_Request', doGetEditProfile);
   yield takeEvery('User_SubScribeDetails_Request', doGetSubScribe);
   yield takeEvery('User_StainPages_Request', doStainPage);
+  yield takeEvery('User_StainPost_Request', doStainPost);
+  yield takeEvery('User_StainDefination_Request', doStainDefination);
   yield takeEvery('User_Notification_Request', getNotifications);
 }

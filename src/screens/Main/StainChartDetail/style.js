@@ -5,7 +5,26 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 const windowHeight = Dimensions.get('window').height;
+const horizontalMargin = 20;
+const slideWidth = wp('100%');
+
+const sliderWidth = Dimensions.get('window').width;
+const itemWidth = slideWidth + horizontalMargin * 2;
+const itemHeight = hp('100%');
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+
 export default StyleSheet.create({
+  slide: {
+    width: itemWidth,
+    height: itemHeight,
+    paddingHorizontal: horizontalMargin,
+    // other styles for the item container
+  },
+  slideInnerContainer: {
+    width: slideWidth,
+    flex: 1,
+    // other styles for the inner container
+  },
   imageBackground: {
     flex: 1,
   },

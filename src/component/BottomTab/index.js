@@ -47,7 +47,7 @@ function BottomTab() {
       },
       {
         img: require('../../assets/Icons1/Stain_Chart.png'),
-        name: 'Stain Chart',
+        name: 'Stain Types',
         pagename: 'Stain',
       },
       {
@@ -92,7 +92,7 @@ function BottomTab() {
             }}>
             <TouchableOpacity
               style={{
-                height: hp('5%'),
+                height: hp('7%'),
                 width: wp('20%'),
                 // marginBottom: 2,
                 //height: 38,

@@ -28,7 +28,6 @@ const SplashScreen = () => {
   const navigation = useNavigation();
   const isFetching = useSelector((state) => state.isFetching);
   const [isModalVisible, setModalVisible] = useState(false);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,6 +38,8 @@ const SplashScreen = () => {
     getSubscribeDetail();
     loadData();
     loadData1();
+    loadData2();
+    loadData3();
   }, []);
 
   const toggleModal = () => {
@@ -50,6 +51,18 @@ const SplashScreen = () => {
     dispatch({
       type: 'User_Stain_Request',
       url: 'v1/stain/all',
+    });
+  };
+  const loadData2 = async () => {
+    dispatch({
+      type: 'User_StainPost_Request',
+      url: 'v1/stain/post',
+    });
+  };
+  const loadData3 = async () => {
+    dispatch({
+      type: 'User_StainDefination_Request',
+      url: 'v1/stain/definition',
     });
   };
   const getstainpage = () => {

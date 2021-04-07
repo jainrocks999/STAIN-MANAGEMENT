@@ -8,7 +8,7 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: colors.orange,
-    height: hp('6%'),
+    height: hp('8%'),
     paddingHorizontal: 10,
     alignItems: 'center',
   },

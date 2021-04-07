@@ -44,7 +44,9 @@ const CustomHeader = ({goBack, goToNotification}) => {
 
   const directCall = async () => {
     let NotificationViewId = await AsyncStorage.getItem('ViewNotificationId');
-    if (notificationDetails !== '') {
+    console.log('notification ID ', NotificationViewId);
+    console.log(' notificationDetails ', notificationDetails[0].id);
+    if (notificationDetails != '') {
       setnotificationFisrtId('');
     } else {
       setnotificationFisrtId(notificationDetails[0].id);
@@ -53,7 +55,8 @@ const CustomHeader = ({goBack, goToNotification}) => {
 
     renderIcon();
   };
-
+  console.log('notificationFisrtId ', notificationFisrtId);
+  console.log('NotificationValue ', NotificationValue);
   const renderIcon = () => {
     if (NotificationValue == notificationFisrtId) {
       return (

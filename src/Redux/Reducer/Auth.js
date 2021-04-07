@@ -16,6 +16,8 @@ initialstate = {
   GetSubscribeDetails: '',
   AppDetails: [],
   StainPagesDetails: [],
+  StainPost: [],
+  StainDefination: [],
   NotificationDetails: [],
 };
 export default (state = initialstate, action) => {
@@ -121,6 +123,22 @@ export default (state = initialstate, action) => {
     case 'User_StainPages_Success':
       return {...state, isFetching: false, StainPagesDetails: action.payload};
     case 'User_StainPages_Error':
+      return {...state, isFetching: false};
+
+    //comman Stain post
+    case 'User_StainPost_Request':
+      return {...state, isFetching: true};
+    case 'User_StainPost_Success':
+      return {...state, isFetching: false, StainPost: action.payload};
+    case 'User_StainPost_Error':
+      return {...state, isFetching: false};
+
+    //comman Stain defination
+    case 'User_StainDefination_Request':
+      return {...state, isFetching: true};
+    case 'User_StainDefination_Success':
+      return {...state, isFetching: false, StainDefination: action.payload};
+    case 'User_StainDefination_Error':
       return {...state, isFetching: false};
 
     case 'User_Notification_Request':

@@ -241,7 +241,7 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
-  - react-native-safe-area-context (3.1.9):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-simple-toast (1.1.3):
     - React-Core
@@ -323,22 +323,22 @@ PODS:
     - React
   - RNCPushNotificationIOS (1.8.0):
     - React-Core
-  - RNDeviceInfo (8.0.1):
+  - RNDeviceInfo (8.0.7):
     - React-Core
-  - RNFBApp (10.8.0):
+  - RNFBApp (10.8.1):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBMessaging (10.8.0):
+  - RNFBMessaging (10.8.1):
     - Firebase/Messaging (~> 7.6.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.3):
     - React-Core
-  - RNReanimated (1.13.2):
+  - RNReanimated (1.13.3):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
-  - RNVectorIcons (8.0.0):
+  - RNVectorIcons (8.1.0):
     - React-Core
   - Toast (4.0.0)
   - Yoga (1.14.0)
@@ -517,7 +517,7 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
-  react-native-safe-area-context: 86612d2c9a9e94e288319262d10b5f93f0b395f5
+  react-native-safe-area-context: e471852c5ed67eea4b10c5d9d43c1cebae3b231d
   react-native-simple-toast: b986e6c1befdc211af3df1bae293278a44e32990
   react-native-slider: b733e17fdd31186707146debf1f04b5d94aa1a93
   react-native-video: 1574074179ecaf6a9dd067116c8f31bf9fec15c8
@@ -536,13 +536,13 @@ SPEC CHECKSUMS:
   RNCCheckbox: 500919ac122273ea8eef93dae01431091968c14a
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNCPushNotificationIOS: 5b1cf9ad2aaa107ecb92d5d2d7005ba521b2b97a
-  RNDeviceInfo: 54401b60514387f9120ab8265be5ed9103d842b9
-  RNFBApp: 97b618641633d6d23187a9d0537c3893482c483f
-  RNFBMessaging: 9eae1103b79d94c6baa5bc43dabc9aba49dfb9da
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
-  RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
-  RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
+  RNDeviceInfo: 0550f15928f92d062238ea412b645d00548fd809
+  RNFBApp: 02bde3edecf2e9694b908a5d3504e03449980f20
+  RNFBMessaging: 1823217d31e942531cc3f51fb5367dcbc69c1e10
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
 

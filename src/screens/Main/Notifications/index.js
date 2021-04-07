@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ImageBackground, ScrollView, Text, View} from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import styles from './style';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -65,15 +72,26 @@ const Notification = () => {
                 marginHorizontal: 10,
                 marginVertical: 3,
                 paddingHorizontal: wp('1.5%'),
-                paddingVertical: hp('1.5%'),
+                paddingVertical: hp('2.0%'),
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingHorizontal: 10,
               }}>
-              <Text
-                style={{color: 'green', marginTop: 8, fontSize: hp('1.8%')}}>
-                {item.title}
-              </Text>
-              <Text style={{marginTop: 7, fontSize: hp('1.5%')}}>
-                {item.description}
-              </Text>
+              <View>
+                <Text style={{color: 'green', fontSize: hp('1.8%')}}>
+                  {item.title}
+                </Text>
+                <Text style={{marginTop: 7, fontSize: hp('1.5%')}}>
+                  {item.description}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={{alignItems: 'center', justifyContent: 'center'}}>
+                <Image
+                  style={{width: 20, height: 20}}
+                  source={require('../../../assets/Icons/delete.png')}
+                />
+              </TouchableOpacity>
             </View>
           )}
           keyExtractor={(item) => item.id}

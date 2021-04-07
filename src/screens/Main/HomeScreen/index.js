@@ -28,12 +28,16 @@ function HomeScreen(props) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const selector = useSelector((state) => state.StainPagesDetails);
+  const StainPost = useSelector((state) => state.StainPost);
+  console.log('ytogendr', StainPost);
+
   const [fontSizee, setFontsizee] = useState('');
 
   useEffect(() => {
     loadData();
     getstainpage();
     loadData1();
+    loadData2();
     CustomfontSize();
   }, []);
 
@@ -54,6 +58,12 @@ function HomeScreen(props) {
     dispatch({
       type: 'User_Stain_Request',
       url: 'v1/stain/all',
+    });
+  };
+  const loadData2 = async () => {
+    dispatch({
+      type: 'User_StainPost_Request',
+      url: 'v1/stain/post',
     });
   };
   const getstainpage = () => {
@@ -148,7 +158,7 @@ function HomeScreen(props) {
               }
             })}
             <CustomButton
-              title="Stain Chart"
+              title="Stain Types"
               onPress={() => {
                 navigation.navigate('Stain');
               }}
