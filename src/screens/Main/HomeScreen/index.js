@@ -123,11 +123,12 @@ function HomeScreen(props) {
                     fontSize: hp('1.8%'),
                     fontWeight: 'bold',
                     textAlign: 'center',
+                    textTransform: 'uppercase',
                   }}>
-                  THE ULTIMATE GUIDE TO PROFESSIONAL STAIN MANAGEMENT
+                  For Stone, Concrete and Other Hard Porous Surfaces
                 </Text>
               </View>
-              <View
+              {/* <View
                 style={{
                   width: wp('100%'),
                   alignSelf: 'center',
@@ -140,7 +141,7 @@ function HomeScreen(props) {
                   }}>
                   For Stone, Concrete and Other Hard Porous Surfaces
                 </Text>
-              </View>
+              </View> */}
             </View>
           </View>
 

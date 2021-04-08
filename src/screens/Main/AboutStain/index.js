@@ -47,7 +47,11 @@ const AboutStain = ({route}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scroll}>
-          <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
+          <TitleText
+            title={Button.toUpperCase()}
+            color={'#9E3B22'}
+            fontSize={hp('3%')}
+          />
           <WebView
             style={{marginTop: hp('1%')}}
             startInLoadingState={true}

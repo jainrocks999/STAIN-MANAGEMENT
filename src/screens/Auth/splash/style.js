@@ -15,27 +15,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  logoContainer1: {
-    height: hp('8%'),
-    width: hp('15%'),
-    marginTop: '10%',
+  SecondView: {
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    // backgroundColor:'white'
-  },
-  SecondView: {
-    flex: 0.98,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginTop: 10,
     // width:300
   },
   logo: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
+    width: 65,
+    height: 65,
+    //borderRadius:10,
     marginTop: 12,
     padding: 10,
     justifyContent: 'center',
@@ -55,13 +44,13 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     backgroundColor: colors.orange,
-    height: hp('5%'),
+    height: 40,
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     alignItems: 'center',
   },
   modal: {
-    width: wp('100%'),
+    width: '100%',
 
     borderRadius: 10,
     padding: 10,
@@ -73,18 +62,19 @@ export default StyleSheet.create({
   },
   ModelBtntext: {
     color: colors.white,
-    fontSize: hp('1.5%'),
+    fontSize: hp('1.7%'),
     alignSelf: 'center',
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    padding: 16,
+
     textAlign: 'center',
+    textAlignVertical: 'center',
   },
   ModelMsgText: {
     width: '99%',
     alignSelf: 'center',
     color: colors.black,
-    fontSize: hp('1.5%'),
+    fontSize: hp('1.7%'),
     fontWeight: '500',
     alignItems: 'center',
     padding: 6,
@@ -99,7 +89,7 @@ export default StyleSheet.create({
   },
   popup: {
     width: '30%',
-    height: 40,
+    height: hp('4%'),
     marginTop: 10,
     backgroundColor: colors.orange,
     justifyContent: 'center',

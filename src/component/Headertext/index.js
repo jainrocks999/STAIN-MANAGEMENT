@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     // width: 210,
+    textTransform: 'uppercase',
     fontFamily: 'Arial',
     fontWeight: 'bold',
   },

@@ -1,33 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
   Image,
   ImageBackground,
+  Linking,
+  Platform,
   Text,
   TouchableOpacity,
   View,
-  SafeAreaView,
 } from 'react-native';
 import styles from './style';
+import Headertext from '../../../component/Headertext';
 
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../component/storage';
 import StatusBar from '../../../component/StatusBar';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector, connect} from 'react-redux';
+import Toast from 'react-native-simple-toast';
+import TitleText from '../../../component/TitleText';
 
 import moment from 'moment';
 import axios from 'axios';
 import Modal from 'react-native-modal';
 import Loader from '../../../component/loader';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 
 const SplashScreen = () => {
   const navigation = useNavigation();
   const isFetching = useSelector((state) => state.isFetching);
+  const SubscribeDetails = useSelector((state) => state.GetSubscribeDetails);
+  const VersionDetails = useSelector((state) => state.VersionDetails);
+  const notificationDetails = useSelector((state) => state.NotificationDetails);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [version, setVersion] = useState('');
+  const [url, setUrl] = useState('');
+  const [message, setMessage] = useState('');
+  const [heading, setHeading] = useState('');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -77,6 +86,12 @@ const SplashScreen = () => {
       url: 'v1/stain/stain_notifications',
     });
   };
+  const loadData1 = async () => {
+    dispatch({
+      type: 'User_CaseStudy_Request',
+      url: 'v1/stain/case_studies',
+    });
+  };
 
   const appVersion = async (url) => {
     try {
@@ -88,10 +103,28 @@ const SplashScreen = () => {
         },
         url: 'https://staincarepro.com/wp-json/wp/v1/app/vesion',
       });
-      if (response.data.android_version > 1) {
-        toggleModal();
+      console.log('yogi update', response.data);
+
+      if (Platform.OS === 'ios') {
+        setHeading(response.data.message_heading);
+        setMessage(response.data.ios_message);
+        setUrl(response.data.ios_url);
+        setVersion(response.data.ios_version);
+        if (response.data.ios_version > 1) {
+          toggleModal();
+        } else {
+          directCall();
+        }
       } else {
-        directCall();
+        setHeading(response.data.message_heading);
+        setMessage(response.data.android_message);
+        setUrl(response.data.android_url);
+        setVersion(response.data.android_version);
+        if (response.data.android_version > 1) {
+          toggleModal();
+        } else {
+          directCall();
+        }
       }
 
       AsyncStorage.setItem(
@@ -102,6 +135,9 @@ const SplashScreen = () => {
     } catch (error) {
       throw error;
     }
+  };
+  const onDownloadPress = async () => {
+    Linking.openURL(url);
   };
   const apiCall = async () => {
     await fetch(
@@ -128,89 +164,85 @@ const SplashScreen = () => {
     });
   };
 
-  const loadData1 = async () => {
-    dispatch({
-      type: 'User_CaseStudy_Request',
-      url: 'v1/stain/case_studies',
-    });
-  };
-
   return (
-    <SafeAreaView style={styles.MainView}>
+    <View style={styles.MainView}>
       {isFetching ? <Loader /> : null}
-
       <View style={styles.header}></View>
       <ImageBackground
         style={styles.MainView}
         source={require('../../../assets/Images/HomeScreen.png')}>
         <View style={styles.SecondView}>
-          {/* <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} /> */}
+          <Headertext title={'Fred Hueston’s'} color={'#000'} fontSize={16} />
+          <Image
+            style={styles.logo}
+            source={require('../../../assets/Images/stain.png')}
+          />
           <View
             style={{
-              height: hp('10%'),
-              width: wp('45%'),
-              marginTop: hp('1%'),
+              marginTop: 10,
+              height: 30,
+              width: 390,
               justifyContent: 'center',
               alignContent: 'center',
-              alignSelf: 'center',
             }}>
             <Image
-              style={styles.logo}
-              resizeMode="contain"
-              source={require('../../../assets/Images/stain.png')}
+              style={styles.logo1}
+              source={require('../../../assets/Images/stain_text.png')}
             />
           </View>
-          <View style={styles.logoContainer1}>
-            <Image
-              resizeMode="contain"
-              style={{height: '100%', width: '100%'}}
-              source={require('../../../assets/Images/surphce.jpg')}
+          {/* 
+          <View style={{marginTop: 8}}>
+            <TitleText
+              title={'Interactive Stain App For Hard Porous Surfaces'}
+              color={'#000'}
+              fontSize={13}
             />
-          </View>
+          </View> */}
+        </View>
+        <View style={styles.logoContainer}>
+          <Image source={require('../../../assets/Images/surphce.jpg')} />
         </View>
       </ImageBackground>
-    </SafeAreaView>
+      <StatusBar />
+
+      <Modal
+        isVisible={isModalVisible}
+        onSwipeComplete={() => setModalVisible(false)}
+        swipeDirection="right"
+        onBackdropPress={() => setModalVisible(false)}>
+        <View style={styles.modal}>
+          <View style={{width: '100%'}}>
+            <Text
+              style={{
+                color: 'red',
+                fontSize: 20,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+              {heading}
+            </Text>
+          </View>
+          <TouchableOpacity style={styles.ModelmsgView}>
+            <Text style={styles.ModelMsgText}>{message}</Text>
+          </TouchableOpacity>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              width: '100%',
+            }}>
+            <TouchableOpacity style={styles.popup} onPress={onDownloadPress}>
+              <Text style={styles.ModelBtntext}>Download</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.popup} onPress={directCall}>
+              <Text style={styles.ModelBtntext}>Later</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 };
 
 export default SplashScreen;
-
-//
-//
-
-//       <Modal
-//         isVisible={isModalVisible}
-//         onSwipeComplete={() => setModalVisible(false)}
-//         swipeDirection="right"
-//         onBackdropPress={() => setModalVisible(false)}>
-//         <View style={styles.modal}>
-//           <View style={{width: '100%'}}>
-//             <Text
-//               style={{
-//                 color: 'red',
-//                 fontSize: 20,
-//                 fontWeight: 'bold',
-//                 textAlign: 'center',
-//               }}>
-//               Update
-//             </Text>
-//           </View>
-//           <TouchableOpacity style={styles.ModelmsgView}>
-//             <Text style={styles.ModelMsgText}>{'New Update Available'}</Text>
-//           </TouchableOpacity>
-
-//           <View
-//             style={{
-//               flexDirection: 'row',
-//               justifyContent: 'space-around',
-//               width: wp('100%'),
-//             }}>
-//             <TouchableOpacity style={styles.popup} onPress={toggleModal}>
-//               <Text style={styles.ModelBtntext}>Download</Text>
-//             </TouchableOpacity>
-//             <TouchableOpacity style={styles.popup} onPress={directCall}>
-//               <Text style={styles.ModelBtntext}>Later</Text>
-//             </TouchableOpacity>
-//           </View>
-//         </View>
-//       </Modal>

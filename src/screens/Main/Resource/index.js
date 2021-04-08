@@ -39,7 +39,11 @@ const Resources = () => {
         source={require('../../../assets/Images/AppBackground.jpg')}>
         <View style={styles.scroll}>
           <View style={styles.subHeadingView}>
-            <TitleText title={Button} color={'#9E3B22'} fontSize={hp('3%')} />
+            <TitleText
+              title={Button.toUpperCase()}
+              color={'#9E3B22'}
+              fontSize={hp('3%')}
+            />
             <WebView
               style={{marginTop: hp('1%')}}
               startInLoadingState={true}
