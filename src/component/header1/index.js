@@ -12,7 +12,6 @@ import {connect} from 'react-redux';
 import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
-
 import storage from '../storage';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 

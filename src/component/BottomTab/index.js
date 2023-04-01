@@ -47,7 +47,7 @@ function BottomTab() {
       },
       {
         img: require('../../assets/Icons1/Stain_Chart.png'),
-        name: 'Stain Types',
+        name: 'Search Stains',
         pagename: 'Stain',
       },
       {

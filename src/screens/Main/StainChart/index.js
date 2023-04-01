@@ -535,7 +535,7 @@ class StainChart extends React.Component {
           style={[styles.imageBackground, {alignItems: 'center'}]}
           source={require('../../../assets/Images/AppBackground.jpg')}>
           <TitleText
-            title={'STAIN TYPES'.toUpperCase()}
+            title={'SEARCH STAINS'.toUpperCase()}
             color={'#9E3B22'}
             fontSize={hp('3%')}
           />

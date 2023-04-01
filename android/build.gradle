@@ -3,9 +3,9 @@
 buildscript {
     ext {
         buildToolsVersion = "29.0.2"
-        minSdkVersion = 17
-        compileSdkVersion = 29
-        targetSdkVersion = 29
+        minSdkVersion = 21
+        compileSdkVersion = 31
+        targetSdkVersion = 31
 
         googlePlayServicesVersion = "+" // default: "+"
         firebaseMessagingVersion = "+" // default: "+"
@@ -16,14 +16,14 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('com.android.tools.build:gradle:4.0.1')
+        classpath('com.android.tools.build:gradle:3.6.4')
         classpath 'com.google.gms:google-services:4.3.4'
        
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+def REACT_NATIVE_VERSION = new File(['node', '--print',"JSON.parse(require('fs').readFileSync(require.resolve('react-native/package.json'), 'utf-8')).version"].execute(null, rootDir).text.trim())
 allprojects {
     repositories {
         mavenLocal()
@@ -39,5 +39,11 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://www.jitpack.io' }
+    }
+     configurations.all {
+        resolutionStrategy {
+            // Remove this override in 0.66, as a proper fix is included in react-native itself.
+            force "com.facebook.react:react-native:" + REACT_NATIVE_VERSION
+        }
     }
 }

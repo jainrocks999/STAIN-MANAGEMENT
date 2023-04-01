@@ -159,7 +159,7 @@ function HomeScreen(props) {
               }
             })}
             <CustomButton
-              title="Stain Types"
+              title="Search Stains"
               onPress={() => {
                 navigation.navigate('Stain');
               }}
